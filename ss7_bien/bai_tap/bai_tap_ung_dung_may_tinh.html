@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng máy tính</title>
+</head>
+<body>
+<form>
+    <input type="number" id="number1">
+    <input type="number" id="number2"> <br> <br>
+    <button type="button" onclick="cong()">Addition(+)</button>
+    <button type="button" onclick="tru()">Subtraction(-)</button>
+    <button type="button" onclick="nhan()">Multiplication(*)</button>
+    <button type="button" onclick="chia()">Division(/)</button>
+    <p id="Ketqua"></p>
+</form>
+<script>
+    let number1;
+    let number2;
+    let ketQua;
+
+    function cong() {
+        number1 = parseInt(document.getElementById("number1").value);
+        number2 = parseInt(document.getElementById("number2").value);
+        ketQua = (number1 + number2);
+        document.getElementById("Ketqua").innerHTML ="Kết quả :" +  ketQua;
+    }
+
+    function tru() {
+        number1 = parseInt(document.getElementById("number1").value);
+        number2 = parseInt(document.getElementById("number2").value);
+        ketQua = (number1 - number2);
+        document.getElementById("Ketqua").innerHTML ="Kết quả :" +  ketQua;
+
+    }
+    function nhan() {
+        number1 = parseInt(document.getElementById("number1").value);
+        number2 = parseInt(document.getElementById("number2").value);
+        ketQua = (number1 * number2);
+        document.getElementById("Ketqua").innerHTML ="Kết quả :" +  ketQua;
+
+    }
+    function chia() {
+        number1 = parseInt(document.getElementById("number1").value);
+        number2 = parseInt(document.getElementById("number2").value);
+        ketQua = (number1 / number2);
+        document.getElementById("Ketqua").innerHTML ="Kết quả :" +  ketQua;
+
+    }
+
+</script>
+</body>
+</html>
