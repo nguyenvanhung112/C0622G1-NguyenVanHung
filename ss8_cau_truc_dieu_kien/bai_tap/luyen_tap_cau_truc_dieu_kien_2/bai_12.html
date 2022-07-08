@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lãi ngân hàng</title>
+</head>
+<body>
+<script>
+    var soTienGui = +prompt("Nhập số tiền gửi");
+    var soThangGui = +prompt("Nhập số tháng gửi");
+    for (i = 1 ; i <= soThangGui ; i++){
+        soTienGui =  soTienGui + soTienGui *3/100;
+    }
+    alert("Số tiền lãi là : " + soTienGui );
+</script>
+</body>
+</html>
