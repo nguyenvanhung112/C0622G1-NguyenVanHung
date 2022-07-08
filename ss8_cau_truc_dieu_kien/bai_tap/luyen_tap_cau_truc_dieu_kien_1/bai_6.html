@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính hoa hồng</title>
+</head>
+<body>
+<script>
+    let doanhSo = +prompt("Nhập doanh số tháng này")
+    let tienThuong;
+    if ( doanhSo < 5000 ){
+        tienThuong = doanhSo * 5/100;
+        alert("Tiền thưởng của bạn là: " + tienThuong);
+    } else if (doanhSo < 10000){
+        tienThuong = doanhSo * 10/100;
+        alert("Tiền thưởng của bạn là: " + tienThuong);
+    }else if (doanhSo < 15000){
+        tienThuong = doanhSo * 15/100;
+        alert("Tiền thưởng của bạn là: " + tienThuong);
+    }else {
+        tienThuong = doanhSo * 20/100;
+        alert(" Tiền thưởng của bạn là: " + tienThuong);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính giá điện</title>
+</head>
+<body>
+<script>
+    let soKwh = +prompt("Tổng điện năng tiêu thụ");
+    let soTienPhaiThanhToan;
+    if (isNaN(soKwh) || soKwh <= 0){
+        alert("Nhập lại")
+    }else if (soKwh < 50){
+        soTienPhaiThanhToan = soKwh * 3000;
+        alert("Số tiền phải thanh toán là " + soTienPhaiThanhToan );
+    }else if (soKwh < 100){
+        soTienPhaiThanhToan = soKwh * 4000;
+        alert("Số tiền phải thanh toán là " + soTienPhaiThanhToan );
+    }else {
+        soTienPhaiThanhToan = soKwh * 5000;
+        alert("Số tiền phải thanh toán là " + soTienPhaiThanhToan);
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính thuế thu nhập cá nhân</title>
+</head>
+<body>
+<script>
+    let tongThuNhap = +prompt("Tổng thu nhập: ");
+    let soNguoiPhuThuoc = +prompt("Số người phụ thuộc");
+    let thuNhapChiuThue = tongThuNhap - 11000000 - soNguoiPhuThuoc * 4400000;
+    let thueThuNhapCaNhan;
+
+    if (isNaN(tongThuNhap) || isNaN(soNguoiPhuThuoc) || tongThuNhap < 0 || soNguoiPhuThuoc < 0 ) {
+        alert("Nhập lại");
+    } else if (thuNhapChiuThue < 0){
+        alert("Không chịu thuế thu nhập cá nhân");
+    }else if (thuNhapChiuThue < 5000000){
+        thueThuNhapCaNhan = thuNhapChiuThue * (5/100);
+        alert("Thuế thu nhập cá nhân của bạn là = " + thueThuNhapCaNhan);
+    }else if (thuNhapChiuThue <=10000000){
+        thueThuNhapCaNhan = (thuNhapChiuThue - 5000000) * (10/100) + 250000;
+        alert("Thuế thu nhập cá nhân của bạn là = " + thueThuNhapCaNhan);
+    }else if (thuNhapChiuThue <=18000000) {
+        thueThuNhapCaNhan = (thuNhapChiuThue - 10000000) * (15/100) + 250000 + 500000;
+        alert("Thuế thu nhập cá nhân của bạn là = " + thueThuNhapCaNhan);
+    }else if (thuNhapChiuThue <=32000000){
+        thueThuNhapCaNhan = (thuNhapChiuThue - 18000000) * (20/100) + 250000 + 500000 + 1200000;
+        alert("Thuế thu nhập cá nhân của bạn là = " + thueThuNhapCaNhan);
+    }else if (thuNhapChiuThue <=52000000){
+        thueThuNhapCaNhan = (thuNhapChiuThue - 32000000) * (25/100) + 250000 + 500000 + 1200000 + 2800000;
+        alert("Thuế thu nhập cá nhân của bạn là = " + thueThuNhapCaNhan);
+    }else if (thuNhapChiuThue <=80000000) {
+        thueThuNhapCaNhan = (thuNhapChiuThue - 52000000) * (30 / 100) + 250000 + 500000 + 1200000 + 2800000 + 5000000 ;
+        alert("Thuế thu nhập cá nhân của bạn là = " + thueThuNhapCaNhan);
+    }else{
+        thueThuNhapCaNhan = (thuNhapChiuThue - 80000000) * (35 / 100) + 250000 + 500000 + 1200000 + 2800000 + 5000000 + 8400000;
+        alert("Thuế thu nhập cá nhân của bạn là = " + thueThuNhapCaNhan);
+    }
+
+</script>
+</body>
+</html>

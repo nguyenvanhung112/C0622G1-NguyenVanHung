@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diện tích hình chữ nhật</title>
+</head>
+<body>
+<script>
+    let canhA = +prompt("Nhập cạnh a");
+    let canhB = +prompt("Nhập cạnh b");
+    let dienTichHinhChuNhat = canhA * canhB;
+    if (isNaN(canhB) || isNaN(canhA) || canhB <= 0 || canhA <= 0){
+        alert('Nhập lại');
+    } else {
+        alert("Diện tích hình chữ nhật là: "+ dienTichHinhChuNhat)
+    }
+</script>
+</body>
+</html>

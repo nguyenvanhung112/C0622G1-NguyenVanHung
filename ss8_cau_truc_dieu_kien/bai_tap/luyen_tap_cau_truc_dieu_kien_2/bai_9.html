@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra cạnh a,b,c có phải là 1 cạnh của tam giác</title>
+</head>
+<body>
+<script>
+    let a = +prompt("Nhập cạnh a");
+    let b = +prompt("Nhập cạnh b");
+    let c = +prompt("Nhập cạnh c");
+    if (isNaN(a) || isNaN(b) || isNaN(c) || a < 0 || b < 0 || c < 0){
+        alert("Nhập lại các cạnh là số dương");
+    }else if(a + b > c && a + c > b && b + c > a ){
+        alert("a , b , c cạnh của tam giác");
+    } else {
+        alert("Không phải là cạnh của tam giác");
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phương trình bậc 2</title>
+</head>
+<body>
+<script>
+    let a = +prompt("Nhập a");
+    let b = +prompt("Nhập b");
+    let c = +prompt("Nhập c");
+    let delta = (b*b) - (4*a*c);
+    if (isNaN(a) || isNaN(b) || isNaN(c)) {
+        alert("Nhập lại giá trị số");
+    }    else if (a === 0 && b === 0 && c === 0){
+        alert("Phương trình vô số nghiệm")
+    }else if (delta < 0){
+        alert("Phương trình vô nghiệm");
+    }else if (delta === 0){
+        alert("Phương trình có nghiệm kép là: "+ -b/(2*a));
+    }else {
+        let nghiem1 = (-b + Math.sqrt(delta))/ (2*a);
+        let nghiem2 = (-b - Math.sqrt(delta))/ (2*a);
+        alert("Phương trình có nghiệm 1: " + nghiem1);
+        alert("Phương trình có nghiệm 2: " + nghiem2);
+    }
+</script>
+</body>
+</html>

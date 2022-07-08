@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A có chia hết cho B hay không?</title>
+</head>
+<body>
+<script>
+    let a = parseInt(prompt('Nhập vào số a'));
+    let b = parseInt(prompt('Nhập vào số b'));
+    if (a%b === 0) {
+        alert("a chia hết cho b")
+    }else if (isNaN(a) || isNaN(b)){
+        alert('Nhập lại')
+    }else {
+        alert('a không chia hết cho b')
+    }
+</script>
+</body>
+</html>
