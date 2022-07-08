@@ -8,15 +8,15 @@
 <script>
     let soKwh = +prompt("Tổng điện năng tiêu thụ");
     let soTienPhaiThanhToan;
-    if (isNaN(soKwh) || soKwh <= 0){
+    if (isNaN(soKwh) || soKwh <= 0) {
         alert("Nhập lại")
-    }else if (soKwh < 50){
+    } else if (soKwh < 50) {
         soTienPhaiThanhToan = soKwh * 3000;
-        alert("Số tiền phải thanh toán là " + soTienPhaiThanhToan );
-    }else if (soKwh < 100){
+        alert("Số tiền phải thanh toán là " + soTienPhaiThanhToan);
+    } else if (soKwh < 100) {
         soTienPhaiThanhToan = soKwh * 4000;
-        alert("Số tiền phải thanh toán là " + soTienPhaiThanhToan );
-    }else {
+        alert("Số tiền phải thanh toán là " + soTienPhaiThanhToan);
+    } else {
         soTienPhaiThanhToan = soKwh * 5000;
         alert("Số tiền phải thanh toán là " + soTienPhaiThanhToan);
     }

@@ -12,12 +12,12 @@
         <th>To Currency</th>
     </tr>
     <tr>
-        <td><input type="number" id="Amount"></td>
-        <td><select id="FormCurrency">
+        <td><input type="number" id="amount"></td>
+        <td><select id="formCurrency">
             <option value="VietNam">VietNam</option>
             <option value="USD">USD</option>
         </select></td>
-        <td><select id="ToCurrency">
+        <td><select id="toCurrency">
             <option value="VietNam">VietNam</option>
             <option value="USD">USD</option>
         </select></td>
@@ -30,20 +30,20 @@
 <p id="Result"></p>
 <script>
     function doiTien() {
-        let amount = document.getElementById("Amount").value;
-        let form = document.getElementById("Form Currency").value;
-        let to = document.getElementById("To Currency").value;
-        let Result;
+        let amount = document.getElementById("amount").value;
+        let form = document.getElementById("formCurrency").value;
+        let to = document.getElementById("toCurrency").value;
+        let reSult;
         if (form === "USD" && to === "VietNam") {
-            Result = "Result: " + (amount * 23000) + "Đ"
+            reSult = "Result: " + (amount * 23000) + "Đ"
         } else if (form === "VietNam" && to === "USD") {
-            Result = "Result: " + (amount / 23000) + "USD"
+            reSult = "Result: " + (amount / 23000) + "USD"
         } else if (form === "VietNam") {
-            Result = "Result: " + amount + "Đ"
+            reSult = "Result: " + amount + "Đ"
         } else {
-            Result = "Result: " + amount + "USĐ"
+            reSult = "Result: " + amount + "USĐ"
         }
-        document.getElementById("Result").innerHTML = Result;
+        document.getElementById("Result").innerHTML = reSult;
     }
 
 </script>

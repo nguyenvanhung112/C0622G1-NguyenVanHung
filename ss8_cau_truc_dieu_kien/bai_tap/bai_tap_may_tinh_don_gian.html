@@ -10,29 +10,61 @@
         <td colspan="4"><input type="text" id="hienThi"></td>
     </tr>
     <tr>
-        <td><button type="button"  onclick="inputValue('1')">1</button></td>
-        <td><button type="button"  onclick="inputValue('2')">2</button></td>
-        <td><button type="button"  onclick="inputValue('3')">3</button></td>
-        <td><button type="button"  onclick="inputValue('+')">+</button></td>
+        <td>
+            <button type="button" onclick="inputValue('1')">1</button>
+        </td>
+        <td>
+            <button type="button" onclick="inputValue('2')">2</button>
+        </td>
+        <td>
+            <button type="button" onclick="inputValue('3')">3</button>
+        </td>
+        <td>
+            <button type="button" onclick="inputValue('+')">+</button>
+        </td>
 
     </tr>
     <tr>
-        <td><button type="button"  onclick="inputValue('4')">4</button></td>
-        <td><button type="button"  onclick="inputValue('5')">5</button></td>
-        <td><button type="button"  onclick="inputValue('6')">6</button></td>
-        <td><button type="button"  onclick="inputValue('-')">-</button></td>
+        <td>
+            <button type="button" onclick="inputValue('4')">4</button>
+        </td>
+        <td>
+            <button type="button" onclick="inputValue('5')">5</button>
+        </td>
+        <td>
+            <button type="button" onclick="inputValue('6')">6</button>
+        </td>
+        <td>
+            <button type="button" onclick="inputValue('-')">-</button>
+        </td>
     </tr>
     <tr>
-        <td><button type="button"  onclick="inputValue('7')">7</button></td>
-        <td><button type="button"  onclick="inputValue('8')">8</button></td>
-        <td><button type="button"  onclick="inputValue('9')">9</button></td>
-        <td><button type="button"  onclick="inputValue('*')">*</button></td>
+        <td>
+            <button type="button" onclick="inputValue('7')">7</button>
+        </td>
+        <td>
+            <button type="button" onclick="inputValue('8')">8</button>
+        </td>
+        <td>
+            <button type="button" onclick="inputValue('9')">9</button>
+        </td>
+        <td>
+            <button type="button" onclick="inputValue('*')">*</button>
+        </td>
     </tr>
     <tr>
-        <td><button type="button"  onclick="AC()">AC</button></td>
-        <td><button type="button"  onclick="inputValue('0')">0</button></td>
-        <td><button type="button"  onclick="Result('=')">=</button></td>
-        <td><button type="button"  onclick="inputValue('/')">/</button></td>
+        <td>
+            <button type="button" onclick="AC()">AC</button>
+        </td>
+        <td>
+            <button type="button" onclick="inputValue('0')">0</button>
+        </td>
+        <td>
+            <button type="button" onclick="Result('=')">=</button>
+        </td>
+        <td>
+            <button type="button" onclick="inputValue('/')">/</button>
+        </td>
     </tr>
 </table>
 <script>
@@ -41,13 +73,15 @@
         let oTinh = document.getElementById("hienThi").value;
         document.getElementById("hienThi").value = oTinh + value;
     }
+
     function Result() {
         let oTinh = document.getElementById("hienThi").value;
-        let Result = eval(oTinh);
-        document.getElementById("hienThi").value = Result;
+        let reSult = eval(oTinh);
+        document.getElementById("hienThi").value = reSult;
     }
+
     function AC() {
-        document.getElementById("hienThi").value ="";
+        document.getElementById("hienThi").value = "";
     }
 
 

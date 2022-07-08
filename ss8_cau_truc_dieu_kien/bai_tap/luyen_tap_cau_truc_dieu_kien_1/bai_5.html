@@ -8,7 +8,7 @@
 <p> Điểm bài kiểm tra</p> <input type="number" id="baikiemtra">
 <p> Điểm thi giữa kì</p> <input type="number" id="thigiuaki">
 <p> Điểm thi cuối kì</p> <input type="number" id="thicuoiki">
-<button type="button" onclick="xephang()" >Xếp hạng</button>
+<button type="button" onclick="xephang()">Xếp hạng</button>
 <p id="Result"></p>
 <script>
     function xephang() {
@@ -16,7 +16,7 @@
         let thiGiuaKi = +document.getElementById("thigiuaki").value;
         let thiCuoiKi = +document.getElementById("thicuoiki").value;
         let diemTrungBinh = (baiKiemTra + thiGiuaKi + thiCuoiKi) / 3;
-        if ( baiKiemTra < 0 || thiGiuaKi < 0 || thiCuoiKi < 0) {
+        if (baiKiemTra < 0 || thiGiuaKi < 0 || thiCuoiKi < 0) {
             document.getElementById("Result").innerHTML = "Nhập lại";
         } else if (diemTrungBinh >= 8) {
             document.getElementById("Result").innerHTML = " Xếp loại giỏi ";

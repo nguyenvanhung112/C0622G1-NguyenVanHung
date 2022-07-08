@@ -9,9 +9,9 @@
     let a = +prompt("Nhập cạnh a");
     let b = +prompt("Nhập cạnh b");
     let c = +prompt("Nhập cạnh c");
-    if (isNaN(a) || isNaN(b) || isNaN(c) || a < 0 || b < 0 || c < 0){
+    if (isNaN(a) || isNaN(b) || isNaN(c) || a < 0 || b < 0 || c < 0) {
         alert("Nhập lại các cạnh là số dương");
-    }else if(a + b > c && a + c > b && b + c > a ){
+    } else if (a + b > c && a + c > b && b + c > a) {
         alert("a , b , c cạnh của tam giác");
     } else {
         alert("Không phải là cạnh của tam giác");
