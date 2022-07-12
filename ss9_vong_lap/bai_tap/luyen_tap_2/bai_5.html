@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lãi suất ngân hàng</title>
+</head>
+<body>
+<script>
+    let soTien = +prompt("Nhập số tiền gửi");
+    let soThangGui = +prompt("Nhập số tháng gửi");
+    for (let i = 1; i <= soThangGui; i++) {
+        soTien = soTien + soTien * 3 / 100;
+    }
+    document.write("Số lãi trong " + soThangGui + " tháng là " + soTien);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let number1 = 0;
+    let number2 = 1;
+    let number3;
+    let count = 0;
+    while (count < 20) {
+        number3 = number1 + number2;
+        number1 = number2;
+        number2 = number3;
+        count = count + 1;
+        if (number3 % 5 === 0) {
+            document.write(number3);
+            break;
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính tổng 30 số đầu tiên chia hết cho 7</title>
+</head>
+<body>
+<script>
+    let number = 0;
+    let count = 0;
+    let tong = 0;
+    while (count < 30) {
+        number = number + 1;
+        if (number % 7 === 0) {
+            document.write(number + "<br>");
+            count = count + 1;
+            tong = tong + number;
+        }
+    }
+    document.write("Tổng 30 số đầu tiên chia hết cho 7 là: " + tong);
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đoán số</title>
+</head>
+<body>
+<button type="button" onclick="batDau()">Bắt đầu</button>
+<script>
+    function batDau() {
+        let khoang = +prompt("Bạn muốn đoán trong khoảng nào?");
+        let randomNumber = Math.floor(Math.random() * khoang);
+        let checkNumber = +prompt("Nhập số bạn muốn đoán");
+        let count = 0;
+        console.log(randomNumber);
+        while (checkNumber !== randomNumber) {
+            count++;
+            if (count === 4) {
+                alert("Bạn đã hết lần đoán");
+                break;
+            } else if (checkNumber < randomNumber) {
+                alert("Số đó lớn hơn số bạn đoán");
+            } else {
+                alert("Số đó nhỏ hơn số bạn đoán");
+            }
+            checkNumber = +prompt("Nhập số bạn muốn đoán");
+        }
+        if (count === 4) {
+            alert("Bạn đã hết lần đoán");
+        } else {
+            alert("Bạn đã đoán đúng");
+        }
+    }
+</script>
+</body>
+</html>

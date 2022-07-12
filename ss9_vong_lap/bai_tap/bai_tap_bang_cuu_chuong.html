@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bảng cửu chương</title>
+</head>
+<body>
+<h1>Bảng cửu chương</h1>
+<script>
+    let i, j, giaTri;
+    giaTri = "<table border='1' , cellpadding='10' , cellspacing='10'>";
+    for (i = 1; i <= 10; i++) {
+        giaTri = giaTri + "<tr>";
+        for (j = 1; j <= 10; j++) {
+            giaTri = giaTri + "<td align='center'>" + j + "*" + i + "=" + i * j + "</td>";
+        }
+        giaTri = giaTri + "</tr>";
+    }
+    giaTri = giaTri + "</table>";
+    document.write(giaTri);
+</script>
+
+</body>
+</html>
