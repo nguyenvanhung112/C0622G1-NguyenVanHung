@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let inPut = prompt("Nhập vào một chuỗi");
+    let array = inPut.toString();
+    let count = 0;
+    for (let i in array) {
+        result = i;
+        if (!isNaN(array[i])) {
+            count++;
+        }
+    }
+    document.write("Mảng là " + array + "<br>");
+    document.write("Kích thước của mảng " + array.length + "<br>");
+    document.write("Số phần tử số có trong mảng là " + count);
+</script>
+</body>
+</html>

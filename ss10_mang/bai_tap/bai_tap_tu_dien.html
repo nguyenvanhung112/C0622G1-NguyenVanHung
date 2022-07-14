@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let engLi = ['apple', 'banana', 'water melon', 'orange'];
+    let tiengViet = ['táo', 'chuối', 'dưa hấu', 'cam'];
+    let str = prompt("Nhập từ cần dịch");
+    let indexEng = 0;
+    let result = "";
+    for (let i = 0; i < engLi.length; i++) {
+        if (str === engLi[i]) {
+            indexEng = i;
+            for (let j = 0; j < tiengViet.length; j++) {
+                if (indexEng === j) {
+                    result = tiengViet[j];
+                }
+            }
+        }
+    }
+    alert(result);
+</script>
+</body>
+</html>

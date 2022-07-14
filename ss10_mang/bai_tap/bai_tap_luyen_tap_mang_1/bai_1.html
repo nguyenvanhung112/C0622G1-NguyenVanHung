@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array = [];
+    for (let i = 0; i <= 10; i++) {
+        array[i] = +prompt("Nhập mảng số nguyên " + i);
+        if (array[i] >= 10) {
+            document.write("Số lớn hơn 10 hoặc bằng 10 là: " + array[i] + "<br>");
+        }
+    }
+    document.write("Mảng là: " + array);
+</script>
+</body>
+</html>

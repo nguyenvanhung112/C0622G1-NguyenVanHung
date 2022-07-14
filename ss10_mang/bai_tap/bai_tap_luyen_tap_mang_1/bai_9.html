@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let mangA = [];
+    let mangB = [];
+    let mangC = [];
+    for (let i = 0; i < 10; i++) {
+        mangA[i] = parseInt(+prompt("Nhập số nguyên vào mảng A"));
+    }
+    document.write(mangA + "<br>");
+    for (let j = 0; j < 10; j++) {
+        mangB[j] = parseInt(+prompt("Nhập số nguyên vào mảng B"));
+    }
+    document.write(mangB + "<br>")
+    mangC = mangB.concat(mangA);
+    document.write(mangC);
+</script>
+
+</body>
+</html>

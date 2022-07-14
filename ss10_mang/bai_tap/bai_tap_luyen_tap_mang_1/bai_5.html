@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array = [];
+    let count = 0;
+    let n = +prompt("nhập số lượng phần tử của mảng")
+    for (let i = 0; i < n; i++) {
+        array[i] = +prompt("Nhập mảng số nguyên " + i);
+        if (array[i] < 0) {
+            count = count + 1;
+        }
+    }
+    document.write("Mảng là : " + array + "<br>" + "Số lượng số nguyên âm là " + count)
+
+</script>
+</body>
+</html>

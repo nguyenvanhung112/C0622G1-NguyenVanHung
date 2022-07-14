@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array = [];
+    let n = +prompt("nhập số lượng phần tử của mảng")
+    for (let i = 0; i < n; i++) {
+        array[i] = +prompt("Nhập mảng số nguyên " + i);
+    }
+    // }
+    //     document.write(array.reverse());
+    let first = 0;
+    let last = array.length - 1;
+    while (first < last) {
+        let b = array[first];
+        array[first] = array[last];
+        array[last] = b;
+        first++;
+        last--;
+    }
+    document.write(array.join(""));
+</script>
+</body>
+</html>

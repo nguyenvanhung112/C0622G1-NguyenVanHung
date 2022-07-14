@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array = [];
+    let n = +prompt("nhập số lượng phần tử của mảng")
+    for (let i = 0; i < n; i++) {
+        array[i] = +prompt("Nhập mảng số nguyên " + i);
+    }
+    document.write("Mảng là " + array + "<br>");
+    let max = array[0];
+    for (let key of array) {
+        if (max < key) {
+            max = key;
+        }
+    }
+    document.write("max là " + max + "<br>");
+    let tong = 0;
+    for (let i = 0; i < n; i++) {
+        tong = tong + array[i];
+    }
+    document.write(tong / n);
+</script>
+</body>
+</html>

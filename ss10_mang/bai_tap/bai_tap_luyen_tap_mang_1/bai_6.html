@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array = [];
+    let result = "";
+    for (let i = 0; i < 10; i++) {
+        array[i] = +prompt("Nhập mảng số nguyên " + i);
+    }
+    let number = parseInt(prompt("Nhập 1 số để kiểm tra"));
+    for (let i = 0; i < array.length; i++) {
+        if (number == array[i]) {
+            result = number + " is in the array";
+            break;
+        } else {
+            result = number + " is not in the array";
+        }
+    }
+    document.write(result)
+</script>
+</body>
+</html>
