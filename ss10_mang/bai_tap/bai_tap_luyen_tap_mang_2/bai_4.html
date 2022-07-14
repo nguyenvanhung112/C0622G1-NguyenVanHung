@@ -6,11 +6,10 @@
 </head>
 <body>
 <script>
-    let array = [];
-    let count = 0;
-    for (let i = 0; i < 10; i++) {
-        array[i] = prompt("Nhập vào 1 phần tử " + i);
-        if (!isNaN(array[i])) {
+    let array = prompt("Nhập vào 1 chuỗi ")
+    let count = 1;
+    for (let i = 0; i < array.length; i++) {
+        if (array[i]===" ") {
             count++;
         }
     }

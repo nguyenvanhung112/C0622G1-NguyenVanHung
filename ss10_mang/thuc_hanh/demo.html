@@ -6,10 +6,12 @@
 </head>
 <body>
 <script>
-    let array = [1, 2, 1, 24]
-    array.forEach(function () {
-        console.log();
-    });
+    let array = ["1","-","2","s","-"]
+    for (let i = 0; i < array.length ; i++) {
+        if (array[i]=== "-"){
+            array[i]= "_";
+        }
+    }document.write(array.toString());
 
 </script>
 </body>
