@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let chieuCao = +prompt("nhập chiều cao");
+    let chieuNgang = +prompt("nhập chiều ngang");
+    for (let i = 1; i <= chieuCao; i++) {
+        for (let j = 1; j <= chieuNgang; j++) {
+            if (i == 1 || j == 1 || i == chieuCao || j == chieuNgang){
+                document.write("*");
+        }else {
+                document.write("&nbsp&nbsp");
+            }
+    }
+        document.write("<br>")
+    }
+</script>
+</body>
+</html>
