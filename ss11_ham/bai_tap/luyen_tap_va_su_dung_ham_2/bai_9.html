@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let input = prompt("Nhập vào 1 mảng ký tự");
+    let arr = input.toString();
+    let count = 0;
+    let kiTu = prompt("Nhâp vào 1 ký tự");
+
+    function kiemTra() {
+        for (let i = 0; i < arr.length; i++) {
+            if (kiTu === arr[i]) {
+                count++;
+            }
+        }
+        if (count === 0)
+            return -1;
+        else {
+            return count;
+        }
+    }
+
+    document.write("Số kí tự " + kiTu + " có trong mảng là " + kiemTra());
+</script>
+</body>
+</html>

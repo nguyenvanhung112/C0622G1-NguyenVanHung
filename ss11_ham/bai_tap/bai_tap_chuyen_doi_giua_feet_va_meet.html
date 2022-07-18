@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hàm chuyển đổi</title>
+</head>
+<body>
+<script>
+    let foot = +prompt("Nhập foot");
+    let meter = +prompt("Nhập meter");
+
+    function footToMeter(foot) {
+        let chuyenDoiMeter = foot * 0.305;
+        document.write(foot + " foot " + "= " + chuyenDoiMeter + " meter" + "<br>");
+    }
+
+    function meterToFoot(meter) {
+        let chuyenDoiFoot = meter * 3.279;
+        document.write(meter + " meter " + "= " + chuyenDoiFoot + " foot");
+    }
+
+    footToMeter(foot);
+    meterToFoot(meter);
+</script>
+</body>
+</html>

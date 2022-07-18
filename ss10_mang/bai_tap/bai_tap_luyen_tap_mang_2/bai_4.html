@@ -9,7 +9,7 @@
     let array = prompt("Nhập vào 1 chuỗi ")
     let count = 1;
     for (let i = 0; i < array.length; i++) {
-        if (array[i]===" ") {
+        if (array[i]===" " && array[i+1]!==" ") {
             count++;
         }
     }

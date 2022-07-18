@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let number1 = +prompt("Nhập số a");
+    let number2 = +prompt("Nhập số b");
+    let number3 = +prompt("Nhập số c");
+
+    function kiemTra() {
+        let min = number1;
+        if (number1 < number2 && number1 < number3) {
+            number1 = min;
+            return min;
+        } else if (number1 > number2 && number2 < number3) {
+            number2 = min;
+            return min;
+        } else {
+            number3 = min;
+            return min;
+        }
+    }
+    document.write("Số nhỏ nhất là " + kiemTra());
+</script>
+</body>
+</html>

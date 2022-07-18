@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let n = +prompt("nhập vào n phần tử")
+    let number =[];
+    for (let i = 0; i < n ; i++) {
+        number[i]= +prompt("nhập phần tử vào mảng")
+    }document.write(number.join(" ") + "<br>");
+    let max = number[0];
+    for (let i = 0; i < number.length ; i++) {
+        if (max < number[i]){
+            max = number[i];
+        }
+    }document.write(max + "<br>");
+    let min = number[0];
+    for (let i = 0; i < number.length ; i++) {
+        if (min > number[i]){
+            min = number[i];
+        }
+    }document.write(min)
+</script>
+</body>
+</html>

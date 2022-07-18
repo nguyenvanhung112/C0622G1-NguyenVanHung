@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let soK = +prompt("Nhập số nguyên K");
+    let uocSNT = 0;
+    let tongSNT = 0;
+    let count = 0;
+    for (let i = 0; i < soK ; i++) {
+        if (uocSNT < soK) {
+            for (let j = 0; j <= i; j++) {
+                if (i % j == 0) {
+                    uocSNT = uocSNT + 1;
+                }
+            }
+            if (uocSNT == 2) {
+                document.write(i + "<br>");
+                count++;
+                tongSNT+=i;
+            }
+            uocSNT = 0;
+        } else {
+            break;
+        }
+    }if (soK < 2) {
+        document.write("Not found");
+    }let trungBinhCong = tongSNT/count;
+    document.write("Tổng các số nguyên tố là " + tongSNT + "<br>");
+    document.write("Trung bình cộng là " + trungBinhCong);
+
+
+</script>
+</body>
+</html>

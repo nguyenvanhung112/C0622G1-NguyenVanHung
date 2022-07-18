@@ -13,11 +13,11 @@
     document.write(array + "<br>");
     let number = parseInt(prompt("Nhập 1 số để kiểm tra"));
     for (let i = 0; i < array.length; i++) {
-        if (number == array[i]) {
+        if (number === array[i]) {
             array.splice(i, 1);
         }
     }
-    document.write(array);
+    document.write(array.toString());
 
 </script>
 </body>

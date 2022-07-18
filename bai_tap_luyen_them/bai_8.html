@@ -6,12 +6,12 @@
 </head>
 <body>
 <script>
-    let number = prompt("nhập số nguyên dương");
-    let newNumber = number.toString();
+    let number = String(prompt("nhập số nguyên dương"));
     let tong = 0;
-    for (let i = 0; i < newNumber.length; i++) {
-        tong = tong + newNumber[i];
-    }alert(tong);
+    for (let i = 0; i < number.length; i++) {
+        tong = tong + parseInt(number[i]);
+    }
+    alert(tong);
 </script>
 </body>
 </html>

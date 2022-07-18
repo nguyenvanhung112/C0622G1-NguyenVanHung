@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let ngoiSao = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+    let chomSao = ["UrsaMinor", "Tarurus", "Cygnus", "Lyra", "Aquila", "UrsaMajor", "Leo"];
+    let nhapSao = prompt("Nhập một ngôi sao");
+
+    function kiemTraSao(nhapSao) {
+        for (let i = 0; i < ngoiSao.length; i++) {
+            if (nhapSao === ngoiSao[i]) {
+                for (let j = 0; j < chomSao.length; j++) {
+                    if (i === j) {
+                        return chomSao[j];
+                    }
+                }
+            }
+        }return -1;
+    }
+    let result = kiemTraSao(nhapSao);
+    if(result === -1){
+        document.write("Không tìm thấy ngôi sao và chòm sao tương ứng")
+    }else {
+        document.write("Chòm sao tương ứng là " + result);
+    }
+</script>
+</body>
+</html>

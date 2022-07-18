@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Add New Product</h2>
+<input type="text" id="input">
+<button type="button" onclick="themSanPham()">Add</button>
+<br>
+<h2>Display All Product</h2>
+<h3>Product Name</h3>
+<p id="hienThi"></p>
+</body>
+<script>
+    let sanPham = ["Iphone 6Plus", "Iphone 7plus", "Iphone 8Plus", "Iphone X", "Iphone XS", "Iphone 11", "Iphone 12"]
+
+    function danhSach(sanPham) {
+        let s = "";
+        for (let i = 0; i < sanPham.length; i++) {
+            s = s + (i + 1) + "." + sanPham[i] + "<br>";
+        }
+        return s;
+    }
+
+    function themSanPham() {
+        let newSanPham = document.getElementById("input").value;
+        sanPham.push(newSanPham);
+        document.getElementById("hienThi").innerHTML = danhSach(sanPham);
+    }
+</script>
+</html>

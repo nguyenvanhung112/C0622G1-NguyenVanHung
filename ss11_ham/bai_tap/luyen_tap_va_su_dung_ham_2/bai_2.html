@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let nhapBanKinh = +prompt("Nhập bán kính hình tròn");
+
+    function tinhDienTich() {
+        return nhapBanKinh * nhapBanKinh * 3.14;
+    }
+
+    function tinhChuVi() {
+        return 2 * nhapBanKinh * 3.14;
+    }
+
+    let result1 = tinhDienTich();
+    let result2 = tinhChuVi();
+    document.write("Diện tích hình tròn là " + result1 + "<br>");
+    document.write("Chu vi hình tròn là " + result2);
+</script>
+</body>
+</html>

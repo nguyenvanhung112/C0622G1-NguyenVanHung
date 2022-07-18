@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="display"></p>
+<script>
+    let array = new Array(20);
+    for (let i = 0; i < array.length; i++) {
+        array[i] = new Array(20);
+        for (let j = 0; j < array[i].length; j++) {
+            array[i][j] = "";
+        }
+    }
+    let checkPlayer1 = true;
+    display();
+
+    // hàm hiện thi bảng
+    function display() {
+        let tableString = '<table border="1">';
+        for (let i = 0; i < 10; i++) {
+            tableString += '<tr>';
+            for (let j = 0; j < 10; j++) {
+                tableString += '<td width="25" height="25" onclick="play(' + i + ',' + j + ')">' + array[i][j] + '</td>'
+            }
+            tableString += '</tr>';
+        }
+        tableString += '</table>';
+        document.getElementById("display").innerHTML = tableString;
+    }
+
+    function play(i, j) {
+        if (checkPlayer1&&isNotData(i,j)) {
+            array[i][j] = "X";
+            checkPlayer1 = false;
+            if (checkWin()){
+                alert("Người chơi X chiến thắng");
+            }
+        } else if (!checkPlayer1&&isNotData(i,j)) {
+            array[i][j] = "O";
+            checkPlayer1 = true;
+        }
+        display();
+    }
+    function isNotData(i,j) {
+        if (array[i][j]==""){
+            return true;
+        }
+        alert("Ô này đã có người trơi")
+        return false;
+    }
+  function checkWin() {
+      for (let i = 0; i <10 ; i++) {
+          for (let j = 0; j <10 ; j++) {
+              if (array[i][j]=="X"){
+                  if (array[i][j+1]=="X"&&array[i][j+2]=="X"){
+                      return true;
+                  }
+                  if (array[i+1][j]=="X"&&array[i+2][j]=="X"){
+                      return true;
+                  }
+                  if (array[i+1][j+1]=="X"&&array[i+2][j+2]=="X"){
+                      return true;
+                  }
+                  if (array[i+1][j-1]=="X"&&array[i+2][j-2]=="X"){
+                      return true;
+                  }
+              }
+          }
+      }
+      return false;
+  }
+</script>
+</body>
+</html>
