@@ -12,6 +12,7 @@
 <h2>Display All Product</h2>
 <h3>Product Name</h3>
 <p id="hienThi"></p>
+<button type="button" onclick="xoaSanPham('+i+')">Xóa</button>
 </body>
 <script>
     let sanPham = ["Iphone 6Plus", "Iphone 7plus", "Iphone 8Plus", "Iphone X", "Iphone XS", "Iphone 11", "Iphone 12"]
@@ -28,6 +29,10 @@
         let newSanPham = document.getElementById("input").value;
         sanPham.push(newSanPham);
         document.getElementById("hienThi").innerHTML = danhSach(sanPham);
+    }
+    function xoaSanPham() {
+        let indexSanPham = +prompt("Nhập vị trí muốn xóa");
+        newSanPham.splice(indexSanPham,1);
     }
 </script>
 </html>
