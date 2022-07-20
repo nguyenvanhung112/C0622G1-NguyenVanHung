@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="product" placeholder="Nhập tên sản phẩm">
+<input type="button" value="Add Product" onclick="addNewProduct()">
+<span>Số lượng : </span>
+<span id="soLuong"></span>
+<p id="display"></p>
+<script>
+    let productList = ["sam sung", "nokia", "iphone"];
+    display(productList);
+
+    function addNewProduct() {
+        let newProduct = document.getElementById("product").value;
+        productList.push(newProduct);
+        display(productList);
+    }
+    function edit(index) {
+         let editProdct = prompt("Nhập lại tên mới ",productList[index]);
+         productList[index] = editProdct;
+         display(productList);
+    }
+    function deleteProduct(index) {
+        let conf = confirm("Bạn có muốn xóa sản phầm : " + productList[index] + " không?");
+        if (conf){
+            productList.splice(index,1);
+        }
+        display(productList);
+
+    }
+    function display(list) {
+
+        let tableString = '<table border="1">\n' +
+            '    <tr>\n' +
+            '        <th>STT</th>\n' +
+            '        <th>Name</th>\n' +
+            '        <th>Edit</th>\n' +
+            '        <th>Delete</th>\n' +
+            '    </tr>';
+        for (let i = 0; i < list.length; i++) {
+            tableString += '<tr>\n' +
+                '         <td>' + (i + 1) + '</td>\n' +
+                '         <td>' + list[i] + '</td>\n' +
+                '         <td><input type="button" onclick="edit('+i+')" value="Edit"></td>\n' +
+                '         <td><input type="button" onclick="deleteProduct('+i+')" value="Delete"></td>\n' +
+                '\n' +
+                '    </tr>';
+        }
+        tableString += '</table>';
+        document.getElementById("display").innerHTML = tableString;
+        document.getElementById("soLuong").innerHTML = list.length;
+    }
+
+</script>
+</body>
+</html>

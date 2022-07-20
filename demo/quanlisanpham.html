@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập ứng dụng quản lý sản phẩm</title>
+</head>
+<body>
+<h2> Add New Product</h2>
+<input type="text" placeholder="New Product" id="newProduct">
+<input type="button" onclick="add()" value="Add">
+<p id="quantity"></p>
+<h2> Display All Product</h2>
+<h3> Product Name</h3>
+<p id="display"></p>
+<script>
+    let productName = ['Sony Xperia', 'Samsung Galaxy', 'Nokia 6', 'Xiaomi Redmi Note 4', 'Apple iPhone 6S', 'Xiaomi Mi 5s Plus', 'Apple iPhone 8 Plus', 'Fujitsu F-04E', 'Oppo A71'];
+    display();
+
+    function display() {
+        let tableString = '<table border="1">';
+        for (let i = 0; i < productName.length; i++) {
+            tableString += '<tr>';
+            tableString += '<td>' + productName[i] + '</td>'
+            tableString += '<td>' + '<input type="button" value="edit" onclick="editItem(' + i + ')" ' + '</td>'
+            tableString += '<td>' + '<input type="button" value="delete" onclick="deleteItem(' + i + ')" ' + '</td>'
+            tableString += '</tr>';
+        }
+        tableString += '</table>';
+        document.getElementById('display').innerHTML = tableString;
+        document.getElementById('quantity').innerHTML = 'Tổng số sản phẩm: ' + productName.length;
+    }
+
+    function add() {
+        let newProduct = document.getElementById('newProduct').value;
+        if (newProduct === '') {
+            alert('Vui lòng nhập lại')
+            return;
+        } else {
+            productName.push(newProduct);
+            display();
+        }
+    }
+
+    function editItem(index) {
+        let newName = prompt('Nhập tên mới: ');
+        productName[index] = newName;
+        display();
+    }
+
+    function deleteItem(index) {
+        let confirmMessage = confirm('Bạn muốn xóa sản phẩm' + productName[index] + '?');
+        if (confirmMessage === true) {
+            productName.splice(index, 1);
+            display()
+        } else {
+            return;
+        }
+    }
+</script>
+</body>
+</html>

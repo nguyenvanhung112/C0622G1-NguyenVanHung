@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class DienThoai{
+        constructor(pin) {
+            this.trangThai = false;
+            this.pin = pin;
+            this.vungNhoSoanThao="";
+            this.vungNhoTinDaGui =[];
+            this.vungNhoTinDen=[];
+        }
+        getTrangThai(){
+            return this.trangThai;
+        }
+        batTat(){
+            this.trangThai =!this.trangThai;
+        }
+        sacPin(){
+            this.pin =100;
+        }
+        soanTinNhan(text){
+            this.pin--;
+            this.vungNhoSoanThao =text;
+        }
+        nhanTinNhan(text){
+            this.vungNhoTinDen.push(text);
+        }
+        guiTinNhan(dienThoai,message){
+           this.soanTinNhan(message);
+           this.vungNhoTinDaGui.push(this.vungNhoSoanThao);
+           dienThoai.nhanTinNhan(this.vungNhoSoanThao);
+           this.vungNhoSoanThao ="";
+        }
+        hienThiTinDen(){
+            for (let i = 0; i <this.vungNhoTinDen.length ; i++) {
+                console.log(i+1+"." + this.vungNhoTinDen[i]);
+            }
+        }
+    }
+
+    // chương trình
+    let nokia = new DienThoai(100);
+    let iphone = new DienThoai(100);
+    nokia.guiTinNhan(iphone,"Xin chào iphone");
+    iphone.hienThiTinDen();
+    iphone.guiTinNhan(nokia,"Ok xin chào nhà nghèo");
+    iphone.guiTinNhan(nokia,"bạn cần tiền không");
+    nokia.hienThiTinDen();
+    nokia.guiTinNhan(iphone,"Rất cần");
+    iphone.hienThiTinDen();
+</script>
+</body>
+</html>

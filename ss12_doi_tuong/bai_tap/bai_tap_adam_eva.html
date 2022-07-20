@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Apple {
+        constructor() {
+            this.weight = 10;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+
+        decreaseApple() {
+            return this.weight--;
+        }
+
+        isEmptyApple() {
+            if (this.weight === 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    class Human {
+        constructor(name, gender, weight) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = weight;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        getGender() {
+            return this.gender;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+
+        checkApple(apple) {
+            if (!apple.isEmptyApple()) {
+                return true;
+            } else {
+                document.write(this.name + " : táo đã hết")
+                return false;
+            }
+        }
+
+        eatApple(apple) {
+            if (this.checkApple(apple)) {
+                this.weight++;
+                apple.decreaseApple();
+            }
+        }
+        say(text){
+            document.write(this.name + " : " + text);
+        }
+    }
+
+    let tao = new Apple();
+    let adam = new Human("Adam", "Male", 65);
+    let eva = new Human("Eva", "Female", 55);
+
+    adam.say("Ăn táo khum em" + "<br>");
+    eva.say("Ăn anh" + "<br>");
+    eva.eatApple(tao);
+    adam.eatApple(tao);
+    adam.eatApple(tao);
+    adam.eatApple(tao);
+    adam.eatApple(tao);
+    adam.eatApple(tao);
+    adam.eatApple(tao);
+    adam.eatApple(tao);
+    adam.eatApple(tao);
+    adam.eatApple(tao);
+    document.write("Cân nặng của " + adam.getName() + " " + adam.getGender() + " " + adam.getWeight() + "<br>");
+    document.write("Cân nặng của " + eva.getName() + " " + eva.getGender() + " " + eva.getWeight() + "<br>");
+    document.write("Quả táo có cân nặng là " + tao.getWeight() + "<br>");
+</script>
+</body>
+</html>
