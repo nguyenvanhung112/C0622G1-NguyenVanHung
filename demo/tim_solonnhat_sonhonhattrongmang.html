@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let number;
+    do {
+        number = parseInt(prompt("nhập độ dài mảng"));
+        if (!(number > 0 && number % 1 === 0)) {
+            alert("nhap lai")
+        }
+    } while (!(number > 0 && number % 1 === 0))
+
+
+    let array = [];
+    for (let i = 0; i < number; i++) {
+        array[i] = parseInt(prompt("nhập phần tử " + i));
+    }
+    document.write("mảng vừa nhập là: " + array + "<br>");
+
+    function checkNumber(array) {
+        let max = array[0];
+        let min = array[0];
+        let arrayA = [];
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+
+            }
+            if (array[i] < min) {
+                min = array[i];
+
+            }
+        }
+        document.write("max là: " + max + "<br>");
+        document.write("min là: " + min + "<br>");
+        arrayA.push(array.indexOf(max));
+        arrayA.push(array.indexOf(min));
+        return arrayA;
+
+    }
+
+
+    document.write("vị trí là" + checkNumber(array));
+</script>
+</body>
+</html>

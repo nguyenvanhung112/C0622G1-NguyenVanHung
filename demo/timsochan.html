@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function checkNumber(array) {
+        let arr = [];
+
+        for (let i = 0; i < array.length; i++) {
+            let count = 0;
+            for (let j = 0; j < arr.length; j++) {
+                if (array[i] === arr[j]) {
+                    count++;
+                }
+            }
+            if (count === 0) {
+                arr.push(array[i]);
+            }
+        }
+        return arr;
+    }
+
+    let number = parseInt(prompt("nhập độ dài mảng"));
+    let array = [];
+    for (let i = 0; i < number; i++) {
+        array[i] = parseInt(prompt("nhập phần tử " + i));
+    }
+    let sum = checkNumber(array);
+
+
+    let result = [];
+    let numberA=parseInt(prompt("nhập số chia N"));
+    for (let i = 0; i < sum.length; i++) {
+        if (sum[i] % numberA === 0) {
+            result.push(sum[i]);
+        }
+    }
+    document.write("số chia hết cho " + numberA + " trong mảng là: " + result + "<br>" + "độ dài là: " + result.length);
+
+</script>
+</body>
+</html>

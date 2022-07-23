@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arrayA = [5, 2, 5];
+    let arrayB = [6, 3, 4];
+    let max = 0;
+    let index = 0;
+    for (let i = 0; i < arrayA.length; i++) {
+        if (arrayA[i] / arrayB[i] > max) {
+            max = arrayA[i] / arrayB[i];
+            index = i;
+        }
+    }
+    document.write("Phân số lớn nhất là " + arrayA[index] + "/" + arrayB[index]  + " chỉ số là " + index);
+
+</script>
+</body>
+</html>

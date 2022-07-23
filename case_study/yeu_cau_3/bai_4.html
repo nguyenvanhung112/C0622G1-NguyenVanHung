@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    let so= ['1', '2', '3', '4'];
+    let chu = ['một', 'hai', 'ba', 'bốn'];
+    let hienThi = [];
+    let str = prompt("Nhập 1 số");
+    let indexso = 0;
+    for (let i = 0; i < so.length; i++) {
+        if (str === so[i]) {
+            so = i;
+            for (let j = 0; j < chu.length; j++) {
+                if (indexso === j) {
+                    hienThi.push(chu[j]);
+                }
+            }
+        }
+    }
+    document.write(hienThi);
+</script>
+
+</body>
+</html>

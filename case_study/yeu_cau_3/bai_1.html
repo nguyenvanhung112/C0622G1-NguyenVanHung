@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let number = +prompt("Nhập vào số lượng phần tử của mảng");
+    let arrayA =[];
+    for (let i = 0; i < number; i++) {
+        arrayA[i]= +prompt("Nhập vào phần tử " + i);
+    }
+    let arrayB = [];
+    let sums = 0;
+    for (let i = 0; i < arrayA.length; i++) {
+        sums = sums + arrayA[i];
+        arrayB.push(sums);
+    }
+    document.write(arrayB);
+</script>
+</body>
+</html>

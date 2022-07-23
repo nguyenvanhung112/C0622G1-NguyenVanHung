@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array = [];
+    let number;
+
+    do {
+        number = parseInt(prompt("nhập số nguyên"));
+        if (!(number > 0 && number % 1 === 0 )) {
+            alert("nhap lai")
+        }
+    } while (!(number > 0 && number % 1 === 0))
+    {
+        for (let i = 1; i <= number; i++) {
+            if (number % i === 0) {
+                array.push(i);
+            }
+        }
+    }
+    document.write("Ước của số: " + number + " là: " + array);
+
+</script>
+</body>
+</html>

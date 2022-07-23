@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let h = 5;
+    for (let i = 0; i <= h; i++) {
+        for (let j = 0; j <= 2 * h; j++) {
+            if (j === (h - i) || j === (h + i) || i === h) {
+                document.write("*");
+            } else {
+                document.write("&nbsp&nbsp");
+            }
+        }
+        document.write("<br>")
+    }
+</script>
+
+</body>
+</html>
