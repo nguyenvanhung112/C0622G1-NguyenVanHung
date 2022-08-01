@@ -2,10 +2,10 @@ package introduction_java.bai_tap;
 
 import java.util.Scanner;
 
-public class DocSoThanhChu {
+public class NumberToWords {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhập vào 1 số ");
+        System.out.println("Enter number ");
         int number = scanner.nextInt();
         switch (number) {
             case 1:
@@ -44,11 +44,14 @@ public class DocSoThanhChu {
             case 12:
                 System.out.println("twelve");
                 break;
-            case 13:
-                System.out.println(number + "teen");
             default:
-                System.out.println("Không biết");
+                System.out.println("I don't know");
                 break;
+        }
+        if (number < 20 && number > 12){
+            switch (number){
+                
+            }
         }
     }
 }
