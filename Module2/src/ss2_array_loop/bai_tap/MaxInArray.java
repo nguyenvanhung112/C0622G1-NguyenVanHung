@@ -29,7 +29,7 @@ public class MaxInArray {
         for (i = 0; i < row; i++) {
             for (j = 0; j < columns; j++) {
                 System.out.print("Nhập vào phần tử " + i + j + "\n");
-                array[i][j] = sc.nextInt();
+                array[i][j] = Integer.parseInt(sc.nextLine());
             }
         }
         System.out.print("Mảng 2 chiều là " + Arrays.deepToString(array) + "\n");

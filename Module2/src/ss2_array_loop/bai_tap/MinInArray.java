@@ -7,12 +7,12 @@ public class MinInArray {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập độ dài của mảng\n");
-        int size = sc.nextInt();
+        int size = Integer.parseInt(sc.nextLine());
         int[] array = new int[size];
         int i;
         for (i = 0; i < size; i++) {
             System.out.print("Nhập vào các phần tử vị trí " + (i + 1) + "\n");
-            array[i] = sc.nextInt();
+            array[i] = Integer.parseInt(sc.nextLine());
         }
         System.out.print("Mảng là " + Arrays.toString(array) + "\n");
         int min = array[0];
