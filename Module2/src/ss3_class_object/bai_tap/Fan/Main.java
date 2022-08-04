@@ -1,4 +1,4 @@
-package Fan;
+package ss3_class_object.bai_tap.Fan;
 
 public class Main {
     public static void main(String[] args) {
