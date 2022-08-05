@@ -1,24 +1,24 @@
 package ss3_class_object.bai_tap.Fan;
 
 public class Fan {
-    final int slow = 1;
-    final int medium = 2;
-    final int fast = 3;
+    final int SLOW = 1;
+    final int MEDIUM = 2;
+    final int FAST = 3;
     private boolean on = false;
     private int speed = 1;
     private String color = "blue";
     private double radius = 5;
 
     public int getSlow() {
-        return slow;
+        return SLOW;
     }
 
     public int getMedium() {
-        return medium;
+        return MEDIUM;
     }
 
     public int getFast() {
-        return fast;
+        return FAST;
     }
 
     public boolean isOn() {
@@ -61,16 +61,15 @@ public class Fan {
         if (isOn()) {
             return "Fan{" +
                     "fan is on" +
-                    ", speed=" + speed +
-                    ", color='" + color + '\'' +
-                    ", radius=" + radius +
+                    ", speed=" + this.getSpeed() +
+                    ", color='" + this.getColor() + '\'' +
+                    ", radius=" + this.getRadius() +
                     '}';
         } else {
             return "Fan{" +
                     "fan is off" +
-                    ", speed=" + speed +
-                    ", color='" + color + '\'' +
-                    ", radius=" + radius +
+                    ", color='" + this.getSpeed() + '\'' +
+                    ", radius=" + this.getRadius() +
                     '}';
         }
     }

@@ -8,7 +8,6 @@ public class Main {
         fan1.setRadius(10);
         System.out.print(fan1.toString());
         Fan fan2 = new Fan();
-        fan2.setOn(false);
         fan2.setSpeed(3);
         fan2.setRadius(10);
         fan2.setColor("yellow");
