@@ -1,6 +1,6 @@
 package ss4_access_modifier.bai_tap.Student;
 
-public class Student {
+public  class Student {
     private String name = "John";
     private String classes = "C02";
 
