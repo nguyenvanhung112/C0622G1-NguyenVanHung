@@ -1,4 +1,4 @@
-package Model;
+package ss6_abstract_class_interface.bai_tap.interface_colorable.Model;
 
 public abstract class Shape implements Colorable {
     private String color = "green";

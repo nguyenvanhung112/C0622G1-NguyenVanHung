@@ -1,9 +1,9 @@
-package interface_resizeable.MainController;
+package ss6_abstract_class_interface.bai_tap.interface_resizeable.MainController;
 
-import interface_resizeable.Model.Circle;
-import interface_resizeable.Model.Rectangle;
-import interface_resizeable.Model.Shape;
-import interface_resizeable.Model.Square;
+import ss6_abstract_class_interface.bai_tap.interface_resizeable.Model.Circle;
+import ss6_abstract_class_interface.bai_tap.interface_resizeable.Model.Rectangle;
+import ss6_abstract_class_interface.bai_tap.interface_resizeable.Model.Shape;
+import ss6_abstract_class_interface.bai_tap.interface_resizeable.Model.Square;
 
 
 public class MainController {

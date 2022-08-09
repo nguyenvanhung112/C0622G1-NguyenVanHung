@@ -1,9 +1,9 @@
-package MainController;
+package ss6_abstract_class_interface.bai_tap.interface_colorable.MainController;
 
-import Model.Circle;
-import Model.Rectangle;
-import Model.Shape;
-import Model.Square;
+import ss6_abstract_class_interface.bai_tap.interface_colorable.Model.Circle;
+import ss6_abstract_class_interface.bai_tap.interface_colorable.Model.Rectangle;
+import ss6_abstract_class_interface.bai_tap.interface_colorable.Model.Shape;
+import ss6_abstract_class_interface.bai_tap.interface_colorable.Model.Square;
 
 public class MainController {
     public static void main(String[] args) {

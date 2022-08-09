@@ -1,6 +1,6 @@
-package Model;
+package ss6_abstract_class_interface.bai_tap.interface_resizeable.Model;
 
-public class Square extends Shape implements Colorable{
+public class Square extends Shape implements Resizeable {
     private double side = 1.0;
 
     public Square() {
@@ -36,7 +36,7 @@ public class Square extends Shape implements Colorable{
     }
 
     @Override
-    public void howToColor() {
-        setColor("Color all four sides");
+    public void resize(double percent) {
+        setSide(getSide() + getSide()*percent/100);
     }
 }

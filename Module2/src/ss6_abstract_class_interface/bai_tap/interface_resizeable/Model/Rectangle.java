@@ -1,6 +1,6 @@
-package Model;
+package ss6_abstract_class_interface.bai_tap.interface_resizeable.Model;
 
-public class Rectangle extends Shape {
+public class Rectangle extends Shape implements Resizeable {
     private double width = 1.0;
     private double length = 1.0;
 
@@ -48,12 +48,13 @@ public class Rectangle extends Shape {
                 + getWidth()
                 + " and length="
                 + getLength()
-                + ", which is a subclass of "
-                + super.toString();
+                + "color= " + getColor();
     }
 
     @Override
-    public void howToColor() {
-        System.out.println("Rectangle");
+    public void resize(double percent) {
+        setWidth(getWidth() + getWidth() * percent / 100);
+        setLength(getLength() + getLength() * percent / 100);
     }
+
 }

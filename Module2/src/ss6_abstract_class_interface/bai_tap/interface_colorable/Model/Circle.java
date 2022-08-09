@@ -1,6 +1,6 @@
-package interface_resizeable.Model;
+package ss6_abstract_class_interface.bai_tap.interface_colorable.Model;
 
-public class Circle extends Shape implements Resizeable {
+public class Circle extends Shape {
     private double radius = 1.0;
 
     public Circle() {
@@ -35,11 +35,13 @@ public class Circle extends Shape implements Resizeable {
     public String toString() {
         return "A Circle with radius="
                 + getRadius()
-                + "color = " + getColor();
+                + ", which is a subclass of "
+                + super.toString();
     }
 
     @Override
-    public void resize(double percent) {
-        setRadius(getRadius() + getRadius() * percent / 100);
+    public void howToColor() {
+        System.out.println("Circle");
     }
 }
+

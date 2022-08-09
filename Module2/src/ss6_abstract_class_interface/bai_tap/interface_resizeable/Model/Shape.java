@@ -1,4 +1,4 @@
-package interface_resizeable.Model;
+package ss6_abstract_class_interface.bai_tap.interface_resizeable.Model;
 
 public abstract class Shape implements Resizeable {
     private String color = "green";
