@@ -47,10 +47,10 @@ public class MoveablePoint extends Point {
         return arraySpeed;
     }
 
-    public MoveablePoint move() {
+    public MoveablePoint move() { // set lại giá trị của tham chiếu
         super.setX(super.getX() + this.xSpeed);
         super.setY(super.getY() + this.ySpeed);
-        return this;
+        return this;// this là giá trị của tham chiếu
     }
 
     @Override
