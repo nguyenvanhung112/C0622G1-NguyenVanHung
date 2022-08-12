@@ -23,7 +23,6 @@ public class MyArrayList<E> {
     }
     //Xóa hết phần tử trong mảng
     public void remove() {
-        size = 0;
         for (int i = 0; i < elements.length; i++) {
             elements[i] = null;
         }
@@ -91,5 +90,13 @@ public class MyArrayList<E> {
         v.elements = Arrays.copyOf(elements,size);
         v.size = this.size;
         return  v;
+    }
+
+    @Override
+    public String toString() {
+        return "MyArrayList{" +
+                "size=" + size +
+                ", elements=" + Arrays.toString(elements) +
+                '}';
     }
 }

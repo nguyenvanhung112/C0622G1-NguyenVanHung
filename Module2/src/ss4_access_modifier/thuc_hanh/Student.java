@@ -1,13 +1,14 @@
 package ss4_access_modifier.thuc_hanh;
 
-public class Student {
+public class Student  {
     private int rollno;
     private String name;
     private static String college = "BBDIT";
-    Student(int r,String n){
+    public Student(int r, String n){
         rollno = r;
         name = n;
     }
+
     static void change(){
         college = "CODEGYM";
     }
@@ -24,4 +25,5 @@ public class Student {
         s2.display();
         s3.display();
     }
+
 }

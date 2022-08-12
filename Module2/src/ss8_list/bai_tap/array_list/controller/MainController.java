@@ -1,7 +1,10 @@
 package ss8_list.bai_tap.array_list.controller;
 
+import ss4_access_modifier.bai_tap.Student.Student;
 import ss8_list.bai_tap.array_list.model.MyArrayList;
 import ss8_list.thuc_hanh.simple_list.model.MyList;
+
+import java.util.Arrays;
 
 public class MainController {
     public static class Students {
@@ -47,6 +50,8 @@ public class MainController {
         studentsMyArrayList.add(students3);
         studentsMyArrayList.add(students4);
         studentsMyArrayList.add(students5, 1);
+        studentsMyArrayList.remove();
+        System.out.println(studentsMyArrayList.toString());
 //        System.out.println(studentsMyArrayList.get(2).getId());
 //        System.out.println(studentsMyArrayList.indexOf(students1));
 //        for (int i = 0; i < studentsMyArrayList.size(); i++) {
@@ -56,10 +61,10 @@ public class MainController {
 //       }
 
 //        System.out.println(studentsMyArrayList.contains(students6));
-        MyArrayList<Students> newArray = new MyArrayList<>();
-        newArray = studentsMyArrayList.clone();
-        for (int i = 0; i < newArray.size(); i++) {
-            System.out.println(newArray.get(i).getId());
-        }
+//        MyArrayList<Students> newArray;
+//        newArray = studentsMyArrayList.clone();
+//        for (int i = 0; i < newArray.size(); i++) {
+//            System.out.println(newArray.get(i).getId());
+//        }
     }
 }
