@@ -1,6 +1,5 @@
 package bai_tap_lam_them_2.service.impl;
 
-import bai_tap_lam_them_2.model.Bike;
 import bai_tap_lam_them_2.model.Product;
 import bai_tap_lam_them_2.model.Truck;
 import bai_tap_lam_them_2.service.ITruckService;
@@ -24,7 +23,7 @@ public class TruckService implements ITruckService {
     public void addTruck() {
         Truck truck = this.infoTruck();
         trucks.add(truck);
-        System.out.println("Thêm mới xe máy thành công");
+        System.out.println("Thêm mới xe tải thành công");
     }
 
     private Truck infoTruck() {
@@ -79,6 +78,7 @@ public class TruckService implements ITruckService {
             int choice = Integer.parseInt(scanner.nextLine());
             if (choice == 1) {
                 trucks.remove(truck);
+                System.out.println("Xóa thành công");
             }
         }
     }

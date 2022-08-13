@@ -78,6 +78,7 @@ public class BikeService implements IBikeService {
             int choice = Integer.parseInt(scanner.nextLine());
             if (choice == 1) {
                 bikes.remove(bike);
+                System.out.println("Xóa thành công");
             }
         }
     }
