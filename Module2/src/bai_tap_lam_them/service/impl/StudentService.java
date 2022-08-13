@@ -12,12 +12,17 @@ public class StudentService implements IStudentService {
     private static Scanner scanner = new Scanner(System.in);
     private static List<Student> students = new ArrayList<>();
 
+    static {
+        students.add(new Student(1, "hùng", "11/02/1996", "nam", "C06", 8));
+        students.add(new Student(2, "danh", "23/04/2000", "nam", "C06", 9));
+    }
+
 
     @Override
     public void addStudent() {
         Student student = this.infoStudent();
         students.add(student);
-        System.out.println("Thêm mới học sinh thành công");
+        System.out.println("Thêm mới học viên thành công");
     }
 
     @Override
@@ -34,7 +39,7 @@ public class StudentService implements IStudentService {
         if (student == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa");
         } else {
-            System.out.println("Bạn có thực sự muốn xóa " + student.getId() + " không?");
+            System.out.println("Bạn có thực sự muốn xóa học viên có ID " + student.getId() + " không?");
             System.out.println("1 . Có");
             System.out.println("2 . Không");
             int choice = Integer.parseInt(scanner.nextLine());
@@ -48,17 +53,29 @@ public class StudentService implements IStudentService {
     private Student findStudent() {
         System.out.print("Mời bạn nhập vào id cần xóa: ");
         int id = Integer.parseInt(scanner.nextLine());
-        for (int i = 0; i < students.size(); i++) {
-            if (students.get(i).getId() == id) {
-                return students.get(i);
+        for (Student student : students) {
+            if (student.getId() == id) {
+                return student;
             }
         }
         return null;
     }
 
     private Student infoStudent() {
-        System.out.print("Mời bạn nhập id: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id;
+        do {
+            System.out.print("Mời bạn nhập id: ");
+            id = Integer.parseInt(scanner.nextLine());
+            boolean isCheck = true;
+            for (Student student : students) {
+                if (student.getId() == id) {
+                    System.out.println("ID bị trùng mời bạn nhập lại");
+                    isCheck = false;
+                    break;
+                }
+            }
+            if (isCheck) break;
+        } while (true);
         System.out.print("Mời bạn nhập tên: ");
         String name = scanner.nextLine();
         System.out.print("Mời bạn nhập ngày sinh: ");

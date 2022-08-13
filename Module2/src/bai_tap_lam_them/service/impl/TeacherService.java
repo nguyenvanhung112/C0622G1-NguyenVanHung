@@ -12,6 +12,11 @@ public class TeacherService implements ITeacherService {
     private static Scanner scanner = new Scanner(System.in);
     private static List<Teacher> teachers = new ArrayList<>();
 
+    static {
+        teachers.add(new Teacher(1, "quang", "12/02/1990", "nam", "tutor"));
+        teachers.add(new Teacher(2, "hai", "11/02/1995", "nam", "tutor"));
+    }
+
     @Override
     public void displayAllTeacher() {
         for (Teacher teacher : teachers
@@ -33,32 +38,46 @@ public class TeacherService implements ITeacherService {
         if (teacher == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa");
         } else {
-            System.out.println("Bạn có thực sự muốn xóa " + teacher.getId() + " không?");
+            System.out.println("Bạn có thực sự muốn xóa giảng viên có ID " + teacher.getId() + " không?");
             System.out.println("1 . Có");
             System.out.println("2 . Không");
             int choice = Integer.parseInt(scanner.nextLine());
             if (choice == 1) {
                 teachers.remove(teacher);
                 System.out.println("Xóa thành công");
+
             }
         }
-
+        System.out.println("Danh sách hiện tại: \n");
+        displayAllTeacher();
     }
 
     private Teacher findTeacher() {
         System.out.print("Mời bạn nhập vào id cần xóa: ");
         int id = Integer.parseInt(scanner.nextLine());
-        for (int i = 0; i < teachers.size(); i++) {
-            if (teachers.get(i).getId() == id) {
-                return teachers.get(i);
+        for (Teacher teacher : teachers) {
+            if (teacher.getId() == id) {
+                return teacher;
             }
         }
         return null;
     }
 
     private Teacher infoTeacher() {
-        System.out.print("Mời bạn nhập id: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id;
+        do {
+            System.out.print("Mời bạn nhập id: ");
+            id = Integer.parseInt(scanner.nextLine());
+            boolean isCheck = true;
+            for (Teacher teacher : teachers) {
+                if (teacher.getId() == id) {
+                    System.out.println("ID bị trùng, mời bạn nhập lại");
+                    isCheck = false;
+                    break;
+                }
+            }
+            if (isCheck) break;
+        } while (true);
         System.out.print("Mời bạn nhập tên: ");
         String name = scanner.nextLine();
         System.out.print("Mời bạn nhập ngày sinh: ");
