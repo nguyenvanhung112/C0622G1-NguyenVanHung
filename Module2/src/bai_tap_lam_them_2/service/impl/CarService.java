@@ -30,7 +30,7 @@ public class CarService implements ICarService {
     public void displayCar() {
         List<Vehicle> foundVehicles = new ArrayList<>(cars);
         if (foundVehicles.isEmpty()){
-            System.out.println("Không có xe máy trong list");
+            System.out.println("Không có xe ô tô trong list");
         }else {
             System.out.println(foundVehicles);
         }

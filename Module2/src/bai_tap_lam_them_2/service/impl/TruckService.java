@@ -63,7 +63,7 @@ public class TruckService implements ITruckService {
     public void displayTruck() {
         List<Vehicle> foundVehicles = new ArrayList<>(trucks);
         if (foundVehicles.isEmpty()){
-            System.out.println("Không có xe máy trong list");
+            System.out.println("Không có xe tải trong list");
         }else {
             System.out.println(foundVehicles);
         }
