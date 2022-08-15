@@ -1,6 +1,6 @@
 package bai_tap_lam_them_2.model;
 
-public abstract class Vehicle {
+public class Vehicle {
     private String licensePlates;
     private Product company;
     private String manufacture;
@@ -15,6 +15,7 @@ public abstract class Vehicle {
         this.manufacture = manufacture;
         this.owner = owner;
     }
+
 
     public String getLicensePlates() {
         return licensePlates;

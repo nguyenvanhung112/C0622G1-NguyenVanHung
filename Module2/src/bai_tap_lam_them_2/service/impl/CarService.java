@@ -2,6 +2,7 @@ package bai_tap_lam_them_2.service.impl;
 
 import bai_tap_lam_them_2.model.Car;
 import bai_tap_lam_them_2.model.Product;
+import bai_tap_lam_them_2.model.Vehicle;
 import bai_tap_lam_them_2.service.ICarService;
 
 import java.util.ArrayList;
@@ -10,11 +11,12 @@ import java.util.Scanner;
 
 public class CarService implements ICarService {
     private static Scanner scanner = new Scanner(System.in);
-    private static List<Car> cars = new ArrayList<>();
+    public static List<Car> cars = new ArrayList<>();
+    public static List<Vehicle> vehicles = new ArrayList<>();
 
     static {
-        cars.add(new Car("1", new Product("01", "Honda", "Japan"), "2020", "Hùng", 15, "xe khách"));
-        cars.add(new Car("2", new Product("02", "Yamaha", "Japan"), "2020", "Hùng", 4, "xe khách"));
+        cars.add(new Car("3", new Product("01", "Honda", "Japan"),
+                "2020", "Hùng", 15, "xe khách"));
     }
 
     @Override

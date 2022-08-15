@@ -10,11 +10,9 @@ import java.util.Scanner;
 
 public class TruckService implements ITruckService {
     private static Scanner scanner = new Scanner(System.in);
-    private static List<Truck> trucks = new ArrayList<>();
+    public static List<Truck> trucks = new ArrayList<>();
 
     static {
-        trucks.add(new Truck("1", new Product("01", "Honda", "Japan"),
-                "2020", "Hùng", 2000));
         trucks.add(new Truck("2", new Product("02", "Yamaha", "Japan"),
                 "2020", "Hoàng", 1500));
     }
@@ -24,6 +22,7 @@ public class TruckService implements ITruckService {
         Truck truck = this.infoTruck();
         trucks.add(truck);
         System.out.println("Thêm mới xe tải thành công");
+
     }
 
     private Truck infoTruck() {
@@ -104,4 +103,5 @@ public class TruckService implements ITruckService {
             System.out.println(truck);
         }
     }
+
 }

@@ -2,6 +2,7 @@ package bai_tap_lam_them_2.service.impl;
 
 import bai_tap_lam_them_2.model.Bike;
 import bai_tap_lam_them_2.model.Product;
+import bai_tap_lam_them_2.model.Vehicle;
 import bai_tap_lam_them_2.service.IBikeService;
 
 import java.util.ArrayList;
@@ -9,14 +10,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BikeService implements IBikeService {
+
     private static Scanner scanner = new Scanner(System.in);
-    private static List<Bike> bikes = new ArrayList<>();
+    public static List<Bike> bikes = new ArrayList<>();
 
     static {
         bikes.add(new Bike("1", new Product("01", "Honda", "Japan"),
                 "2020", "Hùng", "150"));
-        bikes.add(new Bike("2", new Product("02", "Yamaha", "Japan"),
-                "2020", "Hùng", "175"));
     }
 
     @Override
@@ -56,6 +56,7 @@ public class BikeService implements IBikeService {
         System.out.println("Nhập vào công suất");
         String wattage = scanner.nextLine();
         Bike bike = new Bike(licensePlates, company, manufacture, owner, wattage);
+
         return bike;
     }
 
