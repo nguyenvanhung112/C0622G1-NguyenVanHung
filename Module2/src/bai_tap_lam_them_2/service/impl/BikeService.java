@@ -26,7 +26,7 @@ public class BikeService implements IBikeService {
         System.out.println("Thêm mới xe máy thành công");
     }
 
-    private Bike infoBike() {
+    public Bike infoBike() {
         String licensePlates;
         do {
             System.out.println("Nhập biển kiếm soát");
@@ -62,8 +62,11 @@ public class BikeService implements IBikeService {
 
     @Override
     public void displayBike() {
-        for (Bike bike : bikes) {
-            System.out.println(bike);
+        List<Vehicle> foundVehicles = new ArrayList<>(bikes);
+        if (foundVehicles.isEmpty()){
+            System.out.println("Không có xe máy trong list");
+        }else {
+            System.out.println(foundVehicles);
         }
     }
 
@@ -94,15 +97,5 @@ public class BikeService implements IBikeService {
             }
         }
         return null;
-    }
-
-    @Override
-    public void findBike() {
-        Bike bike = this.searchBike();
-        if (bike == null) {
-            System.out.println("Không tìm thấy");
-        } else {
-            System.out.println(bike);
-        }
     }
 }

@@ -2,6 +2,7 @@ package bai_tap_lam_them_2.service.impl;
 
 import bai_tap_lam_them_2.model.Product;
 import bai_tap_lam_them_2.model.Truck;
+import bai_tap_lam_them_2.model.Vehicle;
 import bai_tap_lam_them_2.service.ITruckService;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class TruckService implements ITruckService {
 
     }
 
-    private Truck infoTruck() {
+    public Truck infoTruck() {
         String licensePlates;
         do {
             System.out.println("Nhập biển kiếm soát");
@@ -60,8 +61,11 @@ public class TruckService implements ITruckService {
 
     @Override
     public void displayTruck() {
-        for (Truck truck : trucks) {
-            System.out.println(truck);
+        List<Vehicle> foundVehicles = new ArrayList<>(trucks);
+        if (foundVehicles.isEmpty()){
+            System.out.println("Không có xe máy trong list");
+        }else {
+            System.out.println(foundVehicles);
         }
     }
 
@@ -92,16 +96,6 @@ public class TruckService implements ITruckService {
             }
         }
         return null;
-    }
-
-    @Override
-    public void findTruck() {
-        Truck truck = this.searchTruck();
-        if (truck == null) {
-            System.out.println("Không tìm thấy");
-        } else {
-            System.out.println(truck);
-        }
     }
 
 }

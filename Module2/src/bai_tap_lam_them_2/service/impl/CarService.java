@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class CarService implements ICarService {
     private static Scanner scanner = new Scanner(System.in);
     public static List<Car> cars = new ArrayList<>();
-    public static List<Vehicle> vehicles = new ArrayList<>();
+
 
     static {
         cars.add(new Car("3", new Product("01", "Honda", "Japan"),
@@ -28,9 +28,11 @@ public class CarService implements ICarService {
 
     @Override
     public void displayCar() {
-        for (Car car : cars
-        ) {
-            System.out.println(car);
+        List<Vehicle> foundVehicles = new ArrayList<>(cars);
+        if (foundVehicles.isEmpty()){
+            System.out.println("Không có xe máy trong list");
+        }else {
+            System.out.println(foundVehicles);
         }
     }
 
@@ -51,17 +53,6 @@ public class CarService implements ICarService {
         }
     }
 
-    @Override
-    public void findCar() {
-        Car car = this.searchCar();
-        if (car == null) {
-            System.out.println("Không tìm thấy");
-        } else {
-            System.out.println(car);
-        }
-
-    }
-
     private Car searchCar() {
         System.out.println("Nhập vào biển kiểm soát");
         String licensePlates = scanner.nextLine();
@@ -73,7 +64,7 @@ public class CarService implements ICarService {
         return null;
     }
 
-    private Car infoCar() {
+    public Car infoCar() {
         String licensePlates;
         do {
             System.out.println("Nhập biển kiếm soát");

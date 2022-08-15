@@ -6,6 +6,4 @@ public interface ITruckService {
     void displayTruck();
 
     void deleteTruck();
-
-    void findTruck();
 }

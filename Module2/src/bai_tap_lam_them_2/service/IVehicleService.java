@@ -4,6 +4,6 @@ public interface IVehicleService {
 
     void findVehicle();
 
-    void deleteVehicle();
+//    void deleteVehicle();
 
 }

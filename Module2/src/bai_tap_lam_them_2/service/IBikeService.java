@@ -7,6 +7,4 @@ public interface IBikeService {
     void displayBike();
 
     void deleteBike();
-
-    void findBike();
 }

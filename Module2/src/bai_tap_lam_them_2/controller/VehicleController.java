@@ -13,13 +13,10 @@ import java.util.Scanner;
 
 public class VehicleController {
     Scanner scanner = new Scanner(System.in);
-//    BikeController bikeController = new BikeController();
-//    CarController carController = new CarController();
-//    TruckController truckController = new TruckController();
     IBikeService bikeService = new BikeService();
     ITruckService truckService = new TruckService();
     ICarService carService = new CarService();
-    IVehicleService vehicle = new VehiCleService();
+    IVehicleService vehiCleService = new VehiCleService();
 
     public void menuManagement() {
         while (true) {
@@ -32,14 +29,14 @@ public class VehicleController {
             System.out.println("5. Thoát");
             System.out.println("Mời bạn nhập chức năng");
             int choice = Integer.parseInt(scanner.nextLine());
-            switch (choice){
+            switch (choice) {
                 case 1:
                     System.out.println("1. Thêm xe tải");
                     System.out.println("2. Thêm ô tô");
                     System.out.println("3. Thêm xe máy");
                     System.out.println("4. Thoát");
                     int choice1 = Integer.parseInt(scanner.nextLine());
-                    switch (choice1){
+                    switch (choice1) {
                         case 1:
                             truckService.addTruck();
                             break;
@@ -59,7 +56,7 @@ public class VehicleController {
                     System.out.println("3. Hiển thị xe máy");
                     System.out.println("4. Thoát");
                     int choice2 = Integer.parseInt(scanner.nextLine());
-                    switch (choice2){
+                    switch (choice2) {
                         case 1:
                             truckService.displayTruck();
                             break;
@@ -74,10 +71,28 @@ public class VehicleController {
                     }
                     break;
                 case 3:
-                    vehicle.deleteVehicle();
+//                    vehiCleService.deleteVehicle();
+                    System.out.println("1. Xóa xe tải");
+                    System.out.println("2. Xóa thị ô tô");
+                    System.out.println("3. Xóa thị xe máy");
+                    System.out.println("4. Thoát");
+                    int choice3 = Integer.parseInt(scanner.nextLine());
+                    switch (choice3) {
+                        case 1:
+                            truckService.deleteTruck();
+                            break;
+                        case 2:
+                            carService.deleteCar();
+                            break;
+                        case 3:
+                            bikeService.deleteBike();
+                            break;
+                        case 4:
+                            return;
+                    }
                     break;
                 case 4:
-                    vehicle.findVehicle();
+                    vehiCleService.findVehicle();
                     break;
                 case 5:
                     return;

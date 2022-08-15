@@ -6,7 +6,6 @@ public interface ICarService {
 
     void displayCar();
 
-    void deleteCar();
 
-    void findCar();
+    void deleteCar();
 }
