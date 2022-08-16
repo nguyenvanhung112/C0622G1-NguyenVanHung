@@ -7,7 +7,8 @@ import java.util.*;
 
 public class ProductService implements IProduct {
     public static Scanner scanner = new Scanner(System.in);
-    public static List<Product> products = new ArrayList<>();
+    //    public static List<Product> products = new ArrayList<>();
+    public static List<Product> products = new LinkedList<>();
 
     static {
         products.add(new Product("1", "Hoàng", 15000));
@@ -53,13 +54,25 @@ public class ProductService implements IProduct {
         if (product == null) {
             System.out.println("Không tìm thấy sản phẩm");
         } else {
-            System.out.println("Nhập mã sản phẩm");
-            String id = scanner.nextLine();
-            product.setId(id);
-            System.out.println("Nhập tên sản phẩmm");
+            String id;
+            do {
+                System.out.println("Nhập mã sản phẩm muốn đổi");
+                id = scanner.nextLine();
+                boolean isCheck = true;
+                for (Product product1 : products) {
+                    if (product1.getId().equals(id)) {
+                        System.out.println("Mã sản phẩm bị trùng mời bạn nhập lại");
+                        isCheck = false;
+                        break;
+                    }
+                    product.setId(id);
+                }
+                if (isCheck) break;
+            } while (true);
+            System.out.println("Nhập tên sản phẩm muốn đổi");
             String name = scanner.nextLine();
             product.setName(name);
-            System.out.println("Nhập giá sản phẩm");
+            System.out.println("Nhập giá sản phẩm muốn đổi");
             int price = Integer.parseInt(scanner.nextLine());
             product.setPrice(price);
             System.out.println("Sửa thành công");
@@ -72,7 +85,8 @@ public class ProductService implements IProduct {
         if (product == null) {
             System.out.println("Không tim thấy sản phẩm");
         } else {
-            System.out.println("Bạn có muốn xóa sản phẩm " + product.getName() + " không?");
+            System.out.println("Bạn có muốn xóa sản phẩm " + "[ID " + product.getId() + " Tên sản phẩm "
+                    + product.getName() + " Giá " + product.getPrice() + "] không?");
             System.out.println("1. Có");
             System.out.println("2. Không");
             System.out.println("Nhập lựa chọn");
