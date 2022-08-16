@@ -114,18 +114,29 @@ public class ProductService implements IProduct {
         System.out.println("Hiển thị sản phẩm");
         System.out.println("1. Hiển thị theo thứ tự tăng dần");
         System.out.println("2. Hiện thị theo thứ tự giảm dần");
+        System.out.println("3. Thoát");
         int choice = Integer.parseInt(scanner.nextLine());
         while (true) {
             switch (choice) {
                 case 1:
-                    Collections.sort(products, (o1, o2) -> o1.getPrice() - o2.getPrice());
-                    for (Product product : products
-                    ) {
-                        System.out.println(product);
-                    }
+                    Collections.sort(products, new Comparator<Product>()
+                     {
+                        @Override
+                        public int compare(Product o1, Product o2) {
+                            return o1.getPrice() > o2.getPrice() ? 1 : -1;
+                        }
+                    });
+                    for (Product product : products){
+                            System.out.println(product);
+                        }
                     return;
                 case 2:
-                    Collections.sort(products, (o1, o2) -> o2.getPrice() - o1.getPrice());
+                    Collections.sort(products, new Comparator<Product>() {
+                        @Override
+                        public int compare(Product o1, Product o2) {
+                            return o1.getPrice() < o2.getPrice() ? 1 : -1;
+                        }
+                    });
                     for (Product product : products
                     ) {
                         System.out.println(product);
@@ -135,7 +146,7 @@ public class ProductService implements IProduct {
                     return;
                 default:
                     System.out.println("Nhập lại lựa chọn");
-                    break;
+                    return;
             }
         }
     }
