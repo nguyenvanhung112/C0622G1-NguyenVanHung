@@ -50,21 +50,21 @@ public class MainController {
         studentsMyArrayList.add(students3);
         studentsMyArrayList.add(students4);
         studentsMyArrayList.add(students5, 1);
-        studentsMyArrayList.remove();
+//        studentsMyArrayList.remove();
         System.out.println(studentsMyArrayList.toString());
-//        System.out.println(studentsMyArrayList.get(2).getId());
-//        System.out.println(studentsMyArrayList.indexOf(students1));
-//        for (int i = 0; i < studentsMyArrayList.size(); i++) {
-//           Students students = (Students) studentsMyArrayList.elements[i];
-//           System.out.println(students.getId());
-//           System.out.println(students.getName());
-//       }
+        System.out.println(studentsMyArrayList.get(2).getId());
+        System.out.println(studentsMyArrayList.indexOf(students1));
+        for (int i = 0; i < studentsMyArrayList.size(); i++) {
+           Students students = (Students) studentsMyArrayList.elements[i];
+           System.out.println(students.getId());
+           System.out.println(students.getName());
+       }
 
 //        System.out.println(studentsMyArrayList.contains(students6));
-//        MyArrayList<Students> newArray;
-//        newArray = studentsMyArrayList.clone();
-//        for (int i = 0; i < newArray.size(); i++) {
-//            System.out.println(newArray.get(i).getId());
-//        }
+        MyArrayList<Students> newArray;
+        newArray = studentsMyArrayList.clone();
+        for (int i = 0; i < newArray.size(); i++) {
+            System.out.println(newArray.get(i).getId());
+        }
     }
 }
