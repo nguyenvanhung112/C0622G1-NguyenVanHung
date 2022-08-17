@@ -1,5 +1,9 @@
 package bai_tap_lam_them_2.controller;
 
+import bai_tap_lam_them_2.model.Bike;
+import bai_tap_lam_them_2.model.Car;
+import bai_tap_lam_them_2.model.Truck;
+import bai_tap_lam_them_2.model.Vehicle;
 import bai_tap_lam_them_2.service.IBikeService;
 import bai_tap_lam_them_2.service.ICarService;
 import bai_tap_lam_them_2.service.ITruckService;
@@ -38,16 +42,19 @@ public class VehicleController {
                     int choice1 = Integer.parseInt(scanner.nextLine());
                     switch (choice1) {
                         case 1:
-                            truckService.addTruck();
+                            Truck truck = truckService.addTruck();
+                            vehiCleService.addVehicle(truck);
                             break;
                         case 2:
-                            carService.addCar();
+                            Car car = carService.addCar();
+                            vehiCleService.addVehicle(car);
                             break;
                         case 3:
-                            bikeService.addBike();
+                            Bike bike = bikeService.addBike();
+                            vehiCleService.addVehicle(bike);
                             break;
                         case 4:
-                            return;
+                            break;
                     }
                     break;
                 case 2:
@@ -67,29 +74,22 @@ public class VehicleController {
                             bikeService.displayBike();
                             break;
                         case 4:
-                            return;
+                            break;
                     }
                     break;
                 case 3:
-//                    vehiCleService.deleteVehicle();
-                    System.out.println("1. Xóa xe tải");
-                    System.out.println("2. Xóa thị ô tô");
-                    System.out.println("3. Xóa thị xe máy");
-                    System.out.println("4. Thoát");
-                    int choice3 = Integer.parseInt(scanner.nextLine());
-                    switch (choice3) {
-                        case 1:
-                            truckService.deleteTruck();
-                            break;
-                        case 2:
-                            carService.deleteCar();
-                            break;
-                        case 3:
-                            bikeService.deleteBike();
-                            break;
-                        case 4:
-                            return;
+                    System.out.println("Nhập vào biển kiểm soát");
+                    String licensePlates = scanner.nextLine();
+                    if (vehiCleService.searchVehicle(licensePlates) instanceof Truck) {
+                        truckService.deleteTruck(licensePlates);
                     }
+                    if (vehiCleService.searchVehicle(licensePlates) instanceof Car) {
+                        carService.deleteCar(licensePlates);
+                    }
+                    if (vehiCleService.searchVehicle(licensePlates) instanceof Bike) {
+                        bikeService.deleteBike(licensePlates);
+                    }
+                    vehiCleService.deleteVehicle(licensePlates);
                     break;
                 case 4:
                     vehiCleService.findVehicle();

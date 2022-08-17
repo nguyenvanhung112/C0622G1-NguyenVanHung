@@ -1,10 +1,12 @@
 package bai_tap_lam_them_2.service;
 
+import bai_tap_lam_them_2.model.Bike;
+
 public interface IBikeService {
 
-    void addBike();
+   Bike addBike();
 
-    void displayBike();
+   void displayBike();
 
-    void deleteBike();
+   void deleteBike(String licensePlates);
 }

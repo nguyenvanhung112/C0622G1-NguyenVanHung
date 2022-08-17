@@ -62,7 +62,6 @@ public class StudentService implements IStudentService {
     }
 
     public void searchStudent() {
-
         while (true) {
             System.out.println("1. Tìm theo ID");
             System.out.println("2. Tìm theo tên");

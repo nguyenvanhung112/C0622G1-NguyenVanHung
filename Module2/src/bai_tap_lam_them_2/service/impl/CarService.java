@@ -20,42 +20,35 @@ public class CarService implements ICarService {
     }
 
     @Override
-    public void addCar() {
+    public Car addCar() {
         Car car = this.infoCar();
         cars.add(car);
         System.out.println("Thêm mới xe ô tô thành công");
+        return car;
     }
 
     @Override
     public void displayCar() {
-        List<Vehicle> foundVehicles = new ArrayList<>(cars);
-        if (foundVehicles.isEmpty()){
+        List<Car> foundVehicles = new ArrayList<>(cars);
+        if (foundVehicles.isEmpty()) {
             System.out.println("Không có xe ô tô trong list");
-        }else {
-            System.out.println(foundVehicles);
-        }
-    }
-
-    @Override
-    public void deleteCar() {
-        Car car = this.searchCar();
-        if (car == null) {
-            System.out.println("Không tìm thấy");
         } else {
-            System.out.println("Bạn có thực sự muốn xóa phương tiện " + car.getLicensePlates() + " không?");
-            System.out.println("1. Có");
-            System.out.println("2. Không");
-            int choice = Integer.parseInt(scanner.nextLine());
-            if (choice == 1) {
-                cars.remove(car);
-                System.out.println("Xóa thành công");
+            for (Car car : foundVehicles
+            ) {
+                System.out.println(car);
             }
         }
     }
 
-    private Car searchCar() {
-        System.out.println("Nhập vào biển kiểm soát");
-        String licensePlates = scanner.nextLine();
+    @Override
+    public void deleteCar(String licensePlates) {
+        Car car = this.searchCar(licensePlates);
+        if (car != null) {
+            cars.remove(car);
+        }
+    }
+
+    private Car searchCar(String licensePlates) {
         for (Car car : cars) {
             if (car.getLicensePlates().equals(licensePlates)) {
                 return car;

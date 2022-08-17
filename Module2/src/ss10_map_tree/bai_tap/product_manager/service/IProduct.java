@@ -10,5 +10,4 @@ public interface IProduct {
     void display();
 
     void find();
-
 }

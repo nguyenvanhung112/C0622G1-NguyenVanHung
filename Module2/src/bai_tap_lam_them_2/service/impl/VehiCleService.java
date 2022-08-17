@@ -10,13 +10,16 @@ import java.util.Scanner;
 
 public class VehiCleService implements IVehicleService {
     private static Scanner scanner = new Scanner(System.in);
+    public static List<Vehicle> vehicles = new ArrayList<>();
 
-    @Override
-    public void findVehicle() {
-        List<Vehicle> vehicles = new ArrayList<>();
+    static {
         vehicles.addAll(BikeService.bikes);
         vehicles.addAll(TruckService.trucks);
         vehicles.addAll(CarService.cars);
+    }
+
+    @Override
+    public void findVehicle() {
         System.out.println("Nhập vào biển kiểm soát");
         String licensePlates = scanner.nextLine();
         List<Vehicle> foundVehicles = new ArrayList<>();
@@ -37,32 +40,41 @@ public class VehiCleService implements IVehicleService {
     }
 
 
-//    @Override
-//    public void deleteVehicle() {
-//        Vehicle vehicle = this.searchVehicle();
-//        if (vehicle == null) {
-//            System.out.println("Không tìm thấy");
-//        } else {
-//            System.out.println("Bạn có thực sự muốn xóa biển kiểm soát " + vehicle.getLicensePlates() + " không?");
-//            System.out.println("1. Có");
-//            System.out.println("2. Không");
-//            int choice = Integer.parseInt(scanner.nextLine());
-//            if (choice == 1) {
-//                vehicles.remove(vehicle);
-//                System.out.println("Xóa thành công");
-//            }
-//        }
-//    }
-//
-//    private Vehicle searchVehicle() {
-//        System.out.println("Nhập vào biển kiểm soát");
-//        String licensePlates = scanner.nextLine();
-//        for (Vehicle vehicle : vehicles
-//        ) {
-//            if (vehicle.getLicensePlates().equals(licensePlates)) {
-//                return vehicle;
-//            }
-//        }
-//        return null;
-//    }
+    @Override
+    public void deleteVehicle(String licensePlates) {
+        List<Vehicle> searchVehicles = this.searchVehicle(licensePlates);
+        if (vehicles == null) {
+            System.out.println("Không tìm thấy");
+        } else {
+            System.out.println("Bạn có thực sự muốn xóa biển kiểm soát " + licensePlates + " không?");
+            System.out.println("1. Có");
+            System.out.println("2. Không");
+            int choice = Integer.parseInt(scanner.nextLine());
+            if (choice == 1) {
+                for (Vehicle vehicle : searchVehicles) {
+                    vehicles.remove(vehicle);
+                }
+                System.out.println("Xóa thành công");
+            }
+        }
+    }
+
+    @Override
+    public List<Vehicle> searchVehicle(String licensePlates) {
+        List<Vehicle> foundVehicles = new ArrayList<>();
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getLicensePlates().contains(licensePlates)) {
+                foundVehicles.add(vehicle);
+            }
+        }
+        if (foundVehicles.size() == 0) {
+            return null;
+        }
+        return foundVehicles;
+    }
+
+    @Override
+    public void addVehicle(Vehicle vehicle) {
+        vehicles.add(vehicle);
+    }
 }

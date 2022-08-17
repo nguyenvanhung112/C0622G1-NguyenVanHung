@@ -20,10 +20,11 @@ public class BikeService implements IBikeService {
     }
 
     @Override
-    public void addBike() {
+    public Bike addBike() {
         Bike bike = this.infoBike();
         bikes.add(bike);
         System.out.println("Thêm mới xe máy thành công");
+        return bike;
     }
 
     public Bike infoBike() {
@@ -62,34 +63,27 @@ public class BikeService implements IBikeService {
 
     @Override
     public void displayBike() {
-        List<Vehicle> foundVehicles = new ArrayList<>(bikes);
-        if (foundVehicles.isEmpty()){
+        List<Bike> foundVehicles = new ArrayList<>(bikes);
+        if (foundVehicles.isEmpty()) {
             System.out.println("Không có xe máy trong list");
-        }else {
-            System.out.println(foundVehicles);
+        } else {
+            for (Bike bike : foundVehicles
+            ) {
+                System.out.println(bike);
+            }
+
         }
     }
 
     @Override
-    public void deleteBike() {
-        Bike bike = this.searchBike();
-        if (bike == null) {
-            System.out.println("Không tìm thấy");
-        } else {
-            System.out.println("Bạn có thực sự muốn xóa biển kiểm soát " + bike.getLicensePlates() + " không?");
-            System.out.println("1. Có");
-            System.out.println("2. Không");
-            int choice = Integer.parseInt(scanner.nextLine());
-            if (choice == 1) {
-                bikes.remove(bike);
-                System.out.println("Xóa thành công");
-            }
+    public void deleteBike(String licensePlates) {
+        Bike bike = this.searchBike(licensePlates);
+        if (bike != null) {
+            bikes.remove(bike);
         }
     }
 
-    private Bike searchBike() {
-        System.out.println("Nhập vào biển kiểm soát");
-        String licensePlates = scanner.nextLine();
+    public Bike searchBike(String licensePlates) {
         for (Bike bike : bikes
         ) {
             if (bike.getLicensePlates().equals(licensePlates)) {

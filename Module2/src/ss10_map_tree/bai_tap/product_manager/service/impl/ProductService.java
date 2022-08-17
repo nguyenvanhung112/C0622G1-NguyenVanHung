@@ -54,27 +54,8 @@ public class ProductService implements IProduct {
         if (product == null) {
             System.out.println("Không tìm thấy sản phẩm");
         } else {
-            String id;
-            do {
-                System.out.println("Nhập mã sản phẩm muốn đổi");
-                id = scanner.nextLine();
-                boolean isCheck = true;
-                for (Product product1 : products) {
-                    if (product1.getId().equals(id)) {
-                        System.out.println("Mã sản phẩm bị trùng mời bạn nhập lại");
-                        isCheck = false;
-                        break;
-                    }
-                    product.setId(id);
-                }
-                if (isCheck) break;
-            } while (true);
-            System.out.println("Nhập tên sản phẩm muốn đổi");
-            String name = scanner.nextLine();
-            product.setName(name);
-            System.out.println("Nhập giá sản phẩm muốn đổi");
-            int price = Integer.parseInt(scanner.nextLine());
-            product.setPrice(price);
+            int index = products.indexOf(product);
+            products.set(index, info());
             System.out.println("Sửa thành công");
         }
     }
@@ -119,16 +100,15 @@ public class ProductService implements IProduct {
         while (true) {
             switch (choice) {
                 case 1:
-                    Collections.sort(products, new Comparator<Product>()
-                     {
+                    Collections.sort(products, new Comparator<Product>() {
                         @Override
                         public int compare(Product o1, Product o2) {
                             return o1.getPrice() > o2.getPrice() ? 1 : -1;
                         }
                     });
-                    for (Product product : products){
-                            System.out.println(product);
-                        }
+                    for (Product product : products) {
+                        System.out.println(product);
+                    }
                     return;
                 case 2:
                     Collections.sort(products, new Comparator<Product>() {
@@ -160,7 +140,6 @@ public class ProductService implements IProduct {
             System.out.println(product);
         }
     }
-
 
     private Product searchName() {
         System.out.println("Nhập vào tên sản phẩm muốn tìm");
