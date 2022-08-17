@@ -1,6 +1,7 @@
 package bai_tap_lam_them.service.impl;
 
 
+import bai_tap_lam_them.model.Student;
 import bai_tap_lam_them.model.Teacher;
 import bai_tap_lam_them.service.ITeacherService;
 
@@ -13,8 +14,8 @@ public class TeacherService implements ITeacherService {
     private static List<Teacher> teachers = new ArrayList<>();
 
     static {
-        teachers.add(new Teacher(1, "quang", "12/02/1990", "nam", "tutor"));
-        teachers.add(new Teacher(2, "hai", "11/02/1995", "nam", "tutor"));
+        teachers.add(new Teacher(1, "nguyen van quang", "12/02/1990", "nam", "tutor"));
+        teachers.add(new Teacher(2, "nguyen van hai", "11/02/1995", "nam", "tutor"));
     }
 
     @Override
@@ -34,7 +35,7 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public void removeTeacher() {
-        Teacher teacher = this.findTeacher();
+        Teacher teacher = this.findTeacherID();
         if (teacher == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa");
         } else {
@@ -52,8 +53,55 @@ public class TeacherService implements ITeacherService {
         displayAllTeacher();
     }
 
-    private Teacher findTeacher() {
-        System.out.print("Mời bạn nhập vào id cần xóa: ");
+    @Override
+    public void searchTeacher() {
+        while (true) {
+            System.out.println("1. Tìm theo ID");
+            System.out.println("2. Tìm theo tên");
+            System.out.println("3. Thoát");
+            System.out.println("Mời bạn nhập chức năng");
+            int choice = Integer.parseInt(scanner.nextLine());
+            switch (choice) {
+                case 1:
+                    Teacher teacher = this.findTeacherID();
+                    if (teacher == null) {
+                        System.out.println("Không tìm thấy");
+                    } else {
+                        System.out.println(teacher);
+                    }
+                    break;
+                case 2:
+                    Teacher teacher1 = this.findTeacherName();
+                    if (teacher1 == null) {
+                        System.out.println("Không tìm thấy");
+                    } else {
+                        System.out.println(teacher1);
+                    }
+                    break;
+                case 3:
+                    return;
+                default:
+                    System.out.println("Nhập lại");
+                    break;
+            }
+        }
+    }
+
+    private Teacher findTeacherName() {
+        System.out.println("Mời bạn nhập tên");
+        String name = scanner.nextLine();
+        for (Teacher teacher : teachers) {
+            if (teacher.getName().contains(name)) {
+                return teacher;
+            }
+        }
+        return null;
+    }
+
+
+
+    private Teacher findTeacherID() {
+        System.out.print("Mời bạn nhập vào id: ");
         int id = Integer.parseInt(scanner.nextLine());
         for (Teacher teacher : teachers) {
             if (teacher.getId() == id) {

@@ -6,4 +6,6 @@ public interface ITeacherService {
     void addTeacher();
 
     void removeTeacher();
+
+    void searchTeacher();
 }

@@ -13,8 +13,8 @@ public class StudentService implements IStudentService {
     private static List<Student> students = new ArrayList<>();
 
     static {
-        students.add(new Student(1, "hùng", "11/02/1996", "nam", "C06", 8));
-        students.add(new Student(2, "danh", "23/04/2000", "nam", "C06", 9));
+        students.add(new Student(1, "nguyen van hùng", "11/02/1996", "nam", "C06", 8));
+        students.add(new Student(2, "nguyen van danh", "23/04/2000", "nam", "C06", 9));
     }
 
 
@@ -35,7 +35,7 @@ public class StudentService implements IStudentService {
 
     @Override
     public void removeStudent() {
-        Student student = this.findStudent();
+        Student student = this.findStudentID();
         if (student == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa");
         } else {
@@ -50,11 +50,56 @@ public class StudentService implements IStudentService {
         }
     }
 
-    private Student findStudent() {
-        System.out.print("Mời bạn nhập vào id cần xóa: ");
+    private Student findStudentID() {
+        System.out.print("Mời bạn nhập vào id: ");
         int id = Integer.parseInt(scanner.nextLine());
         for (Student student : students) {
             if (student.getId() == id) {
+                return student;
+            }
+        }
+        return null;
+    }
+
+    public void searchStudent() {
+
+        while (true) {
+            System.out.println("1. Tìm theo ID");
+            System.out.println("2. Tìm theo tên");
+            System.out.println("3. Thoát");
+            System.out.println("Mời bạn nhập chức năng");
+            int choice = Integer.parseInt(scanner.nextLine());
+            switch (choice) {
+                case 1:
+                    Student student = this.findStudentID();
+                    if (student == null) {
+                        System.out.println("Không tìm thấy");
+                    } else {
+                        System.out.println(student);
+                    }
+                    break;
+                case 2:
+                    Student student1 = this.findStudentName();
+                    if (student1 == null) {
+                        System.out.println("Không tìm thấy");
+                    } else {
+                        System.out.println(student1);
+                    }
+                    break;
+                case 3:
+                    return;
+                default:
+                    System.out.println("Nhập lại");
+                    break;
+            }
+        }
+    }
+
+    private Student findStudentName() {
+        System.out.println("Mời bạn nhập tên");
+        String name = scanner.nextLine();
+        for (Student student : students) {
+            if (student.getName().contains(name)) {
                 return student;
             }
         }
