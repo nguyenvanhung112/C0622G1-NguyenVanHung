@@ -13,8 +13,8 @@ public class StudentService implements IStudentService {
     private static List<Student> students = new ArrayList<>();
 
     static {
-        students.add(new Student(1, "hùng", "11/02/1996", "nam", "C06", 8));
-        students.add(new Student(2, "danh", "23/04/2000", "nam", "C06", 9));
+        students.add(new Student(1, "nguyen van hùng", "11/02/1996", "nam", "C06", 8));
+        students.add(new Student(2, "nguyen van danh", "23/04/2000", "nam", "C06", 9));
     }
 
 
@@ -27,23 +27,28 @@ public class StudentService implements IStudentService {
 
     @Override
     public void displayAllStudent() {
-         sort();
+        sort();
         for (Student item : students) {
             System.out.println(item);
         }
     }
+
     private void sort() {
-        boolean needNextPass = true;
-        for (int k = 1; k < students.size() && needNextPass; k++) {
-            needNextPass = false;
-            for (int i = 0; i < students.size() - k; i++) {
-                if (students.get(i).getName().charAt(i) > students.get(i + 1).getName().charAt(i)) {
-                    Student temp = students.get(i);
-                    students.set(i, students.get(i + 1));
-                    students.set(i + 1, temp);
-                    needNextPass = true;
+        boolean isSwap = true;
+        Student temp;
+        for (int i = 0; i < students.size() - 1 && isSwap; i++) {
+            isSwap = false;
+            for (int j = 0; j < students.size() - 1 - i; j++) {
+                if (students.get(j).getName().compareTo(students.get(j + 1).getName()) > 0) {
+                    isSwap = true;
+                    temp = students.get(j + 1);
+                    students.set(j + 1, students.get(j));
+                    students.set(j, temp);
+
                 }
+
             }
+
         }
     }
 

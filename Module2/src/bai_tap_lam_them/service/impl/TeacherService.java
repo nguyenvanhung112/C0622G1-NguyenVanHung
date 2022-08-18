@@ -26,18 +26,23 @@ public class TeacherService implements ITeacherService {
             System.out.println(teacher);
         }
     }
+
     private void sort() {
-        boolean needNextPass = true;
-        for (int k = 1; k < teachers.size() && needNextPass; k++) {
-            needNextPass = false;
-            for (int i = 0; i < teachers.size() - k; i++) {
-                if (teachers.get(i).getName().charAt(i) > teachers.get(i + 1).getName().charAt(i)) {
-                    Teacher temp = teachers.get(i);
-                    teachers.set(i, teachers.get(i + 1));
-                    teachers.set(i + 1, temp);
-                    needNextPass = true;
+        boolean isSwap = true;
+        Teacher temp;
+        for (int i = 0; i < teachers.size() - 1 && isSwap; i++) {
+            isSwap = false;
+            for (int j = 0; j < teachers.size() - 1 - i; j++) {
+                if (teachers.get(j).getName().compareTo(teachers.get(j + 1).getName()) > 0) {
+                    isSwap = true;
+                    temp = teachers.get(j + 1);
+                    teachers.set(j + 1, teachers.get(j));
+                    teachers.set(j, temp);
+
                 }
+
             }
+
         }
     }
 
@@ -112,7 +117,6 @@ public class TeacherService implements ITeacherService {
         }
         return null;
     }
-
 
 
     private Teacher findTeacherID() {
