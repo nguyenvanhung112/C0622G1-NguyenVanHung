@@ -20,9 +20,24 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public void displayAllTeacher() {
+        sort();
         for (Teacher teacher : teachers
         ) {
             System.out.println(teacher);
+        }
+    }
+    private void sort() {
+        boolean needNextPass = true;
+        for (int k = 1; k < teachers.size() && needNextPass; k++) {
+            needNextPass = false;
+            for (int i = 0; i < teachers.size() - k; i++) {
+                if (teachers.get(i).getName().charAt(i) > teachers.get(i + 1).getName().charAt(i)) {
+                    Teacher temp = teachers.get(i);
+                    teachers.set(i, teachers.get(i + 1));
+                    teachers.set(i + 1, temp);
+                    needNextPass = true;
+                }
+            }
         }
     }
 
