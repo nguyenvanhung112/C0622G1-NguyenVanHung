@@ -5,6 +5,7 @@ import bai_tap_lam_them.model.Student;
 import bai_tap_lam_them.service.IStudentService;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -97,11 +98,14 @@ public class StudentService implements IStudentService {
                     }
                     break;
                 case 2:
-                    Student student1 = this.findStudentName();
-                    if (student1 == null) {
+                    List<Student> student1s = this.findStudentName();
+                    if (student1s.isEmpty()) {
                         System.out.println("Không tìm thấy");
                     } else {
-                        System.out.println(student1);
+                        for (Student item: student1s
+                             ) {
+                            System.out.println(item);
+                        }
                     }
                     break;
                 case 3:
@@ -113,15 +117,16 @@ public class StudentService implements IStudentService {
         }
     }
 
-    private Student findStudentName() {
+    private List<Student> findStudentName() {
+        List<Student> foundStudents = new LinkedList<>();
         System.out.println("Mời bạn nhập tên");
         String name = scanner.nextLine();
         for (Student student : students) {
             if (student.getName().contains(name)) {
-                return student;
+                foundStudents.add(student);
             }
         }
-        return null;
+        return  foundStudents;
     }
 
     private Student infoStudent() {

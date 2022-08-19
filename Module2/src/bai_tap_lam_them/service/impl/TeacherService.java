@@ -6,6 +6,7 @@ import bai_tap_lam_them.model.Teacher;
 import bai_tap_lam_them.service.ITeacherService;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -91,11 +92,14 @@ public class TeacherService implements ITeacherService {
                     }
                     break;
                 case 2:
-                    Teacher teacher1 = this.findTeacherName();
-                    if (teacher1 == null) {
+                    List<Teacher> teacher1s = this.findTeacherName();
+                    if (teacher1s.isEmpty()) {
                         System.out.println("Không tìm thấy");
                     } else {
-                        System.out.println(teacher1);
+                        for (Teacher item: teacher1s
+                             ) {
+                            System.out.println(item);
+                        }
                     }
                     break;
                 case 3:
@@ -107,15 +111,16 @@ public class TeacherService implements ITeacherService {
         }
     }
 
-    private Teacher findTeacherName() {
+    private List<Teacher> findTeacherName() {
+        List<Teacher> foundTeachers = new LinkedList<>();
         System.out.println("Mời bạn nhập tên");
         String name = scanner.nextLine();
         for (Teacher teacher : teachers) {
             if (teacher.getName().contains(name)) {
-                return teacher;
+                foundTeachers.add(teacher);
             }
         }
-        return null;
+        return foundTeachers;
     }
 
 
