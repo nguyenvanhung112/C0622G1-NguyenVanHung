@@ -200,7 +200,6 @@ public class TeacherService implements ITeacherService {
             }
         }
         String sex;
-        String genderString;
         while (true) {
             try {
                 System.out.print("Mời bạn nhập giới tính: ");
