@@ -4,6 +4,10 @@ package bai_tap_lam_them.service.impl;
 import bai_tap_lam_them.model.Student;
 import bai_tap_lam_them.model.Teacher;
 import bai_tap_lam_them.service.ITeacherService;
+import ulti_exception.DateOfBirthException;
+import ulti_exception.GenderException;
+import ulti_exception.QualificationException;
+import ulti_exception.StringFormatException;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -137,28 +141,99 @@ public class TeacherService implements ITeacherService {
 
     private Teacher infoTeacher() {
         int id;
-        do {
-            System.out.print("Mời bạn nhập id: ");
-            id = Integer.parseInt(scanner.nextLine());
-            boolean isCheck = true;
-            for (Teacher teacher : teachers) {
-                if (teacher.getId() == id) {
-                    System.out.println("ID bị trùng, mời bạn nhập lại");
-                    isCheck = false;
-                    break;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập id: ");
+                id = Integer.parseInt(scanner.nextLine());
+                boolean check = true;
+                for (Teacher teacher : teachers) {
+                    if (teacher.getId() == id) {
+                        System.out.println("ID bị trùng, mời bạn nhập lại id");
+                        id = Integer.parseInt(scanner.nextLine());
+                        check = false;
+                        break;
+                    }
                 }
+                if (check) break;
+            } catch (NumberFormatException e) {
+                System.out.println("ID không hợp lệ mời bạn nhập lại");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
-            if (isCheck) break;
-        } while (true);
-        System.out.print("Mời bạn nhập tên: ");
-        String name = scanner.nextLine();
-        System.out.print("Mời bạn nhập ngày sinh: ");
-        String dateOfBirth = scanner.nextLine();
-        System.out.print("Mời bạn nhập giới tính: ");
-        String sex = scanner.nextLine();
-        System.out.print("Mời bạn nhập trình độ chuyên môn: ");
-        String qualification = scanner.nextLine();
-        Teacher teacher = new Teacher(id, name, dateOfBirth, sex, qualification);
-        return teacher;
+        }
+        String name;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập tên: ");
+                name = (scanner.nextLine());
+                String str;
+                for (int i = 0; i < name.length(); i++) {
+                    str = "";
+                    if ((str + name.charAt(i)).matches("\\d+")) {
+                        throw new StringFormatException("Tên bạn không hợp lệ vui lòng nhập lại");
+                    }
+                }
+
+                break;
+            } catch (StringFormatException e) {
+                System.out.println(e.getMessage());
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
+        String dateOfBirth;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập ngày sinh: ");
+                dateOfBirth = scanner.nextLine();
+                if (!dateOfBirth.matches("\\d+\\d+\\W+\\d+\\d+\\W+\\d+\\d+\\d+\\d")) {
+                    throw new DateOfBirthException("Dữ liệu không đúng định dạng");
+                }
+                if (Integer.parseInt(dateOfBirth.substring(6)) > 2022) {
+                    throw new DateOfBirthException("Dữ liệu không đúng định dạng");
+                }
+                break;
+            } catch (DateOfBirthException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        String sex;
+        String genderString;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập giới tính: ");
+                sex = scanner.nextLine();
+                if (!sex.equals("Nam") && (!sex.equals("Nữ"))) {
+                    throw new GenderException("Dữ liệu bạn nhập không hợp lệ");
+                }
+                break;
+            } catch (GenderException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        String qualification;
+        String qualificationStr;
+        while (true) {
+            try {
+                System.out.print("Mời bạn nhập trình độ chuyên môn: ");
+                qualification = scanner.nextLine();
+                for (int i = 0; i < name.length(); i++) {
+                    qualificationStr = "";
+                    if ((qualificationStr + name.charAt(i)).matches("\\d+")) {
+                        throw new QualificationException("Dữ liệu bạn nhập ko hợp lệ");
+                    }
+                }
+                break;
+            } catch (QualificationException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return new Teacher(id, name, dateOfBirth, sex, qualification);
     }
 }
