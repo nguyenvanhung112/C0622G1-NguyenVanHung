@@ -4,13 +4,14 @@ package bai_tap_lam_them.controller;
 import bai_tap_lam_them.service.ITeacherService;
 import bai_tap_lam_them.service.impl.TeacherService;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class TeacherController {
     private static Scanner scanner = new Scanner(System.in);
     private ITeacherService teacherService = new TeacherService();
 
-    public void menuManagementTeacher() {
+    public void menuManagementTeacher() throws IOException {
         while (true) {
             System.out.println("---------------------------------------------");
             System.out.println("Chào mừng bạn đến với CODEGYM");

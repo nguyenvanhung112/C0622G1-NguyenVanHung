@@ -26,12 +26,6 @@ public class Teacher extends Person {
     }
     @Override
     public String toString() {
-        return "Teacher{" +
-                " ID = " + getId() +
-                " Name = " + getName() +
-                " Date of Birth = " + getDateOfBirth() +
-                " Sex = " + getSex() +
-                " qualification = " + qualification +
-                '}';
+        return String.format("%s,%s,%s,%s,%s", this.getId(), this.getName(), this.getDateOfBirth(),this.getSex(),qualification);
     }
 }

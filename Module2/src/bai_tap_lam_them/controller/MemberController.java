@@ -1,5 +1,6 @@
 package bai_tap_lam_them.controller;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MemberController {
@@ -7,7 +8,7 @@ public class MemberController {
     StudentController studentController = new StudentController();
     TeacherController teacherController = new TeacherController();
 
-    public void menuManagement() {
+    public void menuManagement() throws IOException {
         while (true) {
             System.out.println("1. Quản lí giảng viên");
             System.out.println("2. Quản lí sinh viên");
@@ -15,8 +16,10 @@ public class MemberController {
             int choice = Integer.parseInt(scanner.nextLine());
             if (choice == 1) {
                 teacherController.menuManagementTeacher();
+                break;
             } else if (choice == 2) {
                 studentController.menuManagementStudent();
+                break;
             }else {
                 System.out.println("Nhập lại chức năng");
             }

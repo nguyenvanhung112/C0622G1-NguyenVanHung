@@ -11,14 +11,7 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        return "Student{" +
-                " ID = " + getId() +
-                " Name =" + getName() +
-                " Date of Birth = " + getDateOfBirth() +
-                " Sex = " + getSex() +
-                " point = " + point +
-                " ,nameClass = '" + nameClass +
-                "} ";
+        return String.format("%s,%s,%s,%s,%s,%s", this.getId(), this.getName(), this.getDateOfBirth(),this.getSex(),nameClass,point);
     }
 
     public Student(double point, String nameClass) {

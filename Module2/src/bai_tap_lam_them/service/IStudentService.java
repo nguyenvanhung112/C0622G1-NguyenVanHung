@@ -1,13 +1,14 @@
 package bai_tap_lam_them.service;
 
+import java.io.IOException;
+
 public interface IStudentService {
 
-    void addStudent();
+    void addStudent() throws IOException;
 
-    void displayAllStudent();
+    void displayAllStudent() throws IOException;
 
-    void removeStudent();
+    void removeStudent() throws IOException;
 
-
-    void searchStudent();
+    void searchStudent() throws IOException;
 }

@@ -3,39 +3,38 @@ package bai_tap_lam_them.service.impl;
 
 import bai_tap_lam_them.model.Student;
 import bai_tap_lam_them.service.IStudentService;
+import bai_tap_lam_them.ulti.ReadFileUlti;
 import ulti_exception.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import static bai_tap_lam_them.ulti.WriteFileUlti.writeFile;
+
 public class StudentService implements IStudentService {
     private static Scanner scanner = new Scanner(System.in);
     private static List<Student> students = new ArrayList<>();
-
-    static {
-        students.add(new Student(1, "nguyen van hùng", "11/02/1996", "nam", "C06", 8));
-        students.add(new Student(2, "nguyen van danh", "23/04/2000", "nam", "C06", 9));
-    }
-
-
     @Override
-    public void addStudent() {
+    public void addStudent() throws IOException {
         Student student = this.infoStudent();
         students.add(student);
         System.out.println("Thêm mới học viên thành công");
+        writeStudentFile("src\\bai_tap_lam_them\\service\\data\\student.txt",students);
     }
 
     @Override
-    public void displayAllStudent() {
+    public void displayAllStudent() throws IOException {
         sort();
         for (Student item : students) {
             System.out.println(item);
         }
     }
 
-    private void sort() {
+    private void sort() throws IOException {
+        students = readStudentFile("src\\bai_tap_lam_them\\service\\data\\student.txt");
         boolean isSwap = true;
         Student temp;
         for (int i = 0; i < students.size() - 1 && isSwap; i++) {
@@ -50,10 +49,11 @@ public class StudentService implements IStudentService {
                 }
             }
         }
+        writeStudentFile("src\\bai_tap_lam_them\\service\\data\\student.txt",students);
     }
 
     @Override
-    public void removeStudent() {
+    public void removeStudent() throws IOException {
         Student student = this.findStudentID();
         if (student == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa");
@@ -67,9 +67,11 @@ public class StudentService implements IStudentService {
                 System.out.println("Xóa thành công");
             }
         }
+        writeStudentFile("src\\bai_tap_lam_them\\service\\data\\student.txt",students);
     }
 
-    private Student findStudentID() {
+    private Student findStudentID() throws IOException {
+        students = readStudentFile("src\\bai_tap_lam_them\\service\\data\\student.txt");
         System.out.print("Mời bạn nhập vào id: ");
         int id = Integer.parseInt(scanner.nextLine());
         for (Student student : students) {
@@ -80,7 +82,8 @@ public class StudentService implements IStudentService {
         return null;
     }
 
-    public void searchStudent() {
+    public void searchStudent() throws IOException {
+        students = readStudentFile("src\\bai_tap_lam_them\\service\\data\\student.txt");
         while (true) {
             System.out.println("1. Tìm theo ID");
             System.out.println("2. Tìm theo tên");
@@ -116,7 +119,8 @@ public class StudentService implements IStudentService {
         }
     }
 
-    private List<Student> findStudentName() {
+    private List<Student> findStudentName() throws IOException {
+        students = readStudentFile("src\\bai_tap_lam_them\\service\\data\\student.txt");
         List<Student> foundStudents = new LinkedList<>();
         System.out.println("Mời bạn nhập tên");
         String name = scanner.nextLine();
@@ -128,7 +132,8 @@ public class StudentService implements IStudentService {
         return foundStudents;
     }
 
-    private Student infoStudent() {
+    private Student infoStudent() throws IOException {
+        readStudentFile("src\\bai_tap_lam_them\\service\\data\\student.txt");
         int id;
         while (true) {
             try {
@@ -230,5 +235,23 @@ public class StudentService implements IStudentService {
             }
         }
         return new Student(id, name, dateOfBirth, sex, nameClass, point);
+    }
+    public static List<Student> readStudentFile(String path) throws IOException {
+        List<String> strings = ReadFileUlti.readFile(path);
+        List<Student> students = new ArrayList<>();
+        String[] info;
+        for (String line : strings) {
+            info = line.split(",");
+            students.add(new Student(Integer.parseInt(info[0]),info[1], info[2], info[3], info[4], Double.parseDouble(info[5])));
+        }
+        return students;
+    }
+    public static void writeStudentFile(String path, List<Student> students) throws IOException {
+        String data = "";
+        for (Student student : students) {
+            data += student.toString();
+            data += "\n";
+        }
+        writeFile(path, data);
     }
 }
