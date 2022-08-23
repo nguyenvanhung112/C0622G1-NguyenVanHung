@@ -8,12 +8,12 @@ import java.util.Scanner;
 public class FuramaController {
     static Scanner scanner = new Scanner(System.in);
     IFacilityService facilityService = new FacilityService();
-    IEmployeeService employeeService = new EmployeeService();
-    ICustomerService customerService = new CustomerService();
+
     IContactService contactService = new ContactService();
     IBookingService bookingService = new BookingService();
     IPromotionService promotionService = new PromotionService();
-
+    EmployeeController employeeController = new EmployeeController();
+    CustomerController customerController = new CustomerController();
     public void displayMainMenu() {
         while (true) {
             System.out.println("_____________________________________________________");
@@ -29,52 +29,10 @@ public class FuramaController {
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
-                    System.out.println("" +
-                            "1\tDisplay list employees\n" +
-                            "2\tAdd new employee\n" +
-                            "3\tEdit employee\n" +
-                            "4\tReturn main menu\n" +
-                            "\tEnter function\n");
-                    int choice1 = Integer.parseInt(scanner.nextLine());
-                    switch (choice1) {
-                        case 1:
-                            employeeService.displayListEmployees();
-                            break;
-                        case 2:
-                            employeeService.addNewEmployee();
-                            break;
-                        case 3:
-                            employeeService.editEmployee();
-                            break;
-                        case 4:
-                            break;
-                        default:
-                            System.out.println("Enter the correct function");
-                    }
+                    employeeController.employeeMenu();
                     break;
                 case 2:
-                    System.out.println("" +
-                            "1.\tDisplay list customers\n" +
-                            "2.\tAdd new customer\n" +
-                            "3.\tEdit customer\n" +
-                            "4.\tReturn main menu\n" +
-                            "\tEnter function\n");
-                    int choice2 = Integer.parseInt(scanner.nextLine());
-                    switch (choice2) {
-                        case 1:
-                            customerService.displayListCustomers();
-                            break;
-                        case 2:
-                            customerService.addNewCustomer();
-                            break;
-                        case 3:
-                            customerService.editCustomer();
-                            break;
-                        case 4:
-                            break;
-                        default:
-                            System.out.println("Enter the correct function");
-                    }
+                    customerController.customerMenu();
                     break;
                 case 3:
                     System.out.println("" +

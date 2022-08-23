@@ -2,6 +2,7 @@ package bai_tap_lam_them.service.impl;
 
 
 import bai_tap_lam_them.model.Student;
+import bai_tap_lam_them.model.Teacher;
 import bai_tap_lam_them.service.IStudentService;
 import bai_tap_lam_them.ulti.ReadFileUlti;
 import ulti_exception.*;
@@ -17,12 +18,15 @@ import static bai_tap_lam_them.ulti.WriteFileUlti.writeFile;
 public class StudentService implements IStudentService {
     private static Scanner scanner = new Scanner(System.in);
     private static List<Student> students = new ArrayList<>();
+    public final String PATH_NAME_FILE_STUDENT = "src\\bai_tap_lam_them\\service\\data\\student.txt";
+
     @Override
     public void addStudent() throws IOException {
         Student student = this.infoStudent();
         students.add(student);
         System.out.println("Thêm mới học viên thành công");
-        writeStudentFile("src\\bai_tap_lam_them\\service\\data\\student.txt",students);
+//        WriteFileUlti.writeFile(PATH_NAME_FILE_ALL, true, convertListStudentToListString(students));
+        writeStudentFile(PATH_NAME_FILE_STUDENT, students);
     }
 
     @Override
@@ -34,7 +38,7 @@ public class StudentService implements IStudentService {
     }
 
     private void sort() throws IOException {
-        students = readStudentFile("src\\bai_tap_lam_them\\service\\data\\student.txt");
+        students = readStudentFile(PATH_NAME_FILE_STUDENT);
         boolean isSwap = true;
         Student temp;
         for (int i = 0; i < students.size() - 1 && isSwap; i++) {
@@ -49,7 +53,8 @@ public class StudentService implements IStudentService {
                 }
             }
         }
-        writeStudentFile("src\\bai_tap_lam_them\\service\\data\\student.txt",students);
+        writeStudentFile(PATH_NAME_FILE_STUDENT, students);
+//        WriteFileUlti.writeFile(PATH_NAME_FILE_ALL, true, convertListStudentToListString(students));
     }
 
     @Override
@@ -67,11 +72,14 @@ public class StudentService implements IStudentService {
                 System.out.println("Xóa thành công");
             }
         }
-        writeStudentFile("src\\bai_tap_lam_them\\service\\data\\student.txt",students);
+        writeStudentFile(PATH_NAME_FILE_STUDENT, students);
+        System.out.println("Danh sách hiện tại:\n");
+        displayAllStudent();
+//        WriteFileUlti.writeFile(PATH_NAME_FILE_ALL, false, convertListStudentToListString(students));
     }
 
     private Student findStudentID() throws IOException {
-        students = readStudentFile("src\\bai_tap_lam_them\\service\\data\\student.txt");
+        students = readStudentFile(PATH_NAME_FILE_STUDENT);
         System.out.print("Mời bạn nhập vào id: ");
         int id = Integer.parseInt(scanner.nextLine());
         for (Student student : students) {
@@ -83,7 +91,7 @@ public class StudentService implements IStudentService {
     }
 
     public void searchStudent() throws IOException {
-        students = readStudentFile("src\\bai_tap_lam_them\\service\\data\\student.txt");
+        students = readStudentFile(PATH_NAME_FILE_STUDENT);
         while (true) {
             System.out.println("1. Tìm theo ID");
             System.out.println("2. Tìm theo tên");
@@ -120,7 +128,7 @@ public class StudentService implements IStudentService {
     }
 
     private List<Student> findStudentName() throws IOException {
-        students = readStudentFile("src\\bai_tap_lam_them\\service\\data\\student.txt");
+        students = readStudentFile(PATH_NAME_FILE_STUDENT);
         List<Student> foundStudents = new LinkedList<>();
         System.out.println("Mời bạn nhập tên");
         String name = scanner.nextLine();
@@ -133,27 +141,27 @@ public class StudentService implements IStudentService {
     }
 
     private Student infoStudent() throws IOException {
-        readStudentFile("src\\bai_tap_lam_them\\service\\data\\student.txt");
-        int id;
-        while (true) {
-            try {
-                System.out.print("Mời bạn nhập id: ");
-                id = Integer.parseInt(scanner.nextLine());
-                boolean isCheck = true;
-                for (Student student : students) {
-                    if (student.getId() == id) {
-                        System.out.println("ID bị trùng mời bạn nhập lại");
-                        isCheck = false;
-                        break;
-                    }
-                }
-                if (isCheck) break;
-            } catch (NumberFormatException e) {
-                System.out.println("ID không hợp lệ mời bạn nhập lại");
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }
+        students = readStudentFile(PATH_NAME_FILE_STUDENT);
+        int id = this.checkID();
+//        while (true) {
+//            try {
+//                System.out.print("Mời bạn nhập id: ");
+//                id = Integer.parseInt(scanner.nextLine());
+//                boolean isCheck = true;
+//                for (Student student : students) {
+//                    if (student.getId() == id) {
+//                        System.out.println("ID bị trùng mời bạn nhập lại");
+//                        isCheck = false;
+//                        break;
+//                    }
+//                }
+//                if (isCheck) break;
+//            } catch (NumberFormatException e) {
+//                System.out.println("ID không hợp lệ mời bạn nhập lại");
+//            } catch (Exception e) {
+//                System.out.println(e.getMessage());
+//            }
+//        }
         String name;
         while (true) {
             try {
@@ -236,13 +244,33 @@ public class StudentService implements IStudentService {
         }
         return new Student(id, name, dateOfBirth, sex, nameClass, point);
     }
+
+    private int checkID() throws IOException {
+        students = readStudentFile(PATH_NAME_FILE_STUDENT);
+        int nextID;
+        if (students.size() == 0) {
+            return 1;
+        } else {
+            nextID = students.get(0).getId();
+            for (Student student : students) {
+                if (nextID < student.getId()) {
+                    nextID = student.getId();
+                }
+            }
+        }
+        return nextID + 1;
+    }
+
     public static List<Student> readStudentFile(String path) throws IOException {
         List<String> strings = ReadFileUlti.readFile(path);
         List<Student> students = new ArrayList<>();
+
         String[] info;
         for (String line : strings) {
             info = line.split(",");
-            students.add(new Student(Integer.parseInt(info[0]),info[1], info[2], info[3], info[4], Double.parseDouble(info[5])));
+            if (info.length == 6) {
+                students.add(new Student(Integer.parseInt(info[0]), info[1], info[2], info[3], info[4], Double.parseDouble(info[5])));
+            }
         }
         return students;
     }

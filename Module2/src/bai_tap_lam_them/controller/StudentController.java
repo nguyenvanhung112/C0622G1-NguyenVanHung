@@ -40,7 +40,6 @@ public class StudentController {
                 default:
                     System.out.println("Lựa chọn bạn nhập không đúng!");
             }
-
         }
     }
 }
