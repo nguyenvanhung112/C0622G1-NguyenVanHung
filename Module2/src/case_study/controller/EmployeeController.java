@@ -3,13 +3,13 @@ package case_study.controller;
 import case_study.service.IEmployeeService;
 import case_study.service.impl.EmployeeService;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class EmployeeController {
     Scanner scanner = new Scanner(System.in);
     IEmployeeService employeeService = new EmployeeService();
-
-    public void employeeMenu() {
+    public void employeeMenu() throws IOException {
         while (true) {
             System.out.println("" +
                     "1\tDisplay list employees\n" +

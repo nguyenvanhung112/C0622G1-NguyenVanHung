@@ -47,15 +47,17 @@ public class FacilityVilla extends Facility {
 
     @Override
     public String toString() {
-        return "ServiceVilla{" +
-                "serviceName='" + getServiceName() + '\'' +
-                ", usingArea='" + getUsingArea() + '\'' +
-                ", price=" + getPrice() +
-                ", maximumPeople=" + getMaximumPeople() +
-                ", rentalType='" + getRentalType() + '\'' +
-                "roomStandard='" + roomStandard + '\'' +
-                ", poolArea=" + poolArea +
-                ", numberFloors=" + numberFloors +
-                '}';
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s",this.getServiceName(),this.getUsingArea(),
+                this.getPrice(),this.getMaximumPeople(),this.getRentalType(),this.getRoomStandard(),this.getPoolArea(),this.getNumberFloors());
+//        return "ServiceVilla{" +
+//                "serviceName='" + getServiceName() + '\'' +
+//                ", usingArea='" + getUsingArea() + '\'' +
+//                ", price=" + getPrice() +
+//                ", maximumPeople=" + getMaximumPeople() +
+//                ", rentalType='" + getRentalType() + '\'' +
+//                "roomStandard='" + roomStandard + '\'' +
+//                ", poolArea=" + poolArea +
+//                ", numberFloors=" + numberFloors +
+//                '}';
     }
 }

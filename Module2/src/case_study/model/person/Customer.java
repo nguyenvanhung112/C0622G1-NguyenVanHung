@@ -1,6 +1,6 @@
 package case_study.model.person;
 
-public class Customer extends Person{
+public class Customer extends Person {
     private String customerCode;
     private String typeCustomer;
     private String address;
@@ -47,16 +47,18 @@ public class Customer extends Person{
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "name='" + getName() + '\'' +
-                ", dateOfBirth='" + getDateOfBirth() + '\'' +
-                ", gender='" + getGender() + '\'' +
-                ", idCard='" + getIdCard() + '\'' +
-                ", phone='" + getPhone() + '\'' +
-                ", email='" + getEmail() + '\'' +
-                "customerCode='" + customerCode + '\'' +
-                ", typeCustomer='" + typeCustomer + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s", this.getName(), this.getDateOfBirth(), this.getGender(), this.getIdCard(),
+                this.getPhone(), this.getEmail(), this.getCustomerCode(), this.getTypeCustomer(), this.getAddress());
+//        "Customer{" +
+//                "name='" + getName() + '\'' +
+//                ", dateOfBirth='" + getDateOfBirth() + '\'' +
+//                ", gender='" + getGender() + '\'' +
+//                ", idCard='" + getIdCard() + '\'' +
+//                ", phone='" + getPhone() + '\'' +
+//                ", email='" + getEmail() + '\'' +
+//                "customerCode='" + customerCode + '\'' +
+//                ", typeCustomer='" + typeCustomer + '\'' +
+//                ", address='" + address + '\'' +
+//                '}';
     }
 }

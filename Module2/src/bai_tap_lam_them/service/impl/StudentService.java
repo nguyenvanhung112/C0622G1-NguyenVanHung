@@ -142,7 +142,7 @@ public class StudentService implements IStudentService {
 
     private Student infoStudent() throws IOException {
         students = readStudentFile(PATH_NAME_FILE_STUDENT);
-        int id = this.checkID();
+        int id = this.getNewID();
 //        while (true) {
 //            try {
 //                System.out.print("Mời bạn nhập id: ");
@@ -245,7 +245,7 @@ public class StudentService implements IStudentService {
         return new Student(id, name, dateOfBirth, sex, nameClass, point);
     }
 
-    private int checkID() throws IOException {
+    private int getNewID() throws IOException {
         students = readStudentFile(PATH_NAME_FILE_STUDENT);
         int nextID;
         if (students.size() == 0) {

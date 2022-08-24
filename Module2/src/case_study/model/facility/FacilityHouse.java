@@ -36,14 +36,16 @@ public class FacilityHouse extends Facility {
 
     @Override
     public String toString() {
-        return "ServiceHouse{" +
-                "serviceName='" + getServiceName() + '\'' +
-                ", usingArea='" + getUsingArea() + '\'' +
-                ", price=" + getPrice() +
-                ", maximumPeople=" + getMaximumPeople() +
-                ", rentalType='" + getRentalType() + '\'' +
-                "roomStandard='" + roomStandard + '\'' +
-                ", numberFloors=" + numberFloors +
-                '}';
+        return String.format("%s,%s,%s,%s,%s,%s,%s",this.getServiceName(),this.getUsingArea(),this.getPrice(),
+                this.getMaximumPeople(),this.getRentalType(),this.getRoomStandard(),this.getNumberFloors());
+//                "ServiceHouse{" +
+//                "serviceName='" + getServiceName() + '\'' +
+//                ", usingArea='" + getUsingArea() + '\'' +
+//                ", price=" + getPrice() +
+//                ", maximumPeople=" + getMaximumPeople() +
+//                ", rentalType='" + getRentalType() + '\'' +
+//                "roomStandard='" + roomStandard + '\'' +
+//                ", numberFloors=" + numberFloors +
+//                '}';
     }
 }

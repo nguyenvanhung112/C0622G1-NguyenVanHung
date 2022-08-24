@@ -1,6 +1,7 @@
 package case_study.model.person;
 
 public abstract class Person {
+
     private String name;
     private String dateOfBirth;
     private String gender;

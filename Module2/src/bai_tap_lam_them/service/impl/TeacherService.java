@@ -143,7 +143,7 @@ public class TeacherService implements ITeacherService {
 
     private Teacher infoTeacher() throws IOException {
         teachers = readTeacherFile(PATH_NAME_FILE_TEACHER);
-        int id = this.checkID();
+        int id = this.getNewID();
 //        while (true) {
 //            try {
 //                System.out.print("Mời bạn nhập id: ");
@@ -231,7 +231,7 @@ public class TeacherService implements ITeacherService {
         return new Teacher(id, name, dateOfBirth, sex, qualification);
     }
 
-    private int checkID() throws IOException {
+    private int getNewID() throws IOException {
         teachers = readTeacherFile(PATH_NAME_FILE_TEACHER);
         int nextID;
         if (teachers.size() == 0) {

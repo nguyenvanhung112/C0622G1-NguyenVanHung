@@ -25,13 +25,14 @@ public class FacilityHome extends Facility {
 
     @Override
     public String toString() {
-        return "ServiceHome{" +
-                "serviceName='" + getServiceName() + '\'' +
-                ", usingArea='" + getUsingArea() + '\'' +
-                ", price=" + getPrice() +
-                ", maximumPeople=" + getMaximumPeople() +
-                ", rentalType='" + getRentalType() + '\'' +
-                "freeService='" + freeService + '\'' +
-                '}';
+        return String.format("%s,%s,%s,%s,%s,%s",this.getServiceName(),this.getUsingArea(),this.getPrice(),this.getMaximumPeople(),this.getRentalType(),this.getFreeService());
+//                "ServiceHome{" +
+//                "serviceName='" + getServiceName() + '\'' +
+//                ", usingArea='" + getUsingArea() + '\'' +
+//                ", price=" + getPrice() +
+//                ", maximumPeople=" + getMaximumPeople() +
+//                ", rentalType='" + getRentalType() + '\'' +
+//                "freeService='" + freeService + '\'' +
+//                '}';
     }
 }
