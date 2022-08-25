@@ -6,11 +6,14 @@ import bai_tap_lam_them.service.ITeacherService;
 import bai_tap_lam_them.ulti.ReadFileUlti;
 import ulti_exception.DateOfBirthException;
 import ulti_exception.GenderException;
+import ulti_exception.NameFormatException;
 import ulti_exception.QualificationException;
-import ulti_exception.StringFormatException;
+
 
 import java.io.IOException;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static bai_tap_lam_them.ulti.WriteFileUlti.writeFile;
 
@@ -168,18 +171,28 @@ public class TeacherService implements ITeacherService {
         while (true) {
             try {
                 System.out.print("Mời bạn nhập tên: ");
-                name = (scanner.nextLine());
+                name = scanner.nextLine();
                 String str;
                 for (int i = 0; i < name.length(); i++) {
                     str = "";
                     if ((str + name.charAt(i)).matches("\\d+")) {
-                        throw new StringFormatException("Tên bạn không hợp lệ vui lòng nhập lại");
+                        throw new NameFormatException("Tên bạn không hợp lệ vui lòng nhập lại");
                     }
                 }
-
+                String[] name1 = name.split("");
+                for (int i = 0; i < name1.length; i++) {
+                    if ((name1[i].equals(" ")) && (name1[i + 1].equals(" "))) {
+                        throw new NameFormatException("Tên bạn không hợp lệ vui lòng nhập lại");
+                    }
+                }
+                if (!checkName(name)) {
+                    throw new NameFormatException("Tên bạn không hợp lệ vui lòng nhập lại");
+                }
                 break;
-            } catch (Exception e) {
+            } catch (NameFormatException e) {
                 System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Trường hợp ngoại lệ");
             }
         }
         String dateOfBirth;
@@ -229,6 +242,12 @@ public class TeacherService implements ITeacherService {
             }
         }
         return new Teacher(id, name, dateOfBirth, sex, qualification);
+    }
+
+    public boolean checkName(String regex) {
+        Pattern pattern = Pattern.compile("[A-Z a-zvxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđ]{5,50}");
+        Matcher matcher = pattern.matcher(regex);
+        return matcher.matches();
     }
 
     private int getNewID() throws IOException {

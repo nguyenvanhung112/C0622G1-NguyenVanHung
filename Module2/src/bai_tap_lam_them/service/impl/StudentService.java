@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static bai_tap_lam_them.ulti.WriteFileUlti.writeFile;
 
@@ -163,6 +165,7 @@ public class StudentService implements IStudentService {
 //            }
 //        }
         String name;
+
         while (true) {
             try {
                 System.out.print("Mời bạn nhập tên: ");
@@ -171,11 +174,20 @@ public class StudentService implements IStudentService {
                 for (int i = 0; i < name.length(); i++) {
                     str = "";
                     if ((str + name.charAt(i)).matches("\\d+")) {
-                        throw new StringFormatException("Tên bạn không hợp lệ vui lòng nhập lại");
+                        throw new NameFormatException("Tên bạn không hợp lệ vui lòng nhập lại");
                     }
                 }
+                String[] name1 = name.split("");
+                for (int i = 0; i < name1.length; i++) {
+                    if ((name1[i].equals(" ")) && (name1[i + 1].equals(" "))) {
+                        throw new NameFormatException("Tên bạn không hợp lệ vui lòng nhập lại");
+                    }
+                }
+                if (!checkName(name)) {
+                    throw new NameFormatException("Tên bạn không hợp lệ vui lòng nhập lại");
+                }
                 break;
-            } catch (StringFormatException e) {
+            } catch (NameFormatException e) {
                 System.out.println(e.getMessage());
             } catch (Exception e) {
                 System.out.println("Trường hợp ngoại lệ");
@@ -232,17 +244,30 @@ public class StudentService implements IStudentService {
             try {
                 System.out.print("Mời bạn nhập tên lớp: ");
                 nameClass = scanner.nextLine();
-                if (!nameClass.matches("\\D+\\d+\\d+\\d+\\d+\\D+\\d")) {
+                if (!checkClassName(nameClass)) {
                     throw new NameClassException("Tên lớp không hợp lệ");
                 }
+//                if (!nameClass.matches("\\D+\\d+\\d+\\d+\\d+\\D+\\d")) {
+//                    throw new NameClassException("Tên lớp không hợp lệ");
+//                }
                 break;
-            } catch (NameClassException e) {
-                System.out.println(e.getMessage());
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
         return new Student(id, name, dateOfBirth, sex, nameClass, point);
+    }
+
+    public boolean checkClassName(String regex) {
+        Pattern pattern = Pattern.compile("[AC][0-9]{4}[GI][1]");
+        Matcher matcher = pattern.matcher(regex);
+        return matcher.matches();
+    }
+
+    public boolean checkName(String regex) {
+        Pattern pattern = Pattern.compile("[A-Z a-zvxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđ]{5,50}");
+        Matcher matcher = pattern.matcher(regex);
+        return matcher.matches();
     }
 
     private int getNewID() throws IOException {
@@ -274,6 +299,7 @@ public class StudentService implements IStudentService {
         }
         return students;
     }
+
     public static void writeStudentFile(String path, List<Student> students) throws IOException {
         String data = "";
         for (Student student : students) {

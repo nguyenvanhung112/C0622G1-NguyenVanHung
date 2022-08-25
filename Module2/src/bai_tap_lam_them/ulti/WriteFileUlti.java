@@ -29,5 +29,22 @@ public class WriteFileUlti {
         bufferedWriter.write(data);
         bufferedWriter.close();
     }
+//    public static <E> String writeFileLine(String path, List<E> persons) throws IOException{
+//        String data="";
+//        for(E person:persons){
+//            data+=person.toString();
+//            data+="\n";
+//        }
+//        return data;
+//    }
+//public static void writeStudentFile(String path, List<Student> students) throws IOException {
+//    String data = "";
+//    for (Student student : students) {
+//        data += student.toString();
+//        data += "\n";
+//    }
+//    data+= WriteFileUtil.writeFileLine(PATH_NAME_FILE_STUDENT,TeacherService.readTeacherFile(PATH_NAME_FILE_STUDENT));
+//    WriteFileUtil.writeFile(path, data);
+//}
 }
 

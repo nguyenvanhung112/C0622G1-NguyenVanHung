@@ -31,9 +31,9 @@ public class CustomerService implements ICustomerService {
         System.out.println("Input gender");
         String gender = scanner.nextLine();
         System.out.println("Input ID card");
-        String idCard = scanner.nextLine();
+        int idCard = Integer.parseInt(scanner.nextLine());
         System.out.println("Input phone");
-        String phone = scanner.nextLine();
+        int phone = Integer.parseInt(scanner.nextLine());
         System.out.println("Input Email");
         String email = scanner.nextLine();
         System.out.println("Input Customer Code");

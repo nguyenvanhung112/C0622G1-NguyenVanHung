@@ -15,7 +15,7 @@ public class Employee extends Person {
         this.wage = wage;
     }
 
-    public Employee(String name, String dateOfBirth, String gender, String idCard, String phone, String email, String employeeCode, String level,String locus, double wage) {
+    public Employee(String name, String dateOfBirth, String gender, int idCard, int phone, String email, String employeeCode, String level, String locus, double wage) {
         super(name, dateOfBirth, gender, idCard, phone, email);
         this.locus = locus;
         this.employeeCode = employeeCode;
@@ -59,16 +59,5 @@ public class Employee extends Person {
     public String toString() {
         return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",this.getName(),this.getDateOfBirth(),this.getGender(),this.getIdCard(),
                 this.getPhone(),this.getEmail(),this.getEmployeeCode(),this.getLevel(),this.getLocus(),this.getWage());
-//                "Employee{" +
-//                "name='" + getName() + '\'' +
-//                ", dateOfBirth='" + getDateOfBirth() + '\'' +
-//                ", gender='" + getGender() + '\'' +
-//                ", idCard='" + getIdCard() + '\'' +
-//                ", phone='" + getPhone() + '\'' +
-//                ", email='" + getEmail() + '\'' +
-//                "employeeCode='" + employeeCode + '\'' +
-//                ", level='" + level + '\'' +
-//                ", wage=" + wage +
-//                '}';
     }
 }

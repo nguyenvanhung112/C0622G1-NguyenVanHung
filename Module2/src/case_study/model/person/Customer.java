@@ -14,7 +14,7 @@ public class Customer extends Person {
         this.address = address;
     }
 
-    public Customer(String name, String dateOfBirth, String gender, String idCard, String phone, String email, String customerCode, String typeCustomer, String address) {
+    public Customer(String name, String dateOfBirth, String gender, int idCard, int phone, String email, String customerCode, String typeCustomer, String address) {
         super(name, dateOfBirth, gender, idCard, phone, email);
         this.customerCode = customerCode;
         this.typeCustomer = typeCustomer;
@@ -49,16 +49,5 @@ public class Customer extends Person {
     public String toString() {
         return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s", this.getName(), this.getDateOfBirth(), this.getGender(), this.getIdCard(),
                 this.getPhone(), this.getEmail(), this.getCustomerCode(), this.getTypeCustomer(), this.getAddress());
-//        "Customer{" +
-//                "name='" + getName() + '\'' +
-//                ", dateOfBirth='" + getDateOfBirth() + '\'' +
-//                ", gender='" + getGender() + '\'' +
-//                ", idCard='" + getIdCard() + '\'' +
-//                ", phone='" + getPhone() + '\'' +
-//                ", email='" + getEmail() + '\'' +
-//                "customerCode='" + customerCode + '\'' +
-//                ", typeCustomer='" + typeCustomer + '\'' +
-//                ", address='" + address + '\'' +
-//                '}';
     }
 }
