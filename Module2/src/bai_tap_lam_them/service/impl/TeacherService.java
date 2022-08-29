@@ -245,7 +245,7 @@ public class TeacherService implements ITeacherService {
     }
 
     public boolean checkName(String regex) {
-        Pattern pattern = Pattern.compile("[A-Z a-zvxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđ]{5,50}");
+        Pattern pattern = Pattern.compile("[A-Z a-zvVXxYyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđĐ]{5,50}");
         Matcher matcher = pattern.matcher(regex);
         return matcher.matches();
     }

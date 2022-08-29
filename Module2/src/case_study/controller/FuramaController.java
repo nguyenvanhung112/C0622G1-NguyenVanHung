@@ -13,6 +13,7 @@ public class FuramaController {
     PromotionController promotionController = new PromotionController();
     BookingController bookingController = new BookingController();
     FacilityController facilityController = new FacilityController();
+
     public void displayMainMenu() throws IOException {
         while (true) {
             System.out.println("_____________________________________________________");
@@ -25,7 +26,7 @@ public class FuramaController {
                     "5.\tPromotion Management\n" +
                     "6.\tExit\n" +
                     "\tEnter function\n");
-            int choice = Integer.parseInt(scanner.nextLine());
+            int choice = Integer.parseInt(inputValidChoice());
             switch (choice) {
                 case 1:
                     employeeController.employeeMenu();
@@ -37,15 +38,27 @@ public class FuramaController {
                     facilityController.facilityMenu();
                     break;
                 case 4:
-                   bookingController.bookingMenu();
+                    bookingController.bookingMenu();
                     break;
                 case 5:
                     promotionController.promotionMenu();
                     break;
                 case 6:
+                    System.out.println("Thank you!!!!");
                     return;
                 default:
                     System.out.println("Enter the correct function");
+            }
+        }
+    }
+
+    public static String inputValidChoice() {
+        while (true) {
+            String choiceString = scanner.nextLine();
+            if (choiceString.matches("[1-6]")) {
+                return choiceString;
+            } else {
+                System.out.print("You entered invalid! Again: ");
             }
         }
     }

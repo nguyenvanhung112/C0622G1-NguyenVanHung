@@ -7,8 +7,9 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class EmployeeController {
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     IEmployeeService employeeService = new EmployeeService();
+
     public void employeeMenu() throws IOException {
         while (true) {
             System.out.println("" +
@@ -17,7 +18,7 @@ public class EmployeeController {
                     "3\tEdit employee\n" +
                     "4\tReturn main menu\n" +
                     "\tEnter function\n");
-            int choice1 = Integer.parseInt(scanner.nextLine());
+            int choice1 = Integer.parseInt(inputValidChoice());
             switch (choice1) {
                 case 1:
                     employeeService.displayListEmployees();
@@ -33,7 +34,17 @@ public class EmployeeController {
                 default:
                     System.out.println("Enter the correct function");
             }
-            break;
+        }
+    }
+
+    public static String inputValidChoice() {
+        while (true) {
+            String choiceString = scanner.nextLine();
+            if (choiceString.matches("[1-4]")) {
+                return choiceString;
+            } else {
+                System.out.print("You entered invalid! Again: ");
+            }
         }
     }
 }

@@ -1,9 +1,11 @@
 package case_study.service;
 
+import java.io.IOException;
+
 public interface IFacilityService {
-    void displayListFacilitys();
+    void displayListFacilitys() throws IOException;
 
-    void addNewFacility();
+    void addNewFacility() throws IOException;
 
-    void editFacility();
+    void displayListFacilitysMaintenance() throws IOException;
 }

@@ -1,31 +1,31 @@
 package case_study.model;
 
 public class Booking {
-    String codeBooking;
+    int bookingID;
     String startDay;
     String endDay;
-    String customerCode;
-    String nameService;
-    String typeService;
+    String customerID;
+    String serviceName;
+    String serviceType;
 
     public Booking() {
     }
 
-    public Booking(String codeBooking, String startDay, String endDay, String customerCode, String nameService, String typeService) {
-        this.codeBooking = codeBooking;
+    public Booking(int bookingID, String startDay, String endDay, String customerID, String serviceName, String serviceType) {
+        this.bookingID = bookingID;
         this.startDay = startDay;
         this.endDay = endDay;
-        this.customerCode = customerCode;
-        this.nameService = nameService;
-        this.typeService = typeService;
+        this.customerID = customerID;
+        this.serviceName = serviceName;
+        this.serviceType = serviceType;
     }
 
-    public String getCodeBooking() {
-        return codeBooking;
+    public int getBookingID() {
+        return bookingID;
     }
 
-    public void setCodeBooking(String codeBooking) {
-        this.codeBooking = codeBooking;
+    public void setBookingID(int bookingID) {
+        this.bookingID = bookingID;
     }
 
     public String getStartDay() {
@@ -44,41 +44,41 @@ public class Booking {
         this.endDay = endDay;
     }
 
-    public String getCustomerCode() {
-        return customerCode;
+    public String getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomerCode(String customerCode) {
-        this.customerCode = customerCode;
+    public void setCustomerID(String customerID) {
+        this.customerID = customerID;
     }
 
-    public String getNameService() {
-        return nameService;
+    public String getServiceName() {
+        return serviceName;
     }
 
-    public void setNameService(String nameService) {
-        this.nameService = nameService;
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
 
-    public String getTypeService() {
-        return typeService;
+    public String getServiceType() {
+        return serviceType;
     }
 
-    public void setTypeService(String typeService) {
-        this.typeService = typeService;
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
     }
 
     @Override
     public String toString() {
-        return String.format("%s,%s,%s,%s,%s,%s", this.getCodeBooking(), this.getStartDay(), this.getEndDay(),
-                this.getCustomerCode(), this.getNameService(), this.getTypeService());
+        return String.format("%s,%s,%s,%s,%s,%s", this.getBookingID(), this.getStartDay(), this.getEndDay(),
+                this.getCustomerID(), this.getServiceName(), this.getServiceType());
 //                "Booking{" +
 //                "codeBooking='" + codeBooking + '\'' +
 //                ", startDay='" + startDay + '\'' +
 //                ", endDay='" + endDay + '\'' +
 //                ", customerCode='" + customerCode + '\'' +
 //                ", nameService='" + nameService + '\'' +
-//                ", typeService='" + typeService + '\'' +
+//                ", serviceType='" + serviceType + '\'' +
 //                '}';
     }
 }

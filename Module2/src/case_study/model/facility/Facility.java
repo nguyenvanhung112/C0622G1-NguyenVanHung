@@ -1,8 +1,11 @@
 package case_study.model.facility;
 
+import java.util.Objects;
+
 public abstract class Facility {
+    private String serviceID;
     private String serviceName;
-    private String usingArea;
+    private double usingArea;
     private double price;
     private int maximumPeople;
     private String rentalType;
@@ -10,7 +13,8 @@ public abstract class Facility {
     public Facility() {
     }
 
-    public Facility(String serviceName, String usingArea, double price, int maximumPeople, String rentalType) {
+    public Facility(String serviceID, String serviceName, double usingArea, double price, int maximumPeople, String rentalType) {
+        this.serviceID = serviceID;
         this.serviceName = serviceName;
         this.usingArea = usingArea;
         this.price = price;
@@ -26,11 +30,11 @@ public abstract class Facility {
         this.serviceName = serviceName;
     }
 
-    public String getUsingArea() {
+    public double getUsingArea() {
         return usingArea;
     }
 
-    public void setUsingArea(String usingArea) {
+    public void setUsingArea(double usingArea) {
         this.usingArea = usingArea;
     }
 
@@ -58,14 +62,29 @@ public abstract class Facility {
         this.rentalType = rentalType;
     }
 
+    public String getServiceID() {
+        return serviceID;
+    }
+
+    public void setServiceID(String serviceID) {
+        this.serviceID = serviceID;
+    }
+
     @Override
     public String toString() {
-        return "Service{" +
-                "serviceName='" + serviceName + '\'' +
-                ", usingArea='" + usingArea + '\'' +
-                ", price=" + price +
-                ", maximumPeople=" + maximumPeople +
-                ", rentalType='" + rentalType + '\'' +
-                '}';
+        return String.format("%s,%s,%s,%s,%s,%s", this.getServiceID(), this.getServiceName(), this.getUsingArea(), this.getPrice(),
+                this.getMaximumPeople(), this.getRentalType());
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Facility facility = (Facility) o;
+        return Objects.equals(serviceID, facility.serviceID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(serviceID);
     }
 }

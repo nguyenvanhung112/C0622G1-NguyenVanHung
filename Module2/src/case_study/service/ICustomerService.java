@@ -1,11 +1,13 @@
 package case_study.service;
 
+import java.io.IOException;
+
 public interface ICustomerService {
-    void displayListCustomers();
+    void displayListCustomers() throws IOException;
 
-    void addNewCustomer();
+    void addNewCustomer() throws IOException;
 
-    void editCustomer();
+    void editCustomer() throws IOException;
 
 
 }

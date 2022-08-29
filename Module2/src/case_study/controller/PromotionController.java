@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class PromotionController {
     IPromotionService promotionService = new PromotionService();
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
     public void promotionMenu() {
         while (true) {
@@ -15,20 +15,34 @@ public class PromotionController {
                     "1.\tDisplay list customers use service\n" +
                     "2.\tDisplay list customers get voucher\n" +
                     "3.\tReturn main menu\n");
-            int choice5 = Integer.parseInt(scanner.nextLine());
+            int choice5 = Integer.parseInt(inputValidChoice());
+            boolean check = true;
             switch (choice5) {
                 case 1:
                     promotionService.displayListCustomersUseService();
+                    check = true;
                     break;
                 case 2:
                     promotionService.dislayListCustomersGetVoucher();
+                    check = true;
                     break;
                 case 3:
-                    break;
+                    return;
                 default:
                     System.out.println("Enter the correct function");
             }
-            break;
+            if (!check) break;
+        }
+    }
+
+    public static String inputValidChoice() {
+        while (true) {
+            String choiceString = scanner.nextLine();
+            if (choiceString.matches("[1-3]")) {
+                return choiceString;
+            } else {
+                System.out.print("You entered invalid! Again: ");
+            }
         }
     }
 }

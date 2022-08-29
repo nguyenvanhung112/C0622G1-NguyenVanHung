@@ -2,7 +2,7 @@ package case_study.model.facility;
 
 public class FacilityVilla extends Facility {
     private String roomStandard;
-    private float poolArea;
+    private double poolArea;
     private int numberFloors;
 
     public FacilityVilla() {
@@ -14,8 +14,8 @@ public class FacilityVilla extends Facility {
         this.numberFloors = numberFloors;
     }
 
-    public FacilityVilla(String serviceName, String usingArea, double price, int maximumPeople, String rentalType, String roomStandard, float poolArea, int numberFloors) {
-        super(serviceName, usingArea, price, maximumPeople, rentalType);
+    public FacilityVilla(String serviceID, String serviceName, double usingArea, double price, int maximumPeople, String rentalType, String roomStandard, double poolArea, int numberFloors) {
+        super(serviceID, serviceName, usingArea, price, maximumPeople, rentalType);
         this.roomStandard = roomStandard;
         this.poolArea = poolArea;
         this.numberFloors = numberFloors;
@@ -29,7 +29,7 @@ public class FacilityVilla extends Facility {
         this.roomStandard = roomStandard;
     }
 
-    public float getPoolArea() {
+    public double getPoolArea() {
         return poolArea;
     }
 
@@ -47,17 +47,7 @@ public class FacilityVilla extends Facility {
 
     @Override
     public String toString() {
-        return String.format("%s,%s,%s,%s,%s,%s,%s,%s",this.getServiceName(),this.getUsingArea(),
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s",this.getServiceID(),this.getServiceName(),this.getUsingArea(),
                 this.getPrice(),this.getMaximumPeople(),this.getRentalType(),this.getRoomStandard(),this.getPoolArea(),this.getNumberFloors());
-//        return "ServiceVilla{" +
-//                "serviceName='" + getServiceName() + '\'' +
-//                ", usingArea='" + getUsingArea() + '\'' +
-//                ", price=" + getPrice() +
-//                ", maximumPeople=" + getMaximumPeople() +
-//                ", rentalType='" + getRentalType() + '\'' +
-//                "roomStandard='" + roomStandard + '\'' +
-//                ", poolArea=" + poolArea +
-//                ", numberFloors=" + numberFloors +
-//                '}';
     }
 }

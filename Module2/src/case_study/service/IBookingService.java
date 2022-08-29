@@ -1,8 +1,10 @@
 package case_study.service;
 
-public interface IBookingService {
-    void addNewBooking();
+import java.io.IOException;
 
-    void dislayListBooking();
+public interface IBookingService {
+    void addNewBooking() throws IOException;
+
+    void displayListBooking();
 
 }

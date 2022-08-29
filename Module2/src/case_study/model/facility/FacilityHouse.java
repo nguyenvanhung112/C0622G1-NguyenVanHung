@@ -12,8 +12,8 @@ public class FacilityHouse extends Facility {
         this.numberFloors = numberFloors;
     }
 
-    public FacilityHouse(String serviceName, String usingArea, double price, int maximumPeople, String rentalType, String roomStandard, int numberFloors) {
-        super(serviceName, usingArea, price, maximumPeople, rentalType);
+    public FacilityHouse(String serviceID, String serviceName, double usingArea, double price, int maximumPeople, String rentalType, String roomStandard, int numberFloors) {
+        super(serviceID, serviceName, usingArea, price, maximumPeople, rentalType);
         this.roomStandard = roomStandard;
         this.numberFloors = numberFloors;
     }
@@ -36,16 +36,7 @@ public class FacilityHouse extends Facility {
 
     @Override
     public String toString() {
-        return String.format("%s,%s,%s,%s,%s,%s,%s",this.getServiceName(),this.getUsingArea(),this.getPrice(),
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s",this.getServiceID(),this.getServiceName(),this.getUsingArea(),this.getPrice(),
                 this.getMaximumPeople(),this.getRentalType(),this.getRoomStandard(),this.getNumberFloors());
-//                "ServiceHouse{" +
-//                "serviceName='" + getServiceName() + '\'' +
-//                ", usingArea='" + getUsingArea() + '\'' +
-//                ", price=" + getPrice() +
-//                ", maximumPeople=" + getMaximumPeople() +
-//                ", rentalType='" + getRentalType() + '\'' +
-//                "roomStandard='" + roomStandard + '\'' +
-//                ", numberFloors=" + numberFloors +
-//                '}';
     }
 }

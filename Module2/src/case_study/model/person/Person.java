@@ -5,15 +5,15 @@ public abstract class Person {
     private String name;
     private String dateOfBirth;
     private String gender;
-    private int idCard;
-    private int phone;
+    private String idCard;
+    private String phone;
     private String email;
 
     public Person() {
     }
 
     public Person(String name, String dateOfBirth, String gender,
-                  int idCard, int phone, String email) {
+                  String idCard, String phone, String email) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
@@ -46,19 +46,19 @@ public abstract class Person {
         this.gender = gender;
     }
 
-    public int getIdCard() {
+    public String getIdCard() {
         return idCard;
     }
 
-    public void setIdCard(int idCard) {
+    public void setIdCard(String idCard) {
         this.idCard = idCard;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
