@@ -1,9 +1,12 @@
 package case_study.service;
 
+import java.io.IOException;
+import java.text.ParseException;
+
 public interface IContactService {
-    void creatNewContracts();
+    void creatNewContracts() throws IOException, ParseException;
 
-    void displayListContracts();
+    void displayListContracts() throws IOException, ParseException;
 
-    void editContracts();
+    void editContracts() throws IOException, ParseException;
 }

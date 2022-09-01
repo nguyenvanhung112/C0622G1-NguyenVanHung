@@ -16,36 +16,35 @@ public class FacilityController {
                     "1\tDisplay list facility\n" +
                     "2\tAdd new facility\n" +
                     "3\tDisplay list facility maintenance\n" +
-                    "4\tReturn main menu\n" +
+                    "4\tFacility maintenance\n" +
+                    "5\tReturn main menu\n" +
                     "\tEnter function\n");
             int choice3 = Integer.parseInt(inputValidChoice());
-            boolean check = true;
             switch (choice3) {
                 case 1:
                     facilityService.displayListFacilitys();
-                    check = true;
                     break;
                 case 2:
                     facilityService.addNewFacility();
-                    check = true;
                     break;
                 case 3:
                     facilityService.displayListFacilitysMaintenance();
-                    check = true;
                     break;
                 case 4:
+                    facilityService.facilityMaintenance();
+                    break;
+                case 5:
                     return;
                 default:
                     System.out.println("Enter the correct function");
             }
-            if (!check) break;
         }
     }
 
-    public static String inputValidChoice() {
+    private static String inputValidChoice() {
         while (true) {
             String choiceString = scanner.nextLine();
-            if (choiceString.matches("[1-4]")) {
+            if (choiceString.matches("[1-5]")) {
                 return choiceString;
             } else {
                 System.out.print("You entered invalid! Again: ");

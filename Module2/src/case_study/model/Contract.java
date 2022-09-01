@@ -1,7 +1,7 @@
 package case_study.model;
 
 public class Contract {
-    String contractNumber;
+    String contractID;
     String bookingCode;
     double moneyFirst;
     double totalMoney;
@@ -10,20 +10,20 @@ public class Contract {
     public Contract() {
     }
 
-    public Contract(String contractNumber, String bookingCode, double moneyFirst, double totalMoney, String customerCode) {
-        this.contractNumber = contractNumber;
+    public Contract(String contractID, String bookingCode, double moneyFirst, double totalMoney, String customerCode) {
+        this.contractID = contractID;
         this.bookingCode = bookingCode;
         this.moneyFirst = moneyFirst;
         this.totalMoney = totalMoney;
         this.customerCode = customerCode;
     }
 
-    public String getContractNumber() {
-        return contractNumber;
+    public String getContractID() {
+        return contractID;
     }
 
-    public void setContractNumber(String contractNumber) {
-        this.contractNumber = contractNumber;
+    public void setContractID(String contractID) {
+        this.contractID = contractID;
     }
 
     public String getBookingCode() {
@@ -60,14 +60,8 @@ public class Contract {
 
     @Override
     public String toString() {
-        return String.format("%s,%s,%s,%s,%s", this.getContractNumber(), this.getBookingCode(),
+        return String.format("%s,%s,%s,%s,%s", this.getContractID(), this.getBookingCode(),
                 this.getMoneyFirst(), this.getTotalMoney(), this.getCustomerCode());
-//        return "Contract{" +
-//                "contractNumber='" + contractNumber + '\'' +
-//                ", bookingCode='" + bookingCode + '\'' +
-//                ", moneyFirst=" + moneyFirst +
-//                ", totalMoney=" + totalMoney +
-//                ", customerCode='" + customerCode + '\'' +
-//                '}';
+
     }
 }

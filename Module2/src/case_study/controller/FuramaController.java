@@ -4,6 +4,7 @@ import case_study.service.*;
 import case_study.service.impl.*;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class FuramaController {
@@ -14,7 +15,7 @@ public class FuramaController {
     BookingController bookingController = new BookingController();
     FacilityController facilityController = new FacilityController();
 
-    public void displayMainMenu() throws IOException {
+    public void displayMainMenu() throws IOException, ParseException {
         while (true) {
             System.out.println("_____________________________________________________");
             System.out.println("FURAMA RESORT");
@@ -52,7 +53,7 @@ public class FuramaController {
         }
     }
 
-    public static String inputValidChoice() {
+    private static String inputValidChoice() {
         while (true) {
             String choiceString = scanner.nextLine();
             if (choiceString.matches("[1-6]")) {

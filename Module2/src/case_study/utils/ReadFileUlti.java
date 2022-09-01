@@ -12,7 +12,7 @@ public class ReadFileUlti {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             if (!file.exists()) {
-                throw new FileNotFoundException("File không tồn tại or nội dung có lỗi");
+                throw new FileNotFoundException("File not found!");
             }
             String line;
             while ((line = bufferedReader.readLine()) != null) {
@@ -22,7 +22,7 @@ public class ReadFileUlti {
         } catch (FileNotFoundException e){
             System.out.println(e.getMessage());
         } catch (Exception e) {
-            System.err.println("File không tồn tại or nội dung có lỗi!");
+            System.err.println("File not found!");
         }
         return strings;
     }

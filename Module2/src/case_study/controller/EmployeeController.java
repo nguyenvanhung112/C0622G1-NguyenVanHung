@@ -37,7 +37,7 @@ public class EmployeeController {
         }
     }
 
-    public static String inputValidChoice() {
+    private static String inputValidChoice() {
         while (true) {
             String choiceString = scanner.nextLine();
             if (choiceString.matches("[1-4]")) {

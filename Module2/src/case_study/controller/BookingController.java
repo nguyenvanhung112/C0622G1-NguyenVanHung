@@ -6,6 +6,7 @@ import case_study.service.impl.BookingService;
 import case_study.service.impl.ContactService;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class BookingController {
@@ -13,7 +14,7 @@ public class BookingController {
     IContactService contactService = new ContactService();
     static Scanner scanner = new Scanner(System.in);
 
-    public void bookingMenu() throws IOException {
+    public void bookingMenu() throws IOException, ParseException {
         while (true) {
             System.out.println("" +
                     "1.\tAdd new booking\n" +
@@ -48,7 +49,7 @@ public class BookingController {
         }
     }
 
-    public static String inputValidChoice() {
+    private static String inputValidChoice() {
         while (true) {
             String choiceString = scanner.nextLine();
             if (choiceString.matches("[1-6]")) {

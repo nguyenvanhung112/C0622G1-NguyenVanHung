@@ -15,22 +15,20 @@ import java.util.*;
 public class FacilityService implements IFacilityService {
     public static Map<Facility, Integer> facilities = new LinkedHashMap<>();
     public static Map<Facility, Integer> facilitiesMaintenance = new LinkedHashMap<>();
-    static Scanner scanner = new Scanner(System.in);
-    public final String FACILITY_LIST = "src\\case_study\\data\\facility";
-
-//    static {
-//        facilities.put(new FacilityVilla("SVVL-9000", "Servicevilla", 100, 200, 10, "Year", "Vip", 30, 5), 2);
-//        facilities.put(new FacilityVilla("SVVL-9000", "Servicevilla1", 100, 200, 10, "Year", "Vip", 30, 5), 2);
-//        facilities.put(new FacilityHouse("SVHO-9999", "Servicehouse", 50, 150, 10, "Year", "Vip", 5), 4);
-//        facilities.put(new FacilityRoom("SVRO-5790", "Serviceroom", 30, 100, 10, "Year", "Massage"), 4);
-//    }
+    private static Scanner scanner = new Scanner(System.in);
+    private static final String FACILITY_LIST = "src\\case_study\\data\\facility";
 
     @Override
     public void displayListFacilitys() throws IOException {
         facilities = readFacilityFile(FACILITY_LIST);
-        Set<Facility> facilitySet = facilities.keySet();
-        for (Facility facility : facilitySet) {
-            System.out.println(facility.toString() + "," + facilities.get(facility));
+        if (facilities.size() == 0) {
+            System.out.println("List is empty!");
+        } else {
+            System.out.println("List Facility: ");
+            Set<Facility> facilitySet = facilities.keySet();
+            for (Facility facility : facilitySet) {
+                System.out.println(facility.toString() + "," + facilities.get(facility));
+            }
         }
     }
 
@@ -66,7 +64,7 @@ public class FacilityService implements IFacilityService {
                 default:
                     System.out.println("Enter the correct function");
             }
-            writeFacilityFile(FACILITY_LIST,facilities);
+            writeFacilityFile(FACILITY_LIST, facilities);
         }
     }
 
@@ -81,6 +79,20 @@ public class FacilityService implements IFacilityService {
         for (Facility facility : facilitiesMaintenance.keySet()) {
             System.out.println(facility + " has been used: " + facilitiesMaintenance.get(facility) + " times");
         }
+        writeFacilityFile(FACILITY_LIST,facilities);
+    }
+
+    @Override
+    public void facilityMaintenance() throws IOException {
+        facilities = readFacilityFile(FACILITY_LIST);
+        for (Facility facility : facilities.keySet()) {
+            if (facilities.get(facility) >= 5) {
+                facilities.replace(facility, 0);
+            }
+        }
+        facilitiesMaintenance.clear();
+        System.out.println("Successful maintenance!");
+        writeFacilityFile(FACILITY_LIST,facilities);
     }
 
     public static String inputValidChoice() {
@@ -95,32 +107,34 @@ public class FacilityService implements IFacilityService {
     }
 
 
-    public Facility findServiceByID(String id){
+    public Facility findServiceByID(String id) {
         Set<Facility> facilitySet = facilities.keySet();
         for (Facility facility : facilitySet) {
-            if (facility.getServiceID().contains(id)){
+            if (facility.getServiceID().contains(id)) {
                 return facility;
             }
         }
         return null;
     }
-    public static Map<Facility,Integer> readFacilityFile(String path) throws IOException {
+
+    public static Map<Facility, Integer> readFacilityFile(String path) throws IOException {
         List<String> strings = ReadFileUlti.readFile(path);
-        Map<Facility,Integer> facilityList = new LinkedHashMap<>();
+        Map<Facility, Integer> facilityList = new LinkedHashMap<>();
         String[] info;
         for (String line : strings) {
             info = line.split(",");
             if (info[0].contains("SVVL")) {
-                facilityList.put((new FacilityVilla(info[0], info[1], Double.parseDouble(info[2]), Double.parseDouble(info[3]), Integer.parseInt(info[4]), info[5], info[6], Double.parseDouble(info[7]),Integer.parseInt(info[8]))),Integer.parseInt(info[9]));
-            }else if (info[0].contains("SVHO")){
-                facilityList.put(new FacilityHouse(info[0], info[1], Double.parseDouble(info[2]), Double.parseDouble(info[3]), Integer.parseInt(info[4]), info[5], info[6], Integer.parseInt(info[7])),Integer.parseInt(info[8]));
-            }else if (info[0].contains("SVRO")){
-                facilityList.put(new FacilityRoom(info[0], info[1], Double.parseDouble(info[2]), Double.parseDouble(info[3]), Integer.parseInt(info[4]), info[5], info[6]),Integer.parseInt(info[7]));
+                facilityList.put((new FacilityVilla(info[0], info[1], Double.parseDouble(info[2]), Double.parseDouble(info[3]), Integer.parseInt(info[4]), info[5], info[6], Double.parseDouble(info[7]), Integer.parseInt(info[8]))), Integer.parseInt(info[9]));
+            } else if (info[0].contains("SVHO")) {
+                facilityList.put(new FacilityHouse(info[0], info[1], Double.parseDouble(info[2]), Double.parseDouble(info[3]), Integer.parseInt(info[4]), info[5], info[6], Integer.parseInt(info[7])), Integer.parseInt(info[8]));
+            } else if (info[0].contains("SVRO")) {
+                facilityList.put(new FacilityRoom(info[0], info[1], Double.parseDouble(info[2]), Double.parseDouble(info[3]), Integer.parseInt(info[4]), info[5], info[6]), Integer.parseInt(info[7]));
             }
         }
         return facilityList;
     }
-    public static void writeFacilityFile(String path, Map<Facility,Integer> facilities) throws IOException {
+
+    public static void writeFacilityFile(String path, Map<Facility, Integer> facilities) throws IOException {
         String data = "";
         Set<Facility> facilitySet = facilities.keySet();
         for (Facility facility : facilitySet) {

@@ -1,7 +1,7 @@
 package case_study.model.person;
 
 public class Employee extends Person {
-    private String employeeCode;
+    private String employeeID;
     private String level;
     private String locus;
     private double wage;
@@ -9,26 +9,26 @@ public class Employee extends Person {
     public Employee() {
     }
 
-    public Employee(String employeeCode, String level, double wage) {
-        this.employeeCode = employeeCode;
+    public Employee(String employeeID, String level, double wage) {
+        this.employeeID = employeeID;
         this.level = level;
         this.wage = wage;
     }
 
-    public Employee(String name, String dateOfBirth, String gender, String idCard, String phone, String email, String employeeCode, String level, String locus, double wage) {
+    public Employee(String name, String dateOfBirth, String gender, String idCard, String phone, String email, String employeeID, String level, String locus, double wage) {
         super(name, dateOfBirth, gender, idCard, phone, email);
         this.locus = locus;
-        this.employeeCode = employeeCode;
+        this.employeeID = employeeID;
         this.level = level;
         this.wage = wage;
     }
 
-    public String getEmployeeCode() {
-        return employeeCode;
+    public String getEmployeeID() {
+        return employeeID;
     }
 
-    public void setEmployeeCode(String employeeCode) {
-        this.employeeCode = employeeCode;
+    public void setEmployeeID(String employeeID) {
+        this.employeeID = employeeID;
     }
 
     public String getLevel() {
@@ -58,6 +58,6 @@ public class Employee extends Person {
     @Override
     public String toString() {
         return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",this.getName(),this.getDateOfBirth(),this.getGender(),this.getIdCard(),
-                this.getPhone(),this.getEmail(),this.getEmployeeCode(),this.getLevel(),this.getLocus(),this.getWage());
+                this.getPhone(),this.getEmail(),this.getEmployeeID(),this.getLevel(),this.getLocus(),this.getWage());
     }
 }

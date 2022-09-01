@@ -1,17 +1,35 @@
 package case_study.model;
 
+import case_study.model.facility.Facility;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Objects;
+
 public class Booking {
-    int bookingID;
-    String startDay;
-    String endDay;
-    String customerID;
-    String serviceName;
-    String serviceType;
+    static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    private String bookingID;
+    private Date startDay;
+    private Date endDay;
+    private String customerID;
+    private String serviceID;
+    private String serviceName;
+    private String serviceType;
 
     public Booking() {
     }
 
-    public Booking(int bookingID, String startDay, String endDay, String customerID, String serviceName, String serviceType) {
+    public Booking(String bookingID, Date startDay, Date endDay, String customerID, String serviceID, String serviceName, String serviceType) {
+        this.bookingID = bookingID;
+        this.startDay = startDay;
+        this.endDay = endDay;
+        this.customerID = customerID;
+        this.serviceID = serviceID;
+        this.serviceName = serviceName;
+        this.serviceType = serviceType;
+    }
+
+    public Booking(String bookingID, Date startDay, Date endDay, String customerID, String serviceName, String serviceType) {
         this.bookingID = bookingID;
         this.startDay = startDay;
         this.endDay = endDay;
@@ -19,28 +37,34 @@ public class Booking {
         this.serviceName = serviceName;
         this.serviceType = serviceType;
     }
+    public String getServiceID() {
+        return serviceID;
+    }
 
-    public int getBookingID() {
+    public void setServiceID(String serviceID) {
+        this.serviceID = serviceID;
+    }
+    public String getBookingID() {
         return bookingID;
     }
 
-    public void setBookingID(int bookingID) {
+    public void setBookingID(String bookingID) {
         this.bookingID = bookingID;
     }
 
-    public String getStartDay() {
+    public Date getStartDay() {
         return startDay;
     }
 
-    public void setStartDay(String startDay) {
+    public void setStartDay(Date startDay) {
         this.startDay = startDay;
     }
 
-    public String getEndDay() {
+    public Date getEndDay() {
         return endDay;
     }
 
-    public void setEndDay(String endDay) {
+    public void setEndDay(Date endDay) {
         this.endDay = endDay;
     }
 
@@ -70,15 +94,20 @@ public class Booking {
 
     @Override
     public String toString() {
-        return String.format("%s,%s,%s,%s,%s,%s", this.getBookingID(), this.getStartDay(), this.getEndDay(),
-                this.getCustomerID(), this.getServiceName(), this.getServiceType());
-//                "Booking{" +
-//                "codeBooking='" + codeBooking + '\'' +
-//                ", startDay='" + startDay + '\'' +
-//                ", endDay='" + endDay + '\'' +
-//                ", customerCode='" + customerCode + '\'' +
-//                ", nameService='" + nameService + '\'' +
-//                ", serviceType='" + serviceType + '\'' +
-//                '}';
+        return String.format("%s,%s,%s,%s,%s,%s,%s", this.getBookingID(), dateFormat.format(this.getStartDay()), dateFormat.format(this.getEndDay()),
+                this.getCustomerID(),this.getServiceID(), this.getServiceName(), this.getServiceType());
+
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Booking booking = (Booking) o;
+        return Objects.equals(getServiceID(), booking.getServiceID());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getServiceID());
     }
 }

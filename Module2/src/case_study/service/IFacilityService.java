@@ -8,4 +8,6 @@ public interface IFacilityService {
     void addNewFacility() throws IOException;
 
     void displayListFacilitysMaintenance() throws IOException;
+
+    void facilityMaintenance() throws IOException;
 }

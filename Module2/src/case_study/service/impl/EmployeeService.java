@@ -1,5 +1,6 @@
 package case_study.service.impl;
 
+import case_study.model.person.Customer;
 import case_study.model.person.Employee;
 import case_study.service.IEmployeeService;
 import case_study.utils.*;
@@ -11,10 +12,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-
-import static java.lang.Double.NaN;
-import static java.lang.Double.isNaN;
 
 public class EmployeeService implements IEmployeeService {
     private static Scanner scanner = new Scanner(System.in);
@@ -45,19 +42,10 @@ public class EmployeeService implements IEmployeeService {
                 System.out.println("Enter name: ");
                 name = scanner.nextLine();
                 String str;
-                for (int i = 0; i < name.length(); i++) {
-                    str = "";
-                    if ((str + name.charAt(i)).matches("\\d+")) {
-                        throw new NameFormatException("Name is not format, again: ");
-                    }
+                if (!name.matches("\\D{5,50}")) {
+                    throw new NameFormatException("Name is not format, again: ");
                 }
-                String[] name1 = name.split("");
-                for (int i = 0; i < name1.length; i++) {
-                    if ((name1[i].equals(" ")) && (name1[i + 1].equals(" "))) {
-                        throw new NameFormatException("Name is not format, again: ");
-                    }
-                }
-                if (!name.matches("^[A-Z a-zvVxXyYỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđĐ]{5,50}$")) {
+                if (!name.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")) {
                     throw new NameFormatException("Name is not format, again: ");
                 }
                 break;
@@ -65,22 +53,9 @@ public class EmployeeService implements IEmployeeService {
                 System.out.println(e.getMessage());
             }
         }
-        String dateOfBirth;
-        while (true) {
-            try {
-                System.out.println("Enter Date of birth: ");
-                dateOfBirth = scanner.nextLine();
-                if (!dateOfBirth.matches("\\d+\\d+\\W+\\d+\\d+\\W+\\d+\\d+\\d+\\d")) {
-                    throw new DateOfBirthException("Date of birth is not format, again: ");
-                }
-                if (Integer.parseInt(dateOfBirth.substring(6)) > 2016) {
-                    throw new DateOfBirthException("Date of birth is not format, again: ");
-                }
-                break;
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }
+        System.out.println("Enter Date of birth:");
+        ValidateDateOfBirth.MyDate dateOfBirth = ValidateDateOfBirth.getDateInfo(18, 100);
+        dateOfBirth.getStrDate();
         String gender;
         while (true) {
             try {
@@ -141,40 +116,101 @@ public class EmployeeService implements IEmployeeService {
                 if (!employeeID.matches("^[0-9]{4}$")) {
                     throw new Exception("Employee Code is not format, again: ");
                 }
+                for (Employee employee : employees) {
+                    if (employee.getEmployeeID().contains(employeeID)) {
+                        throw new Exception("ID is duplicated!, again: ");
+                    }
+                }
                 employeeID = "EP" + employeeID;
                 break;
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
-        String level;
+        String level = "";
         while (true) {
             try {
-                System.out.println("Level: " + "\nIntermediate" + "\nCollege" + "\nCampus" + "\n AfterCampus" + "\n Enter Level:\n");
-                level = scanner.nextLine();
-                if (!level.equals("Intermediate") && (!level.equals("College")
-                        && (!level.equals("Campus") && (!level.equals("AfterCampus"))))) {
-                    throw new LevelException("Level is not format, again: ");
+                boolean check = false;
+                System.out.println("Enter select option: " +
+                        "\n 1. Intermediate" +
+                        "\n 2. College" +
+                        "\n 3. Campus" +
+                        "\n 4. AfterCampus");
+                int choice1 = Integer.parseInt(scanner.nextLine());
+                switch (choice1) {
+                    case 1:
+                        level = "Intermediate";
+                        check = true;
+                        break;
+                    case 2:
+                        level = "College";
+                        check = true;
+                        break;
+                    case 3:
+                        level = "Campus";
+                        check = true;
+                        break;
+                    case 4:
+                        level = "AfterCampus";
+                        check = true;
+                        break;
+                    default:
+                        System.out.println("Your selection is not suitable, selection from 1 to 4");
+                        check = false;
                 }
-                break;
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
+                if (check) {
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Input invalid");
             }
         }
-        String locus;
+        String locus = "";
         while (true) {
             try {
-                System.out.println("Locus: " + "\nReceptionist" + "\nWaiter" + "\nExpert" +
-                        "\nSupervision" + "\nManager" + "\nPrincipal" + "\nEnter Locus:\n");
-                locus = scanner.nextLine();
-                if (!locus.equals("Receptionist") && (!locus.equals("Waiter")
-                        && (!locus.equals("Expert") && (!locus.equals("Supervision") &&
-                        (!locus.equals("Manager") && (!locus.equals("principal"))))))) {
-                    throw new LocusException("Locus is not format, again: ");
+                boolean check = false;
+                System.out.println("Enter select option: " +
+                        "\n 1. Receptionist" +
+                        "\n 2. Waiter" +
+                        "\n 3. Expert" +
+                        "\n 4. Supervision" +
+                        "\n 5. Manager" +
+                        "\n 6. Principal");
+                int choice2 = Integer.parseInt(scanner.nextLine());
+                switch (choice2) {
+                    case 1:
+                        locus = "Receptionist";
+                        check = true;
+                        break;
+                    case 2:
+                        locus = "Waiter";
+                        check = true;
+                        break;
+                    case 3:
+                        locus = "Expert";
+                        check = true;
+                        break;
+                    case 4:
+                        locus = "Supervision";
+                        check = true;
+                        break;
+                    case 5:
+                        locus = "Manager";
+                        check = true;
+                        break;
+                    case 6:
+                        locus = "Principal";
+                        check = true;
+                        break;
+                    default:
+                        System.out.println("Your selection is not suitable, selection from 1 to 6");
+                        check = false;
                 }
-                break;
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
+                if (check) {
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Input invalid");
             }
         }
         double wage;
@@ -190,14 +226,24 @@ public class EmployeeService implements IEmployeeService {
                 System.out.println(e.getMessage());
             }
         }
-        return new Employee(name, dateOfBirth, gender, idCard, phone, email, employeeID, level, locus, wage);
+        return new Employee(name, dateOfBirth.getStrDate(), gender, idCard, phone, email, employeeID, level, locus, wage);
     }
 
-    public static String inputValidChoice() {
-        final String VALID_FORMAT = "[1-11]";
+    private static String inputValidChoice() {
         while (true) {
             String choiceString = scanner.nextLine();
-            if (choiceString.matches(VALID_FORMAT)) {
+            if (choiceString.matches("^[0-9]+$")) {
+                return choiceString;
+            } else {
+                System.out.print("You entered invalid! Again: ");
+            }
+        }
+    }
+
+    public static String inputValidChoiceEdit() {
+        while (true) {
+            String choiceString = scanner.nextLine();
+            if (choiceString.matches("[1-2]")) {
                 return choiceString;
             } else {
                 System.out.print("You entered invalid! Again: ");
@@ -208,226 +254,274 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void editEmployee() throws IOException {
         employees = readEmployeeFile(PATH_LIST_EMPLOYEES);
-        Employee employee = this.findEmployee();
+        Employee employee = this.findEmployeeByID();
         if (employee == null) {
             System.out.println("Not found");
         } else {
             int index = employees.indexOf(employee);
-            while (true) {
-                System.out.println("" +
-                        "1.\tEdit name\n" +
-                        "2.\tEdit Date of birth\n" +
-                        "3.\tEdit gender\n" +
-                        "4.\tEdit ID Card\n" +
-                        "5.\tEdit phone\n" +
-                        "6.\tEdit Email\n" +
-                        "7.\tEdit EmployeeCode\n" +
-                        "8.\tEdit Level\n" +
-                        "9.\tEdit Locus\n" +
-                        "10.\tEdit Wage\n" +
-                        "11.\tExit.\n" +
-                        "\tEnter function\n");
-                int choice = Integer.parseInt(inputValidChoice());
-                switch (choice) {
-                    case 1:
-                        String name;
-                        while (true) {
-                            try {
-                                System.out.print("Enter name: ");
-                                name = scanner.nextLine();
-                                String str;
-                                for (int i = 0; i < name.length(); i++) {
-                                    str = "";
-                                    if ((str + name.charAt(i)).matches("\\d+")) {
-                                        throw new NameFormatException("Name is not format, again: ");
-                                    }
-                                }
-                                String[] name1 = name.split("");
-                                for (int i = 0; i < name1.length; i++) {
-                                    if ((name1[i].equals(" ")) && (name1[i + 1].equals(" "))) {
-                                        throw new NameFormatException("Name is not format, again: ");
-                                    }
-                                }
-                                if (!name.matches("^[A-Z a-zvVxXyYỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđĐ]{5,50}$")) {
-                                    throw new NameFormatException("Name is not format, again: ");
-                                }
-                                employees.get(index).setName(name);
-                                break;
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                            }
-                        }
-                        break;
-                    case 2:
-                        String dateOfBirth;
-                        while (true) {
-                            try {
-                                System.out.print("Enter Date of birth: ");
-                                dateOfBirth = scanner.nextLine();
-                                if (!dateOfBirth.matches("\\d+\\d+\\W+\\d+\\d+\\W+\\d+\\d+\\d+\\d")) {
-                                    throw new DateOfBirthException("Date of birth is not format, again: ");
-                                }
-                                if (Integer.parseInt(dateOfBirth.substring(6)) > 2016) {
-                                    throw new DateOfBirthException("Date of birth is not format, again: ");
-                                }
-                                employees.get(index).setDateOfBirth(dateOfBirth);
-                                break;
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                            }
-                        }
-                        break;
-                    case 3:
-                        String gender;
-                        while (true) {
-                            try {
-                                System.out.print("Enter gender");
-                                gender = scanner.nextLine();
-                                if (!gender.equals("Male") && (!gender.equals("Female"))) {
-                                    throw new GenderException("Gender is not format, again: ");
-                                }
-                                employees.get(index).setGender(gender);
-                                break;
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                            }
-                        }
-                        break;
-                    case 4:
-                        String idCard;
-                        while (true) {
-                            try {
-                                System.out.println("Enter ID Card: ");
-                                idCard = scanner.nextLine();
-                                if (!idCard.matches("[0-9]{9}")) {
-                                    throw new Exception("ID Card is not format, again: ");
-                                }
-                                employees.get(index).setIdCard(idCard);
-                                break;
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                            }
-                        }
-                        break;
-                    case 5:
-                        String phone;
-                        while (true) {
-                            try {
-                                System.out.println("Enter phone");
-                                phone = scanner.nextLine();
-                                if (!phone.matches("^[(][0-9]{2}[)][-][0][0-9]{8}$")) {
-                                    throw new Exception("Phone is not format, again: ");
-                                }
-                                employees.get(index).setPhone(phone);
-                                break;
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                            }
-                        }
-                        break;
-                    case 6:
-                        String email;
-                        while (true) {
-                            try {
-                                System.out.println("Enter email");
-                                email = scanner.nextLine();
-                                if (!email.matches("^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+([A-Za-z0-9]+\\.)+(com)$")) {
-                                    throw new Exception("Email is not format, again: ");
-                                }
-                                employees.get(index).setEmail(email);
-                                break;
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                            }
-                        }
-                        break;
-                    case 7:
-                        String employeeID;
-                        while (true) {
-                            try {
-                                System.out.println("Enter Employee ID: ");
-                                employeeID = scanner.nextLine();
-                                if (!employeeID.matches("[0-9]{4}")) {
-                                    throw new Exception("Employee Code is not format, again: ");
-                                }
-                                employeeID = "EP" + employeeID;
-                                employees.get(index).setEmployeeCode(employeeID);
-                                break;
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                            }
-                        }
-                        break;
-                    case 8:
-                        String level;
-                        while (true) {
-                            try {
-                                System.out.println("Level: " + "\nIntermediate" + "\nCollege" + "\nCampus" + "\n AfterCampus" + "\n Enter Level:\n");
-                                level = scanner.nextLine();
-                                if (!level.equals("Intermediate") && (!level.equals("College")
-                                        && (!level.equals("Campus") && (!level.equals("AfterCampus"))))) {
-                                    throw new LevelException("Level is not format, again: ");
-                                }
-                                employees.get(index).setLevel(level);
-                                break;
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                            }
-                        }
-                        break;
-                    case 9:
-                        String locus;
-                        while (true) {
-                            try {
-                                System.out.println("Locus: " + "\nReceptionist" + "\nWaiter" + "\nExpert" +
-                                        "\nSupervision" + "\nManager" + "\nPrincipal" + "\nEnter Locus:\n");
-                                locus = scanner.nextLine();
-                                if (!locus.equals("Receptionist") && (!locus.equals("Waiter")
-                                        && (!locus.equals("Expert") && (!locus.equals("Supervision") &&
-                                        (!locus.equals("Manager") && (!locus.equals("principal"))))))) {
-                                    throw new LocusException("Locus is not format, again: ");
-                                }
-                                employees.get(index).setLocus(locus);
-                                break;
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                            }
-                        }
-                        break;
-                    case 10:
-                        double wage;
-                        while (true) {
-                            try {
-                                System.out.println("Enter Wage: ");
-                                wage = Double.parseDouble(scanner.nextLine());
-                                if (Double.isNaN(wage)) {
-                                    throw new NumberFormatException("Wage is not format, again:");
-                                }
-                                employees.get(index).setWage(wage);
-                                break;
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                            }
-                        }
-                        break;
-                    case 11:
-                        return;
-                    default:
-                        System.out.println("Again:");
-                }
+            System.out.println("1. Edit all.");
+            System.out.println("2. Edit each one.");
+            int choiceEdit = Integer.parseInt(inputValidChoiceEdit());
+            if (choiceEdit == 1) {
+                employees.set(index, infoEmployee());
                 System.out.println("Edited success");
-                break;
+                writeEmployeeFile(PATH_LIST_EMPLOYEES, employees);
+            } else if (choiceEdit == 2) {
+                while (true) {
+                    System.out.println("" +
+                            "1.\tEdit name\n" +
+                            "2.\tEdit Date of birth\n" +
+                            "3.\tEdit Gender\n" +
+                            "4.\tEdit ID Card\n" +
+                            "5.\tEdit Phone\n" +
+                            "6.\tEdit Email\n" +
+                            "7.\tEdit EmployeeCode\n" +
+                            "8.\tEdit Level\n" +
+                            "9.\tEdit Locus\n" +
+                            "10.\tEdit Wage\n" +
+                            "11.\tExit.\n" +
+                            "\tEnter function\n");
+                    int choice = Integer.parseInt(inputValidChoice());
+                    switch (choice) {
+                        case 1:
+                            String name;
+                            while (true) {
+                                try {
+                                    System.out.print("Enter name: ");
+                                    name = scanner.nextLine();
+                                    String str;
+                                    if (!name.matches("\\D{5,50}")) {
+                                        throw new NameFormatException("Name is not format, again: ");
+                                    }
+                                    if (!name.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")) {
+                                        throw new NameFormatException("Name is not format, again: ");
+                                    }
+                                    employees.get(index).setName(name);
+                                    break;
+                                } catch (Exception e) {
+                                    System.out.println(e.getMessage());
+                                }
+                            }
+                            break;
+                        case 2:
+                            System.out.println("Enter Date of birth:");
+                            ValidateDateOfBirth.MyDate dateOfBirth = ValidateDateOfBirth.getDateInfo(18, 100);
+                            employees.get(index).setDateOfBirth(dateOfBirth.getStrDate());
+                            break;
+                        case 3:
+                            String gender;
+                            while (true) {
+                                try {
+                                    System.out.print("Enter gender");
+                                    gender = scanner.nextLine();
+                                    if (!gender.equals("Male") && (!gender.equals("Female"))) {
+                                        throw new GenderException("Gender is not format, again: ");
+                                    }
+                                    employees.get(index).setGender(gender);
+                                    break;
+                                } catch (Exception e) {
+                                    System.out.println(e.getMessage());
+                                }
+                            }
+                            break;
+                        case 4:
+                            String idCard;
+                            while (true) {
+                                try {
+                                    System.out.println("Enter ID Card: ");
+                                    idCard = scanner.nextLine();
+                                    if (!idCard.matches("[0-9]{9}")) {
+                                        throw new Exception("ID Card is not format, again: ");
+                                    }
+                                    employees.get(index).setIdCard(idCard);
+                                    break;
+                                } catch (Exception e) {
+                                    System.out.println(e.getMessage());
+                                }
+                            }
+                            break;
+                        case 5:
+                            String phone;
+                            while (true) {
+                                try {
+                                    System.out.println("Enter phone");
+                                    phone = scanner.nextLine();
+                                    if (!phone.matches("^[(][0-9]{2}[)][-][0][0-9]{8}$")) {
+                                        throw new Exception("Phone is not format, again: ");
+                                    }
+                                    employees.get(index).setPhone(phone);
+                                    break;
+                                } catch (Exception e) {
+                                    System.out.println(e.getMessage());
+                                }
+                            }
+                            break;
+                        case 6:
+                            String email;
+                            while (true) {
+                                try {
+                                    System.out.println("Enter email");
+                                    email = scanner.nextLine();
+                                    if (!email.matches("^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+([A-Za-z0-9]+\\.)+(com)$")) {
+                                        throw new Exception("Email is not format, again: ");
+                                    }
+                                    employees.get(index).setEmail(email);
+                                    break;
+                                } catch (Exception e) {
+                                    System.out.println(e.getMessage());
+                                }
+                            }
+                            break;
+                        case 7:
+                            String employeeID;
+                            while (true) {
+                                try {
+                                    System.out.println("Enter Employee ID: ");
+                                    employeeID = scanner.nextLine();
+                                    if (!employeeID.matches("[0-9]{4}")) {
+                                        throw new Exception("Employee Code is not format, again: ");
+                                    }
+                                    for (Employee employee1 : employees) {
+                                        if (employee1.getEmployeeID().contains(employeeID)) {
+                                            throw new Exception("ID is duplicated!, again: ");
+                                        }
+                                    }
+                                    employeeID = "EP" + employeeID;
+                                    employees.get(index).setEmployeeID(employeeID);
+                                    break;
+                                } catch (Exception e) {
+                                    System.out.println(e.getMessage());
+                                }
+                            }
+                            break;
+                        case 8:
+                            String level = " ";
+                            while (true) {
+                                try {
+                                    boolean check = false;
+                                    System.out.println("Enter select option: " +
+                                            "\n 1. Intermediate" +
+                                            "\n 2. College" +
+                                            "\n 3. Campus" +
+                                            "\n 4. AfterCampus");
+                                    int choice1 = Integer.parseInt(scanner.nextLine());
+                                    switch (choice1) {
+                                        case 1:
+                                            level = "Intermediate";
+                                            check = true;
+                                            break;
+                                        case 2:
+                                            level = "College";
+                                            check = true;
+                                            break;
+                                        case 3:
+                                            level = "Campus";
+                                            check = true;
+                                            break;
+                                        case 4:
+                                            level = "AfterCampus";
+                                            check = true;
+                                            break;
+                                        default:
+                                            System.out.println("Your selection is not suitable, selection from 1 to 4");
+                                            check = false;
+                                    }
+                                    if (check) {
+                                        break;
+                                    }
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Input invalid");
+                                }
+                            }
+                            employees.get(index).setLevel(level);
+                            break;
+                        case 9:
+                            String locus = " ";
+                            while (true) {
+                                try {
+                                    boolean check = false;
+                                    System.out.println("Enter select option: " +
+                                            "\n 1. Receptionist" +
+                                            "\n 2. Waiter" +
+                                            "\n 3. Expert" +
+                                            "\n 4. Supervision" +
+                                            "\n 5. Manager" +
+                                            "\n 6. Principal");
+                                    int choice2 = Integer.parseInt(scanner.nextLine());
+                                    switch (choice2) {
+                                        case 1:
+                                            locus = "Receptionist";
+                                            check = true;
+                                            break;
+                                        case 2:
+                                            locus = "Waiter";
+                                            check = true;
+                                            break;
+                                        case 3:
+                                            locus = "Expert";
+                                            check = true;
+                                            break;
+                                        case 4:
+                                            locus = "Supervision";
+                                            check = true;
+                                            break;
+                                        case 5:
+                                            locus = "Manager";
+                                            check = true;
+                                            break;
+                                        case 6:
+                                            locus = "Principal";
+                                            check = true;
+                                            break;
+                                        default:
+                                            System.out.println("Your selection is not suitable, selection from 1 to 6");
+                                            check = false;
+                                    }
+                                    if (check) {
+                                        break;
+                                    }
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Input invalid");
+                                }
+                            }
+                            employees.get(index).setLocus(locus);
+                            break;
+                        case 10:
+                            double wage;
+                            while (true) {
+                                try {
+                                    System.out.println("Enter Wage: ");
+                                    wage = Double.parseDouble(scanner.nextLine());
+                                    if (Double.isNaN(wage)) {
+                                        throw new NumberFormatException("Wage is not format, again:");
+                                    }
+                                    employees.get(index).setWage(wage);
+                                    break;
+                                } catch (Exception e) {
+                                    System.out.println(e.getMessage());
+                                }
+                            }
+                            break;
+                        case 11:
+                            return;
+                        default:
+                            System.out.println("You entered invalid! ");
+                            return;
+                    }
+                    System.out.println("Edited success");
+                    writeEmployeeFile(PATH_LIST_EMPLOYEES, employees);
+                    break;
+                }
             }
-            writeEmployeeFile(PATH_LIST_EMPLOYEES, employees);
         }
     }
 
-    private Employee findEmployee() throws IOException {
+    private Employee findEmployeeByID() throws IOException {
         employees = readEmployeeFile(PATH_LIST_EMPLOYEES);
-        System.out.println("Nhập tên bạn muốn tìm");
-        String name = scanner.nextLine();
+        System.out.println("Enter Employee ID: ");
+        String id = scanner.nextLine();
         for (Employee employee : employees) {
-            if (employee.getName().equals(name)) {
+            if (employee.getEmployeeID().equals(id)) {
                 return employee;
             }
         }

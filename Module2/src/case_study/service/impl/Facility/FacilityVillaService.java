@@ -33,7 +33,7 @@ public class FacilityVillaService {
             try {
                 System.out.println("Enter Service Name:");
                 serviceName = scanner.nextLine();
-                if (!serviceName.matches("^[A-Z]{1}[a-z]{4,}$")) {
+                if (!serviceName.matches("^[A-Z][a-z]{4,}$")) {
                     throw new Exception("Service Name is not format, again: ");
                 }
                 break;
@@ -46,7 +46,7 @@ public class FacilityVillaService {
             try {
                 System.out.println("Enter Using Area:");
                 usingArea = Double.parseDouble(scanner.nextLine());
-                if (usingArea < 30) {
+                if (usingArea < 30 || usingArea <= 0) {
                     throw new Exception("The area must be more than 30m2, again: ");
                 }
                 if (Double.isNaN(usingArea)) {
@@ -62,7 +62,7 @@ public class FacilityVillaService {
             try {
                 System.out.println("Enter Price:");
                 price = Double.parseDouble(scanner.nextLine());
-                if (price < 0) {
+                if (price <= 0) {
                     throw new Exception("The area must be more than 0, again: ");
                 }
                 if (Double.isNaN(price)) {
@@ -78,7 +78,7 @@ public class FacilityVillaService {
             try {
                 System.out.println("Enter Maximum People:");
                 maximumPeople = Integer.parseInt(scanner.nextLine());
-                if (maximumPeople < 0 || maximumPeople > 20) {
+                if (maximumPeople <= 0 || maximumPeople > 20) {
                     throw new Exception("Number of people must be less than 20, again: ");
                 }
                 if (Double.isNaN(price)) {
@@ -89,31 +89,80 @@ public class FacilityVillaService {
                 System.out.println(e.getMessage());
             }
         }
-        String rentalType;
+        String rentalType = "";
         while (true) {
             try {
-                System.out.println("Rental Type: " + "\nYear" + "\nMonth" + "\nDay" + "\nHour" + "\nEnter Rental Type: ");
-                rentalType = scanner.nextLine();
-                if (!rentalType.equals("Year") && (!rentalType.equals("Month")
-                        && (!rentalType.equals("Day") && (!rentalType.equals("Hour"))))) {
-                    throw new Exception("Data is not format, again: ");
+                boolean check = false;
+                System.out.println("Enter select option: " +
+                        "\n 1. Year" +
+                        "\n 2. Month" +
+                        "\n 3. Day" +
+                        "\n 4. Hour");
+                int choice1 = Integer.parseInt(scanner.nextLine());
+                switch (choice1) {
+                    case 1:
+                        rentalType = "Year";
+                        check = true;
+                        break;
+                    case 2:
+                        rentalType = "Month";
+                        check = true;
+                        break;
+                    case 3:
+                        rentalType = "Day";
+                        check = true;
+                        break;
+                    case 4:
+                        rentalType = "Hour";
+                        check = true;
+                        break;
+                    default:
+                        System.out.println("Your selection is not suitable, selection from 1 to 4");
+                        check = false;
                 }
-                break;
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
+                if (check) {
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Input invalid");
             }
         }
-        String roomStandard;
+        String roomStandard = "";
         while (true) {
             try {
-                System.out.println("Rental Type: " + "\nVip" + "\nNormal" + "\nEnter Rental Type: ");
-                roomStandard = scanner.nextLine();
-                if (!roomStandard.equals("Vip") && (!roomStandard.equals("Normal"))) {
-                    throw new Exception("Data is not format, again: ");
+                boolean check = false;
+                System.out.println("Enter select option: " +
+                        "\n 1. SuperStar" +
+                        "\n 2. SuperVip" +
+                        "\n 3. Vip" +
+                        "\n 4. Normal");
+                int choice1 = Integer.parseInt(scanner.nextLine());
+                switch (choice1) {
+                    case 1:
+                        roomStandard = "SuperStar";
+                        check = true;
+                        break;
+                    case 2:
+                        roomStandard = "SuperVip";
+                        check = true;
+                        break;
+                    case 3:
+                        roomStandard = "Vip";
+                        check = true;
+                        break;
+                    case 4:
+                        roomStandard = "Normal";
+                        check = true;
+                        break;
+                    default:
+                        System.out.println("Your selection is not suitable, selection from 1 to 4");
+                        check = false;
                 }
-                break;
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
+                if (check) {
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Input invalid");
             }
         }
         double poolArea;
@@ -121,7 +170,7 @@ public class FacilityVillaService {
             try {
                 System.out.println("Enter Pool Area:");
                 poolArea = Double.parseDouble(scanner.nextLine());
-                if (poolArea < 0) {
+                if (poolArea <= 0) {
                     throw new Exception("The area must be more than 0, again: ");
                 }
                 if (Double.isNaN(poolArea)) {
@@ -137,7 +186,7 @@ public class FacilityVillaService {
             try {
                 System.out.println("Enter floor:");
                 numberFloor = Integer.parseInt(scanner.nextLine());
-                if (numberFloor < 0) {
+                if (numberFloor <= 0) {
                     throw new Exception("The floor must be more than 0, again: ");
                 }
                 if (Double.isNaN(numberFloor)) {

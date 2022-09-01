@@ -1,7 +1,10 @@
 package case_study.service;
 
-public interface IPromotionService {
-    void dislayListCustomersGetVoucher();
+import java.io.IOException;
+import java.text.ParseException;
 
-    void displayListCustomersUseService();
+public interface IPromotionService {
+    void displayListCustomersGetVoucher() throws IOException, ParseException;
+
+    void displayListCustomersUseService() throws IOException, ParseException;
 }
