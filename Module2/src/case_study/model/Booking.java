@@ -16,6 +16,7 @@ public class Booking {
     private String serviceName;
     private String serviceType;
 
+
     public Booking() {
     }
 

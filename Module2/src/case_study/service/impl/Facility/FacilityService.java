@@ -4,7 +4,6 @@ import case_study.model.facility.Facility;
 import case_study.model.facility.FacilityHouse;
 import case_study.model.facility.FacilityRoom;
 import case_study.model.facility.FacilityVilla;
-import case_study.model.person.Customer;
 import case_study.service.IFacilityService;
 import case_study.utils.ReadFileUlti;
 import case_study.utils.WriteFileUlti;
@@ -14,7 +13,7 @@ import java.util.*;
 
 public class FacilityService implements IFacilityService {
     public static Map<Facility, Integer> facilities = new LinkedHashMap<>();
-    public static Map<Facility, Integer> facilitiesMaintenance = new LinkedHashMap<>();
+    private static Map<Facility, Integer> facilitiesMaintenance = new LinkedHashMap<>();
     private static Scanner scanner = new Scanner(System.in);
     private static final String FACILITY_LIST = "src\\case_study\\data\\facility";
 
@@ -110,7 +109,7 @@ public class FacilityService implements IFacilityService {
     public Facility findServiceByID(String id) {
         Set<Facility> facilitySet = facilities.keySet();
         for (Facility facility : facilitySet) {
-            if (facility.getServiceID().contains(id)) {
+            if (facility.getServiceID().equals(id)) {
                 return facility;
             }
         }

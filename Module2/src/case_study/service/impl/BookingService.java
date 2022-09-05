@@ -102,6 +102,7 @@ public class BookingService implements IBookingService {
                 System.out.println(e.getMessage());
             }
         }
+        // Tính số ngày thuê:
 //        long dates = endDay.getTime() - startDay.getTime();
 //        long c = dates*50000;
 //        System.out.println(TimeUnit.DAYS.convert(dates, TimeUnit.MILLISECONDS));
@@ -134,22 +135,10 @@ public class BookingService implements IBookingService {
         }
     }
 
-    public List<String> getListBookingCustomerID() throws IOException, ParseException {
+    public List<Booking> getListBooking() throws IOException, ParseException {
         bookings = readBookingFile(BOOKING_LIST);
-        List<String> listCustomerID = new LinkedList<>();
-        for (Booking booking : bookings) {
-            listCustomerID.add(booking.getCustomerID());
-        }
-        return listCustomerID;
-    }
-    public List<String> getListBookingYear() throws IOException, ParseException {
-        bookings = readBookingFile(BOOKING_LIST);
-        List<String> bookingsYear = new LinkedList<>();
-        for (Booking booking: bookings){
-            if (booking.getServiceType().contains("Year")){
-                bookingsYear.add(String.valueOf(booking));
-            }
-        }
+        List<Booking> bookingsYear = new LinkedList<>();
+        bookingsYear.addAll(bookings);
         return bookingsYear;
     }
     public static Set<Booking> readBookingFile(String path) throws IOException, ParseException {

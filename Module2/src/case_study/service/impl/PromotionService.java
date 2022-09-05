@@ -4,52 +4,53 @@ import case_study.model.Booking;
 import case_study.model.person.Customer;
 import case_study.service.IPromotionService;
 import case_study.utils.ReadFileUlti;
-import case_study.utils.SortByStartDateThenEndDate;
 import case_study.utils.WriteFileUlti;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class PromotionService implements IPromotionService {
     private static List<Customer> customerGetVoucher = new LinkedList<>();
     private static List<Customer> customersUseService = new LinkedList<>();
+    private static Scanner scanner = new Scanner(System.in);
     CustomerService customerService = new CustomerService();
     BookingService bookingService = new BookingService();
     private static final String PROMOTION_LIST = "src\\case_study\\data\\promotion";
 
     @Override
     public void displayListCustomersGetVoucher() throws IOException, ParseException {
-        for (Customer customer : customerService.getListCustomer()) {
-            for (String string : bookingService.getListBookingYear()) {
-                if (string.contains(customer.getCustomerID())) {
-                    if (customerGetVoucher.contains(customer)) {
-                        continue;
-                    }
-                    customerGetVoucher.add(customer);
-                }
-            }
-        }
-        for (Customer item : customerGetVoucher) {
-            System.out.println(item);
-        }
+
     }
 
     @Override
     public void displayListCustomersUseService() throws IOException, ParseException {
-        customersUseService = readCustomerFile(PROMOTION_LIST);
+        customersUseService = this.getListCustomerBookingInYear();
+        if (customersUseService.size() == 0){
+            System.out.println("No customer booking in year!");
+        }
+        for (Customer customer : customersUseService) {
+            System.out.println(customer);
+        }
+    }
+
+    private List<Customer> getListCustomerBookingInYear() throws IOException, ParseException {
+        System.out.println("Enter Year : ");
+        List<Customer> customerList = new ArrayList<>();
+        String year = scanner.nextLine();
         for (Customer customer : customerService.getListCustomer()) {
-            if (bookingService.getListBookingCustomerID().contains(customer.getCustomerID())) {
-                if (customersUseService.contains(customer)) {
-                    continue;
+            for (Booking booking : bookingService.getListBooking()) {
+                if (booking.getStartDay().toString().contains(year) && customer.getCustomerID().equals(booking.getCustomerID())) {
+                    if (customerList.contains(customer)) {
+                        continue;
+                    }
+                    customerList.add(customer);
                 }
-                customersUseService.add(customer);
             }
         }
-        for (Customer item : customersUseService) {
-            System.out.println(item);
-        }
-        writeCustomerFile(PROMOTION_LIST, customersUseService);
+        return customerList;
     }
 
     public static List<Customer> readCustomerFile(String path) throws IOException {
@@ -64,11 +65,11 @@ public class PromotionService implements IPromotionService {
     }
 
     public static void writeCustomerFile(String path, List<Customer> customers) throws IOException {
-        String data = "";
+        StringBuilder data = new StringBuilder();
         for (Customer customer : customers) {
-            data += customer.toString();
-            data += "\n";
+            data.append(customer.toString());
+            data.append("\n");
         }
-        WriteFileUlti.writeFile(path, data);
+        WriteFileUlti.writeFile(path, data.toString());
     }
 }
