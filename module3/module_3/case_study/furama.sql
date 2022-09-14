@@ -52,7 +52,7 @@ CREATE TABLE khach_hang(
 	ho_ten VARCHAR(45),
 	ngay_sinh DATE,
 	gioi_tinh BIT(1),
-	so_cmcnd VARCHAR(45),
+	so_cmnd VARCHAR(45),
 	so_dien_thoai VARCHAR(45),
 	email VARCHAR(45),
 	dia_chi VARCHAR(45),
