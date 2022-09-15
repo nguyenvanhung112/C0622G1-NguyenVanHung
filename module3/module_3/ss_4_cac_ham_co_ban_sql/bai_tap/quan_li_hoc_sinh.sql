@@ -58,13 +58,11 @@ VALUES (1, 'CF', 5, 1),
 VALUES (1, 1, 8, 1),
        (1, 2, 10, 2),
        (2, 1, 12, 1);
-SELECT * FROM Student WHERE StudentName REGEXP '^[H].*$';
-SELECT * FROM Class WHERE MONTH(StartDate) = 12;
-SELECT * FROM `Subject` WHERE Credit >=3 AND Credit <=5;
-SET SQL_SAFE_UPDATES = 0;
-UPDATE Student SET ClassId = 2 WHERE StudentName = "Hung";
-SELECT * FROM Student;
-SELECT Student.StudentName, `Subject`.SubName, Mark.Mark
-FROM Student
-INNER JOIN Mark ON Student.StudentID = Mark.StudentID
-INNER JOIN `Subject` ON Subject.SubID = Mark.SubID ORDER BY Mark DESC, StudentName;
+SELECT * FROM `subject`
+WHERE credit = ( SELECT MAX(credit) FROM `subject`);
+SELECT * FROM `mark`
+WHERE mark = ( SELECT max(mark) FROM `mark`);
+SELECT student.StudentName, AVG(mark) as diem_trung_binh FROM Mark
+JOIN student ON student.StudentId= mark.StudentId
+GROUP BY student.StudentId
+ORDER BY diem_trung_binh DESC;
