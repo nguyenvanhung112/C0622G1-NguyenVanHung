@@ -1,0 +1,117 @@
+body {
+    font-family: Tahoma, serif;
+    font-size: 13px;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#logo img {
+    height: 40px;
+    width: 50px;
+    display: block;
+}
+
+#menu-top {
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    background-color: #000000;
+    border: 1px solid #CDCDCD;
+}
+
+#menu-top ul, #menu-top li {
+    padding: 0;
+    margin: 0;
+}
+
+#menu-top li {
+    position: relative;
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 14px
+
+}
+
+#menu-top li a:hover {
+    background-color: red;
+}
+
+#menu-top li a {
+    width: 100px;
+    height: 40px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    line-height: 40px;
+    background-color: black;
+    color: white;
+    margin-left: 30px;
+}
+#banner{
+    width: 1000px;
+}
+#banner img{
+    border: 1px solid #CDCDCD;
+    width: 998px;
+}
+#main #right{
+    width: 300px;
+    float: left;
+    min-height: 400px;
+}
+#main #right h2{
+    display: block;
+    background-color: orange;
+    width: 300px;
+}
+#main #right ul li{
+    list-style: none;
+    clear: left;
+    border: 2px solid #CDCDCD;
+    width: 300px;
+}
+#main #right ul li a{
+    text-decoration: none;
+    font-size: 16px;
+}
+#main #left{
+    width: 700px;
+    float: left;
+    min-height: 400px;
+}
+#main #left ul{
+    margin: 0px;
+    padding: 0px;
+}
+#main #left ul li{
+    list-style: none;
+    clear: left;
+    border-bottom: 2px solid #CDCDCD;
+}
+#main #left ul li img{
+    height: 300px;
+    width: 300px;
+    float: left;
+    margin-right: 10px;
+}
+#main #left ul li a{
+    font-size: 13px;
+    text-decoration: none;
+    
+}
+
+#footer{
+    background-color: purple;
+    width: 1000px;
+    min-height: 100px;
+}
+
+
+
+
+
+
+
+
