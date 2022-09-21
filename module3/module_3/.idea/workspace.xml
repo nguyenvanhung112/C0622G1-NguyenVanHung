@@ -2,26 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d31c3bd5-9833-42ac-b0a3-08e418eadbae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/controller/CustomerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/controller/EmployeeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/controller/StudentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/data/customer" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/model/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/model/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/ICustomerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/IEmployeeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/IStudentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/impl/CustomerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/impl/EmployeeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/impl/StudentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/ultis/DuplicatePersonalRecordException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/view/MainView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/case_study/utils/SortbyName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/demo/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/demo/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/demo/Teacher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Module2/src/ss16_string_regex/thuc_hanh/validate_email/Sapxep.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/c0622g1_mvc/c0622g1_mvc/src/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/c0622g1_mvc/c0622g1_mvc/src/model/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/c0622g1_mvc1/c0622g1_mvc/src/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/c0622g1_mvc1/c0622g1_mvc/src/model/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/out/production/Module2/bai_tap_lam_them/model/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/out/production/Module2/bai_tap_lam_them/model/Person.class" afterDir="false" />
@@ -40,8 +20,23 @@
       <change beforePath="$PROJECT_DIR$/../../Module2/out/production/Module2/case_study/service/impl/Facility/FacilityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/out/production/Module2/case_study/service/impl/Facility/FacilityService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/out/production/Module2/case_study/service/impl/Facility/FacilityVillaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/out/production/Module2/case_study/service/impl/Facility/FacilityVillaService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/out/production/Module2/case_study/utils/SortByStartDateThenEndDate.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/out/production/Module2/case_study/utils/SortByStartDateThenEndDate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/out/production/Module2/ss2_array_loop/bai_tap/CountOfCharacterInString.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/out/production/Module2/ss2_array_loop/bai_tap/CountOfCharacterInString.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/out/production/Module2/ss2_array_loop/thuc_hanh/NumberPrime.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/out/production/Module2/ss2_array_loop/thuc_hanh/NumberPrime.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/src/bai_tap_lam_them/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/bai_tap_lam_them/model/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/src/bai_tap_lam_them/service/impl/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/bai_tap_lam_them/service/impl/StudentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/data/customer" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/data/customer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/model/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/model/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/model/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/ICustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/IEmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/IEmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/IStudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/IStudentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/impl/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/impl/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/impl/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/impl/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/impl/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/service/impl/StudentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/ultis/DuplicatePersonalRecordException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/ultis/DuplicatePersonalRecordException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/view/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/bai_thi_module_2/view/MainView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/src/case_study/controller/FuramaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/case_study/controller/FuramaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/src/case_study/data/booking" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/case_study/data/booking" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/src/case_study/data/contact" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/case_study/data/contact" afterDir="false" />
@@ -55,7 +50,18 @@
       <change beforePath="$PROJECT_DIR$/../../Module2/src/case_study/service/impl/Facility/FacilityRoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/case_study/service/impl/Facility/FacilityRoomService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/src/case_study/service/impl/Facility/FacilityVillaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/case_study/service/impl/Facility/FacilityVillaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/src/case_study/utils/SortByStartDateThenEndDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/case_study/utils/SortByStartDateThenEndDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/case_study/utils/SortbyName.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/case_study/utils/SortbyName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/demo/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/demo/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/demo/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/demo/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/demo/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/demo/Teacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/ss16_string_regex/thuc_hanh/validate_email/Sapxep.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/ss16_string_regex/thuc_hanh/validate_email/Sapxep.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/ss2_array_loop/bai_tap/CountOfCharacterInString.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/ss2_array_loop/bai_tap/CountOfCharacterInString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/ss2_array_loop/thuc_hanh/NumberPrime.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/ss2_array_loop/thuc_hanh/NumberPrime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module2/src/ss2_array_loop/thuc_hanh/timso.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/ss2_array_loop/thuc_hanh/timso.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../module1" beforeDir="false" afterPath="$PROJECT_DIR$/../../module1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss5_css/bai_tap/bai_3/bai_3.css" beforeDir="false" afterPath="$PROJECT_DIR$/ss5_css/bai_tap/bai_3/bai_3.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss5_css/bai_tap/bai_3/bai_3.html" beforeDir="false" afterPath="$PROJECT_DIR$/ss5_css/bai_tap/bai_3/bai_3.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +82,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../C0622G1_module_3/module_3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -89,6 +101,7 @@
       <option name="presentableId" value="Default" />
       <updated>1662709413561</updated>
       <workItem from="1662709416849" duration="92000" />
+      <workItem from="1663767977257" duration="3532000" />
     </task>
     <servers />
   </component>
