@@ -22,6 +22,12 @@ header{
 .mid .logo-mid a{
     margin-left: 75px;
 }
+#search .input-search {
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    margin-left: 12px;
+}
 #search {
     background-color: #f0f2f5;
     display: flex;
@@ -30,12 +36,38 @@ header{
     border-radius: 20px;
     margin-right: 12px;
 }
-#search .input-search {
-    border: none;
-    background-color: transparent;
-    font-size: 16px;
-    margin-left: 12px;
-}
+
 #search i{
     color: #65676b;
+}
+.personal{
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 10px;
+}
+.personal i {
+    color: #050505;
+    font-size: 20px;
+}
+.box-personal.account i{
+    color: transparent;
+    border-radius: 20px;
+}
+.box-personal{
+    background-color: #e4e6eb;
+    height: 30px;
+    margin-left: 12px;
+    border-radius: 50%;
+}
+.content{
+    width: 100%;
+    min-height: 630px;
+}
+.footer{
+    width: 100%;
+    text-align: center;
+    box-shadow: 1px 0 5px #CDCDCD;
 }
