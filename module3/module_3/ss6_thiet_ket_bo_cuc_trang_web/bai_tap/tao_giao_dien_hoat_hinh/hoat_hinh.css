@@ -4,21 +4,20 @@ body {
     width: 1000px;
     margin: 0 auto;
 }
-
-#logo img {
-    height: 40px;
-    width: 50px;
-    display: block;
+#banner{
+    width: 1000px;
+    text-align: center;
+    font-size: 30px;
+    background-color: black;
+    color: white;
+    height: 50px;
 }
-
 #menu-top {
     height: 40px;
     padding: 0;
     margin: 0;
     background-color: #000000;
     width: 1000px;
-    border: 1px solid #CDCDCD;
-    position: fixed;
 }
 
 #menu-top ul, #menu-top li {
@@ -33,15 +32,14 @@ body {
     margin: 0;
     padding: 0;
     font-size: 14px
-
 }
 
 #menu-top li a:hover {
     background-color: red;
 }
 
-#menu-top li a {
-    width: 100px;
+#menu-top ul li a {
+    width: 200px;
     height: 40px;
     display: block;
     text-decoration: none;
@@ -50,55 +48,34 @@ body {
     background-color: black;
     color: white;
     margin-left: 30px;
+    border-right: 1px solid white;
 }
-#banner{
-    width: 1000px;
-}
-#banner img{
-    border: 1px solid #CDCDCD;
-    width: 1000px;
-}
+
 #main #right{
-    width: 300px;
-    float: left;
-    min-height: 400px;
-}
-#main #right h3{
-    display: block;
-    background-color: orange;
-    height: 40px;
-    width: 300px;
-    text-align: center;
-    margin-top: 0px;
-    line-height: 40px;
-}
-#main #right .menu-right ol {
-    margin: -15px 0px 0px 0px;
-    padding: 0px;
-    background-color: white;
-    list-style: none;
-}
-#main #right .menu-right ol li a{
-    text-decoration: none;
-    display: block;
-    line-height: 45px;
-    border-bottom: 1px solid silver;
-    font-size: 15px;
-    color: black;
-    height: 48px;
-    text-align: center;
-}
-#main #right .menu-right ol li a:hover{
-    color: blue;
-}
-#main #right img{
-    width: 300px;
-    height: auto;
-}
-#main #left{
     width: 700px;
     float: left;
     min-height: 400px;
+}
+#main #right iframe{
+    display: block;
+    margin: 5px;
+    margin-left: 10px;
+}
+#main #right p{
+    display: block;
+    font-size: 15px;
+    margin-left: 15px;
+}
+#main #right h2{
+    display: block;
+    font-size: 20px;
+    margin-left: 15px;
+}
+#main #left{
+    width: 300px;
+    float: left;
+    min-height: 400px;
+    margin-top: -11px;
 }
 #main #left ul{
     margin: 0px;
@@ -117,9 +94,8 @@ body {
     border-bottom: 10px solid white;
 }
 #main #left ul li a{
-    font-size: 13px;
+    font-size: 15px;
     text-decoration: none;
-    
 }
 #main #left ul li a:hover{
     color: red;

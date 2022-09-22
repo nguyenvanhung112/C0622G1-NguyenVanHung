@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="d31c3bd5-9833-42ac-b0a3-08e418eadbae" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/bai_tap/tao_giao_dien_facebook/facebook.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/bai_tap/tao_giao_dien_facebook/giao_dien_facebook.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/bai_tap/tao_giao_dien_hoat_hinh/giao_dien_xem_hoat_hinh.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/bai_tap/tao_giao_dien_hoat_hinh/hoat_hinh.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/bai_tap/tao_giao_dien_rwd/rwd.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/bai_tap/tao_giao_dien_rwd/rwd.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/bai_tap/tao_layout_voi_cac_the_html/tao_layout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/bai_tap/tao_layout_voi_cac_the_html/tao_layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/thuc_hanh/thuc_hanh_1/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/thuc_hanh/thuc_hanh_1/tao_danh_sanh_ngang.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/c0622g1_mvc/c0622g1_mvc/src/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/c0622g1_mvc/c0622g1_mvc/src/model/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/c0622g1_mvc1/c0622g1_mvc/src/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/c0622g1_mvc1/c0622g1_mvc/src/model/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/out/production/Module2/bai_tap_lam_them/model/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/out/production/Module2/bai_tap_lam_them/model/Person.class" afterDir="false" />
@@ -68,6 +96,14 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
@@ -78,11 +114,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -101,12 +139,26 @@
       <option name="presentableId" value="Default" />
       <updated>1662709413561</updated>
       <workItem from="1662709416849" duration="92000" />
-      <workItem from="1663767977257" duration="3532000" />
+      <workItem from="1663767977257" duration="4140000" />
+      <workItem from="1663809191715" duration="16689000" />
+      <workItem from="1663853355943" duration="218000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1662709507715">
