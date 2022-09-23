@@ -35,7 +35,7 @@ body {
 }
 
 #menu-top li a:hover {
-    background-color: red;
+    color: red;
 }
 
 #menu-top ul li a {
