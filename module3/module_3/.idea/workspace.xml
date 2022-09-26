@@ -20,10 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d31c3bd5-9833-42ac-b0a3-08e418eadbae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bootstrap.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss7_bootstrap/excercise/excercise_1/create_gallery.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss7_bootstrap/excercise/excercise_2/landing_page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module3/src/First.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/c0622g1_mvc/c0622g1_mvc/src/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/c0622g1_mvc/c0622g1_mvc/src/model/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/c0622g1_mvc1/c0622g1_mvc/src/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/c0622g1_mvc1/c0622g1_mvc/src/model/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/out/production/Module2/bai_tap_lam_them/model/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/out/production/Module2/bai_tap_lam_them/model/Person.class" afterDir="false" />
@@ -81,31 +78,7 @@
       <change beforePath="$PROJECT_DIR$/../../Module2/src/ss2_array_loop/thuc_hanh/NumberPrime.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/ss2_array_loop/thuc_hanh/NumberPrime.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/src/ss2_array_loop/thuc_hanh/timso.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/ss2_array_loop/thuc_hanh/timso.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../module1" beforeDir="false" afterPath="$PROJECT_DIR$/../../module1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/module_3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/module_3.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss01_database/bai_tap/student_management.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss2_erd/bai_tap/product_management.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss2_erd/bai_tap/sale_management.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss3_thao_tac_database/bai_tap/quan_li_ban_hang.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss3_thao_tac_database/bai_tap/quan_li_sinh_vien.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss4_view_index_proceduce/bai_tap/bai_tap.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss5_css/bai_tap/bai_1/bai1.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss5_css/bai_tap/bai_1/bai_1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss5_css/bai_tap/bai_2/bai_2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss5_css/bai_tap/bai_3/bai_3.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss5_css/bai_tap/bai_3/bai_3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss5_css/thuc_hanh/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/bai_tap/tao_giao_dien_facebook/facebook.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/bai_tap/tao_giao_dien_facebook/giao_dien_facebook.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/bai_tap/tao_giao_dien_hoat_hinh/giao_dien_xem_hoat_hinh.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/bai_tap/tao_giao_dien_hoat_hinh/hoat_hinh.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/bai_tap/tao_giao_dien_rwd/rwd.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/bai_tap/tao_giao_dien_rwd/rwd.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/bai_tap/tao_layout_voi_cac_the_html/tao_layout.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/bai_tap/tao_layout_voi_cac_the_html/tao_layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/thuc_hanh/thuc_hanh_1/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss6_thiet_ket_bo_cuc_trang_web/thuc_hanh/thuc_hanh_1/tao_danh_sanh_ngang.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss_4_cac_ham_co_ban_sql/bai_tap/quan_li_hoc_sinh.sql" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +141,8 @@
       <workItem from="1663767977257" duration="4140000" />
       <workItem from="1663809191715" duration="16689000" />
       <workItem from="1663853355943" duration="2217000" />
-      <workItem from="1663896318930" duration="17806000" />
+      <workItem from="1663896318930" duration="17934000" />
+      <workItem from="1664156182225" duration="41000" />
     </task>
     <servers />
   </component>
