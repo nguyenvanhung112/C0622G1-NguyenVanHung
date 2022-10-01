@@ -12,11 +12,14 @@
     <title>Title</title>
 </head>
 <body>
+<a href="/product">
+    <button style="margin-bottom: 10px"> Quay lại</button>
+</a>
 <c:if test="${message != null}">
     <p>${message}</p>
 </c:if>
 <c:if test="${message == null}">
-    <fieldset>
+    <c:forEach items="${products}" var="product"><fieldset>
         <legend>Thông tin sản phẩm</legend>
         <table>
             <tr>
@@ -36,7 +39,7 @@
                 <td>${product.getPrice()}</td>
             </tr>
         </table>
-    </fieldset>
+    </fieldset></c:forEach>
 </c:if>
 </body>
 </html>

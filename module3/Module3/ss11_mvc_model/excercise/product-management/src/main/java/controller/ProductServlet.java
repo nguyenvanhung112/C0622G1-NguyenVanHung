@@ -13,12 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 @WebServlet(name = "ProductServlet", urlPatterns = "/product")
 public class ProductServlet extends HttpServlet {
     private IProductService productService = new ProductService();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
@@ -39,27 +42,24 @@ public class ProductServlet extends HttpServlet {
             default:
 
         }
+
     }
 
     private void find(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("name");
-        Product product = this.productService.findByName(name);
-        if (product == null) {
+        List<Product> products = this.productService.findByName(name);
+        if (products.size() == 0) {
             request.setAttribute("message", "Không tìm thấy");
             try {
                 request.getRequestDispatcher("product/find.jsp").forward(request, response);
-            } catch (ServletException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            } catch (ServletException | IOException e) {
                 e.printStackTrace();
             }
         } else {
-            request.setAttribute("product", product);
+            request.setAttribute("products", products);
             try {
                 request.getRequestDispatcher("product/find.jsp").forward(request, response);
-            } catch (ServletException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            } catch (ServletException | IOException e) {
                 e.printStackTrace();
             }
         }
@@ -124,6 +124,8 @@ public class ProductServlet extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
