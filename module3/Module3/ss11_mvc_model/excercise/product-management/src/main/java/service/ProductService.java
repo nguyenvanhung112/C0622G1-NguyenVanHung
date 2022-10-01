@@ -48,7 +48,7 @@ public class ProductService implements IProductService {
     @Override
     public Product findByName(String name) {
         for (Product product : products) {
-            if (product.getName().contains(name)) {
+            if (product.getName().equals(name)) {
                 return product;
             }
         }

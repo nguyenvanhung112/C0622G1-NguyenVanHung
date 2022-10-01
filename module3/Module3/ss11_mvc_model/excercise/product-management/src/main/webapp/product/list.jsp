@@ -17,7 +17,12 @@
 <a href="/product?action=create">
     <button style="margin-bottom: 10px"> Thêm mới sản phẩm</button>
 </a>
-<table border="1">
+
+<form action="/product?action=find" method="post">
+    <input type="text" name="name">
+    <input type="submit" value="Search">
+</form>
+<table style="text-align: center" border="1">
     <tr>
         <th>ID</th>
         <th>Name</th>
@@ -25,6 +30,7 @@
         <th>Price</th>
         <th>Edit</th>
         <th>Delete</th>
+        <th>Thông tin chi tiết</th>
     </tr>
     <c:forEach var="product" items="${productList}">
         <tr>
@@ -42,6 +48,9 @@
                     <button name="delete">Delete</button>
                 </a>
             </td>
+            <td><a href="/product?action=view&id=${product.getId()}">
+                <button>Xem</button>
+            </a></td>
         </tr>
     </c:forEach>
 </table>

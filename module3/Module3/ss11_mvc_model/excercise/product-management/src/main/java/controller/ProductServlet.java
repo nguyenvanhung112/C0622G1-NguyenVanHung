@@ -1,6 +1,7 @@
 package controller;
 
 import model.Product;
+import org.omg.PortableInterceptor.INACTIVE;
 import service.IProductService;
 import service.ProductService;
 
@@ -32,8 +33,35 @@ public class ProductServlet extends HttpServlet {
             case "delete":
                 delete(request, response);
                 break;
+            case "find":
+                find(request, response);
+                break;
             default:
 
+        }
+    }
+
+    private void find(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        Product product = this.productService.findByName(name);
+        if (product == null) {
+            request.setAttribute("message", "Không tìm thấy");
+            try {
+                request.getRequestDispatcher("product/find.jsp").forward(request, response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            request.setAttribute("product", product);
+            try {
+                request.getRequestDispatcher("product/find.jsp").forward(request, response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -46,7 +74,7 @@ public class ProductServlet extends HttpServlet {
         product.setName(name);
         product.setAttribute(attribute);
         product.setPrice(price);
-        this.productService.update(productService.findAll().indexOf(product),product);
+        this.productService.update(productService.findAll().indexOf(product), product);
         request.setAttribute("product", product);
         request.setAttribute("message", "Sửa thành công");
         try {
@@ -56,14 +84,14 @@ public class ProductServlet extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        showEditForm(request,response);
+        showEditForm(request, response);
     }
 
     private void delete(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = this.productService.findById(id);
         RequestDispatcher dispatcher;
-        if(product == null){
+        if (product == null) {
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
             this.productService.remove(product);
@@ -73,7 +101,6 @@ public class ProductServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
-
     }
 
 
@@ -109,26 +136,37 @@ public class ProductServlet extends HttpServlet {
                 showEditForm(request, response);
                 break;
             case "delete":
-                showDeleteForm(request,response);
+                showDeleteForm(request, response);
                 break;
-//            case "view":
-//                viewProduct(request,response);
-//                break;
-//            case "find":
-//                findProduct(request,response);
-//                break;
+            case "view":
+                viewProduct(request, response);
+                break;
             default:
                 listProduct(request, response);
                 break;
         }
     }
 
+
+    private void viewProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = this.productService.findById(id);
+        request.setAttribute("product", product);
+        try {
+            request.getRequestDispatcher("product/view.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void showDeleteForm(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = this.productService.findById(id);
-        request.setAttribute("product",product);
+        request.setAttribute("product", product);
         try {
-            request.getRequestDispatcher("product/delete.jsp").forward(request,response);
+            request.getRequestDispatcher("product/delete.jsp").forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
