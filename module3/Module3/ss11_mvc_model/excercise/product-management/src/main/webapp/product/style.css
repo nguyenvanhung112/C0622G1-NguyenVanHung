@@ -1,0 +1,15 @@
+table{
+    width: 100%;
+}
+.format-table{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    align-items: center;
+}
+.dataTables_paginate {
+    margin-left: 24px;
+}
+ul{
+    margin: 0 !important;
+}

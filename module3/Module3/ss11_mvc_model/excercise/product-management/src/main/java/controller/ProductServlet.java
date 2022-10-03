@@ -33,9 +33,6 @@ public class ProductServlet extends HttpServlet {
             case "edit":
                 edit(request, response);
                 break;
-            case "delete":
-                delete(request, response);
-                break;
             case "find":
                 find(request, response);
                 break;
@@ -87,21 +84,21 @@ public class ProductServlet extends HttpServlet {
         showEditForm(request, response);
     }
 
-    private void delete(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        Product product = this.productService.findById(id);
-        RequestDispatcher dispatcher;
-        if (product == null) {
-            dispatcher = request.getRequestDispatcher("error-404.jsp");
-        } else {
-            this.productService.remove(product);
-            try {
-                response.sendRedirect("/product");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+//    private void delete(HttpServletRequest request, HttpServletResponse response) {
+//        int id = Integer.parseInt(request.getParameter("id"));
+//        Product product = this.productService.findById(id);
+//        RequestDispatcher dispatcher;
+//        if (product == null) {
+//            dispatcher = request.getRequestDispatcher("error-404.jsp");
+//        } else {
+//            this.productService.remove(product);
+//            try {
+//                response.sendRedirect("/product");
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
 
     private void create(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
@@ -163,17 +160,11 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    private void showDeleteForm(HttpServletRequest request, HttpServletResponse response) {
+    private void showDeleteForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = this.productService.findById(id);
-        request.setAttribute("product", product);
-        try {
-            request.getRequestDispatcher("product/delete.jsp").forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        productService.remove(product);
+        response.sendRedirect("product");
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {

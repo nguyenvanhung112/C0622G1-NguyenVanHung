@@ -13,6 +13,14 @@ public class ProductService implements IProductService {
         products.add(new Product(2, "Sting", "Cũng được", 50000));
         products.add(new Product(3, "Bò Húc", "Ngon", 550000));
         products.add(new Product(4, "7up", "Sảng khoái", 1000000));
+        products.add(new Product(5, "Aquarius", "Oke", 150000));
+        products.add(new Product(6, "Sting", "Cũng được", 50000));
+        products.add(new Product(7, "Bò Húc", "Ngon", 550000));
+        products.add(new Product(8, "7up", "Sảng khoái", 1000000));
+        products.add(new Product(9, "Aquarius", "Oke", 150000));
+        products.add(new Product(10, "Sting", "Cũng được", 50000));
+        products.add(new Product(11, "Bò Húc", "Ngon", 550000));
+        products.add(new Product(12, "7up", "Sảng khoái", 1000000));
     }
 
     @Override
