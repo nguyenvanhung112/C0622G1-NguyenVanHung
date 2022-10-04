@@ -82,10 +82,9 @@ public class UserServlet extends HttpServlet {
     }
 
     private void sortUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        List<User> listSort = userDAO.sortByName();
-        request.setAttribute("listUser",listSort);
             try {
-
+                List<User> listSort = userDAO.sortByName();
+                request.setAttribute("listUser",listSort);
                 request.getRequestDispatcher("user/list.jsp").forward(request, response);
             } catch (ServletException | IOException e) {
                 e.printStackTrace();
