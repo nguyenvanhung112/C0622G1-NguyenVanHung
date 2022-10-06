@@ -2,6 +2,7 @@ package com.codegym.service;
 
 import com.codegym.model.User;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -19,5 +20,5 @@ public interface IUserService {
     public List<User> selectUserByCallableStatement();
     public boolean updateUserByCallableStatement(User user);
     public boolean deleteUserByCallableStatement(int id);
-
+    List<User> sortByName() throws IOException;
 }

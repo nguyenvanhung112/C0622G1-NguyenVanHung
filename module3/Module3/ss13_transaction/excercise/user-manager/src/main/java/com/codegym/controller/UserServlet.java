@@ -2,6 +2,7 @@ package com.codegym.controller;
 
 import com.codegym.dao.UserDAO;
 import com.codegym.model.User;
+import com.codegym.service.IUserService;
 import com.codegym.service.UserService;
 
 import javax.servlet.Registration;
@@ -25,7 +26,7 @@ public class UserServlet extends HttpServlet {
     public void init() {
         userDAO = new UserDAO();
     }
-    private UserService userService = new UserService();
+    private IUserService userService = new UserService();
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
