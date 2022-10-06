@@ -2,8 +2,8 @@ package model.facility;
 
 import java.util.Objects;
 
-public abstract class Facility {
-    private String serviceID;
+public  class Facility {
+    private int serviceID;
     private String serviceName;
     private int usingArea;
     private double price;
@@ -19,7 +19,7 @@ public abstract class Facility {
     public Facility() {
     }
 
-    public Facility(String serviceID, String serviceName, int usingArea, double price, int maximumPeople, int rentalType, int facilityType, String standardRoom, String descriptionOtherConvenience, double poolArea, int floor, String facilityFree) {
+    public Facility(int serviceID, String serviceName, int usingArea, double price, int maximumPeople, int rentalType, int facilityType, String standardRoom, String descriptionOtherConvenience, double poolArea, int floor, String facilityFree) {
         this.serviceID = serviceID;
         this.serviceName = serviceName;
         this.usingArea = usingArea;
@@ -49,11 +49,11 @@ public abstract class Facility {
         this.facilityFree = facilityFree;
     }
 
-    public String getServiceID() {
+    public int getServiceID() {
         return serviceID;
     }
 
-    public void setServiceID(String serviceID) {
+    public void setServiceID(int serviceID) {
         this.serviceID = serviceID;
     }
 

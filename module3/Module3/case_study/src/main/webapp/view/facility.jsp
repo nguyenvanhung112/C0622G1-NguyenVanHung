@@ -26,7 +26,7 @@
 <div class="menu">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="">Home</a>
+            <a class="navbar-brand" href="/home">Home</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -35,25 +35,26 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="add_villa">Add Villa</a>
+                        <a class="nav-link active" aria-current="page" href="/facility?action=add-villa">Add Villa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="add_house">Add House</a>
+                        <a class="nav-link active" aria-current="page" href="/facility?action=add-house">Add House</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="add_room">Add Room</a>
+                        <a class="nav-link active" aria-current="page" href="/facility?action=add-room">Add Room</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit" name="search">Search</button>
+                <form action="/facility">
+                    <input type="hidden" name="action" value="find">
+                    <input type="text" name="search">
+                    <input type="submit" value="Search" class="btn btn-info">
                 </form>
             </div>
         </div>
     </nav>
 </div>
 <div>
-    <table id="tableProduct" class="table table-dark" style="text-align: center" border="1">
+    <table id="tableFacility" class="table table-dark" style="text-align: center" border="1">
         <thead>
         <tr>
             <th>ID</th>
@@ -73,32 +74,33 @@
         </tr>
         </thead>
         <tbody>
+        <c:forEach items="${facilityList}" var="facility">
         <tr>
-            <td>1</td>
-            <td>Hùng</td>
-            <td>11/02/1996</td>
-            <td>0000000</td>
-            <td>0000000</td>
-            <td>0000000</td>
-            <td>0000000</td>
-            <td>0000000</td>
-            <td>0000000</td>
-            <td>0000000</td>
-            <td>0000000</td>
-            <td>0000000</td>
+            <td>${facility.serviceID}</td>
+            <td>${facility.serviceName}</td>
+            <td>${facility.usingArea}</td>
+            <td>${facility.price}</td>
+            <td>${facility.maximumPeople}</td>
+            <td>${facility.rentalType}</td>
+            <td>${facility.facilityType}</td>
+            <td>${facility.standardRoom}</td>
+            <td>${facility.descriptionOtherConvenience}</td>
+            <td>${facility.poolArea}</td>
+            <td>${facility.floor}</td>
+            <td>${facility.facilityFree}</td>
             <td>
-                <a href="/product?action=edit&id=${product.getId()}">
+                <a href="/facility?action=edit&id=${facility.serviceID}">
                     <button type="button" class="btn btn-primary">Edit</button>
                 </a>
             </td>
             <td>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#minhChau${product.id}">
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#minhChau${facility.serviceID}">
                     Delete
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade " id="minhChau${product.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade " id="minhChau${facility.serviceID}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog ">
                         <div class="modal-content bg-dark">
                             <div class="modal-header">
@@ -106,17 +108,18 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                Bạn có muốn xóa <strong class="text-danger">${product.name}?</strong>
+                                Bạn có muốn xóa <strong class="text-danger">${facility.serviceName}?</strong>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <a href="product?action=delete&id=${product.id}" class="btn btn-danger">Delete</a>
+                                <a href="facility?action=delete&id=${facility.serviceID}" class="btn btn-danger">Delete</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </td>
         </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>
@@ -128,7 +131,7 @@
 <script src="datatables/js/dataTables.bootstrap5.min.js"></script>
 <script>
     $(document).ready(function () {
-        $('#tableProduct').dataTable({
+        $('#tableFacility').dataTable({
             "dom": 'lrtip',
             "lengthChange": false,
             "pageLength": 5
