@@ -14,7 +14,7 @@ import java.util.List;
 
 @WebServlet(name = "ContractServlet", urlPatterns = "/contract")
 public class ContractServlet extends HttpServlet {
-    IContractService contractService = new ContractService();
+    private IContractService contractService = new ContractService();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

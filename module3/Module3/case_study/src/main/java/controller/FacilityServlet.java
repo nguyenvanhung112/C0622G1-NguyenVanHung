@@ -14,7 +14,7 @@ import java.util.List;
 
 @WebServlet(name = "FacilityServlet", urlPatterns = "/facility")
 public class FacilityServlet extends HttpServlet {
-    IFacilityService facilityService = new FacilityService();
+    private IFacilityService facilityService = new FacilityService();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");

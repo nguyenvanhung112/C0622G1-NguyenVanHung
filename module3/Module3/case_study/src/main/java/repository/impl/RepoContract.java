@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class RepoContract implements IRepoContract {
-    BaseRepository baseRepository = new BaseRepository();
+    private BaseRepository baseRepository = new BaseRepository();
     private static final String SELECT_CONTRACT = "SELECT * FROM demo";
     @Override
     public List<Contract> getListContract() {

@@ -8,7 +8,7 @@ import service.IFacilityService;
 import java.util.List;
 
 public class FacilityService implements IFacilityService {
-    IRepoFacility repoFacility = new RepoFacility();
+    private IRepoFacility repoFacility = new RepoFacility();
 
     @Override
     public List<Facility> getListService() {

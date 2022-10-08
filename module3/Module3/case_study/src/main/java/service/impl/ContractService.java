@@ -8,7 +8,7 @@ import service.IContractService;
 import java.util.List;
 
 public class ContractService implements IContractService {
-    IRepoContract repoContract = new RepoContract();
+    private IRepoContract repoContract = new RepoContract();
     @Override
     public List<Contract> getListContract() {
         return repoContract.getListContract();
