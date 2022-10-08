@@ -6,8 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -25,7 +23,8 @@
     <a href="/customer?action=add">
         <button style="margin: 10px" type="button" class="btn btn-info">Add New Customer</button>
     </a>
-    <form action="/customer?action=find">
+    <form action="/customer">
+        <input type="hidden" name="action" value="find">
         <input type="text" name="name">
         <input type="submit" value="Search" class="btn btn-info">
     </form>
@@ -91,11 +90,11 @@
             <td>
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                        data-bs-target="#minhChau${customer.getCustomerId()}">
+                        data-bs-target="#delete${customer.getCustomerId()}">
                     Delete
                 </button>
                 <!-- Modal -->
-                <div class="modal fade " id="minhChau${customer.getCustomerId()}" tabindex="-1"
+                <div class="modal fade " id="delete${customer.getCustomerId()}" tabindex="-1"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog ">
                         <div class="modal-content bg-dark">

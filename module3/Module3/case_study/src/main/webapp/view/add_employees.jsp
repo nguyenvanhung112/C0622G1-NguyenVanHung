@@ -19,6 +19,7 @@
 
     <form method="post">
         <table border="1px">
+            <tr>
             <td>
                 <pre>Name:</pre>
             </td>

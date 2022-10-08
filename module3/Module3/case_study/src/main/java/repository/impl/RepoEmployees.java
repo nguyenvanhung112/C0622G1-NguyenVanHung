@@ -13,8 +13,8 @@ import java.util.List;
 public class RepoEmployees implements IRepoEmployees {
     private static final String INSERT_EMPLOYEES_SQL = "INSERT INTO employee (name,date_of_birth,id_card,salary,phone_number, email,address,position_id,education_degree_id,division_id,username) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String SELECT_EMPLOYEES_BY_ID = "select * from employee where id =?";
-    private static final String SELECT_ALL_EMPLOYEES = "select * from employee;";
-    private static final String DELETE_EMPLOYEES_SQL = "delete from employee where id = ?;";
+    private static final String SELECT_ALL_EMPLOYEES = "select * from employee where is_delete = 0;";
+    private static final String DELETE_EMPLOYEES_SQL = "update employee set is_delete = 1 where id = ?;";
     private static final String UPDATE_EMPLOYEES_SQL = "update employee set name = ?,date_of_birth=?,id_card =?,salary=?,phone_number=?, email= ?, address =?,position_id=?,education_degree_id=?,division_id =?, username =? where id = ?;";
     private static BaseRepository baseRepository = new BaseRepository();
 

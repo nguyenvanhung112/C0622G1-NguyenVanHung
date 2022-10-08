@@ -172,7 +172,7 @@ public class FacilityServlet extends HttpServlet {
                 showFormRoom(request, response);
                 break;
             case "edit":
-                showEditFormVilla(request, response);
+                showEditForm(request, response);
                 break;
             case "delete":
                 deleteFacility(request, response);
@@ -186,7 +186,7 @@ public class FacilityServlet extends HttpServlet {
         }
     }
 
-    private void showEditFormVilla(HttpServletRequest request, HttpServletResponse response) {
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         Facility facility = facilityService.selectFacility(id);
         request.setAttribute("facility", facility);
@@ -249,16 +249,31 @@ public class FacilityServlet extends HttpServlet {
     }
 
     private void findFacility(HttpServletRequest request, HttpServletResponse response) {
+        int type = Integer.parseInt(request.getParameter("facility_type"));
         String search = request.getParameter("search");
-        List<Facility> facilityList = facilityService.findByName(search);
-        request.setAttribute("facilityList", facilityList);
-        try {
-            request.getRequestDispatcher("view/facility.jsp").forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (type==0){
+
+            List<Facility> facilityList = facilityService.findByName(search);
+            request.setAttribute("facilityList", facilityList);
+            try {
+                request.getRequestDispatcher("view/facility.jsp").forward(request, response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else {
+            List<Facility> facilityList = facilityService.find(search,type);
+            request.setAttribute("facilityList", facilityList);
+            try {
+                request.getRequestDispatcher("view/facility.jsp").forward(request, response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
     }
 
     private void deleteFacility(HttpServletRequest request, HttpServletResponse response) {
@@ -278,4 +293,5 @@ public class FacilityServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
+
 }

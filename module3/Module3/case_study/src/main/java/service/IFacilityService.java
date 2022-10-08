@@ -16,4 +16,6 @@ public interface IFacilityService {
     Facility selectFacility(int id);
 
     boolean edit(Facility newfacility);
+
+    List<Facility> find(String search, int type);
 }

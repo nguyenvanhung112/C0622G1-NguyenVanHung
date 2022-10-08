@@ -86,11 +86,11 @@
         </td>
         <td>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#minhChau${employee.getEmployeeId()}">
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete${employee.getEmployeeId()}">
                 Delete
             </button>
             <!-- Modal -->
-            <div class="modal fade " id="minhChau${employee.getEmployeeId()}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade " id="delete${employee.getEmployeeId()}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog ">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">

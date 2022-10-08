@@ -47,6 +47,12 @@
                 <form action="/facility">
                     <input type="hidden" name="action" value="find">
                     <input type="text" name="search">
+                    <select name="facility_type">
+                        <option value="0">----</option>
+                        <option value="1">Villa</option>
+                        <option value="2">House</option>
+                        <option value="3">Room</option>
+                    </select>
                     <input type="submit" value="Search" class="btn btn-info">
                 </form>
             </div>

@@ -12,7 +12,7 @@
 </head>
 <body>
 <center>
-    <h2>Add New Villa</h2>
+    <h2>Edit Villa</h2>
     <form method="post">
         <table border="1px">
             <td>

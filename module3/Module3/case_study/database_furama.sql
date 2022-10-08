@@ -41,6 +41,7 @@ position_id int,
 education_degree_id int,
 division_id int,
 username varchar(255),
+is_delete bit DEFAULT 0,
 foreign key (position_id) references position (id) ON DELETE CASCADE  ,
 foreign key (education_degree_id) references education_degree(id) ON DELETE CASCADE  ,
 foreign key (division_id) references division (id) ON DELETE CASCADE,
@@ -64,6 +65,7 @@ id_card varchar(45),
 phone_number varchar(45),
 email varchar(45),
 address varchar(45),
+is_delete bit DEFAULT 0,
 foreign key (customer_type_id) references customer_type(id) ON DELETE CASCADE
 );
 create table rent_type(
@@ -83,6 +85,7 @@ description_other_convenience varchar(45),
 pool_area double,
 number_of_floors int,
 facility_free text,
+is_delete bit DEFAULT 0,
 foreign key (rent_type_id) references rent_type(id) ON DELETE CASCADE  ,
 foreign key (facility_type_id) references facility_type(id) ON DELETE CASCADE
 );
@@ -95,12 +98,13 @@ unit varchar(10),
 );
 create table contract(
 id int primary key auto_increment,
-start_date datetime,
-end_date datetime,
+start_date date,
+end_date date,
 deposit double,
 employee_id int,
 customer_id int,
 facility_id int,
+is_delete bit DEFAULT 0,
 foreign key (employee_id) references employee(id) ON DELETE CASCADE  ,
 foreign key (customer_id) references customer(id) ON DELETE CASCADE  ,
 foreign key (facility_id) references facility(id) ON DELETE CASCADE
@@ -210,4 +214,11 @@ VALUE
 ('Châu','123'),
 ('Đạt','123'),
 ('Quang','123');
-select * from employee where name = 'Nguyễn Văn An';
+
+CREATE VIEW demo as
+SELECT contract.id ,facility_id,customer.name ,start_date ,end_date,deposit, (contract.deposit +SUM(ifnull(contract_detail.quantity,0)*ifnull(attach_facility.cost,0))+ facility.cost)  as total_price from contract
+LEFT JOIN customer ON customer.id = contract.customer_id
+LEFT JOIN facility ON contract.facility_id = facility.id
+LEFT JOIN contract_detail ON contract.id = contract_detail.contract_id
+LEFT JOIN attach_facility ON attach_facility.id = contract_detail.attach_facility_id 
+GROUP BY contract.id;

@@ -40,5 +40,10 @@ public class FacilityService implements IFacilityService {
         return repoFacility.editFacility(newfacility);
     }
 
+    @Override
+    public List<Facility> find(String search, int type) {
+        return repoFacility.find(search,type);
+    }
+
 
 }

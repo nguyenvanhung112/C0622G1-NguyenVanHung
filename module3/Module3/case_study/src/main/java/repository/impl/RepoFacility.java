@@ -13,13 +13,14 @@ import java.util.List;
 public class RepoFacility implements IRepoFacility {
     BaseRepository baseRepository = new BaseRepository();
     private static final String INSERT_FACILITY_SQL = "INSERT INTO facility (name, area, cost, max_people, standard_room, description_other_convenience, pool_area, number_of_floors,facility_free ,rent_type_id, facility_type_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-    private static final String SELECT_ALL_FACILITY = "select * from facility;";
-    private static final String DELETE_FACILITY_SQL = "delete from facility where id = ?;";
+    private static final String SELECT_ALL_FACILITY = "select * from facility where is_delete = 0;";
+    private static final String DELETE_FACILITY_SQL = "update facility set is_delete = 1 where id = ?;";
     private static final String UPDATE_FACILITY_SQL = "update facility set name = ?,area=?,cost =?,max_people=?,standard_room=?, description_other_convenience= ?, pool_area =?,number_of_floors=?,facility_free=?,rent_type_id =?, facility_type_id =? where id =?;";
 
     @Override
     public List<Facility> getListService() {
         List<Facility> facilityList = new ArrayList<>();
+
         Connection connection = baseRepository.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_FACILITY);
@@ -129,5 +130,17 @@ public class RepoFacility implements IRepoFacility {
             throwables.printStackTrace();
         }
         return editFacility;
+    }
+
+    @Override
+    public List<Facility> find(String search, int type) {
+        List<Facility> facilityList = getListService();
+        List<Facility> listFind = new ArrayList<>();
+        for (Facility item: facilityList) {
+            if (item.getFacilityType()==type && item.getServiceName().contains(search)){
+                listFind.add(item);
+            }
+        }
+        return listFind;
     }
 }

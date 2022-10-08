@@ -12,7 +12,7 @@
 </head>
 <body>
 <center>
-    <h2>Add New Room</h2>
+    <h2>Edit Room</h2>
     <form method="post">
         <table border="1px">
             <td>

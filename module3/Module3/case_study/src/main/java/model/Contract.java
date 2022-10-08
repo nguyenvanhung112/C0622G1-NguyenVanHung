@@ -1,67 +1,80 @@
 package model;
 
 public class Contract {
-    String contractID;
-    String bookingCode;
-    double moneyFirst;
-    double totalMoney;
-    String customerCode;
+    private int contractId;
+    private int facilityId;
+    private String customerName;
+    private String starDay;
+    private String endDay;
+    private double deposit;
+    private double totalPrice;
 
     public Contract() {
     }
 
-    public Contract(String contractID, String bookingCode, double moneyFirst, double totalMoney, String customerCode) {
-        this.contractID = contractID;
-        this.bookingCode = bookingCode;
-        this.moneyFirst = moneyFirst;
-        this.totalMoney = totalMoney;
-        this.customerCode = customerCode;
+    public Contract(int contractId, int facilityId, String customerName, String starDay, String endDay, double deposit, double totalPrice) {
+        this.contractId = contractId;
+        this.facilityId = facilityId;
+        this.customerName = customerName;
+        this.starDay = starDay;
+        this.endDay = endDay;
+        this.deposit = deposit;
+        this.totalPrice = totalPrice;
     }
 
-    public String getContractID() {
-        return contractID;
+    public int getContractId() {
+        return contractId;
     }
 
-    public void setContractID(String contractID) {
-        this.contractID = contractID;
+    public void setContractId(int contractId) {
+        this.contractId = contractId;
     }
 
-    public String getBookingCode() {
-        return bookingCode;
+    public int getFacilityId() {
+        return facilityId;
     }
 
-    public void setBookingCode(String bookingCode) {
-        this.bookingCode = bookingCode;
+    public void setFacilityId(int facilityId) {
+        this.facilityId = facilityId;
     }
 
-    public double getMoneyFirst() {
-        return moneyFirst;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setMoneyFirst(double moneyFirst) {
-        this.moneyFirst = moneyFirst;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
-    public double getTotalMoney() {
-        return totalMoney;
+    public String getStarDay() {
+        return starDay;
     }
 
-    public void setTotalMoney(double totalMoney) {
-        this.totalMoney = totalMoney;
+    public void setStarDay(String starDay) {
+        this.starDay = starDay;
     }
 
-    public String getCustomerCode() {
-        return customerCode;
+    public String getEndDay() {
+        return endDay;
     }
 
-    public void setCustomerCode(String customerCode) {
-        this.customerCode = customerCode;
+    public void setEndDay(String endDay) {
+        this.endDay = endDay;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%s,%s,%s,%s,%s", this.getContractID(), this.getBookingCode(),
-                this.getMoneyFirst(), this.getTotalMoney(), this.getCustomerCode());
+    public double getDeposit() {
+        return deposit;
+    }
 
+    public void setDeposit(double deposit) {
+        this.deposit = deposit;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

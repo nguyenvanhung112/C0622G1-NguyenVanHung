@@ -16,4 +16,6 @@ public interface IRepoFacility {
     Facility selectFacility(int id);
 
     boolean editFacility(Facility newfacility);
+
+    List<Facility> find(String search, int type);
 }
