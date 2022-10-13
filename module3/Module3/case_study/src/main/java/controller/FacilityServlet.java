@@ -252,7 +252,6 @@ public class FacilityServlet extends HttpServlet {
         int type = Integer.parseInt(request.getParameter("facility_type"));
         String search = request.getParameter("search");
         if (type==0){
-
             List<Facility> facilityList = facilityService.findByName(search);
             request.setAttribute("facilityList", facilityList);
             try {

@@ -17,8 +17,7 @@ public class HokhauRepo implements IHokhauRepo {
     BaseRepo baseRepo = new BaseRepo();
     private static final String INSERT_HOKHAU_SQL = "INSERT INTO customer (customer_type_id,name,date_of_birth,gender,id_card,phone_number, email,address) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String SELECT_ALL_HOKHAU = "select * from hienthihokhau";
-    private static final String UPDATE_HOKHAU_SQL = "update thanh_vien set ten = ? where ma_ho_khau = ?;";
-    private static final String UPDATE_HOKHAU_SQL1 = "update ho_khau set ngay_lap_ho_khau=? ,dia_chi=? where ma_ho_khau = ?;";
+    private static final String UPDATE_HOKHAU_SQL = "update ho_khau set ten_chu_ho = ?, ngay_lap_ho_khau=? ,dia_chi=? where ma_ho_khau = ?;";
     private static final String SELECT_ALL_THANHVIEN = "select * from thanh_vien where ma_ho_khau = ?";
     @Override
     public List<Hokhau> getList() {
@@ -30,7 +29,7 @@ public class HokhauRepo implements IHokhauRepo {
             ResultSet rs =preparedStatement.executeQuery();
             while (rs.next()){
                 int maHoKhau = rs.getInt("ma_ho_khau");
-                String tenChuHo = rs.getString("ten");
+                String tenChuHo = rs.getString("ten_chu_ho");
                 int soLuongThanhVien = rs.getInt("so_luong_thanh_vien");
                 String ngayLap = rs.getString("ngay_lap_ho_khau");
                 String diachi = rs.getString("dia_chi");
@@ -106,14 +105,11 @@ public class HokhauRepo implements IHokhauRepo {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_HOKHAU_SQL);
             preparedStatement.setString(1,hokhau.getTenChuHo());
-            preparedStatement.setInt(2,hokhau.getMaHoKhau());
-            update = preparedStatement.executeUpdate() > 0;
-            PreparedStatement preparedStatement1 = connection.prepareStatement(UPDATE_HOKHAU_SQL1);
-            preparedStatement1.setString(1,hokhau.getNgayLap());
-            preparedStatement1.setString(2,hokhau.getDiachi());
-            preparedStatement1.setInt(3,hokhau.getMaHoKhau());
+            preparedStatement.setString(2,hokhau.getNgayLap());
+            preparedStatement.setString(3,hokhau.getDiachi());
+            preparedStatement.setInt(4,hokhau.getMaHoKhau());
             System.out.println(preparedStatement);
-            update = preparedStatement1.executeUpdate() > 0;
+            update = preparedStatement.executeUpdate() > 0;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

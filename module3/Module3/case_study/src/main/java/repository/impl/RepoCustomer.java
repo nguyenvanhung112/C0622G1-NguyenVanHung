@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class RepoCustomer implements IRepoCustomer {
     private static final String INSERT_CUSTOMER_SQL = "INSERT INTO customer (customer_type_id,name,date_of_birth,gender,id_card,phone_number, email,address) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
@@ -62,7 +63,7 @@ public class RepoCustomer implements IRepoCustomer {
     }
 
     @Override
-    public void addCustomer(Customer customer) {
+    public boolean addCustomer(Customer customer) {
         Connection connection = baseRepository.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CUSTOMER_SQL);
@@ -75,10 +76,12 @@ public class RepoCustomer implements IRepoCustomer {
             preparedStatement.setString(7, customer.getEmail());
             preparedStatement.setString(8, customer.getAddress());
             System.out.println(preparedStatement);
-            preparedStatement.executeUpdate();
+            int num = preparedStatement.executeUpdate();
+            return  num == 1;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        return false;
     }
 
     @Override

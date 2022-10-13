@@ -57,9 +57,7 @@ public class HokhauServlet extends HttpServlet {
         Hokhau hokhau = new Hokhau(id,tenchuho,soluong,ngaylap,diachi);
         hokhauService.update(hokhau);
         try {
-            request.getRequestDispatcher("view/themhokhau.jsp").forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
+            response.sendRedirect("/hokhau");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -81,9 +79,6 @@ public class HokhauServlet extends HttpServlet {
                 break;
 //            case "delete":
 //                deleteFacility(request, response);
-//                break;
-//            case "view":
-//                listThanhVien(request,response);
 //                break;
             default:
                 try {

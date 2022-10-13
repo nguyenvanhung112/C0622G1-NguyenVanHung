@@ -4,7 +4,6 @@ use quan_li_ho_khau;
 create table ho_khau(
 ma_ho_khau int primary key auto_increment,
 ten_chu_ho varchar(50),
-so_luong_thanh_vien int,
 ngay_lap_ho_khau date,
 dia_chi varchar(50),
 is_delete bit DEFAULT 0
@@ -18,13 +17,15 @@ is_delete bit DEFAULT 0,
 foreign key (ma_ho_khau) references ho_khau(ma_ho_khau) ON DELETE CASCADE
 );
 SET FOREIGN_KEY_CHECKS=0;
-insert into ho_khau(ma_ho_khau,ten_chu_ho,so_luong_thanh_vien,ngay_lap_ho_khau,dia_chi) 
+insert into ho_khau(ma_ho_khau,ten_chu_ho,ngay_lap_ho_khau,dia_chi) 
 value 
-(1,"Nguyễn Văn Vinh",3,"2022-12-11","Cẩm Lệ - Đà Nẵng"),
-(2,"Nguyễn Văn Quang",3,"2022-12-20","Hòa Khánh - Đà Nẵng"),
-(3,"Nguyễn Văn Hải",3,"2022-11-10","Liên Chiểu - Đà Nẵng"),
-(4,"Nguyễn Văn Hùng",3,"2022-11-10","Sơn Trà - Đà Nẵng"),
-(5,"Nguyễn Văn Nam",3,"2022-11-10","Thanh Khê - Đà Nẵng");
+(1,"Nguyễn Văn Vinh","2022-12-11","Cẩm Lệ - Đà Nẵng"),
+(2,"Nguyễn Văn Quang","2022-12-20","Hòa Khánh - Đà Nẵng"),
+(3,"Nguyễn Văn Hải","2022-11-10","Liên Chiểu - Đà Nẵng"),
+(4,"Nguyễn Văn Hùng","2022-11-10","Sơn Trà - Đà Nẵng"),
+(5,"Nguyễn Văn Nam","2022-11-10","Thanh Khê - Đà Nẵng"),
+(6,"Nguyễn Văn Nam","2022-11-10","Thanh Khê - Đà Nẵng"),
+(7,"Nguyễn Văn Nam","2022-11-10","Thanh Khê - Đà Nẵng");
 insert into thanh_vien(id,ten,ngay_sinh,ma_ho_khau)
 value
 (1,"Nguyễn Văn Vinh","1995-02-12",1),
@@ -39,7 +40,11 @@ value
 (10,"Nguyễn Văn D","1995-02-12",3),
 (11,"Nguyễn Văn G","1995-02-12",3),
 (12,"Nguyễn Văn H","1995-02-12",4),
-(13,"Nguyễn Văn L","1995-02-12",5);
-CREATE VIEW nguoi_trong_ho_khau as
-select  ho_khau.ma_ho_khau,thanh_vien.ten ,thanh_vien.ngay_sinh,thanh_vien.id FROM thanh_vien
-JOIN ho_khau on ho_khau.ma_ho_khau = thanh_vien.ma_ho_khau;
+(13,"Nguyễn Văn L","1995-02-12",5),
+(14,"Nguyễn Văn L","1995-02-12",6),
+(15,"Nguyễn Văn L","1995-02-12",7);
+CREATE view hienthihokhau as
+select thanh_vien.ma_ho_khau,ho_khau.ten_chu_ho,ho_khau.ngay_lap_ho_khau,ho_khau.dia_chi,COUNT(thanh_vien.ma_ho_khau) as so_luong_thanh_vien from ho_khau
+join thanh_vien on ho_khau.ma_ho_khau = thanh_vien.ma_ho_khau
+where ho_khau.is_delete = 0
+group by thanh_vien.ma_ho_khau;

@@ -32,7 +32,7 @@ public class BookingService implements IBookingService {
         String customerID;
         Customer customer;
         while (true) {
-            System.out.println("Enter Customer ID:");
+            System.out.println("Enter Employee ID:");
             customerID = scanner.nextLine();
             customer = customerService.findCustomerByID(customerID);
             if (customer == null) {
@@ -40,7 +40,6 @@ public class BookingService implements IBookingService {
             } else {
                 break;
             }
-
         }
         facilityService.displayListFacilitys();
         String serviceID;
@@ -64,11 +63,11 @@ public class BookingService implements IBookingService {
             try {
                 System.out.println("Enter Start day: ");
                 String startDayCheck = scanner.nextLine();
-                if (!startDayCheck.matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|" +
-                        "(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))" +
-                        "(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)" +
+                if (!startDayCheck.matches("^(?:(?:31([/\\-.])(?:0?[13578]|1[02]))\\1|" +
+                        "(?:(?:29|30)([/\\-.])(?:0?[13-9]|1[0-2])\\2))" +
+                        "(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29([/\\-.])0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)" +
                         "?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|" +
-                        "^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
+                        "^(?:0?[1-9]|1\\d|2[0-8])([/\\-.])(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
                     throw new Exception("Date is not format!");
                 }
                 startDay = dateFormat.parse(startDayCheck);
@@ -86,11 +85,11 @@ public class BookingService implements IBookingService {
             try {
                 System.out.println("Enter End day: ");
                 String endDayCheck = scanner.nextLine();
-                if (!endDayCheck.matches("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|" +
-                        "(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))" +
-                        "(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)" +
+                if (!endDayCheck.matches("^(?:(?:31([/\\-.])(?:0?[13578]|1[02]))\\1|" +
+                        "(?:(?:29|30)([/\\-.])(?:0?[13-9]|1[0-2])\\2))" +
+                        "(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29([/\\-.])0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)" +
                         "?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|" +
-                        "^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
+                        "^(?:0?[1-9]|1\\d|2[0-8])([/\\-.])(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")) {
                     throw new Exception("Data is not format!");
                 }
                 endDay = dateFormat.parse(endDayCheck);
@@ -119,7 +118,17 @@ public class BookingService implements IBookingService {
     }
 
     private int creatNewID() {
-        return bookings.size() + 1;
+        List<String> bookingID = new ArrayList<>();
+        for (Booking booking: bookings) {
+            bookingID.add(booking.getBookingID());
+        }
+        int max = Integer.parseInt(bookingID.get(0).substring(3));
+        for (String s : bookingID) {
+            if (max < Integer.parseInt(s.substring(3))) {
+                max = Integer.parseInt(s.substring(3));
+            }
+        }
+        return max + 1;
     }
 
     @Override
@@ -137,9 +146,9 @@ public class BookingService implements IBookingService {
 
     public List<Booking> getListBooking() throws IOException, ParseException {
         bookings = readBookingFile(BOOKING_LIST);
-        List<Booking> bookingsYear = new LinkedList<>();
-        bookingsYear.addAll(bookings);
-        return bookingsYear;
+        List<Booking> bookingsList = new LinkedList<>();
+        bookingsList.addAll(bookings);
+        return bookingsList;
     }
     public static Set<Booking> readBookingFile(String path) throws IOException, ParseException {
         List<String> strings = ReadFileUlti.readFile(path);
@@ -161,7 +170,7 @@ public class BookingService implements IBookingService {
         WriteFileUlti.writeFile(path, data.toString());
     }
 
-    public Booking findBookingID() {
+    public Booking findBookingByID() {
         System.out.println("Enter Booking ID: ");
         String bookingID = scanner.nextLine();
         for (Booking booking : bookings) {

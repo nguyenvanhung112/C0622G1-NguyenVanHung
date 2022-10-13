@@ -3,6 +3,7 @@ package case_study.service.impl;
 import case_study.model.person.Customer;
 import case_study.service.ICustomerService;
 import case_study.utils.*;
+import ss10_map_tree.bai_tap.product_manager.model.Product;
 import ulti_exception.NameFormatException;
 
 import java.io.IOException;
@@ -13,30 +14,26 @@ public class CustomerService implements ICustomerService {
     public static List<Customer> customers = new LinkedList<>();
     private static final String PATH_LIST_CUSTOMER = "src\\case_study\\data\\customers";
 
-
-//    static {
-//        try {
-//            readCustomerFile(PATH_LIST_CUSTOMER);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        customers.add(new Customer("Nguyễn Mậu Hoàng", "12/02/2000", "Male", "206999123", "(84)-012345678", "mauhoang@gmail.com", "A9999", "Diamond", "Quảng Bình"));
-//        customers.add(new Customer("Lê Anh Đạt", "12/07/2000", "Male", "206456789", "(84)-099999999", "anhdat@gmail.com", "A8888", "Diamond", "Đà Nẵng"));
-//        try {
-//            writeCustomerFile(PATH_LIST_CUSTOMER, customers);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-
     @Override
     public void displayListCustomers() throws IOException {
         customers = readCustomerFile(PATH_LIST_CUSTOMER);
+        sortByName();
         System.out.println("List customer: ");
         for (Customer item : customers) {
             System.out.println(item);
         }
+    }
+
+    private List<Customer> sortByName() throws IOException {
+        customers = readCustomerFile(PATH_LIST_CUSTOMER);
+
+        customers.sort(new Comparator<Customer>() {
+            @Override
+            public int compare(Customer o1, Customer o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+        return customers;
     }
 
     @Override
@@ -47,6 +44,7 @@ public class CustomerService implements ICustomerService {
         System.out.println("Add success");
         writeCustomerFile(PATH_LIST_CUSTOMER, customers);
     }
+
     public List<Customer> getListCustomer() throws IOException {
         customers = readCustomerFile(PATH_LIST_CUSTOMER);
         return customers;
@@ -60,7 +58,8 @@ public class CustomerService implements ICustomerService {
                 name = scanner.nextLine();
                 if (!name.matches("\\D{5,50}")) {
                     throw new NameFormatException("Name is not format, again: ");
-                } if (!name.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")) {
+                }
+                if (!name.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")) {
                     throw new NameFormatException("Name is not format, again: ");
                 }
                 break;
@@ -69,7 +68,7 @@ public class CustomerService implements ICustomerService {
             }
         }
         System.out.println("Enter Date of birth:");
-        ValidateDateOfBirth.MyDate dateOfBirth = ValidateDateOfBirth.getDateInfo(18,100);
+        ValidateDateOfBirth.MyDate dateOfBirth = ValidateDateOfBirth.getDateInfo(18, 100);
         dateOfBirth.getStrDate();
         String gender;
         while (true) {
@@ -126,13 +125,13 @@ public class CustomerService implements ICustomerService {
         String customerID;
         while (true) {
             try {
-                System.out.println("Enter Customer ID: ");
+                System.out.println("Enter Employee ID: ");
                 customerID = scanner.nextLine();
                 if (!customerID.matches("[0-9]{4}")) {
                     throw new Exception("CustomerID is not format, again: ");
                 }
-                for (Customer customer: customers) {
-                    if (customer.getCustomerID().contains(customerID)){
+                for (Customer customer : customers) {
+                    if (customer.getCustomerID().contains(customerID)) {
                         throw new Exception("ID is duplicated!, again: ");
                     }
                 }
@@ -192,7 +191,8 @@ public class CustomerService implements ICustomerService {
                 address = scanner.nextLine();
                 if (!address.matches("\\D{5,100}")) {
                     throw new Exception("Address is not format, again: ");
-                } if (!address.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")) {
+                }
+                if (!address.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")) {
                     throw new Exception("Address is not format, again: ");
                 }
                 break;
@@ -228,7 +228,7 @@ public class CustomerService implements ICustomerService {
     @Override
     public void editCustomer() throws IOException {
         customers = readCustomerFile(PATH_LIST_CUSTOMER);
-        System.out.println("Enter Customer ID: ");
+        System.out.println("Enter Employee ID: ");
         String findCustomerByID = scanner.nextLine();
         Customer customer = this.findCustomerByID(findCustomerByID);
         if (customer == null) {
@@ -279,7 +279,7 @@ public class CustomerService implements ICustomerService {
                             break;
                         case 2:
                             System.out.println("Enter Date of birth:");
-                            ValidateDateOfBirth.MyDate dateOfBirth = ValidateDateOfBirth.getDateInfo(18,100);
+                            ValidateDateOfBirth.MyDate dateOfBirth = ValidateDateOfBirth.getDateInfo(18, 100);
                             customers.get(index).setDateOfBirth(dateOfBirth.getStrDate());
                             break;
                         case 3:
@@ -350,7 +350,7 @@ public class CustomerService implements ICustomerService {
                             String customerID;
                             while (true) {
                                 try {
-                                    System.out.println("Enter Customer ID: ");
+                                    System.out.println("Enter Employee ID: ");
                                     customerID = scanner.nextLine();
                                     for (Customer item : customers) {
                                         if (item.getCustomerID().contains(customerID)) {
@@ -358,7 +358,7 @@ public class CustomerService implements ICustomerService {
                                         }
                                     }
                                     if (!customerID.matches("[0-9]{4}")) {
-                                        throw new Exception("Customer Code is not format, again: ");
+                                        throw new Exception("Employee Code is not format, again: ");
                                     }
                                     customerID = "CS" + customerID;
                                     customers.get(index).setCustomerID(customerID);

@@ -1,4 +1,5 @@
 package demo;
 
-public class Person {
+public abstract class Person {
+    public abstract String getInfo();
 }

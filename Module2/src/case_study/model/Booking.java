@@ -99,16 +99,16 @@ public class Booking {
                 this.getCustomerID(),this.getServiceID(), this.getServiceName(), this.getServiceType());
 
     }
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Booking booking = (Booking) o;
-        return Objects.equals(getServiceID(), booking.getServiceID());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getServiceID());
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Booking booking = (Booking) o;
+//        return Objects.equals(getServiceID(), booking.getServiceID());
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(getServiceID());
+//    }
 }

@@ -3,13 +3,14 @@ package repository;
 import model.person.Customer;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IRepoCustomer {
    List<Customer> getListCustomer();
 
     boolean deleteCustomer(int id);
 
-    void addCustomer(Customer customer);
+    boolean addCustomer(Customer customer);
 
     List<Customer> findCustomerByName(String name);
 

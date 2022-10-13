@@ -15,14 +15,68 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
+    <style>
+        .text-white pre{
+            color: white;
+            font-family: Arial;
+            margin-bottom: 0px;
+        }
+        .text-white input{
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
 <header style="text-align: center;margin: 5px">
     <h1>List Customer</h1>
     <div><a href="/home"><button type="button" class="btn btn-info">Home</button></a></div>
-    <a href="/customer?action=add">
-        <button style="margin: 10px" type="button" class="btn btn-info">Add New Customer</button>
-    </a>
+    <button style="margin-top: 10px" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#minhChau2">
+        Add
+    </button>
+    <!-- Modal -->
+    <div class="modal fade " id="minhChau2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2" style="color: white">Add</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/hokhau?action=add">
+                        <table  border="1px" class="text-white w-100">
+                            <tr>
+                                <td>
+                                    <pre>Name:</pre>
+                                </td>
+                                <td><input type="text" name="name" ></td>
+                            </tr>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <pre>Ngày lập: </pre>
+                                </td>
+                                <td><input type="date" name="ngaylap"></td>
+                            </tr>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <pre>Địa chỉ:</pre>
+                                </td>
+                                <td><input type="text" name="diachi" ></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center">
+                                    <input type="submit" value="Save"/></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <form action="/customer">
         <input type="hidden" name="action" value="find">
         <input type="text" name="name">
@@ -65,11 +119,51 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                Bạn có muốn edit <strong class="text-danger">${hokhau.tenChuHo}?</strong>
+                                <form method="post" action="/hokhau?action=edit">
+                                    <table  border="1px" class="text-white w-100">
+                                        <tr>
+                                            <td>
+                                                <pre>Mã hộ khẩu:</pre>
+                                            </td>
+                                            <input type="hidden" name="id" value="${hokhau.maHoKhau}" >
+                                            <td><input type="text" name="id" value="${hokhau.maHoKhau}" disabled></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <pre>Name:</pre>
+                                            </td>
+                                            <td><input type="text" name="name" value="${hokhau.tenChuHo}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <pre>Số lượng:</pre>
+                                            </td>
+                                            <input type="hidden" name="soluong" value="${hokhau.soLuongThanhVien}">
+                                            <td><input type="text" name="soluong" value="${hokhau.soLuongThanhVien}" disabled></td>
+                                        </tr>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <pre>Ngày lập: </pre>
+                                            </td>
+                                            <td><input type="date" name="ngaylap" value="${hokhau.ngayLap}"></td>
+                                        </tr>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <pre>Địa chỉ:</pre>
+                                            </td>
+                                            <td><input type="text" name="diachi" value="${hokhau.diachi}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" align="center">
+                                                <input type="submit" value="Save"/></td>
+                                        </tr>
+                                    </table>
+                                </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <a href="/hokhau?action=edit&id=${hokhau.maHoKhau}" class="btn btn-danger">Edit</a>
                             </div>
                         </div>
                     </div>

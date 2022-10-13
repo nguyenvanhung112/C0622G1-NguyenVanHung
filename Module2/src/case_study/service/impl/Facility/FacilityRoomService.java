@@ -50,11 +50,10 @@ public class FacilityRoomService {
                 }if (usingArea <= 0) {
                     throw new Exception("The area must be more than 0, again: ");
                 }
-                if (Double.isNaN(usingArea)) {
-                    throw new NumberFormatException("The data you enter is not a number!");
-                }
                 break;
-            } catch (Exception e) {
+            }catch (NumberFormatException e){
+                System.out.println("The data you enter is not a number!");
+            }catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -66,10 +65,9 @@ public class FacilityRoomService {
                 if (price <= 0) {
                     throw new Exception("The area must be more than 0, again: ");
                 }
-                if (Double.isNaN(price)) {
-                    throw new NumberFormatException("The data you enter is not a number!");
-                }
                 break;
+            }catch (NumberFormatException e){
+                System.out.println("The data you enter is not a number!");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -82,11 +80,10 @@ public class FacilityRoomService {
                 if (maximumPeople <= 0 || maximumPeople > 20) {
                     throw new Exception("Number of people must be less than 20, again: ");
                 }
-                if (Double.isNaN(price)) {
-                    throw new NumberFormatException("The data you enter is not a number!");
-                }
                 break;
-            } catch (Exception e) {
+            }catch (NumberFormatException e){
+                System.out.println("The data you enter is not a number!");
+            }catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -100,9 +97,6 @@ public class FacilityRoomService {
                         "\n 3. Day" +
                         "\n 4. Hour");
                 int choice1 = Integer.parseInt(scanner.nextLine());
-//                if (choice1 > 4 || choice1 < 1){
-//                    throw new Exception();
-//                }
                 switch (choice1) {
                     case 1:
                         rentalType = "Year";

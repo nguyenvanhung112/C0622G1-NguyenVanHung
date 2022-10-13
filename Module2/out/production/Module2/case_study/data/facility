@@ -1,8 +1,8 @@
-SVVL-9000,Servicevilla,100.0,200.0,10,Year,Vip,30.0,5,3
+SVVL-9000,Servicevilla,100.0,200.0,10,Year,Vip,30.0,5,7
 SVHO-9999,Servicehouse,50.0,150.0,10,Year,Vip,5,2
 SVRO-0987,Serviceroom,50.0,150.0,10,Year,Vip,0
 SVVL-6789,Villaservice,90.0,100.0,5,Month,Normal,50.0,5,2
 SVRO-5790,Serviceroom,30.0,100.0,10,Year,Massage,1
-SVRO-2132,Myroom,50.0,200.0,5,Year,Ok,7
-SVRO-2345,Roommmm,50.0,150.0,6,Year,Ok,6
-SVHO-4232,Houseoke,100.0,2000.0,10,Day,SuperStar,5,1
+SVRO-2132,Myroom,50.0,200.0,5,Year,Ok,1
+SVRO-2345,Roommmm,50.0,150.0,6,Year,Ok,0
+SVHO-4232,Houseoke,100.0,2000.0,10,Day,SuperStar,5,5

@@ -20,7 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d31c3bd5-9833-42ac-b0a3-08e418eadbae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Module3/src/First.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module3/case_study/src/main/java/controller/CustomerServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module3/case_study/src/main/java/repository/IRepoCustomer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module3/case_study/src/main/java/repository/impl/BaseRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module3/case_study/src/main/java/repository/impl/RepoCustomer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module3/case_study/src/main/java/service/ICustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module3/case_study/src/main/java/service/impl/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module3/case_study/src/main/webapp/view/booking.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module3/case_study/src/main/webapp/view/contract.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module3/case_study/src/main/webapp/view/customer.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module3/case_study/src/main/webapp/view/employees.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module3/case_study/src/main/webapp/view/facilityhouse.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module3/case_study/src/main/webapp/view/facilityroom.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module3/case_study/src/main/webapp/view/facilityvilla.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module3/case_study/src/main/webapp/view/home.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/c0622g1_mvc/c0622g1_mvc/src/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/c0622g1_mvc/c0622g1_mvc/src/model/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/c0622g1_mvc1/c0622g1_mvc/src/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/c0622g1_mvc1/c0622g1_mvc/src/model/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/out/production/Module2/bai_tap_lam_them/model/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/out/production/Module2/bai_tap_lam_them/model/Person.class" afterDir="false" />
@@ -78,7 +91,8 @@
       <change beforePath="$PROJECT_DIR$/../../Module2/src/ss2_array_loop/thuc_hanh/NumberPrime.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/ss2_array_loop/thuc_hanh/NumberPrime.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Module2/src/ss2_array_loop/thuc_hanh/timso.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module2/src/ss2_array_loop/thuc_hanh/timso.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../module1" beforeDir="false" afterPath="$PROJECT_DIR$/../../module1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module3/ss13_transaction/excercise/user-manager/src/main/java/com/codegym/controller/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Module3/ss13_transaction/excercise/user-manager/src/main/java/com/codegym/controller/UserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module3/ss13_transaction/excercise/user-manager/src/main/java/com/codegym/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Module3/ss13_transaction/excercise/user-manager/src/main/java/com/codegym/service/IUserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +123,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ss7_bootstrap/excercise/excercise_1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Module3/case_study_front_end" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -143,6 +157,7 @@
       <workItem from="1663853355943" duration="2217000" />
       <workItem from="1663896318930" duration="17934000" />
       <workItem from="1664156182225" duration="41000" />
+      <workItem from="1664954320794" duration="158000" />
     </task>
     <servers />
   </component>
@@ -162,9 +177,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1662709507715">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1664954474814">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1662709507715" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1664954474814" />
   </component>
 </project>

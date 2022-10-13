@@ -49,10 +49,9 @@ public class FacilityVillaService {
                 if (usingArea < 30 || usingArea <= 0) {
                     throw new Exception("The area must be more than 30m2, again: ");
                 }
-                if (Double.isNaN(usingArea)) {
-                    throw new NumberFormatException("The data you enter is not a number!");
-                }
                 break;
+            }catch (NumberFormatException e){
+                System.out.println("The data you enter is not a number!");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -65,10 +64,9 @@ public class FacilityVillaService {
                 if (price <= 0) {
                     throw new Exception("The area must be more than 0, again: ");
                 }
-                if (Double.isNaN(price)) {
-                    throw new NumberFormatException("The data you enter is not a number!");
-                }
                 break;
+            }catch (NumberFormatException e){
+                System.out.println("The data you enter is not a number!");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -81,10 +79,9 @@ public class FacilityVillaService {
                 if (maximumPeople <= 0 || maximumPeople > 20) {
                     throw new Exception("Number of people must be less than 20, again: ");
                 }
-                if (Double.isNaN(price)) {
-                    throw new NumberFormatException("The data you enter is not a number!");
-                }
                 break;
+            }catch (NumberFormatException e){
+                System.out.println("The data you enter is not a number!");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -173,10 +170,9 @@ public class FacilityVillaService {
                 if (poolArea <= 0) {
                     throw new Exception("The area must be more than 0, again: ");
                 }
-                if (Double.isNaN(poolArea)) {
-                    throw new NumberFormatException("The data you enter is not a number!");
-                }
                 break;
+            }catch (NumberFormatException e){
+                System.out.println("The data you enter is not a number!");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -189,10 +185,9 @@ public class FacilityVillaService {
                 if (numberFloor <= 0) {
                     throw new Exception("The floor must be more than 0, again: ");
                 }
-                if (Double.isNaN(numberFloor)) {
-                    throw new NumberFormatException("The data you enter is not a number!");
-                }
                 break;
+            }catch (NumberFormatException e){
+                System.out.println("The data you enter is not a number!");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }

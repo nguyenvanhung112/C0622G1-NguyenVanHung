@@ -1,5 +1,7 @@
 package case_study.model.person;
 
+import java.text.SimpleDateFormat;
+
 public abstract class Person {
 
     private String name;
@@ -72,7 +74,7 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "Customer{" +
                 "name='" + getName() + '\'' +
                 ", dateOfBirth='" + getDateOfBirth() + '\'' +
                 ", gender='" + getGender() + '\'' +

@@ -10,7 +10,7 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "Customer{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +

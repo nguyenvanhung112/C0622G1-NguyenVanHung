@@ -2,21 +2,22 @@ package case_study.service.impl;
 
 import case_study.model.Booking;
 import case_study.model.Contract;
-import case_study.model.person.Customer;
 import case_study.service.IContactService;
 import case_study.utils.ReadFileUlti;
 import case_study.utils.WriteFileUlti;
 
+import javax.imageio.stream.ImageInputStream;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.*;
 
 public class ContactService implements IContactService {
-    static Scanner scanner = new Scanner(System.in);
+
+    private static Scanner scanner = new Scanner(System.in);
     private static List<Contract> contracts = new ArrayList<>();
-    BookingService bookingService = new BookingService();
-    CustomerService customerService = new CustomerService();
+    private BookingService bookingService = new BookingService();
     private static final String CONTRACT_LIST = "src\\case_study\\data\\contact";
+    private final String BOOKING_LIST = "src\\case_study\\data\\booking";
 
     @Override
     public void creatNewContracts() throws IOException, ParseException {
@@ -50,15 +51,15 @@ public class ContactService implements IContactService {
         Booking booking;
         bookingService.displayListBooking();
         while (true) {
-            boolean check = true;
-            booking = bookingService.findBookingID();
+            booking = bookingService.findBookingByID();
             if (booking == null) {
                 System.out.println("Not found!");
-                check = false;
+            } else {
+                break;
             }
-            if (check) break;
         }
         double moneyFirst;
+
         while (true) {
             try {
                 System.out.println("Enter Money first: ");
@@ -66,11 +67,12 @@ public class ContactService implements IContactService {
                 if (moneyFirst < 0) {
                     throw new Exception("The Money first must be more than 0, again: ");
                 }
-                if (Double.isNaN(moneyFirst)) {
-                    throw new NumberFormatException("The data you enter is not a number!");
-                }
                 break;
-            } catch (Exception e) {
+
+            }catch (NumberFormatException e) {
+                System.out.println("The data you enter is not a number!");
+            }
+            catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -82,28 +84,16 @@ public class ContactService implements IContactService {
                 if (totalMoney < 0) {
                     throw new Exception("The Money total must be more than 0, again: ");
                 }
-                if (Double.isNaN(totalMoney)) {
-                    throw new NumberFormatException("The data you enter is not a number!");
-                }
                 break;
-            } catch (Exception e) {
+            }catch (NumberFormatException e) {
+                System.out.println("The data you enter is not a number!");
+            }catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
-        Customer customer;
-        customerService.displayListCustomers();
-        while (true) {
-            boolean check = true;
-            System.out.println("Enter Customer ID: ");
-            String customerID = scanner.nextLine();
-            customer = customerService.findCustomerByID(customerID);
-            if (customer == null) {
-                System.out.println("Not found!");
-                check = false;
-            }
-            if (check) break;
-        }
-        return new Contract(contractID, booking.getBookingID(), moneyFirst, totalMoney, customer.getCustomerID());
+        BookingService.bookings.remove(booking);
+        BookingService.writeBookingFile(BOOKING_LIST,BookingService.bookings);
+        return new Contract(contractID, booking.getBookingID(), moneyFirst, totalMoney, booking.getCustomerID());
     }
 
 
@@ -135,7 +125,7 @@ public class ContactService implements IContactService {
                 int choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
-                        System.out.println("Enter Contrart ID: ");
+                        System.out.println("Enter Contract ID: ");
                         String contractID = scanner.nextLine();
                         contractID = "CT-" + contractID;
                         contract.setContractID(contractID);
@@ -179,6 +169,7 @@ public class ContactService implements IContactService {
         String[] info;
         for (String line : strings) {
             info = line.split(",");
+//            String contractID, String bookingCode, double moneyFirst, double totalMoney, String customerCode
             contracts.add(new Contract(info[0], (info[1]), Double.parseDouble(info[2]), Double.parseDouble(info[3]), (info[4])));
         }
         return contracts;

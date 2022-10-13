@@ -5,6 +5,7 @@
   Time: 11:23 SA
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,10 +14,15 @@
 <body>
 <center>
     <h2>Add New Customer</h2>
-
+    <p>${mess}</p>
 
     <form method="post">
         <table border="1px">
+
+            <c:if test="${map.get('check')!=null}">
+                <p>${map.get('check')}</p>
+            </c:if>
+
             <tr>
                 <td>
                     <pre>Customer Type:</pre>
@@ -34,47 +40,83 @@
             <tr>
                 <td>
                     <pre>Name:</pre>
+
                 </td>
-                <td><input type="text" name="name"></td>
+                <td><input type="text" name="name" size="45"
+                           value="${customer.name}">
+                    <c:if test="${map.get('name')!=null}">
+                        <pre><span style="color:red;">${map.get('name')}</span></pre>
+                    </c:if>
+                </td>
             </tr>
+
             <tr>
                 <td>
                     <pre>Birthday:</pre>
                 </td>
-                <td><input type="date" name="birthday"></td>
+                <td><input type="date" name="birthday" value="${customer.dateOfBirth}"></td>
             </tr>
-            </tr>
+            <%--            <tr>--%>
+            <%--                <td>--%>
+            <%--                    <c:if test="${map.get('dateOfBirth')!=null}">--%>
+            <%--                        <pre>               <span style="color:red;">${map.get('dateOfBirth')}</span></pre>--%>
+            <%--                    </c:if>--%>
+            <%--                </td>--%>
+            <%--            </tr>--%>
             <tr>
                 <td>
                     <pre>ID Card:  </pre>
                 </td>
-                <td><input type="text" name="id-card"></td>
-            </tr>
+                <td>
+                    <input type="text" name="id-card" value="${customer.idCard}">
+                    <c:if test="${map.get('idCard')!=null}">
+                        <pre><span style="color:red;">${map.get('idCard')}</span></pre>
+                    </c:if>
+                </td>
             </tr>
             <tr>
                 <td>
                     <pre>Gender:</pre>
                 </td>
-                <td><input type="radio" name="gender" value="true">Nam <input type="radio" value="false" name="gender"> Nữ</td>
+                <td><input type="radio" name="gender" value="true" ${customer.gender==true?"checked":""}>Nam
+                    <input type="radio" value="false" name="gender" ${customer.gender==false?"checked":""}>Nữ
+                </td>
             </tr>
             <tr>
                 <td>
                     <pre>Phone Number:</pre>
+
                 </td>
-                <td><input type="text" name="phonenumber"></td>
+                <td><input type="text" name="phonenumber" size="30" value="${customer.phone}">
+                    <c:if test="${map.get('phoneNumber')!=null}">
+                        <pre><span style="color:red;">${map.get('phoneNumber')}</span></pre>
+                    </c:if>
+                </td>
             </tr>
+
             <tr>
                 <td>
                     <pre>Email:</pre>
                 </td>
-                <td><input type="text" name="email"></td>
+                <td><input type="text" name="email" size="45"
+                           value="${customer.email}">
+                    <c:if test="${map.get('email')!=null}">
+                        <pre><span style="color:red;">${map.get('email')}</span></pre>
+                    </c:if>
+                </td>
             </tr>
             <tr>
                 <td>
-                    <pre>Address:</pre>
+                    <pre>Address: </pre>
+
                 </td>
-                <td><input type="text" name="address"></td>
+                <td><input type="text" name="address" value="${customer.address}">
+                    <c:if test="${map.get('address')!=null}">
+                        <pre><span style="color:red;">${map.get('address')}</span></pre>
+                    </c:if>
+                </td>
             </tr>
+
             <tr>
                 <td colspan="2" align="center"><input type="submit" value="Save"/></td>
             </tr>

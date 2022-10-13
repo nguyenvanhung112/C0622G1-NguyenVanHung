@@ -12,6 +12,11 @@ public class SortByStartDateThenEndDate implements Comparator<Booking> {
         comparison = o1.getStartDay().compareTo(o2.getStartDay());
         if (comparison == 0) {
             comparison = o1.getEndDay().compareTo(o2.getEndDay());
+            if (comparison != 0) {
+                return comparison;
+            }
+            comparison = o1.getBookingID().compareTo(o2.getBookingID());
+            return comparison;
         }
         return comparison;
     }

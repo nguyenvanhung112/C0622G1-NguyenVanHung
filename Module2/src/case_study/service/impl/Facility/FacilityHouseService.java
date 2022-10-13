@@ -46,13 +46,12 @@ public class FacilityHouseService {
                 if (usingArea < 30) {
                     throw new Exception("The area must be more than 30m2, again: ");
                 }
-                if (Double.isNaN(usingArea)) {
-                    throw new NumberFormatException("The data you enter is not a number!");
-                }
                 if (usingArea<= 0){
                     throw new Exception("The area must be more than 0, again:");
                 }
                 break;
+            }catch (NumberFormatException e){
+                System.out.println("The data you enter is not a number!");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -65,10 +64,9 @@ public class FacilityHouseService {
                 if (price < 0) {
                     throw new Exception("The price must be more than 0, again: ");
                 }
-                if (Double.isNaN(price)) {
-                    throw new NumberFormatException("The data you enter is not a number!");
-                }
                 break;
+            }catch (NumberFormatException e){
+                System.out.println("The data you enter is not a number!");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -81,10 +79,9 @@ public class FacilityHouseService {
                 if (maximumPeople <= 0 || maximumPeople > 20) {
                     throw new Exception("Number of people must be less than 20, again: ");
                 }
-                if (Double.isNaN(price)) {
-                    throw new NumberFormatException("The data you enter is not a number!");
-                }
                 break;
+            }catch (NumberFormatException e){
+                System.out.println("The data you enter is not a number!");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -173,10 +170,9 @@ public class FacilityHouseService {
                 if (numberFloor <= 0) {
                     throw new Exception("The floor must be more than 0, again: ");
                 }
-                if (Double.isNaN(numberFloor)) {
-                    throw new NumberFormatException("The data you enter is not a number!");
-                }
                 break;
+            }catch (NumberFormatException e){
+                System.out.println("The data you enter is not a number!");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }

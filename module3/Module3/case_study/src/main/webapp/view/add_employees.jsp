@@ -43,7 +43,7 @@
                 <td>
                     <pre>Salary:  </pre>
                 </td>
-                <td><input type="text" name="salary"></td>
+                <td><input type="number" name="salary" required></td>
             </tr>
             <tr>
                 <td>

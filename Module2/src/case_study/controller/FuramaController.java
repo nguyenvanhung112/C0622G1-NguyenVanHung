@@ -21,7 +21,7 @@ public class FuramaController {
             System.out.println("FURAMA RESORT");
             System.out.println("" +
                     "1.\tEmployee Management\n" +
-                    "2.\tCustomer Management\n" +
+                    "2.\tEmployee Management\n" +
                     "3.\tFacility Management \n" +
                     "4.\tBooking Management\n" +
                     "5.\tPromotion Management\n" +

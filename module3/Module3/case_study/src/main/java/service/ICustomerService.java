@@ -3,13 +3,14 @@ package service;
 import model.person.Customer;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ICustomerService {
     List<Customer> getListCustomer();
 
     boolean deleteCustomer(int id);
 
-    void addCustomer(Customer customer);
+    Map<String, String> addCustomer(Customer customer);
 
     List<Customer> findByCustomerByName(String name);
 

@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "CustomerServlet", urlPatterns = "/customer")
 public class CustomerServlet extends HttpServlet {
@@ -48,7 +50,7 @@ public class CustomerServlet extends HttpServlet {
         String phone = request.getParameter("phonenumber");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
-        Customer customer = new Customer(id,customerType, name, dateOfBirth, gender, idCard, phone, email, address);
+        Customer customer = new Customer(id, customerType, name, dateOfBirth, gender, idCard, phone, email, address);
         customerService.updateCustomer(customer);
         try {
             request.getRequestDispatcher("view/edit_customer.jsp").forward(request, response);
@@ -69,9 +71,18 @@ public class CustomerServlet extends HttpServlet {
         String email = request.getParameter("email");
         String address = request.getParameter("address");
         Customer customer = new Customer(customerType, name, dateOfBirth, gender, idCard, phone, email, address);
-        customerService.addCustomer(customer);
+        Map<String, String> map = customerService.addCustomer(customer);
+        if (map.size() != 0) {
+            request.setAttribute("mess", "Add new failure");
+            request.setAttribute("map", map);
+            request.setAttribute("customer", customer);
+        } else {
+            request.setAttribute("customer", customer);
+            request.setAttribute("mess", "Successfully added new");
+        }
+
         try {
-            request.getRequestDispatcher("view/add_customer.jsp").forward(request, response);
+            request.getRequestDispatcher("/view/add_customer.jsp").forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
