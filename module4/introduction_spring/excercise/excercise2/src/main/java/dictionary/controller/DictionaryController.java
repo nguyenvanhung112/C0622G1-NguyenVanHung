@@ -14,13 +14,14 @@ public class DictionaryController {
     IDictionaryService dictionaryService;
 
     @GetMapping("/")
-    public String showform(){
+    public String showform() {
         return "/view";
     }
+
     @PostMapping
-    public String dictionary(@RequestParam String eng, Model model){
+    public String dictionary(@RequestParam String eng, Model model) {
         String vietnamese = dictionaryService.getDictionary(eng);
-        model.addAttribute("vietnamese",vietnamese);
+        model.addAttribute("vietnamese", vietnamese);
         return "/view";
     }
 }
