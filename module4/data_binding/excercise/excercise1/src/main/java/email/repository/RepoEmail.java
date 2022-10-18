@@ -64,6 +64,7 @@ public class RepoEmail implements IRepoEmail {
                 item.setPageSize(email.getPageSize());
                 item.setSignature(email.getSignature());
                 item.setSpamsFilter(email.getSpamsFilter());
+                break;
             }
         }
     }
