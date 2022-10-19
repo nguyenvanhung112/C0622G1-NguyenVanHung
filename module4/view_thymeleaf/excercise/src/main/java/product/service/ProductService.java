@@ -3,14 +3,14 @@ package product.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import product.model.Product;
-import product.repository.IRepoProduct;
+import product.repository.IProductRepository;
 
 import java.util.List;
 
 @Service
 public class ProductService implements IProductService {
     @Autowired
-    private IRepoProduct repoProduct;
+    private IProductRepository repoProduct;
     @Override
     public List<Product> findAll() {
         return repoProduct.findAll();
