@@ -1,10 +1,14 @@
-package com.example.excercise2.service;
+package com.example.excercise2.service.impl;
 
 
 import com.example.excercise2.model.Bloger;
+import com.example.excercise2.model.Category;
 import com.example.excercise2.repository.BlogerRepository;
 
+import com.example.excercise2.service.IBlogerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +20,8 @@ public class BlogerServiceIplm implements IBlogerService {
     private BlogerRepository blogerRepository;
 
     @Override
-    public List<Bloger> findAll() {
-        return blogerRepository.findAll();
+    public Page<Bloger> findAll(Pageable pageable) {
+        return blogerRepository.findAll(pageable);
     }
 
     @Override
@@ -39,4 +43,6 @@ public class BlogerServiceIplm implements IBlogerService {
     public List<Bloger> findByName(String nameSearch) {
         return blogerRepository.findByName(nameSearch);
     }
+
+
 }
