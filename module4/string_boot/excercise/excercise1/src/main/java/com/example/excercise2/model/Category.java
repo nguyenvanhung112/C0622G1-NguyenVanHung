@@ -9,6 +9,21 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    private int deleteStatus;
+
+    public int getDeleteStatus() {
+        return deleteStatus;
+    }
+
+    public Category(int id, String name, int deleteStatus) {
+        this.id = id;
+        this.name = name;
+        this.deleteStatus = deleteStatus;
+    }
+
+    public void setDeleteStatus(int deleteStatus) {
+        this.deleteStatus = deleteStatus;
+    }
 
     public Set<Bloger> getBlogers() {
         return blogers;
@@ -44,5 +59,6 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
+
 
 }

@@ -13,8 +13,9 @@ public class Bloger {
     private String content;
     private String image;
     private Date date;
+    private int deleteStatus;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "category_id",referencedColumnName = "id")
     private Category category;
 
@@ -29,6 +30,16 @@ public class Bloger {
         this.image = image;
         this.date = date;
         this.category = category;
+    }
+
+    public Bloger(int id, String name, String content, String image, Date date, Category category, int deleteStatus) {
+        this.id = id;
+        this.name = name;
+        this.content = content;
+        this.image = image;
+        this.date = date;
+        this.category = category;
+        this.deleteStatus = deleteStatus;
     }
 
     public void setCategory(Category category) {
@@ -60,6 +71,14 @@ public class Bloger {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getDeleteStatus() {
+        return deleteStatus;
+    }
+
+    public void setDeleteStatus(int deleteStatus) {
+        this.deleteStatus = deleteStatus;
     }
 
     public String getContent() {
