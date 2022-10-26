@@ -7,7 +7,9 @@
 <body>
 <h1>Order List</h1>
 <a href="/book">Back to Book list</a>
-<span th:text="${message}"></span>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
 <table border="1">
     <thead>
     <tr>

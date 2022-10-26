@@ -2,6 +2,7 @@ package com.example.orderbook.model;
 
 import javax.persistence.*;
 import java.util.Date;
+
 @Entity
 public class OrderBook {
 

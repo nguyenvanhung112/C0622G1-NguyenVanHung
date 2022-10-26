@@ -13,8 +13,8 @@
     <p th:text="${message}"></p>
 </th:block>
 <form th:action="@{/book/return}"  method="post">
-    <span>id:book</span>
-    <input th:value="${book.id}" th:name="bookId">
+
+    <input type="hidden" th:value="${book.id}" th:name="bookId">
     <table>
         <tr>
             <td>Code:</td>
