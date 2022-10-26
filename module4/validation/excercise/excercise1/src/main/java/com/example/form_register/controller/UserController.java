@@ -33,7 +33,6 @@ public class UserController {
         new UserDTO().validate(userDTO, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             ModelAndView modelAndView = new ModelAndView("user/index");
-
             return modelAndView;
         } else {
             ModelAndView modelAndView = new ModelAndView("user/result");

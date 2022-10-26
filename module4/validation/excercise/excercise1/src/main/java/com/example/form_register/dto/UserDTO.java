@@ -16,7 +16,7 @@ public class UserDTO implements Validator {
     @Size(min = 5, max = 45)
     private String lastName;
 
-    @Pattern(regexp = "^[0-9]{10}$",message = "Phone not format")
+    @Pattern(regexp = "^[0-9]{10}$", message = "Phone not format")
     private String phoneNumber;
 
     @NotEmpty

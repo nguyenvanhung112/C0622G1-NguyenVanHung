@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Return Book</h1>
+<p>
+    <a href="/book/list-order">Back to Order list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/book/return}"  method="post">
+    <span>id:book</span>
+    <input th:value="${book.id}" th:name="bookId">
+    <table>
+        <tr>
+            <td>Code:</td>
+            <td><input type="text" th:name="code"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="CREATE"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

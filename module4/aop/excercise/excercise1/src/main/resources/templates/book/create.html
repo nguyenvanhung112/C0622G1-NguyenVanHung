@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>New Book</h1>
+<p>
+    <a href="/book">Back to Book list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/book/create}" th:object="${book}" method="post">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"></td>
+        </tr>
+        <tr>
+            <td>Count:</td>
+            <td><input type="text" th:field="*{count}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="CREATE"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

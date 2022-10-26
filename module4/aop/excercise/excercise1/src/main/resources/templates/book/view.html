@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>View</h1>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<p>
+    <a href="/book/list-order">Order List</a>
+</p>
+<p>
+    <a href="/book">Back to Book list</a>
+</p>
+    <table>
+        <tr>
+            <td>ID:</td>
+            <td th:text="${book.id}"></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td th:text="${book.name}"></td>
+        </tr>
+        <tr>
+            <td>Count:</td>
+            <td th:text="${book.count}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><a th:unless="${hiddenOrder == 1}" th:href="@{/book/order/__${book.id}__}">Order</a></td>
+        </tr>
+    </table>
+</body>
+</html>

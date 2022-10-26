@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class UserService implements IUserService {
     @Autowired
     IUserRepository userRepository;
+
     @Override
     public void save(User user) {
         userRepository.save(user);
