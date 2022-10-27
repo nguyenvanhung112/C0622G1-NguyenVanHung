@@ -8,15 +8,15 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class Logger {
-    @AfterThrowing(value = "execution(* com.example.orderbook.controller.BookController.order(..))")
+    @AfterThrowing(value = "execution(* com.example.orderbook.controller.BookController.*(..))")
     public void checkEx() {
         System.out.println("--------------------------------");
         System.out.println("Error");
     }
 
-    @After(value = "execution(* com.example.orderbook.controller.BookController.order(..))")
+    @After(value = "execution(* com.example.orderbook.controller.BookController.*(..))")
     public void checkOk() {
-        System.out.println("----------------");
-        System.out.println("OK");
+        System.out.println("--------------------------------");
+        System.out.println("Success");
     }
 }
