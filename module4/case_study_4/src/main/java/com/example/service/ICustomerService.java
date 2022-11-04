@@ -10,5 +10,7 @@ import java.util.List;
 public interface ICustomerService {
     List<CustomerType> findAllCustomerType();
 
-    Page<Customer> search(String nameSearch, String customerType, String email, Pageable pageable);
+    Page<Customer> search(String nameSearch, String email, String customerType, Pageable pageable);
+
+    void save(Customer customer);
 }

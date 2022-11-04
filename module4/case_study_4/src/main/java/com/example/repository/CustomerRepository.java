@@ -20,7 +20,9 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
 //                                                     @Param("type") String type,
 //                                                     Pageable pageable);
 
-    @Query(value="SELECT * FROM Customer where name like %:name% and email like %:email% and customer_type_id like %:type% and delete_status = 1 ",nativeQuery = true)
+    @Query(value = "select c.* from `customer` c inner join `customer_type` ct " +
+            "on c.customer_type_id = ct.id " +
+            "where c.name like %:name% and c.email like %:email% and ct.name like %:type% and c.delete_status= 1", nativeQuery = true)
     Page<Customer> findByNameAndEmailAndCustomerType(@Param("name") String nameSearch,
                                                      @Param("email") String email,
                                                      @Param("type") String customerType,

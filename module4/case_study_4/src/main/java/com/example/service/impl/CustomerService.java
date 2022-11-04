@@ -28,4 +28,9 @@ public class CustomerService implements ICustomerService {
     public Page<Customer> search(String nameSearch, String customerType, String email, Pageable pageable) {
         return customerRepository.findByNameAndEmailAndCustomerType(nameSearch, customerType, email, pageable);
     }
+
+    @Override
+    public void save(Customer customer) {
+        customerRepository.save(customer);
+    }
 }
