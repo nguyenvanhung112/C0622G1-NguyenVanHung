@@ -12,7 +12,7 @@
 <body>
 <header style="text-align: center;margin: 5px">
     <h1>List Customer</h1>
-    <div><a href="/home">
+    <div><a href="home">
         <button type="button" class="btn btn-info">Home</button>
     </a></div>
     <a href="/customers/create">
@@ -78,7 +78,7 @@
         crossorigin="anonymous"></script>
 <a th:href="@{'/customers'(page=${customers.number - 1},nameSearch=${nameSearch},email=${email},customerType=${customerType})}"
    th:if="${customers.hasPrevious()}">Previous</a>
-<span th:text="${customers.number+1}"></span> <span th:text="${customers.totalPages}"></span>
+<span th:text="${customers.number+1}"></span> / <span th:text="${customers.totalPages}"></span>
 <a th:href="@{'/customers'(page=${customers.number + 1},nameSearch=${nameSearch},email=${email},customerType=${customerType})}"
    th:if="${customers.hasNext()}">Next</a>
 </body>
