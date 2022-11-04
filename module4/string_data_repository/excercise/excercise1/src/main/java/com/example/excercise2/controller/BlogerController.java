@@ -8,11 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.WebUtils;
 
 
+import java.security.Principal;
 import java.sql.Date;
 
 
@@ -70,6 +75,8 @@ public class BlogerController {
 
     @PostMapping("/edit-blog")
     public ModelAndView update(@ModelAttribute("blog") Bloger bloger) {
+        Date date = new Date(System.currentTimeMillis());
+        bloger.setDate(date);
         blogerService.save(bloger);
         ModelAndView modelAndView = new ModelAndView("blog/edit");
         modelAndView.addObject("blog", bloger);
@@ -177,5 +184,15 @@ public class BlogerController {
         modelAndView.addObject("category", category);
         modelAndView.addObject("message", "Category created successfully");
         return modelAndView;
+    }
+
+    @GetMapping("/login")
+    public String loginPage() {
+        return "blog/loginPage";
+    }
+
+    @GetMapping("/error")
+    public String accessDenied(Model model, Principal principal) {
+        return "/error.404";
     }
 }
