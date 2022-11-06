@@ -15,6 +15,9 @@
     <div><a href="home">
         <button type="button" class="btn btn-info">Home</button>
     </a></div>
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
     <a href="/customers/create">
         <button style="margin: 10px" type="button" class="btn btn-info">Add New Customer</button>
     </a>
@@ -60,13 +63,36 @@
             <td th:text="${customer.phoneNumber}"></td>
             <td th:text="${customer.getEmail()}"></td>
             <td th:text="${customer.getAddress()}"></td>
-            <td><a class="btn btn-danger" th:href="@{/customers/edit/__${customer.id}__}">edit</a></td>
-            <td><a class="btn btn-danger" th:href="@{/customers/delete/__${customer.id}__}">delete</a></td>
+            <td><a class="btn btn-danger" th:href="@{/customers/edit/__${customer.id}__}">Edit</a></td>
+            <td>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete" th:attr="onclick=|infoDelete('${customer.id}', '${customer.name}')|">
+                Delete
+            </button>
+            </td>
         </tr>
     </th:block>
     </tbody>
 </table>
-
+<div class="modal fade " id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: white">
+    <div class="modal-dialog ">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Bạn có muốn xóa <strong class="text-danger" id="nameDelete"></strong>
+            </div>
+            <div class="modal-footer">
+                <form action="/customers/delete">
+                    <input type="text" name="id" id="id"  hidden>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -81,5 +107,11 @@
 <span th:text="${customers.number+1}"></span> / <span th:text="${customers.totalPages}"></span>
 <a th:href="@{'/customers'(page=${customers.number + 1},nameSearch=${nameSearch},email=${email},customerType=${customerType})}"
    th:if="${customers.hasNext()}">Next</a>
+<script>
+    function infoDelete(id, name) {
+        document.getElementById("nameDelete").innerText = name;
+        document.getElementById("id").value = id;
+    }
+</script>
 </body>
 </html>

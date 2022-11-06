@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerService implements ICustomerService {
@@ -33,4 +34,16 @@ public class CustomerService implements ICustomerService {
     public void save(Customer customer) {
         customerRepository.save(customer);
     }
+
+    @Override
+    public Optional<Customer> findCustomerByID(int id) {
+        return customerRepository.findById(id);
+    }
+
+    @Override
+    public void delete(int id) {
+        customerRepository.delete(id);
+    }
+
+
 }

@@ -12,6 +12,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping("customers")
@@ -35,7 +38,7 @@ public class CustomerController {
     }
 
     @GetMapping("/create")
-    public ModelAndView showForm(){
+    public ModelAndView showForm() {
         ModelAndView modelAndView = new ModelAndView("customer/create");
         modelAndView.addObject("customerTypes", customerService.findAllCustomerType());
         modelAndView.addObject("customerDTO", new CustomerDTO());
@@ -44,7 +47,7 @@ public class CustomerController {
 
     @PostMapping("/create")
     private ModelAndView create(@Validated @ModelAttribute CustomerDTO customerDTO, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             ModelAndView modelAndView = new ModelAndView("customer/create");
             modelAndView.addObject("customerTypes", customerService.findAllCustomerType());
             modelAndView.addObject("customerDTO", customerDTO);
@@ -58,6 +61,40 @@ public class CustomerController {
         modelAndView.addObject("customerTypes", customerService.findAllCustomerType());
         modelAndView.addObject("customerDTO", customerDTO);
         modelAndView.addObject("message", "Add new Successful!");
+        return modelAndView;
+    }
+
+    @GetMapping("/delete")
+    public String deleteCustomer(@RequestParam int id, RedirectAttributes redirectAttributes) {
+        customerService.delete(id);
+        redirectAttributes.addFlashAttribute("message", "Delete customer successfully!");
+        return "redirect:/customers";
+    }
+
+    @GetMapping("/edit/{id}")
+    public ModelAndView showFormEdit(@PathVariable int id) {
+        ModelAndView modelAndView = new ModelAndView("customer/edit");
+        Optional<Customer> customer = customerService.findCustomerByID(id);
+        modelAndView.addObject("customerTypes", customerService.findAllCustomerType());
+        CustomerDTO customerDTO = new CustomerDTO();
+        BeanUtils.copyProperties(customer.get(), customerDTO);
+        modelAndView.addObject("customerDTO", customerDTO);
+        return modelAndView;
+    }
+
+    @PostMapping("/edit")
+    public ModelAndView edit(@ModelAttribute @Validated CustomerDTO customerDTO, BindingResult bindingResult) {
+        if (bindingResult.hasFieldErrors()) {
+            ModelAndView modelAndView = new ModelAndView("customer/edit");
+            modelAndView.addObject("customerDTO", customerDTO);
+            return modelAndView;
+        }
+        Customer customer = new Customer();
+        BeanUtils.copyProperties(customerDTO, customer);
+        customerService.save(customer);
+        ModelAndView modelAndView = new ModelAndView("customer/edit");
+        modelAndView.addObject("customerDTO", customerDTO);
+        modelAndView.addObject("message", "Customer edited successfully");
         return modelAndView;
     }
 }

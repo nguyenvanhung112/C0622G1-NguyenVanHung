@@ -1,8 +1,7 @@
 package com.example.model;
 
-import com.example.model.Employee.Employee;
-
 import javax.persistence.*;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
