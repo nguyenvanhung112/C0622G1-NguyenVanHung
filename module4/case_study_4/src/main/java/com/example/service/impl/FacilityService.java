@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FacilityService implements IFacilityService {
@@ -43,5 +44,20 @@ public class FacilityService implements IFacilityService {
     @Override
     public void save(Facility facility) {
         facilityRepository.save(facility);
+    }
+
+    @Override
+    public FacilityType findByIdFacilityType(int facilityType) {
+        return facilityTypeRepository.findById(facilityType).orElse(null);
+    }
+
+    @Override
+    public Facility findFacilityByID(int id) {
+        return facilityRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void delete(int id) {
+        facilityRepository.delete(id);
     }
 }

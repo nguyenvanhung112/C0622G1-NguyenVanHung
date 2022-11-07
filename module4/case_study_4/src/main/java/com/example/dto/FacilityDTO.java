@@ -4,20 +4,31 @@ import com.example.model.FacilityType;
 import com.example.model.RentType;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import java.util.Optional;
 import java.util.Set;
 
 
 public class FacilityDTO {
 
     private int id;
+
     private String name;
+
     private int area;
+
     private double cost;
+
     private int maxPeople;
+
     private String standardRoom;
+
     private String descriptionOtherConvenience;
+
     private double poolArea;
+
     private int numberFloors;
+
     private String facilityFree;
     private int deleteStatus = 1;
     private RentType rentTypeId;
