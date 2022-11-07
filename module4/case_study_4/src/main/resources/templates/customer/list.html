@@ -8,96 +8,201 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
+    <style>
+        body{
+            background: url("https://tse3.mm.bing.net/th?id=OIP.VAAkrGwNAqzejjo-jMNTSgHaEo&pid=Api&P=0");
+            background-size: cover;
+        }
+        header{
+            width: 100%;
+        }
+        header .left-header img{
+            width: 40px;
+            height: 80px;
+            margin: 5px 5px 5px 40px;
+            float: left;
+        }
+        header .right-header h3{
+            float: right;
+        }
+        header .left-header {
+            float: left;
+            width: 20%;
+        }
+        header .right-header {
+            float: right;
+            width: 20%;
+        }
+        header .mid-header {
+            text-align: center;
+            float: left;
+            width: 60%;
+        }
+        .navbar ul li a {
+            font-weight: bold;
+            color: #4b4b2e !important;
+        }
+        .navbar ul li a:hover {
+            text-decoration: underline;
+        }
+        .menu{
+            clear: left;
+            float: left;
+            width: 100%;
+        }
+        .body-mid .body-mid-left{
+            clear: left;
+            float: left;
+            width: 20%;
+            min-height: 100%;
+        }
+        .body-mid .body-mid-right{
+            float: left;
+            width: 100%;
+        }
+        .body-mid .body-mid-right img{
+            width: 100%;
+        }
+        footer{
+            clear: left;
+            text-align: center;
+        }
+
+    </style>
 </head>
 <body>
-<header style="text-align: center;margin: 5px">
-    <h1>List Customer</h1>
-    <div><a href="home">
-        <button type="button" class="btn btn-info">Home</button>
-    </a></div>
-    <th:block th:if="${message}">
-        <p th:text="${message}"></p>
-    </th:block>
-    <a href="/customers/create">
-        <button style="margin: 10px" type="button" class="btn btn-info">Add New Customer</button>
-    </a>
-    <form action="/customers">
-        <input type="text" name="nameSearch" placeholder="Search name">
-        <input type="text" name="email" placeholder="Search email">
-        <select name="customerType">
-            <option value="" selected>Type</option>
-            <option th:each="item: ${customerTypes}" th:value="${item.name}" th:text="${item.name}"></option>
-        </select>
-        <input type="submit" value="Search">
-    </form>
+<header>
+    <div class="left-header">
+        <img src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png">
+    </div>
+    <div class="mid-header">
+        <h1>CUSTOMER LIST</h1>
+    </div>
+    <div class="right-header">
+        <h3>Nguyễn Văn Hùng</h3>
+    </div>
 </header>
-<table id="tableCustomer" class="table table-dark" style="text-align: center" border="1">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Customer Type</th>
-        <th>Name</th>
-        <th>Date of birth</th>
-        <th>Gender</th>
-        <th>ID Card</th>
-        <th>Phone Number</th>
-        <th>Email</th>
-        <th>Address</th>
-        <th>Edit</th>
-        <th>Delete</th>
-    </tr>
-    </thead>
-    <tbody>
-    <th:block th:each="customer : ${customers}">
-        <tr>
-            <td th:text="${customer.id}"></td>
-            <td th:text="${customer.customerTypeId.name}"></td>
-            <td th:text="${customer.getName()}"></td>
-            <td th:text="${customer.getDateOfBirth()}"></td>
-            <td>
-                <p  th:if="${customer.gender == 0}" >Female </p>
-                <p  th:if="${customer.gender == 1}" >Male </p>
-                <p  th:if="${customer.gender == 2}" >LGBT </p>
-            </td>
-            <td th:text="${customer.getIdCard()}"></td>
-            <td th:text="${customer.phoneNumber}"></td>
-            <td th:text="${customer.getEmail()}"></td>
-            <td th:text="${customer.getAddress()}"></td>
-            <td><a class="btn btn-danger" th:href="@{/customers/edit/__${customer.id}__}">Edit</a></td>
-            <td>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete" th:attr="onclick=|infoDelete('${customer.id}', '${customer.name}')|">
-                Delete
+<div class="menu">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(212,212,212,0.26)">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/home">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            </td>
-        </tr>
-    </th:block>
-    </tbody>
-</table>
-<div class="modal fade " id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: white">
-    <div class="modal-dialog ">
-        <div class="modal-content bg-dark">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Bạn có muốn xóa <strong class="text-danger" id="nameDelete"></strong>
-            </div>
-            <div class="modal-footer">
-                <form action="/customers/delete">
-                    <input type="text" name="id" id="id"  hidden>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button class="btn btn-danger" type="submit">Delete</button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/employees">Employees</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/customers">Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/facility">Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/booking">Booking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/contract">Contract</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/customers/create">Add New Customer</a>
+                    </li>
+                </ul>
+                <form action="/customers">
+                    <input type="text" name="nameSearch" placeholder="Search name">
+                    <input type="text" name="email" placeholder="Search email">
+                    <select name="customerType">
+                        <option value="" selected>Type</option>
+                        <option th:each="item: ${customerTypes}" th:value="${item.name}" th:text="${item.name}"></option>
+                    </select>
+                    <input type="submit" value="Search">
                 </form>
             </div>
         </div>
+    </nav>
+</div>
+<div class="body-mid">
+    <div class="body-mid-right">
+        <table class="table table-white" style="text-align: center" border="1">
+            <thead>
+            <tr>
+                <th>STT</th>
+                <th>Customer Type</th>
+                <th>Name</th>
+                <th>Date of birth</th>
+                <th>Gender</th>
+                <th>ID Card</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="customer,iState : ${customers}">
+                <tr>
+                    <td th:text="${iState.count}"></td>
+                    <td th:text="${customer.customerTypeId.name}"></td>
+                    <td th:text="${customer.getName()}"></td>
+                    <td th:text="${customer.getDateOfBirth()}"></td>
+                    <td>
+                        <p  th:if="${customer.gender == 0}" >Female </p>
+                        <p  th:if="${customer.gender == 1}" >Male </p>
+                        <p  th:if="${customer.gender == 2}" >LGBT </p>
+                    </td>
+                    <td th:text="${customer.getIdCard()}"></td>
+                    <td th:text="${customer.phoneNumber}"></td>
+                    <td th:text="${customer.getEmail()}"></td>
+                    <td th:text="${customer.getAddress()}"></td>
+                    <td><a class="btn btn-danger" th:href="@{/customers/edit/__${customer.id}__}">Edit</a></td>
+                    <td>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete" th:attr="onclick=|infoDelete('${customer.id}', '${customer.name}')|">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+        <div class="modal fade " id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: white">
+            <div class="modal-dialog ">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn có muốn xóa <strong class="text-danger" id="nameDelete"></strong>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="/customers/delete">
+                            <input type="text" name="id" id="id"  hidden>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a th:href="@{'/customers'(page=${customers.number - 1},nameSearch=${nameSearch},email=${email},customerType=${customerType})}"
+           th:if="${customers.hasPrevious()}"><button type="button" class="btn btn-secondary">Previous</button></a>
+        <span th:text="${customers.number+1}"></span> / <span th:text="${customers.totalPages}"></span>
+        <a th:href="@{'/customers'(page=${customers.number + 1},nameSearch=${nameSearch},email=${email},customerType=${customerType})}"
+           th:if="${customers.hasNext()}"><button type="button" class="btn btn-secondary">Next</button></a>
+        <th:block th:if="${message}" >
+            <p style="text-align: center" th:text="${message}"></p>
+        </th:block>
     </div>
 </div>
-<a th:href="@{'/customers'(page=${customers.number - 1},nameSearch=${nameSearch},email=${email},customerType=${customerType})}"
-   th:if="${customers.hasPrevious()}">Previous</a>
-<span th:text="${customers.number+1}"></span> / <span th:text="${customers.totalPages}"></span>
-<a th:href="@{'/customers'(page=${customers.number + 1},nameSearch=${nameSearch},email=${email},customerType=${customerType})}"
-   th:if="${customers.hasNext()}">Next</a>
+<footer style="position: fixed; bottom: 0; width: 100%">
+    <p>Nguyễn Văn Hùng</p>
+    <p>C0622G1</p>
+</footer>
 <script>
     function infoDelete(id, name) {
         document.getElementById("nameDelete").innerText = name;

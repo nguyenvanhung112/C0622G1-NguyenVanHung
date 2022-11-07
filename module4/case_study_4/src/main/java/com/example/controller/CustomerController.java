@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.dto.CustomerDTO;
 import com.example.model.Customer;
+import com.example.model.CustomerType;
 import com.example.service.ICustomerService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -22,6 +24,11 @@ public class CustomerController {
     @Autowired
     ICustomerService customerService;
 
+    @ModelAttribute("customerTypes")
+    public List<CustomerType> getListCustomerTypes() {
+        return customerService.findAllCustomerType();
+    }
+
     @GetMapping
     public ModelAndView showCustomerList(@RequestParam(value = "nameSearch", defaultValue = "") String nameSearch,
                                          @RequestParam(value = "email", defaultValue = "") String email,
@@ -29,7 +36,6 @@ public class CustomerController {
                                          @PageableDefault(value = 3) Pageable pageable) {
         ModelAndView modelAndView = new ModelAndView("customer/list");
         modelAndView.addObject("customers", customerService.search(nameSearch, email, customerType, pageable));
-        modelAndView.addObject("customerTypes", customerService.findAllCustomerType());
         modelAndView.addObject("customerType", customerType);
         modelAndView.addObject("email", email);
         modelAndView.addObject("nameSearch", nameSearch);
@@ -40,7 +46,6 @@ public class CustomerController {
     @GetMapping("/create")
     public ModelAndView showForm() {
         ModelAndView modelAndView = new ModelAndView("customer/create");
-        modelAndView.addObject("customerTypes", customerService.findAllCustomerType());
         modelAndView.addObject("customerDTO", new CustomerDTO());
         return modelAndView;
     }
@@ -49,7 +54,6 @@ public class CustomerController {
     private ModelAndView create(@Validated @ModelAttribute CustomerDTO customerDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             ModelAndView modelAndView = new ModelAndView("customer/create");
-            modelAndView.addObject("customerTypes", customerService.findAllCustomerType());
             modelAndView.addObject("customerDTO", customerDTO);
             modelAndView.addObject("message", "Add new not success!");
             return modelAndView;
@@ -57,8 +61,7 @@ public class CustomerController {
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerDTO, customer);
         customerService.save(customer);
-        ModelAndView modelAndView = new ModelAndView("customer/create");
-        modelAndView.addObject("customerTypes", customerService.findAllCustomerType());
+        ModelAndView modelAndView = new ModelAndView("customer/create1");
         modelAndView.addObject("customerDTO", customerDTO);
         modelAndView.addObject("message", "Add new Successful!");
         return modelAndView;
@@ -75,7 +78,6 @@ public class CustomerController {
     public ModelAndView showFormEdit(@PathVariable int id) {
         ModelAndView modelAndView = new ModelAndView("customer/edit");
         Optional<Customer> customer = customerService.findCustomerByID(id);
-        modelAndView.addObject("customerTypes", customerService.findAllCustomerType());
         CustomerDTO customerDTO = new CustomerDTO();
         BeanUtils.copyProperties(customer.get(), customerDTO);
         modelAndView.addObject("customerDTO", customerDTO);

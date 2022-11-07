@@ -10,7 +10,7 @@
             crossorigin="anonymous"></script>
     <style>
         body{
-            background: url("https://danangfantasticity.com/wp-content/uploads/2021/02/Furama-resort-danang-103-105-vo-nguyen-giap-da-nang.jpg");
+            background: url("https://tse3.mm.bing.net/th?id=OIP.VAAkrGwNAqzejjo-jMNTSgHaEo&pid=Api&P=0");
             background-size: cover;
         }
         header{
@@ -20,7 +20,19 @@
             width: 40px;
             height: 80px;
             margin: 5px 5px 5px 40px;
+        }
+        header .left-header {
             float: left;
+            width: 20%;
+        }
+        header .right-header {
+            float: right;
+            width: 20%;
+        }
+        header .mid-header {
+            text-align: center;
+            float: left;
+            width: 60%;
         }
         header .right-header h3{
             float: right;
@@ -53,7 +65,6 @@
         footer{
             clear: left;
             text-align: center;
-            background-color: cadetblue;
         }
 
     </style>
@@ -62,6 +73,9 @@
 <header>
     <div class="left-header">
         <img src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png">
+    </div>
+    <div class="mid-header">
+        <h1>FACILITY LIST</h1>
     </div>
     <div class="right-header">
         <h3>Nguyễn Văn Hùng</h3>
@@ -114,7 +128,7 @@
         <table class="table table-white" style="text-align: center" border="1">
             <thead>
             <tr>
-                <th>ID</th>
+                <th>STT</th>
                 <th>Name</th>
                 <th>Area</th>
                 <th>Price</th>
@@ -131,9 +145,9 @@
             </tr>
             </thead>
             <tbody>
-            <th:block th:each="facility : ${facilityList}">
+            <th:block th:each="facility,iState : ${facilityList}">
                 <tr>
-                    <td th:text="${facility.id}"></td>
+                    <td th:text="${iState.count}"></td>
                     <td th:text="${facility.name}"></td>
                     <td th:text="${facility.area}"></td>
                     <td th:text="${facility.cost}"></td>
@@ -176,10 +190,10 @@
             </div>
         </div>
         <a th:href="@{'/facility'(page=${facilityList.number - 1},nameSearch=${nameSearch},facilityType=${facilityType})}"
-           th:if="${facilityList.hasPrevious()}">Previous</a>
+           th:if="${facilityList.hasPrevious()}"><button type="button" class="btn btn-secondary">Previous</button></a>
         <span th:text="${facilityList.number+1}"></span> / <span th:text="${facilityList.totalPages}"></span>
         <a th:href="@{'/facility'(page=${facilityList.number + 1},nameSearch=${nameSearch},facilityType=${facilityType})}"
-           th:if="${facilityList.hasNext()}">Next</a>
+           th:if="${facilityList.hasNext()}"><button type="button" class="btn btn-secondary">Next</button></a>
         <th:block th:if="${message}" >
             <p style="text-align: center" th:text="${message}"></p>
         </th:block>
@@ -187,6 +201,7 @@
 </div>
 <footer style="position: fixed; bottom: 0; width: 100%">
     <p>Nguyễn Văn Hùng</p>
+    <p>C0622G1</p>
 </footer>
 <script>
     function infoDelete(id, name) {
