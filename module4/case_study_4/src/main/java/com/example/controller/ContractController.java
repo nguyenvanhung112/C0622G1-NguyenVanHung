@@ -1,10 +1,13 @@
 package com.example.controller;
 
 import com.example.dto.ContractDTO;
-import com.example.model.AttachFacility;
-import com.example.model.Contract;
-import com.example.model.ContractDetail;
+import com.example.dto.FacilityDTO;
+import com.example.model.*;
+import com.example.model.Employee.Employee;
 import com.example.service.IContractService;
+import com.example.service.ICustomerService;
+import com.example.service.IEmployeeService;
+import com.example.service.IFacilityService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,6 +15,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -25,6 +30,14 @@ public class ContractController {
     @Autowired
     IContractService contractService;
 
+    @Autowired
+    IFacilityService facilityService;
+    @Autowired
+    IEmployeeService employeeService;
+
+    @Autowired
+    ICustomerService customerService;
+
     @ModelAttribute("attachFacilityList")
     public List<AttachFacility> getListAttachFacility() {
         return contractService.getAttachFacilities();
@@ -35,6 +48,18 @@ public class ContractController {
         return contractService.getListContractDetail();
     }
 
+    @ModelAttribute("facilityList")
+    public List<Facility> getListFacility() {
+        return facilityService.findAll();
+    }
+    @ModelAttribute("employeeList")
+    public List<Employee> getListEmployee() {
+        return employeeService.getListEmployee();
+    }
+    @ModelAttribute("customerList")
+    public List<Customer> getListCustomer() {
+        return customerService.findAll();
+    }
 
     @GetMapping
     public String list(Model model,
@@ -62,13 +87,49 @@ public class ContractController {
                                      @RequestParam(value = "quantity") int quantity,
                                      @RequestParam(value = "contractId") int contractId, RedirectAttributes redirectAttributes){
 
-        ContractDetail contractDetail = new ContractDetail();
+
+
         Contract contract = contractService.findById(contractId);
-        contractDetail.setContractId(contract);
-        contractDetail.setQuantity(quantity);
-        contractDetail.setAttachFacilityId(contractService.findAttachFacilityId(attachId));
-        contractService.saveContractDetail(contractDetail);
-        redirectAttributes.addFlashAttribute("message", "Add AttachFacility successfully!");
+        AttachFacility attachFacility = contractService.findAttachFacilityId(attachId);
+        List<ContractDetail> contractDetailList = contractService.getListContractDetail();
+
+        for (ContractDetail c: contractDetailList) {
+            if (c.getAttachFacilityId().getId()==attachId && c.getContractId().getId() ==contractId) {
+                c.setQuantity(c.getQuantity() + quantity);
+                contractService.saveContractDetail(c);
+            }else {
+                ContractDetail contractDetail = new ContractDetail();
+                contractDetail.setContractId(contract);
+                contractDetail.setQuantity(quantity);
+                contractDetail.setAttachFacilityId(attachFacility);
+                contractService.saveContractDetail(contractDetail);
+            }
+            break;
+        }
+        redirectAttributes.addFlashAttribute("message", "Add Attach Facility successfully!");
         return "redirect:/contract";
+    }
+
+    @GetMapping("/create")
+    public ModelAndView showCreateForm(){
+        ModelAndView modelAndView = new ModelAndView("contract/create");
+        modelAndView.addObject("contractDTO",new ContractDTO());
+        return modelAndView;
+    }
+    @PostMapping("/create")
+    public ModelAndView create(@ModelAttribute @Validated ContractDTO contractDTO, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            ModelAndView modelAndView = new ModelAndView("contract/create");
+            modelAndView.addObject("contractDTO", contractDTO);
+            modelAndView.addObject("message", "Add new not success!");
+            return modelAndView;
+        }
+        Contract contract = new Contract();
+        BeanUtils.copyProperties(contractDTO, contract);
+        contractService.save(contract);
+        ModelAndView modelAndView = new ModelAndView("contract/create");
+        modelAndView.addObject("contractDTO", contractDTO);
+        modelAndView.addObject("message", "Add new Successful!");
+        return modelAndView;
     }
 }

@@ -19,4 +19,6 @@ public interface ICustomerService {
 
 
     void delete(int id);
+
+    List<Customer> findAll();
 }

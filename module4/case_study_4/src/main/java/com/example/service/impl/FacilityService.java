@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import com.example.model.ContractDetail;
 import com.example.model.Facility;
 import com.example.model.FacilityType;
 import com.example.model.RentType;
@@ -59,5 +60,10 @@ public class FacilityService implements IFacilityService {
     @Override
     public void delete(int id) {
         facilityRepository.delete(id);
+    }
+
+    @Override
+    public List<Facility> findAll() {
+        return facilityRepository.findAll();
     }
 }

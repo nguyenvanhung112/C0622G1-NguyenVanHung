@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.model.ContractDetail;
 import com.example.model.Facility;
 import com.example.model.FacilityType;
 import com.example.model.RentType;
@@ -23,5 +24,7 @@ public interface IFacilityService {
     Facility findFacilityByID(int id);
 
     void delete(int id);
+
+    List<Facility> findAll();
 }
 

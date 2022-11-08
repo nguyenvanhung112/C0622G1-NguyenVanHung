@@ -61,7 +61,7 @@ public class CustomerController {
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerDTO, customer);
         customerService.save(customer);
-        ModelAndView modelAndView = new ModelAndView("customer/create1");
+        ModelAndView modelAndView = new ModelAndView("customer/create");
         modelAndView.addObject("customerDTO", customerDTO);
         modelAndView.addObject("message", "Add new Successful!");
         return modelAndView;

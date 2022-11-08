@@ -23,4 +23,6 @@ public interface IContractService {
     AttachFacility findAttachFacilityId(int attachId);
 
     void saveContractDetail(ContractDetail contractDetail);
+
+    void save(Contract contract);
 }
