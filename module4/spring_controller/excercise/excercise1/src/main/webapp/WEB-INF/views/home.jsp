@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/save">
+<form action="/save" >
     <input type="checkbox" value="Lettuce" name="condiment"> Lettuce
     <input type="checkbox" value="Tomato" name="condiment"> Tomato
     <input type="checkbox" value="Mustard" name="condiment"> Mustard

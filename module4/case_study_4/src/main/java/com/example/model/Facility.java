@@ -1,5 +1,8 @@
 package com.example.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -21,14 +24,19 @@ public class Facility {
     private int deleteStatus = 1;
 
     @ManyToOne
+    @JsonBackReference
+    @JsonIgnore
     @JoinColumn(name = "rent_type_id",referencedColumnName = "id")
     private RentType rentTypeId;
 
     @ManyToOne
+    @JsonBackReference
+    @JsonIgnore
     @JoinColumn(name = "facility_type_id",referencedColumnName = "id")
     private FacilityType facilityTypeId;
 
     @OneToMany(mappedBy = "facilityId")
+    @JsonBackReference
     private Set<Contract> contracts;
 
     public Facility() {

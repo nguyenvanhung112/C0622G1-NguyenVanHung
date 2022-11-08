@@ -1,5 +1,8 @@
 package com.example.model.Employee;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,11 +14,14 @@ public class User {
 
 
     @OneToOne(mappedBy = "user")
+    @JsonBackReference
     private Employee employee;
 
     private String password;
 
     @ManyToMany
+    @JsonBackReference
+    @JsonIgnore
     @JoinTable(name = "user_role",
     joinColumns = @JoinColumn(name = "user_name"),
             inverseJoinColumns = @JoinColumn(name = "role_id")

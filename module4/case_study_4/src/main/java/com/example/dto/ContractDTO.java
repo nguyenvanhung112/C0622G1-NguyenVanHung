@@ -1,50 +1,36 @@
-package com.example.model;
+package com.example.dto;
 
+import com.example.model.ContractDetail;
+import com.example.model.Customer;
 import com.example.model.Employee.Employee;
+import com.example.model.Facility;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
-public class Contract {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ContractDTO {
+
     private int id;
     private String dateStart;
     private String dateEnd;
     private double deposit;
 
-    @Column(columnDefinition = "int default 1")
     private int deleteStatus = 1;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
-    @JsonBackReference
-    @JsonIgnore
-    @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employeeId;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
-    @JsonBackReference
-    @JsonIgnore
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customerId;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
-    @JsonBackReference
-    @JsonIgnore
-    @JoinColumn(name = "facility_id", referencedColumnName = "id")
     private Facility facilityId;
-
-    @OneToMany(mappedBy = "contractId")
-    @JsonBackReference
+    private double totalPrice;
     private Set<ContractDetail> contractDetailSet;
 
-    public Contract() {
+    public ContractDTO() {
     }
 
-    public Contract(int id, String dateStart, String dateEnd, double deposit, int deleteStatus, Employee employeeId, Customer customerId, Facility facilityId, Set<ContractDetail> contractDetailSet) {
+    public ContractDTO(int id, String dateStart, String dateEnd, double deposit, int deleteStatus, Employee employeeId, Customer customerId, Facility facilityId, Set<ContractDetail> contractDetailSet) {
         this.id = id;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
@@ -56,8 +42,13 @@ public class Contract {
         this.contractDetailSet = contractDetailSet;
     }
 
+    public double getTotalPrice() {
+        return totalPrice;
+    }
 
-
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 
     public int getId() {
         return id;
@@ -129,5 +120,14 @@ public class Contract {
 
     public void setContractDetailSet(Set<ContractDetail> contractDetailSet) {
         this.contractDetailSet = contractDetailSet;
+    }
+
+    public void getTotalCost() {
+        this.totalPrice = this.facilityId.getCost();
+        if (this.contractDetailSet != null) {
+            for (ContractDetail contractDetail : this.contractDetailSet) {
+                this.totalPrice += contractDetail.getQuantity() * contractDetail.getAttachFacilityId().getCost();
+            }
+        }
     }
 }

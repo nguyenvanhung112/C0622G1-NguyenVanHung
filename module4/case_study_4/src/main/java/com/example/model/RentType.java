@@ -1,5 +1,7 @@
 package com.example.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,6 +13,7 @@ public class RentType {
     private String name;
 
     @OneToMany(mappedBy = "rentTypeId")
+    @JsonBackReference
     private Set<Facility> facilities;
 
     public RentType(int id, String name, Set<Facility> facilities) {

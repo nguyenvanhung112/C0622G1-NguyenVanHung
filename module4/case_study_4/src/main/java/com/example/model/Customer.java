@@ -1,5 +1,8 @@
 package com.example.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Optional;
 import java.util.Set;
@@ -20,10 +23,13 @@ public class Customer {
     private int deleteStatus = 1;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
+    @JsonBackReference
+    @JsonIgnore
     @JoinColumn(name = "customer_type_id",referencedColumnName = "id")
     private CustomerType customerTypeId;
 
     @OneToMany(mappedBy = "customerId")
+    @JsonBackReference
     private Set<Contract> contracts;
 
     public Customer() {

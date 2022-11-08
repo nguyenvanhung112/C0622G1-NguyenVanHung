@@ -1,5 +1,8 @@
 package com.example.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,10 +14,14 @@ public class ContractDetail {
 
 
     @ManyToOne
+    @JsonBackReference
+    @JsonIgnore
     @JoinColumn(name = "contract_id",referencedColumnName = "id")
     private Contract contractId;
 
     @ManyToOne
+    @JsonBackReference
+    @JsonIgnore
     @JoinColumn(name = "attach_facility_id",referencedColumnName = "id")
     private AttachFacility attachFacilityId;
 
