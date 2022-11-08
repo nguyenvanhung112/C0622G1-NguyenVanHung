@@ -87,24 +87,18 @@ public class ContractController {
                                      @RequestParam(value = "quantity") int quantity,
                                      @RequestParam(value = "contractId") int contractId, RedirectAttributes redirectAttributes){
 
-
-
         Contract contract = contractService.findById(contractId);
         AttachFacility attachFacility = contractService.findAttachFacilityId(attachId);
-        List<ContractDetail> contractDetailList = contractService.getListContractDetail();
-
-        for (ContractDetail c: contractDetailList) {
-            if (c.getAttachFacilityId().getId()==attachId && c.getContractId().getId() ==contractId) {
-                c.setQuantity(c.getQuantity() + quantity);
-                contractService.saveContractDetail(c);
-            }else {
-                ContractDetail contractDetail = new ContractDetail();
-                contractDetail.setContractId(contract);
-                contractDetail.setQuantity(quantity);
-                contractDetail.setAttachFacilityId(attachFacility);
-                contractService.saveContractDetail(contractDetail);
-            }
-            break;
+        ContractDetail contractDetailExit = contractService.findContractDetailId(attachId,contractId);
+        if (contractDetailExit != null) {
+            contractDetailExit.setQuantity(contractDetailExit.getQuantity() + quantity);
+            contractService.saveContractDetail(contractDetailExit);
+        }else {
+            ContractDetail contractDetail = new ContractDetail();
+            contractDetail.setContractId(contract);
+            contractDetail.setQuantity(quantity);
+            contractDetail.setAttachFacilityId(attachFacility);
+            contractService.saveContractDetail(contractDetail);
         }
         redirectAttributes.addFlashAttribute("message", "Add Attach Facility successfully!");
         return "redirect:/contract";

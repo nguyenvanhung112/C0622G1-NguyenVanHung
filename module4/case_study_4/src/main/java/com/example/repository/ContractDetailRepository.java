@@ -14,4 +14,8 @@ public interface ContractDetailRepository extends JpaRepository<ContractDetail,I
 
     @Query(value = "select * from contract_detail where contract_id = :id",nativeQuery = true)
     List<ContractDetail> findList(@Param("id") int id);
+
+    @Query(value = "select * from contract_detail where attach_facility_id = :attachId and contract_id = :contractId",nativeQuery = true)
+    ContractDetail findContractDetailId(@Param("attachId") int attachId,
+                                        @Param("contractId")int contractId);
 }

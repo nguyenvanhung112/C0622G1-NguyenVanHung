@@ -25,4 +25,6 @@ public interface IContractService {
     void saveContractDetail(ContractDetail contractDetail);
 
     void save(Contract contract);
+
+    ContractDetail findContractDetailId(int attachId, int contractId);
 }

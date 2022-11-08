@@ -66,4 +66,9 @@ public class ContractService implements IContractService {
     public void save(Contract contract) {
         contractRepository.save(contract);
     }
+
+    @Override
+    public ContractDetail findContractDetailId(int attachId, int contractId) {
+        return contractDetailRepository.findContractDetailId(attachId, contractId);
+    }
 }

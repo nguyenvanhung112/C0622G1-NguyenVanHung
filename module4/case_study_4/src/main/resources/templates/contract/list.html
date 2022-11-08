@@ -145,7 +145,6 @@
             </tr>
             </thead>
             <tbody>
-
             <th:block th:each="contract,iState : ${contractList}">
                 <tr>
                     <td th:text="${iState.count}"></td>
@@ -208,7 +207,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <table class="table table-white" style="text-align: center" border="1">
+                        <table class="table table-white" style="text-align: center;color: white" border="1">
                             <thead>
                             <tr>
                                 <th>Name</th>
@@ -216,8 +215,7 @@
                                 <th>Unit</th>
                             </tr>
                             </thead>
-                            <tbody>
-
+                            <tbody id="attachFacilityList">
                             </tbody>
                         </table>
                     </div>
@@ -253,7 +251,8 @@
 </script>
 <script>
     function infoContractId(id) {
-        $("#tbody").empty();
+
+        $("#attachFacilityList").empty();
         $.ajax({
             url: "http://localhost:8080/api/contract-detail/v1/" + id,
             type: "GET",
@@ -263,9 +262,13 @@
                 console.log(data);
                 let tr = [];
                 for (let i = 0; i < data.length; i++) {
-                    tr.push("<p>" + data[i].attachFacilityId.name + " | " + data[i].quantity + " | " + data[i].attachFacilityId.unit + "</p>")
+                    tr.push("<tr>")
+                    tr.push("<td>" + data[i].attachFacilityId.name + "</td>");
+                    tr.push("<td>" + data[i].quantity + "</td>");
+                    tr.push("<td>" + data[i].attachFacilityId.unit + "</td>");
+                    tr.push("</tr>")
                 }
-                $("#listAttachFacility").append(tr.join(""));
+                $("#attachFacilityList").append(tr.join(""));
             }
         })
     }
