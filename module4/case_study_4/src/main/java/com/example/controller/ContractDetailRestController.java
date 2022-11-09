@@ -16,9 +16,18 @@ public class ContractDetailRestController {
     @Autowired
     IContractService contractService;
 
-    @GetMapping("/{contractId}")
+    @GetMapping("contract-detail/{contractId}")
     public ResponseEntity<List<ContractDetail>> getListContractDetail(@PathVariable int contractId) {
         List<ContractDetail> contractDetailList = contractService.getContractDetail(contractId);
+        if (contractDetailList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(contractDetailList, HttpStatus.OK);
+    }
+
+    @GetMapping("customer-using-facility/{customerId}")
+    public ResponseEntity<List<ContractDetail>> getListContractDetailByCustomerId(@PathVariable int customerId) {
+        List<ContractDetail> contractDetailList = contractService.getListContractDetailByCustomerId(customerId);
         if (contractDetailList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

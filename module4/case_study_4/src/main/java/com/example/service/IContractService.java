@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.dto.CustomerUsingFacility;
 import com.example.model.AttachFacility;
 import com.example.model.Contract;
 import com.example.model.ContractDetail;
@@ -27,4 +28,8 @@ public interface IContractService {
     void save(Contract contract);
 
     ContractDetail findContractDetailId(int attachId, int contractId);
+
+    Page<CustomerUsingFacility> findCustomerListUsingFacility(Pageable pageable);
+
+    List<ContractDetail> getListContractDetailByCustomerId(int customerId);
 }

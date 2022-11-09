@@ -9,73 +9,61 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
     <style>
-        body {
+        body{
             background: url("https://tse3.mm.bing.net/th?id=OIP.VAAkrGwNAqzejjo-jMNTSgHaEo&pid=Api&P=0");
             background-size: cover;
         }
-
-        header {
+        header{
             width: 100%;
         }
-
-        header .left-header img {
+        header .left-header img{
             width: 40px;
             height: 80px;
             margin: 5px 5px 5px 40px;
+            float: left;
         }
-
+        header .right-header h3{
+            float: right;
+        }
         header .left-header {
             float: left;
             width: 20%;
         }
-
         header .right-header {
             float: right;
             width: 20%;
         }
-
         header .mid-header {
             text-align: center;
             float: left;
             width: 60%;
         }
-
-        header .right-header h3 {
-            float: right;
-        }
-
         .navbar ul li a {
             font-weight: bold;
             color: #4b4b2e !important;
         }
-
         .navbar ul li a:hover {
             text-decoration: underline;
         }
-
-        .menu {
+        .menu{
             clear: left;
             float: left;
             width: 100%;
         }
-
-        .body-mid .body-mid-left {
+        .body-mid .body-mid-left{
             clear: left;
             float: left;
             width: 20%;
             min-height: 100%;
         }
-
-        .body-mid .body-mid-right {
+        .body-mid .body-mid-right{
             float: left;
             width: 100%;
         }
-
-        .body-mid .body-mid-right img {
+        .body-mid .body-mid-right img{
             width: 100%;
         }
-
-        footer {
+        footer{
             clear: left;
             text-align: center;
         }
@@ -88,7 +76,7 @@
         <img src="https://furamavietnam.com/wp-content/uploads/2018/08/logo@2x.png">
     </div>
     <div class="mid-header">
-        <h1>FACILITY LIST</h1>
+        <h1>CUSTOMER USING FACILITY LIST</h1>
     </div>
     <div class="right-header">
         <h3>Nguyễn Văn Hùng</h3>
@@ -121,18 +109,12 @@
                         <a class="nav-link active" aria-current="page" href="/contract">Contract</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/facility/create">Add New Facility</a>
+                        <a class="nav-link active" aria-current="page" href="/customers/create">Add New Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/contract/use-facility">Customer Using Facility</a>
                     </li>
                 </ul>
-                <form action="/facility">
-                    <input type="text" name="nameSearch" placeholder="Search name">
-                    <select name="facilityType">
-                        <option value="" selected>Type</option>
-                        <option th:each="item: ${facilityTypeList}" th:value="${item.name}"
-                                th:text="${item.name}"></option>
-                    </select>
-                    <input type="submit" value="Search">
-                </form>
             </div>
         </div>
     </nav>
@@ -143,84 +125,60 @@
             <thead>
             <tr>
                 <th>STT</th>
-                <th>Name</th>
-                <th>Area</th>
-                <th>Price</th>
-                <th>Max People</th>
-                <th>Standard Room</th>
-                <th>Description Other Convenience</th>
-                <th>Pool Area</th>
-                <th>Floors</th>
-                <th>Facility Free</th>
-                <th>Rent Type</th>
-                <th>Facility Type</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Customer Name</th>
+                <th>Start Day</th>
+                <th>End Day</th>
+                <th>Facility List</th>
+                <th>Attach Facility</th>
             </tr>
             </thead>
             <tbody>
-            <th:block th:each="facility,iState : ${facilityList}">
+            <th:block th:each="data,iState : ${customerListUsingFacility}">
                 <tr>
                     <td th:text="${iState.count}"></td>
-                    <td th:text="${facility.name}"></td>
-                    <td th:text="${facility.area}"></td>
-                    <td th:text="${facility.cost}"></td>
-                    <td th:text="${facility.maxPeople}"></td>
-                    <td th:text="${facility.standardRoom}"></td>
-                    <td th:text="${facility.descriptionOtherConvenience}"></td>
-                    <td th:text="${facility.poolArea}"></td>
-                    <td th:text="${facility.numberFloors}"></td>
-                    <td th:text="${facility.facilityFree}"></td>
-                    <td th:text="${facility.rentTypeId.name}"></td>
-                    <td th:text="${facility.facilityTypeId.name}"></td>
-                    <td><a class="btn btn-danger"
-                           th:href="@{/facility/edit/__${facility.id}__/__${facility.facilityTypeId.id}__}">edit</a>
-                    </td>
+                    <td th:text="${data.getCustomerName()}"></td>
+                    <td th:text="${data.getStartDay()}"></td>
+                    <td th:text="${data.getEndDay()}"></td>
+                    <td th:text="${data.getFacilityList()}"></td>
                     <td>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete"
-                                th:attr="onclick=|infoDelete('${facility.id}', '${facility.name}')|">
-                            Delete
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#view"
+                                th:attr="onclick=|infoListAttachFacility('${data.getCustomerId()}')|">
+                            Attach Facility list
                         </button>
                     </td>
                 </tr>
             </th:block>
             </tbody>
         </table>
-        <div class="modal fade " id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        <div class="modal fade " id="view" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
              style="color: white">
             <div class="modal-dialog ">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                        <h5 class="modal-title" id="exampleModalLabel1">Accompanied service list</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Bạn có muốn xóa <strong class="text-danger" id="nameDelete"></strong>
-                    </div>
-                    <div class="modal-footer">
-                        <form action="/facility/delete">
-                            <input type="text" name="id" id="id" hidden>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-danger" type="submit">Delete</button>
-                        </form>
+                        <table class="table table-white" style="text-align: center;color: white" border="1">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Unit</th>
+                            </tr>
+                            </thead>
+                            <tbody id="attachList">
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-        <div style="text-align: center">
-            <a th:href="@{'/facility'(page=${facilityList.number - 1},nameSearch=${nameSearch},facilityType=${facilityType})}"
-               th:if="${facilityList.hasPrevious()}">
-                <button type="button" class="btn btn-secondary">Previous</button>
-            </a>
-            <span th:text="${facilityList.number+1}"></span> / <span th:text="${facilityList.totalPages}"></span>
-            <a th:href="@{'/facility'(page=${facilityList.number + 1},nameSearch=${nameSearch},facilityType=${facilityType})}"
-               th:if="${facilityList.hasNext()}">
-                <button type="button" class="btn btn-secondary">Next</button>
-            </a>
-            <th:block th:if="${message}">
-                <p style="text-align: center" th:text="${message}"></p>
-            </th:block>
-        </div>
+        <a th:href="@{'/contract/use-facility'(page=${customerListUsingFacility.number - 1})}"
+           th:if="${customerListUsingFacility.hasPrevious()}"><button type="button" class="btn btn-secondary">Previous</button></a>
+        <span th:text="${customerListUsingFacility.number+1}"></span> / <span th:text="${customerListUsingFacility.totalPages}"></span>
+        <a th:href="@{'/contract/use-facility'(page=${customerListUsingFacility.number + 1})}"
+           th:if="${customerListUsingFacility.hasNext()}"><button type="button" class="btn btn-secondary">Next</button></a>
     </div>
 </div>
 <footer style="position: fixed; bottom: 0; width: 100%">
@@ -228,10 +186,31 @@
     <p>C0622G1</p>
 </footer>
 <script>
-    function infoDelete(id, name) {
-        document.getElementById("nameDelete").innerText = name;
-        document.getElementById("id").value = id;
+    function infoListAttachFacility(id) {
+        $("#attachList").empty();
+        $.ajax({
+            url: "http://localhost:8080/api/contract-detail/v1/customer-using-facility/" + id,
+            type: "GET",
+            contentType: "application/json; charset =utf-8",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                let tr = [];
+                for (let i = 0; i < data.length; i++) {
+                    tr.push("<tr>")
+                    tr.push("<td>" + data[i].attachFacilityId.name + "</td>");
+                    tr.push("<td>" + data[i].quantity + "</td>");
+                    tr.push("<td>" + data[i].attachFacilityId.unit + "</td>");
+                    tr.push("</tr>")
+                }
+                $("#attachList").append(tr.join(""));
+            }
+        })
     }
 </script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
 </body>
 </html>

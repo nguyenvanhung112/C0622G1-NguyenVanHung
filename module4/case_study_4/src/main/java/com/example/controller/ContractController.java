@@ -32,6 +32,7 @@ public class ContractController {
 
     @Autowired
     IFacilityService facilityService;
+
     @Autowired
     IEmployeeService employeeService;
 
@@ -52,10 +53,12 @@ public class ContractController {
     public List<Facility> getListFacility() {
         return facilityService.findAll();
     }
+
     @ModelAttribute("employeeList")
     public List<Employee> getListEmployee() {
         return employeeService.getListEmployee();
     }
+
     @ModelAttribute("customerList")
     public List<Customer> getListCustomer() {
         return customerService.findAll();
@@ -84,35 +87,49 @@ public class ContractController {
 
     @PostMapping("/create-attach")
     public String createAttach(@RequestParam(value = "attachId") int attachId,
-                                     @RequestParam(value = "quantity") int quantity,
-                                     @RequestParam(value = "contractId") int contractId, RedirectAttributes redirectAttributes){
+                               @RequestParam(value = "quantity") String quantity,
+                               @RequestParam(value = "contractId") int contractId, RedirectAttributes redirectAttributes) {
 
         Contract contract = contractService.findById(contractId);
         AttachFacility attachFacility = contractService.findAttachFacilityId(attachId);
-        ContractDetail contractDetailExit = contractService.findContractDetailId(attachId,contractId);
-        if (contractDetailExit != null) {
-            contractDetailExit.setQuantity(contractDetailExit.getQuantity() + quantity);
-            contractService.saveContractDetail(contractDetailExit);
-        }else {
-            ContractDetail contractDetail = new ContractDetail();
-            contractDetail.setContractId(contract);
-            contractDetail.setQuantity(quantity);
-            contractDetail.setAttachFacilityId(attachFacility);
-            contractService.saveContractDetail(contractDetail);
+        ContractDetail contractDetailExit = contractService.findContractDetailId(attachId, contractId);
+
+
+
+        if (quantity.equals("")) {
+            quantity = "0";
         }
-        redirectAttributes.addFlashAttribute("message", "Add Attach Facility successfully!");
+
+        int quantityInput = Integer.parseInt(quantity);
+
+        if (quantityInput != 0) {
+            if (contractDetailExit != null) {
+                contractDetailExit.setQuantity(contractDetailExit.getQuantity() + quantityInput);
+                contractService.saveContractDetail(contractDetailExit);
+            } else {
+                ContractDetail contractDetail = new ContractDetail();
+                contractDetail.setContractId(contract);
+                contractDetail.setQuantity(quantityInput);
+                contractDetail.setAttachFacilityId(attachFacility);
+                contractService.saveContractDetail(contractDetail);
+            }
+            redirectAttributes.addFlashAttribute("message", "Add Attach Facility successfully!");
+        } else {
+            redirectAttributes.addFlashAttribute("message", "Add Attach Facility Not successfully!");
+        }
         return "redirect:/contract";
     }
 
     @GetMapping("/create")
-    public ModelAndView showCreateForm(){
+    public ModelAndView showCreateForm() {
         ModelAndView modelAndView = new ModelAndView("contract/create");
-        modelAndView.addObject("contractDTO",new ContractDTO());
+        modelAndView.addObject("contractDTO", new ContractDTO());
         return modelAndView;
     }
+
     @PostMapping("/create")
-    public ModelAndView create(@ModelAttribute @Validated ContractDTO contractDTO, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
+    public ModelAndView create(@ModelAttribute @Validated ContractDTO contractDTO, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             ModelAndView modelAndView = new ModelAndView("contract/create");
             modelAndView.addObject("contractDTO", contractDTO);
             modelAndView.addObject("message", "Add new not success!");
@@ -124,6 +141,13 @@ public class ContractController {
         ModelAndView modelAndView = new ModelAndView("contract/create");
         modelAndView.addObject("contractDTO", contractDTO);
         modelAndView.addObject("message", "Add new Successful!");
+        return modelAndView;
+    }
+
+    @GetMapping("/use-facility")
+    public ModelAndView showCustomerListUseFacility(@PageableDefault(value = 3) Pageable pageable) {
+        ModelAndView modelAndView = new ModelAndView("customer/customer_use_facility");
+        modelAndView.addObject("customerListUsingFacility", contractService.findCustomerListUsingFacility(pageable));
         return modelAndView;
     }
 }

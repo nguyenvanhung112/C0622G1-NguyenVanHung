@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import com.example.dto.CustomerUsingFacility;
 import com.example.model.AttachFacility;
 import com.example.model.Contract;
 import com.example.model.ContractDetail;
@@ -70,5 +71,15 @@ public class ContractService implements IContractService {
     @Override
     public ContractDetail findContractDetailId(int attachId, int contractId) {
         return contractDetailRepository.findContractDetailId(attachId, contractId);
+    }
+
+    @Override
+    public Page<CustomerUsingFacility> findCustomerListUsingFacility(Pageable pageable) {
+        return contractRepository.findCustomerListUsingFacility(pageable);
+    }
+
+    @Override
+    public List<ContractDetail> getListContractDetailByCustomerId(int customerId) {
+        return contractDetailRepository.getListContractDetailByCustomerId(customerId);
     }
 }

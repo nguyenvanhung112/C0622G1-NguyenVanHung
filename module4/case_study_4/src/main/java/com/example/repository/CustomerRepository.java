@@ -13,9 +13,7 @@ import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer,Integer> {
-
-
+public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
 
     @Query(value = "select c.* from `customer` c inner join `customer_type` ct " +
@@ -30,4 +28,5 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     @Modifying
     @Query(value = "update customer set delete_status = 0 where id = :id", nativeQuery = true)
     void delete(@Param("id") int id);
+
 }

@@ -187,7 +187,7 @@
                                         th:text="${item.name}+ ' | ' + ${item.cost}">
                                 </option>
                             </select>
-                            Quantity: <input type="number" name="quantity">
+                            Quantity: <input type="number" name="quantity" value="0">
                             <input hidden type="text" id="id" name="contractId">
                             <div style="text-align: center; margin-top: 5px">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -222,18 +222,20 @@
                 </div>
             </div>
         </div>
-        <a th:href="@{'/contract'(page=${contractList.number - 1})}"
-           th:if="${contractList.hasPrevious()}">
-            <button type="button" class="btn btn-secondary">Previous</button>
-        </a>
-        <span th:text="${contractList.number+1}"></span> / <span th:text="${contractList.totalPages}"></span>
-        <a th:href="@{'/contract'(page=${contractList.number + 1})}"
-           th:if="${contractList.hasNext()}">
-            <button type="button" class="btn btn-secondary">Next</button>
-        </a>
-        <th:block th:if="${message}">
-            <p style="text-align: center" th:text="${message}"></p>
-        </th:block>
+        <div style="text-align: center">
+            <a th:href="@{'/contract'(page=${contractList.number - 1})}"
+               th:if="${contractList.hasPrevious()}">
+                <button type="button" class="btn btn-secondary">Previous</button>
+            </a>
+            <span th:text="${contractList.number + 1}"></span> / <span th:text="${contractList.totalPages}"></span>
+            <a th:href="@{'/contract'(page=${contractList.number + 1})}"
+               th:if="${contractList.hasNext()}">
+                <button type="button" class="btn btn-secondary">Next</button>
+            </a>
+            <th:block th:if="${message}">
+                <p style="text-align: center" th:text="${message}"></p>
+            </th:block>
+        </div>
     </div>
 </div>
 <footer style="position: fixed; bottom: 0; width: 100%">
@@ -251,10 +253,9 @@
 </script>
 <script>
     function infoContractId(id) {
-
         $("#attachFacilityList").empty();
         $.ajax({
-            url: "http://localhost:8080/api/contract-detail/v1/" + id,
+            url: "http://localhost:8080/api/contract-detail/v1/contract-detail/" + id,
             type: "GET",
             contentType: "application/json; charset =utf-8",
             dataType: "json",

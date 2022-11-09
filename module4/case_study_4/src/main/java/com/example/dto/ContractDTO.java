@@ -6,11 +6,13 @@ import com.example.model.Employee.Employee;
 import com.example.model.Facility;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 import javax.persistence.*;
 import java.util.Set;
 
-public class ContractDTO {
+public class ContractDTO implements Validator {
 
     private int id;
     private String dateStart;
@@ -129,5 +131,15 @@ public class ContractDTO {
                 this.totalPrice += contractDetail.getQuantity() * contractDetail.getAttachFacilityId().getCost();
             }
         }
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+
     }
 }

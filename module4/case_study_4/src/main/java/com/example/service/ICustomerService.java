@@ -17,8 +17,8 @@ public interface ICustomerService {
 
     Optional<Customer> findCustomerByID(int id);
 
-
     void delete(int id);
 
     List<Customer> findAll();
 }
+

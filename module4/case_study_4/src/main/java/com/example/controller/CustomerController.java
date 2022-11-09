@@ -53,6 +53,7 @@ public class CustomerController {
     @PostMapping("/create")
     private ModelAndView create(@Validated @ModelAttribute CustomerDTO customerDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult.getErrorCount());
             ModelAndView modelAndView = new ModelAndView("customer/create");
             modelAndView.addObject("customerDTO", customerDTO);
             modelAndView.addObject("message", "Add new not success!");
@@ -99,4 +100,6 @@ public class CustomerController {
         modelAndView.addObject("message", "Customer edited successfully");
         return modelAndView;
     }
+
+
 }
