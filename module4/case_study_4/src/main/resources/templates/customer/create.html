@@ -59,7 +59,7 @@
 
                 <div class="mb-3">
                     <label for="emailCustomer" class="form-label fw-bold fst-italic">Email:</label>
-                    <input th:field="*{email}" type="email" class="form-control" id="emailCustomer" aria-describedby="emailError">
+                    <input th:field="*{email}" type="text" class="form-control" id="emailCustomer" aria-describedby="emailError">
                     <p style="color: red" th:errors="*{email}" th:if="${#fields.hasErrors('email')}"> </p>
                 </div>
 
@@ -71,13 +71,13 @@
                                 th:text="${item.name}">
                         </option>
                     </select>
-                    <p style="color: red" th:errors="*{customerTypeId}" th:if="${#fields.hasErrors('name')}"> </p>
+                    <p style="color: red" th:errors="*{customerTypeId}" th:if="${#fields.hasErrors('customerTypeId')}"> </p>
                 </div>
 
                 <div class="mb-3">
                     <label for="address" class="form-label fw-bold fst-italic">Address:</label>
                     <input th:field="*{address}" type="text" class="form-control" id="address" aria-describedby="addressError">
-                    <p style="color: red" th:errors="*{address}" th:if="${#fields.hasErrors('name')}"> </p>
+                    <p style="color: red" th:errors="*{address}" th:if="${#fields.hasErrors('address')}"> </p>
                 </div>
                 <button type="submit" class="btn btn-primary mb-3 w-100">Add New Customer</button>
             </form>

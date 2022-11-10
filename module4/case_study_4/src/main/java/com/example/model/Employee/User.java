@@ -3,7 +3,9 @@ package com.example.model.Employee;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,7 +21,7 @@ public class User {
 
     private String password;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JsonBackReference
     @JsonIgnore
     @JoinTable(name = "user_role",
@@ -37,6 +39,8 @@ public class User {
         this.password = password;
         this.roles = roles;
     }
+
+
 
     public String getUserName() {
         return userName;

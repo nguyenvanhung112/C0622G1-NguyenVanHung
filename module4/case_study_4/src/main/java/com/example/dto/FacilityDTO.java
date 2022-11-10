@@ -2,6 +2,8 @@ package com.example.dto;
 
 import com.example.model.FacilityType;
 import com.example.model.RentType;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -9,10 +11,11 @@ import java.util.Optional;
 import java.util.Set;
 
 
-public class FacilityDTO {
+public class FacilityDTO implements Validator {
 
     private int id;
 
+    @NotBlank(message = "Not empty")
     private String name;
 
     private int area;
@@ -20,15 +23,15 @@ public class FacilityDTO {
     private double cost;
 
     private int maxPeople;
-
+    @NotBlank(message = "Not empty")
     private String standardRoom;
-
+    @NotBlank(message = "Not empty")
     private String descriptionOtherConvenience;
 
     private double poolArea;
 
     private int numberFloors;
-
+    @NotBlank(message = "Not empty")
     private String facilityFree;
     private int deleteStatus = 1;
     private RentType rentTypeId;
@@ -160,4 +163,31 @@ public class FacilityDTO {
     }
 
 
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        FacilityDTO facilityDTO = (FacilityDTO) target;
+        if (!facilityDTO.name.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")){
+            errors.rejectValue("name", "nameFacility.errors", "Name not format");
+        }
+        if (facilityDTO.area <= 0) {
+            errors.rejectValue("area", "area.errors", "Area not format");
+        }
+        if (facilityDTO.cost <= 0) {
+            errors.rejectValue("cost", "cost.errors", "Cost not format");
+        }
+        if (facilityDTO.maxPeople <= 0) {
+            errors.rejectValue("maxPeople", "maxPeople.errors", "Max People not format");
+        }
+        if (facilityDTO.poolArea <= 0) {
+            errors.rejectValue("poolArea", "poolArea.errors", "Pool Area not format");
+        }
+        if (facilityDTO.numberFloors <= 0) {
+            errors.rejectValue("numberFloors", "numberFloors.errors", "Number Floors not format");
+        }
+    }
 }

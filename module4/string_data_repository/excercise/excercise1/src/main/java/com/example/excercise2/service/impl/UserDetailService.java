@@ -39,6 +39,7 @@ public class UserDetailService implements UserDetailsService {
         List<UserRole> userRoles = this.appRoleRepository.findByAppUser(appUser);
 
         List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
+
         if (userRoles != null) {
             for (UserRole userRole : userRoles) {
                 // ROLE_USER, ROLE_ADMIN,..

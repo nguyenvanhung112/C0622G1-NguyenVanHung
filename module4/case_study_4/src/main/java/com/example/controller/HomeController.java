@@ -6,11 +6,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("home")
+@RequestMapping
 public class HomeController {
 
-    @GetMapping
+    @GetMapping("/home")
     public String home(){
         return "home";
+    }
+
+    @GetMapping("/login")
+    public String loginPage() {
+        return "/login";
+    }
+
+    @GetMapping("/error")
+    public String accessDenied() {
+        return "/error.404";
     }
 }

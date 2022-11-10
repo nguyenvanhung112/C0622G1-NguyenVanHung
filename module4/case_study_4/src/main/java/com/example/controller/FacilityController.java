@@ -28,10 +28,12 @@ public class FacilityController {
     public List<FacilityType> getListFacilityTypes() {
         return facilityService.findAllFacilityType();
     }
+
     @ModelAttribute("rentTypeList")
     public List<RentType> getListRentTypes() {
         return facilityService.findAllRentType();
     }
+
     @GetMapping
     public ModelAndView showFacilityList(@RequestParam(value = "nameSearch", defaultValue = "") String nameSearch,
                                          @RequestParam(value = "facilityType", defaultValue = "") String facilityType,
@@ -53,23 +55,33 @@ public class FacilityController {
 
     @PostMapping("/create")
     public ModelAndView create(@ModelAttribute @Validated FacilityDTO facilityDTO, BindingResult bindingResult) {
-        if (bindingResult.hasFieldErrors()) {
+        new FacilityDTO().validate(facilityDTO, bindingResult);
+        System.out.println(bindingResult);
+        if (bindingResult.hasFieldErrors() && bindingResult.getErrorCount() > 2) {
+            ModelAndView modelAndView = new ModelAndView("facility/create");
+            modelAndView.addObject("facilityType", facilityDTO.getFacilityTypeId());
+            modelAndView.addObject("message", "Add not Successful");
+            modelAndView.addObject("facilityDTO", facilityDTO);
+            return modelAndView;
+        } else if (bindingResult.getErrorCount() == 1 || (bindingResult.getErrorCount() == 2 && !facilityDTO.getFacilityFree().equals(""))) {
             ModelAndView modelAndView = new ModelAndView("facility/create");
             modelAndView.addObject("facilityType", facilityDTO.getFacilityTypeId());
             modelAndView.addObject("facilityDTO", facilityDTO);
+            modelAndView.addObject("message", "Add new Successful");
+            Facility facility = new Facility();
+            BeanUtils.copyProperties(facilityDTO, facility);
+            facilityService.save(facility);
             return modelAndView;
         }
         ModelAndView modelAndView = new ModelAndView("facility/create");
         modelAndView.addObject("facilityType", facilityDTO.getFacilityTypeId());
         modelAndView.addObject("facilityDTO", facilityDTO);
-        modelAndView.addObject("message", "Add new Successful");
-        Facility facility = new Facility();
-        BeanUtils.copyProperties(facilityDTO, facility);
-        facilityService.save(facility);
+        modelAndView.addObject("message", "Add not Successful");
         return modelAndView;
     }
+
     @GetMapping("/edit/{id}/{facilityType}")
-    public ModelAndView showFormEdit(@PathVariable int id,@PathVariable int facilityType){
+    public ModelAndView showFormEdit(@PathVariable int id, @PathVariable int facilityType) {
         ModelAndView modelAndView = new ModelAndView("facility/edit");
         Facility facility = facilityService.findFacilityByID(id);
         FacilityDTO facilityDTO = new FacilityDTO();
@@ -78,25 +90,36 @@ public class FacilityController {
         modelAndView.addObject("facilityType", facilityType);
         return modelAndView;
     }
+
     @PostMapping("/edit")
-    public ModelAndView edit(@ModelAttribute @Validated FacilityDTO facilityDTO, BindingResult bindingResult){
-        if (bindingResult.hasFieldErrors()){
+    public ModelAndView edit(@ModelAttribute @Validated FacilityDTO facilityDTO, BindingResult bindingResult) {
+        new FacilityDTO().validate(facilityDTO, bindingResult);
+        System.out.println(bindingResult);
+        if (bindingResult.hasFieldErrors() && bindingResult.getErrorCount() > 2) {
             ModelAndView modelAndView = new ModelAndView("facility/edit");
-            modelAndView.addObject("facilityDTO", facilityDTO);
             modelAndView.addObject("facilityType", facilityDTO.getFacilityTypeId());
+            modelAndView.addObject("message", "Update not Successful");
+            modelAndView.addObject("facilityDTO", facilityDTO);
+            return modelAndView;
+        } else if (bindingResult.getErrorCount() == 1 || (bindingResult.getErrorCount() == 2 && !facilityDTO.getFacilityFree().equals(""))) {
+            ModelAndView modelAndView = new ModelAndView("facility/edit");
+            modelAndView.addObject("facilityType", facilityDTO.getFacilityTypeId());
+            modelAndView.addObject("facilityDTO", facilityDTO);
+            modelAndView.addObject("message", "Update new Successful");
+            Facility facility = new Facility();
+            BeanUtils.copyProperties(facilityDTO, facility);
+            facilityService.save(facility);
             return modelAndView;
         }
-        ModelAndView modelAndView = new ModelAndView("facility/edit");
+        ModelAndView modelAndView = new ModelAndView("facility/create");
         modelAndView.addObject("facilityType", facilityDTO.getFacilityTypeId());
         modelAndView.addObject("facilityDTO", facilityDTO);
-        modelAndView.addObject("message", "Edit Successful");
-        Facility facility = new Facility();
-        BeanUtils.copyProperties(facilityDTO, facility);
-        facilityService.save(facility);
+        modelAndView.addObject("message", "Update not Successful");
         return modelAndView;
     }
+
     @GetMapping("/delete")
-    public String deleteFacility(@RequestParam int id, RedirectAttributes redirectAttributes){
+    public String deleteFacility(@RequestParam int id, RedirectAttributes redirectAttributes) {
         facilityService.delete(id);
         redirectAttributes.addFlashAttribute("message", "Delete facility successfully!");
         return "redirect:/facility";

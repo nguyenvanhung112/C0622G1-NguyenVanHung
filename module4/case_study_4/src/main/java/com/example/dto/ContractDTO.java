@@ -10,13 +10,22 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.util.Set;
 
 public class ContractDTO implements Validator {
 
     private int id;
+    @NotBlank(message = "Not empty")
     private String dateStart;
+    @NotBlank(message = "Not empty")
     private String dateEnd;
+
+    @Min(0)
+    @NotNull
     private double deposit;
 
     private int deleteStatus = 1;
@@ -26,7 +35,9 @@ public class ContractDTO implements Validator {
     private Customer customerId;
 
     private Facility facilityId;
+
     private double totalPrice;
+
     private Set<ContractDetail> contractDetailSet;
 
     public ContractDTO() {
@@ -140,6 +151,6 @@ public class ContractDTO implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-
+        ContractDTO contractDTO = (ContractDTO) target;
     }
 }

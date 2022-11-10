@@ -192,7 +192,7 @@ public class BlogerController {
     }
 
     @GetMapping("/error")
-    public String accessDenied(Model model, Principal principal) {
+    public String accessDenied() {
         return "/error.404";
     }
 }

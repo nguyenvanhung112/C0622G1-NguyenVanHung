@@ -52,6 +52,7 @@ public class CustomerController {
 
     @PostMapping("/create")
     private ModelAndView create(@Validated @ModelAttribute CustomerDTO customerDTO, BindingResult bindingResult) {
+        new CustomerDTO().validate(customerDTO, bindingResult);
         if (bindingResult.hasErrors()) {
             System.out.println(bindingResult.getErrorCount());
             ModelAndView modelAndView = new ModelAndView("customer/create");
@@ -87,6 +88,7 @@ public class CustomerController {
 
     @PostMapping("/edit")
     public ModelAndView edit(@ModelAttribute @Validated CustomerDTO customerDTO, BindingResult bindingResult) {
+        new CustomerDTO().validate(customerDTO, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             ModelAndView modelAndView = new ModelAndView("customer/edit");
             modelAndView.addObject("customerDTO", customerDTO);

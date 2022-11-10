@@ -9,23 +9,32 @@ import org.springframework.validation.Validator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.Date;
 import java.util.Set;
 
 
 public class CustomerDTO implements Validator {
 
     private int id;
-    @NotBlank(message = "No empty")
+
+    @NotBlank(message = "Not empty")
     private String name;
+
     private String dateOfBirth;
+
     private int gender;
-    @NotBlank(message = "No empty")
+
+    @NotBlank(message = "Not empty")
     private String idCard;
-    @NotBlank(message = "No empty")
+
+    @NotBlank(message = "Not empty")
     private String phoneNumber;
-    @NotBlank(message = "No empty")
+
+    @NotBlank(message = "Not empty")
     private String email;
-    @NotBlank(message = "No empty")
+
+
+    @NotBlank(message = "Not empty")
     private String address;
     private int deleteStatus = 1;
     private CustomerType customerTypeId;
@@ -134,7 +143,19 @@ public class CustomerDTO implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-
+        CustomerDTO customerDTO = (CustomerDTO) target;
+        if (!customerDTO.name.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")){
+            errors.rejectValue("name", "name.errors", "Name not format! Name not number!");
+        }
+        if (!customerDTO.phoneNumber.matches("^(090)+[-][0][0-9]{7}$") ||!customerDTO.phoneNumber.matches("^(091)+[-][0][0-9]{7}$")){
+            errors.rejectValue("phoneNumber", "phoneNumber.errors", "Phone not format : 090xxxxxxx or 091xxxxxxx");
+        }
+        if (!customerDTO.email.matches("^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+([A-Za-z0-9]+\\.)+(com)$")){
+            errors.rejectValue("email", "email.errors", "Email not format");
+        }
+        if (!customerDTO.idCard.matches("^[0-9]{9}$") || !customerDTO.idCard.matches("^[0-9]{12}$")){
+            errors.rejectValue("idCard", "idCard.errors", "IdCard not format! IdCard is 9 or 12 characters");
+        }
     }
 }
 
