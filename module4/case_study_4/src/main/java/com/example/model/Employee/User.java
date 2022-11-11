@@ -12,7 +12,7 @@ import java.util.Set;
 public class User {
 
     @Id
-    private String userName;
+    private String username;
 
 
     @OneToOne(mappedBy = "user")
@@ -22,10 +22,8 @@ public class User {
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JsonBackReference
-    @JsonIgnore
     @JoinTable(name = "user_role",
-    joinColumns = @JoinColumn(name = "user_name"),
+    joinColumns = @JoinColumn(name = "username"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles;
@@ -34,7 +32,7 @@ public class User {
     }
 
     public User(String userName, Employee employee, String password, Set<Role> roles) {
-        this.userName = userName;
+        this.username = userName;
         this.employee = employee;
         this.password = password;
         this.roles = roles;
@@ -43,11 +41,11 @@ public class User {
 
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 
     public Employee getEmployee() {

@@ -39,6 +39,7 @@ public class ContractController {
     @Autowired
     ICustomerService customerService;
 
+
     @ModelAttribute("attachFacilityList")
     public List<AttachFacility> getListAttachFacility() {
         return contractService.getAttachFacilities();
@@ -63,6 +64,8 @@ public class ContractController {
     public List<Customer> getListCustomer() {
         return customerService.findAll();
     }
+
+
 
     @GetMapping
     public String list(Model model,

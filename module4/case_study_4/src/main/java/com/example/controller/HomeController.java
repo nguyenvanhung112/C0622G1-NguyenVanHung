@@ -9,18 +9,17 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping
 public class HomeController {
 
-    @GetMapping("/home")
+    @GetMapping
     public String home(){
-        return "home";
+        return "/home";
     }
 
     @GetMapping("/login")
     public String loginPage() {
         return "/login";
     }
-
     @GetMapping("/error")
-    public String accessDenied() {
+    public String error() {
         return "/error.404";
     }
 }

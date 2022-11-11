@@ -147,13 +147,16 @@ public class CustomerDTO implements Validator {
         if (!customerDTO.name.matches("^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$")){
             errors.rejectValue("name", "name.errors", "Name not format! Name not number!");
         }
-        if (!customerDTO.phoneNumber.matches("^(090)+[-][0][0-9]{7}$") ||!customerDTO.phoneNumber.matches("^(091)+[-][0][0-9]{7}$")){
+        if (!(customerDTO.getPhoneNumber().matches("[0][9][0]\\d{7}") ||
+                customerDTO.getPhoneNumber().matches("[0][9][1]\\d{7}") ||
+                customerDTO.getPhoneNumber().matches("[(][8][4][)][+][9][0]\\d{7}") ||
+                customerDTO.getPhoneNumber().matches("[(][8][4][)][+][9][1]\\d{7}"))){
             errors.rejectValue("phoneNumber", "phoneNumber.errors", "Phone not format : 090xxxxxxx or 091xxxxxxx");
         }
         if (!customerDTO.email.matches("^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+([A-Za-z0-9]+\\.)+(com)$")){
             errors.rejectValue("email", "email.errors", "Email not format");
         }
-        if (!customerDTO.idCard.matches("^[0-9]{9}$") || !customerDTO.idCard.matches("^[0-9]{12}$")){
+        if (!(customerDTO.getIdCard().matches("\\d{9}") || customerDTO.getIdCard().matches("\\d{12}"))){
             errors.rejectValue("idCard", "idCard.errors", "IdCard not format! IdCard is 9 or 12 characters");
         }
     }
