@@ -1,0 +1,107 @@
+header{
+    width: 100%;
+}
+body{
+    background: url("https://giupban.com.vn/wp-content/uploads/anh-nen-powerpoint_012323041.jpg");
+    background-size: cover;
+}
+header .left-header{
+    float: left;
+    width: 30%;
+}
+header .left-header img{
+    width: 40px;
+    height: 80px;
+    margin: 5px 5px 5px 40px;
+    float: left;
+}
+header .mid-header {
+    float: left;
+    width: 40%;
+    text-align: center;
+}
+header .right-header {
+    padding-top: 25px;
+    text-align: center;
+    float: left;
+    width: 30%;
+}
+header .mid-header img{
+    text-align: center;
+    width: 200px;
+    height: 80px;
+}
+.navbar ul li a {
+    font-weight: bold;
+    color: #4b4b2e !important;
+}
+.navbar ul li a:hover {
+    text-decoration: underline;
+}
+.menu{
+    clear: left;
+    float: left;
+    width: 100%;
+    margin-bottom: 5px;
+}
+.body-mid{
+    width: 100%;
+}
+.body-mid .body-mid-left{
+    clear: left;
+    float: left;
+    width: 30%;
+    min-height: 100%;
+}
+
+.body-mid .body-mid-left ul li{
+    list-style: none;
+    clear: left;
+    float: left;
+    display: inline-block;
+}
+.body-mid .body-mid-left ul li h2{
+   font-size: 20px;
+}
+.body-mid .body-mid-left ul li img{
+    height: 300px;
+    width: 300px;
+    float: left;
+    margin-right: 10px;
+}
+.body-mid .body-mid-left ul li a{
+    font-size: 15px;
+    text-decoration: none;
+}
+.body-mid .body-mid-right{
+    float: left;
+    width: 70%;
+}
+.body-mid .body-mid-right p{
+    float: left;
+    width: 95%;
+    display: inline-block;
+}
+.body-mid .body-mid-right .card{
+    float: left;
+    margin-right: 20px;
+}
+.body-mid .body-mid-right .card img{
+    width: 100%;
+    height: 100%;
+}
+.banner{
+    width: 100%;
+    margin-bottom: 20px;
+    height: 70%;
+}
+.banner img{
+    width: 100%;
+    height: 70%;
+}
+footer{
+    float: left;
+    text-align: center;
+    background-color: rgba(212,212,212,0.26);
+    margin-top: 10px;
+}
