@@ -1,7 +1,7 @@
 package com.example.bai_thi.dto;
 
 public interface DonHangHienThi {
-    int getId();
+    int getDonHangId();
     String getName();
     int getCost();
     String getLoaiSanPham();

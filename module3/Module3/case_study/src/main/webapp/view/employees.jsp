@@ -74,7 +74,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            Bạn có muốn edit <strong class="text-danger">${employee.name}?</strong>
+                            Bạn có muốn edit <strong class="text-danger">${employee.name}</strong>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

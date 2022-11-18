@@ -1,15 +1,15 @@
 package model.person;
 
 public class Customer {
-    private int customerId;
-    private int customerType;
-    private String name;
-    private String dateOfBirth;
-    private boolean gender;
-    private String idCard;
-    private String phone;
-    private String email;
-    private String address;
+        private int customerId;
+        private int customerType;
+        private String name;
+        private String dateOfBirth;
+        private boolean gender;
+        private String idCard;
+        private String phone;
+        private String email;
+        private String address;
 
     public Customer() {
     }

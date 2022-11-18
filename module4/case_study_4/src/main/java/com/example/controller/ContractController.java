@@ -153,4 +153,5 @@ public class ContractController {
         modelAndView.addObject("customerListUsingFacility", contractService.findCustomerListUsingFacility(pageable));
         return modelAndView;
     }
+
 }

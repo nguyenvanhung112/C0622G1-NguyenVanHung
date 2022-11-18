@@ -53,12 +53,6 @@
                     </select>
                 </td>
             </tr>
-<%--            <tr>--%>
-<%--                <td>--%>
-<%--                    <pre>Facility Type:</pre>--%>
-<%--                </td>--%>
-<%--                <td></td>--%>
-<%--            </tr>--%>
             <tr>
                 <td>
                     <pre>Standard Room:</pre>
@@ -90,12 +84,12 @@
                     <input type="text" name="number_of_floors">
                 </td>
             </tr>
-<%--            <tr>--%>
-<%--                <td>--%>
-<%--                    <pre>Facility Free:</pre>--%>
-<%--                </td>--%>
-<%--                <td></td>--%>
-<%--            </tr>--%>
+            <%--            <tr>--%>
+            <%--                <td>--%>
+            <%--                    <pre>Facility Free:</pre>--%>
+            <%--                </td>--%>
+            <%--                <td></td>--%>
+            <%--            </tr>--%>
             <tr>
                 <td colspan="2" align="center"><input type="submit" value="Save"/></td>
             </tr>

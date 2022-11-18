@@ -1,10 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div style="background: lightblue" class="col-lg-6 shadow-lg">
+            <form action="/sanpham/edit"  method="post" th:object="${donHangDTO}">
+                <input th:field="*{id}" hidden>
+                <div class="mb-5 mt-3 text-center fst-italic">
+                    <h1>Edit Đơn Hàng</h1>
+                </div>
+
+                <div class="mb-3">
+                    <label for="ngayMua" class="form-label fw-bold fst-italic">Ngày Mua:</label>
+                    <input th:field="*{ngayMua}" type="date" class="form-control" id="ngayMua" aria-describedby="ngayMuaError">
+                    <p style="color: red" th:errors="*{ngayMua}" th:if="${#fields.hasErrors('ngayMua')}"> </p>
+                </div>
+
+                <div class="mb-3">
+                    <label for="soluong" class="form-label fw-bold fst-italic">Số lượng:</label>
+                    <input th:field="*{soluong}" type="text" class="form-control" id="soluong" aria-describedby="soluongError">
+                    <p style="color: red" th:errors="*{soluong}" th:if="${#fields.hasErrors('soluong')}"> </p>
+                </div>
+
+                <div class="mb-3">
+                    <label for="sanPhamId" class="form-label fw-bold fst-italic">Sản phẩm</label>
+                    <select th:field="*{sanPhamId}" id="sanPhamId" class="form-select" aria-label="Default select example">
+                        <option th:each="item : ${sanPhamList}"
+                                th:value="${item.id}"
+                                th:text="${item.name}">
+                        </option>
+                    </select>
+                    <p style="color: red" th:errors="*{sanPhamId}" th:if="${#fields.hasErrors('sanPhamId')}"> </p>
+                </div>
+                <button type="submit" class="btn btn-primary mb-3 w-100">Update Đơn Hàng</button>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+<a href="/sanpham">Quay lại trang list</a>
+<div>
+<th:block th:if="${message}">
+    <p style="color: red;font-weight: bold" th:text="${message}"></p>
+</th:block>
+</div>
 </body>
 </html>
