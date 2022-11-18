@@ -76,10 +76,11 @@ header .mid-header img{
 .body-mid .body-mid-right{
     float: left;
     width: 70%;
+    padding-right: 30px;
 }
 .body-mid .body-mid-right p{
     float: left;
-    width: 95%;
+    width: 100%;
     display: inline-block;
 }
 .body-mid .body-mid-right .card{
