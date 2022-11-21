@@ -1,0 +1,13 @@
+.navbar ul li a {
+  font-weight: bold;
+  color: #4b4b2e !important;
+}
+.navbar ul li a:hover {
+  text-decoration: underline;
+}
+.menu{
+  clear: left;
+  float: left;
+  width: 100%;
+  margin-bottom: 5px;
+}

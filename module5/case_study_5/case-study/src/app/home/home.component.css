@@ -1,0 +1,49 @@
+.body-mid{
+  width: 100%;
+  margin-top: 15px;
+  float: left;
+}
+.body-mid .body-mid-left{
+  clear: left;
+  float: left;
+  width: 30%;
+  min-height: 100%;
+}
+
+.body-mid .body-mid-left ul li{
+  list-style: none;
+  clear: left;
+  float: left;
+  display: inline-block;
+}
+.body-mid .body-mid-left ul li h2{
+  font-size: 20px;
+}
+.body-mid .body-mid-left ul li img{
+  height: 300px;
+  width: 300px;
+  float: left;
+  margin-right: 10px;
+}
+.body-mid .body-mid-left ul li a{
+  font-size: 15px;
+  text-decoration: none;
+}
+.body-mid .body-mid-right{
+  float: left;
+  width: 70%;
+  padding-right: 30px;
+}
+.body-mid .body-mid-right p{
+  float: left;
+  width: 100%;
+  display: inline-block;
+}
+.body-mid .body-mid-right .card{
+  float: left;
+  margin-right: 20px;
+}
+.body-mid .body-mid-right .card img{
+  width: 100%;
+  height: 100%;
+}
