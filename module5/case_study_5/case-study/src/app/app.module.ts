@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import {stringify} from "querystring";
 import { ListComponent } from './facility/list/list.component';
+import { CreateComponent } from './facility/create/create.component';
+import { EditComponent } from './facility/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ListComponent } from './facility/list/list.component';
     FooterComponent,
     HeaderComponent,
     NavigationComponent,
-    ListComponent
+    ListComponent,
+    CreateComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule
