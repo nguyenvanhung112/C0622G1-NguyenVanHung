@@ -10,6 +10,9 @@ import {stringify} from "querystring";
 import { ListComponent } from './facility/list/list.component';
 import { CreateComponent } from './facility/create/create.component';
 import { EditComponent } from './facility/edit/edit.component';
+import { ListCustomerComponent } from './customer/list-customer/list-customer.component';
+import { EditCustomerComponent } from './customer/edit-customer/edit-customer.component';
+import { CreateCustomerComponent } from './customer/create-customer/create-customer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { EditComponent } from './facility/edit/edit.component';
     NavigationComponent,
     ListComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
+    ListCustomerComponent,
+    EditCustomerComponent,
+    CreateCustomerComponent
   ],
   imports: [
     BrowserModule

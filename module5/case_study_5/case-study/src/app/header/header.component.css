@@ -1,7 +1,7 @@
 header{
   width: 100%;
 }
-header .left-header{
+.left-header{
   float: left;
   width: 30%;
 }
@@ -11,16 +11,14 @@ header .left-header img{
   margin: 5px 5px 5px 40px;
   float: left;
 }
-header .mid-header {
+header .mid-header{
+  width: 100%;
   float: left;
-  width: 40%;
-  text-align: center;
 }
 header .right-header {
   padding-top: 25px;
   text-align: center;
   float: left;
-  width: 30%;
 }
 header .mid-header img{
   text-align: center;
