@@ -1,1 +1,65 @@
-<p>edit-customer works!</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-3"></div>
+
+    <div style="background: lightblue" class="col-lg-6 shadow-lg">
+      <form action="/#"  method="post" >
+        <input  hidden>
+        <div class="mb-5 mt-3 text-center fst-italic">
+          <h1>Edit Customer Form</h1>
+        </div>
+
+        <div class="mb-3">
+          <label for="nameCustomer" class="form-label fw-bold fst-italic">Name Customer:</label>
+          <input  type="text" class="form-control" id="nameCustomer" aria-describedby="nameError">
+        </div>
+
+        <div class="mb-3">
+          <label for="birthDayCustomer" class="form-label fw-bold fst-italic">Birth Day:</label>
+          <input  type="date" class="form-control" id="birthDayCustomer" aria-describedby="dateOfBirthError">
+        </div>
+        <div class="mb-3">
+          <label for="genderCustomer" class="form-label fw-bold fst-italic">Gender:</label>
+          <select  id="genderCustomer" class="form-select" aria-label="Default select example">
+            <option value="0">Female</option>
+            <option value="1">Male</option>
+            <option value="2">LGBT</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="idCard" class="form-label fw-bold fst-italic">Id Card:</label>
+          <input  type="text" class="form-control" id="idCard" aria-describedby="idCardError">
+
+        </div>
+
+        <div class="mb-3">
+          <label for="phoneCustomer" class="form-label fw-bold fst-italic">Phone:</label>
+          <input  type="text" class="form-control" id="phoneCustomer" aria-describedby="phoneError">
+        </div>
+
+        <div class="mb-3">
+          <label for="emailCustomer" class="form-label fw-bold fst-italic">Email:</label>
+          <input  type="email" class="form-control" id="emailCustomer" aria-describedby="emailError">
+        </div>
+
+        <div class="mb-3">
+          <label for="customerType" class="form-label fw-bold fst-italic">Customer Type:</label>
+          <select  id="customerType" class="form-select" aria-label="Default select example">
+            <option>
+            </option>
+          </select>
+
+        </div>
+
+        <div class="mb-3">
+          <label for="address" class="form-label fw-bold fst-italic">Address:</label>
+          <input  type="text" class="form-control" id="address" aria-describedby="addressError">
+        </div>
+        <button type="submit" class="btn btn-primary mb-3 w-100">Update Customer</button>
+      </form>
+    </div>
+
+    <div class="col-lg-3"></div>
+  </div>
+</div>
