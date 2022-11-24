@@ -1,0 +1,35 @@
+<div class="container">
+  <div><h2 style="text-align: center">Login</h2></div>
+  <form [formGroup]="formLogin" (ngSubmit)="login()" autocomplete="off">
+    <div class="mb-3">
+      <label class="form-label">Email:</label>
+      <input formControlName="email" type="email" class="form-control"
+             [ngClass]="formLogin.controls['email'].invalid ?'is-invalid':'is-valid'">
+      <div class="invalid-feedback">
+        <div *ngIf="formLogin.controls['email'].errors?.required
+        && (formLogin.controls['email'].touched)">
+          Khong duoc bo trong
+        </div>
+        <div *ngIf="formLogin.controls['email'].errors?.pattern
+        && (formLogin.controls['email'].touched)">
+          Khong dung dinh dang
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password: </label>
+      <input type="password" class="form-control" formControlName="password"
+             [ngClass]="formLogin.controls['password'].invalid ?'is-invalid':'is-valid'">
+      <div class="invalid-feedback">
+        <div *ngIf="formLogin.controls['password'].errors?.required">
+          Khong duoc bo trong
+        </div>
+        <div *ngIf="formLogin.controls['password'].errors?.minlength">
+          Mat khau phai co do dai it nhat la 6
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+</div>
