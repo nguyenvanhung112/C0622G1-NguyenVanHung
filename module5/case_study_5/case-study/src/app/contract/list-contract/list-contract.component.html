@@ -1,0 +1,49 @@
+<div class="header"><h1>CONTRACT LIST</h1></div>
+<div class="body" style="width: 100%">
+  <table class="table table-white" style="text-align: center" border="1">
+    <thead>
+    <tr>
+      <th>STT</th>
+      <th>Facility Name</th>
+      <th>Customer Name</th>
+      <th>Start Day</th>
+      <th>End Day</th>
+      <th>Deposit</th>
+      <th>Total Money</th>
+      <th colspan="2">Accompanied service</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <div class="modal fade " id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+       style="color: white">
+    <div class="modal-dialog ">
+      <div class="modal-content bg-dark">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Bạn có muốn xóa <strong class="text-danger" id="nameDelete"></strong>
+        </div>
+        <div class="modal-footer">
+          <form action="/customers/delete">
+            <input type="text" name="id" id="id" hidden>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button class="btn btn-danger" type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center">
+    <a>
+      <button type="button" class="btn btn-secondary">Previous</button>
+    </a>
+    <span></span> / <span></span>
+    <a>
+      <button type="button" class="btn btn-secondary">Next</button>
+    </a>
+  </div>
+</div>
