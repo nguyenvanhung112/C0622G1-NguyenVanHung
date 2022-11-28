@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {Todo} from "../todo";
 import {FormControl} from "@angular/forms";
 import {TodoService} from "../service/todo.service";
-import {HttpClientModule} from "@angular/common/http";
 
-let _id = 1;
+
+
 
 @Component({
   selector: 'app-todo',
@@ -32,13 +32,13 @@ export class TodoComponent implements OnInit {
     const value = this.content.value;
     if (value) {
       const todo: Todo = {
-        id: _id++,
         content: value,
         complete: false
       };
-      this.todos.push(todo);
-      this.content.reset();
+      this.todoService.addTodo(todo).subscribe(data => {
+        this.content.reset();
+        this.ngOnInit()
+      })
     }
   }
-
 }

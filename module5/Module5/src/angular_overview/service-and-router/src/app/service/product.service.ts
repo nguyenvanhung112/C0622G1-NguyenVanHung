@@ -10,7 +10,6 @@ import {ICategory} from "../model/icategory";
 })
 export class ProductService {
 
-  products: Product[] = [];
 
   constructor(private httpClient: HttpClient) {
   }
