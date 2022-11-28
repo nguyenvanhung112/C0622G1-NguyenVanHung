@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Todo} from "../todo";
 import {FormControl} from "@angular/forms";
+import {TodoService} from "../service/todo.service";
+import {HttpClientModule} from "@angular/common/http";
+
 let _id = 1;
+
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -11,9 +15,13 @@ export class TodoComponent implements OnInit {
   todos: Todo[] = [];
   content = new FormControl();
 
-  constructor() { }
+  constructor(private todoService: TodoService) {
+  }
 
   ngOnInit() {
+    this.todoService.findAll().subscribe(data => {
+      this.todos = data
+    });
   }
 
   toggleTodo(i: number) {

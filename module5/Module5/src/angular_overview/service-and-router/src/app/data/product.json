@@ -1,0 +1,118 @@
+{
+  "products": [
+    {
+      "id": 3,
+      "name": "Iphone 13",
+      "price": 17000000,
+      "description": "Không có cáp sạc",
+      "category": {
+        "id": 1,
+        "name": "điện thoại"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Iphone 14",
+      "price": 23000000,
+      "description": "Đã qua sử dụng",
+      "category": {
+        "id": 1,
+        "name": "điện thoại"
+      }
+    },
+    {
+      "name": "12ProMax 256GB",
+      "price": 123445565,
+      "description": "Đã bị hư",
+      "id": 5,
+      "category": {
+        "id": 1,
+        "name": "điện thoại"
+      }
+    },
+    {
+      "id": 6,
+      "name": "123",
+      "price": 1123123,
+      "description": "123123",
+      "category": {
+        "id": 2,
+        "name": "Máy tính"
+      }
+    },
+    {
+      "id": 7,
+      "name": "123",
+      "price": 123,
+      "description": "123",
+      "category": {
+        "id": 1,
+        "name": "điện thoại"
+      }
+    },
+    {
+      "id": 8,
+      "name": "hải",
+      "price": 123123,
+      "description": "123123",
+      "category": {
+        "id": 1,
+        "name": "điện thoại"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Anh giang",
+      "price": 123123123,
+      "description": "123123123213",
+      "category": {
+        "id": 2,
+        "name": "Máy tính"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Sơn",
+      "price": 123123123123,
+      "description": "12312321312",
+      "category": {
+        "id": 2,
+        "name": "Máy tính"
+      }
+    },
+    {
+      "id": 11,
+      "name": "Laptop Dell",
+      "price": 123123213,
+      "description": "123213123",
+      "category": {
+        "id": 2,
+        "name": "Máy tính"
+      }
+    },
+    {
+      "id": 17,
+      "name": "12321312",
+      "price": 312312312,
+      "description": "123123123",
+      "category": {
+        "id": 3,
+        "name": "Đồ gia dụng"
+      }
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "điện thoại"
+    },
+    {
+      "id": 2,
+      "name": "Máy tính"
+    },
+    {
+      "id": 3,
+      "name": "Đồ gia dụng"
+    }
+  ]
+}
