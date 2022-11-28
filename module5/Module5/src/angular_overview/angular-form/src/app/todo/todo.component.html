@@ -9,7 +9,7 @@
         *ngFor="let todo of todos; index as i">
       {{todo.id}}<br>
       {{todo.content}}
-      <a [routerLink]="['/todo/delete',todo.id]">Delete</a>
+      <a (click)="delete(todo.id)">Delete</a>
     </li>
   </ul>
 </div>
