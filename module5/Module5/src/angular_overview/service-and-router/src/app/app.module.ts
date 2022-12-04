@@ -5,12 +5,13 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ProductListComponent} from './product/product-list/product-list.component';
 import {ProductCreateComponent} from './product/product-create/product-create.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProductEditComponent} from './product/product-edit/product-edit.component';
 import {ProductDeleteComponent} from './product/product-delete/product-delete.component';
 import {DictionaryPageComponent} from './dictionary/dictionary-page/dictionary-page.component';
 import {DictionaryDetailComponent} from './dictionary/dictionary-detail/dictionary-detail.component';
 import {HttpClientModule} from "@angular/common/http";
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

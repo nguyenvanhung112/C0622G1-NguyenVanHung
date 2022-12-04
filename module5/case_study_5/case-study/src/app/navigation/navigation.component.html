@@ -1,7 +1,7 @@
 <div class="menu">
   <nav class="navbar navbar-expand-lg navbar-light " style="background-color: rgba(212,212,212,0.26)">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/home">Home</a>
+      <a class="navbar-brand" [routerLink]="['home']">Home</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
               aria-expanded="false" aria-label="Toggle navigation">
@@ -25,9 +25,9 @@
               Customer
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownCustomer">
-              <li><a class="dropdown-item" href="#">List</a></li>
+              <li><a class="dropdown-item" routerLink="customer/list">List</a></li>
               <li><a class="dropdown-item" href="#">Customer Using Facility</a></li>
-              <li><a class="dropdown-item" href="#">Add New Customer</a></li>
+              <li><a class="dropdown-item" routerLink="customer/create">Add New Customer</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -36,8 +36,8 @@
               Facility
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownFacility">
-              <li><a class="dropdown-item" href="#">List</a></li>
-              <li><a class="dropdown-item" href="#">Add New Facility</a></li>
+              <li><a class="dropdown-item" routerLink="facility">List</a></li>
+              <li><a class="dropdown-item" routerLink="facility/create]">Add New Facility</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -46,8 +46,8 @@
               Contract
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownContract">
-              <li><a class="dropdown-item" href="#">List</a></li>
-              <li><a class="dropdown-item" href="#">Add New Contract</a></li>
+              <li><a class="dropdown-item" routerLink="contract/list">List</a></li>
+              <li><a class="dropdown-item" routerLink="contract/create">Add New Contract</a></li>
             </ul>
           </li>
           <li class="nav-item">

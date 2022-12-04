@@ -1,11 +1,36 @@
 <div class="header"><h1>CUSTOMER LIST</h1></div>
+<div style="text-align: center;color: red"><h2>{{message}}</h2></div>
+<div class="d-flex m-0 align-items-center" style="padding: 0 12px; margin-right: 5%">
+  <span class="mx-3">Name</span>
+  <input [(ngModel)]="searchName" (ngModelChange)="findNameEmailCustomerTypeDayOfBirth()"
+         placeholder="Tìm theo tên&hellip;" type="text" aria-label="Search">
+  <span class="mx-3">DayOfBirthFrom</span>
+  <input [(ngModel)]="searchDayOfBirth" (ngModelChange)="findNameEmailCustomerTypeDayOfBirth()"
+          type="date" aria-label="Search">
+
+  <span class="mx-3">DayOfBirthTo</span>
+  <input [(ngModel)]="searchDayOfBirth2" (ngModelChange)="findNameEmailCustomerTypeDayOfBirth()"
+          type="date" aria-label="Search">
+
+
+  <span class="mx-3">Email</span>
+  <input [(ngModel)]="searchEmail" (ngModelChange)="findNameEmailCustomerTypeDayOfBirth()"
+         placeholder="Tìm theo email&hellip;" type="text" aria-label="Search">
+
+  <select style="margin-left: 10px" [(ngModel)]="searchCustomerType" (ngModelChange)="findNameEmailCustomerTypeDayOfBirth()">
+    <option *ngFor="let item of customerType" [value]="item.name">{{item.name}}</option>
+    <option value="">--All--</option>
+  </select>
+  <button style="margin-left: 10px;font-size: 12px" class="btn btn-primary" (click)="resetSearch()">Show All
+  </button>
+</div>
 <div class="body" style="width: 100%">
   <table class="table table-white" style="text-align: center" border="1">
     <thead>
     <tr>
       <th>STT</th>
-      <th>Customer Type</th>
       <th>Name</th>
+      <th>Customer Type</th>
       <th>Date of birth</th>
       <th>Gender</th>
       <th>ID Card</th>
@@ -17,9 +42,39 @@
     </tr>
     </thead>
     <tbody>
+    <tr *ngFor="let customer of customers| paginate: { itemsPerPage: 3, currentPage: p };index as i">
+      <td>{{i + 1}}</td>
+      <td>{{customer.name}}</td>
+      <td>{{customer.customerType.name}}</td>
+      <td>{{customer.dateOfBirth}}</td>
+      <td [ngSwitch]="customer.gender">
+        <span *ngSwitchCase="0">Female</span>
+        <span *ngSwitchCase="1">Male</span>
+        <span *ngSwitchDefault>LGBT</span>
+      </td>
+      <td>{{customer.idCard}}</td>
+      <td>{{customer.phone}}</td>
+      <td>{{customer.email}}</td>
+      <td>{{customer.address}}</td>
+      <td>
+        <a [routerLink]="['/customer/edit',customer.id]">
+          <button class="btn btn-primary">Edit</button>
+        </a>
+      </td>
+      <td>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete"
+                (click)="customerDelete(customer.id)">
+          Delete
+        </button>
+      </td>
+    </tr>
     </tbody>
   </table>
-  <div class="modal fade " id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+
+
+
+  <div *ngIf="deleteCustomer" class="modal fade " id="delete" tabindex="-1" aria-labelledby="exampleModalLabel"
+       aria-hidden="true"
        style="color: white">
     <div class="modal-dialog ">
       <div class="modal-content bg-dark">
@@ -28,26 +83,19 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Bạn có muốn xóa <strong class="text-danger" id="nameDelete"></strong>
+          Bạn có muốn xóa <strong class="text-danger">{{deleteCustomer.name}}</strong>
         </div>
         <div class="modal-footer">
-          <form action="/customers/delete">
-            <input type="text" name="id" id="id" hidden>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button class="btn btn-danger" type="submit">Delete</button>
-          </form>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-danger" data-bs-dismiss="modal" type="submit"
+                  (click)="deleteCustomerById(deleteCustomer.id)">Delete
+          </button>
         </div>
       </div>
     </div>
   </div>
   <div style="text-align: center">
-    <a>
-      <button type="button" class="btn btn-secondary">Previous</button>
-    </a>
-    <span></span> / <span></span>
-    <a>
-      <button type="button" class="btn btn-secondary">Next</button>
-    </a>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 </div>
 

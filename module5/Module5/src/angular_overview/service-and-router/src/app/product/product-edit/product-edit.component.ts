@@ -44,7 +44,6 @@ export class ProductEditComponent implements OnInit {
             price: [this.product.price],
             description: [this.product.description],
             category: [this.product.category]
-
           });
         });
     });
@@ -61,7 +60,8 @@ export class ProductEditComponent implements OnInit {
           description: [data.description],
           category: [data.category]
         })
-        this.message = "Sửa thành công"
+        this._productService.checkMessage();
+        this._router.navigateByUrl("product/list")
       },
       error => {
         this.message = "Sửa thất bại"

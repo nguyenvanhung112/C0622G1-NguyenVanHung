@@ -1,0 +1,148 @@
+{
+  "rentTypes": [
+    {
+      "id": 1,
+      "name": "Year"
+    },
+    {
+      "id": 2,
+      "name": "Month"
+    },
+    {
+      "id": 3,
+      "name": "Day"
+    },
+    {
+      "id": 4,
+      "name": "Hour"
+    }
+  ],
+  "customerTypes": [
+    {
+      "id": 1,
+      "name": "Diamond"
+    },
+    {
+      "id": 2,
+      "name": "Platinum"
+    },
+    {
+      "id": 3,
+      "name": "Gold"
+    },
+    {
+      "id": 4,
+      "name": "Silver"
+    },
+    {
+      "id": 5,
+      "name": "Member"
+    }
+  ],
+  "facilityType": [
+    {
+      "id": 1,
+      "name": "Villa"
+    },
+    {
+      "id": 2,
+      "name": "House"
+    },
+    {
+      "id": 3,
+      "name": "Room"
+    }
+  ],
+  "customers": [
+    {
+      "img": "ok",
+      "name": "Nguyễn Duy Quang",
+      "dateOfBirth": "2022-11-17",
+      "gender": "1",
+      "idCard": "123123123123",
+      "phone": "123123123123213",
+      "email": "123123123123123123",
+      "address": "123123123",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "id": 1
+    },
+    {
+      "img": "ok",
+      "name": "Phạm Thế Sơn",
+      "dateOfBirth": "2022-11-25",
+      "gender": "1",
+      "idCard": "123123123",
+      "phone": "123213123",
+      "email": "123213213",
+      "address": "123123123123",
+      "customerType": {
+        "id": 5,
+        "name": "Member"
+      },
+      "id": 2
+    },
+    {
+      "img": "ok",
+      "name": "Nguyễn Thanh Hải",
+      "dateOfBirth": "2022-12-14",
+      "gender": "2",
+      "idCard": "123123213213",
+      "phone": "123123213213",
+      "email": "123123123123",
+      "address": "123123213123213",
+      "customerType": {
+        "id": 4,
+        "name": "Silver"
+      },
+      "id": 3
+    },
+    {
+      "img": "ok",
+      "name": "Hữu Trường",
+      "dateOfBirth": "2022-10-26",
+      "gender": "1",
+      "idCard": "123123213213",
+      "phone": "123123213213",
+      "email": "123123123123",
+      "address": "123123213123213",
+      "customerType": {
+        "id": 3,
+        "name": "Gold"
+      },
+      "id": 4
+    },
+    {
+      "img": "ok",
+      "name": "Giang Bá",
+      "dateOfBirth": "2022-10-26",
+      "gender": "1",
+      "idCard": "123123213213",
+      "phone": "123123213213",
+      "email": "123123123123",
+      "address": "123123213123213",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "id": 5
+    },
+    {
+      "img": "ok",
+      "name": "Nguyễn Văn Hùng",
+      "dateOfBirth": "2022-12-07",
+      "gender": "1",
+      "idCard": "123123123123",
+      "phone": "21312312",
+      "email": "123123213",
+      "address": "123123",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "id": 6
+    }
+  ]
+}

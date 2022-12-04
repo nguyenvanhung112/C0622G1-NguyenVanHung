@@ -1,0 +1,122 @@
+{
+  "vexes": [
+    {
+      "id": 2,
+      "giaVe": 5000,
+      "diemDi": "HCM",
+      "diemDen": "Da Nang",
+      "ngayKhoiHanh": "2022-11-17",
+      "gioKhoiHanh": "20:00",
+      "nhaXe": {
+        "id": 2,
+        "name": "Trung Nguyen"
+      },
+      "soLuong": 20
+    },
+    {
+      "id": 3,
+      "giaVe": 3000,
+      "diemDi": "Ha Noi",
+      "diemDen": "Da Nang",
+      "ngayKhoiHanh": "2022-11-17",
+      "gioKhoiHanh": "17:00",
+      "nhaXe": {
+        "id": 3,
+        "name": "Trung Tin"
+      },
+      "soLuong": 15
+    },
+    {
+      "giaVe": "2000",
+      "diemDi": "Huế",
+      "diemDen": "Đà Nẵng",
+      "ngayKhoiHanh": "2022-12-14",
+      "gioKhoiHanh": "05:00",
+      "nhaXe": {
+        "id": 1,
+        "name": "Phuong Trang"
+      },
+      "soLuong": 0,
+      "id": 4
+    },
+    {
+      "giaVe": "1000",
+      "diemDi": "Đà Nẵng",
+      "diemDen": "Đà Lạt",
+      "ngayKhoiHanh": "2022-12-20",
+      "gioKhoiHanh": "15:00",
+      "nhaXe": {
+        "id": 3,
+        "name": "Trung Tin"
+      },
+      "soLuong": "10",
+      "id": 5
+    },
+    {
+      "giaVe": 2000,
+      "diemDi": "Đà Nẵng",
+      "diemDen": "Đà Lạt",
+      "ngayKhoiHanh": "2022-12-03",
+      "gioKhoiHanh": "20:00",
+      "nhaXe": {
+        "id": 2,
+        "name": "Trung Nguyen"
+      },
+      "soLuong": "12",
+      "id": 6
+    },
+    {
+      "giaVe": 2000,
+      "diemDi": "Đà Nẵng",
+      "diemDen": "Sapa",
+      "ngayKhoiHanh": "2022-12-05",
+      "gioKhoiHanh": "17:00",
+      "nhaXe": {
+        "id": 2,
+        "name": "Trung Nguyen"
+      },
+      "soLuong": "1212",
+      "id": 7
+    },
+    {
+      "giaVe": 10000,
+      "diemDi": "Đà Nẵng",
+      "diemDen": "Cà Mau",
+      "ngayKhoiHanh": "2022-11-30",
+      "gioKhoiHanh": "123",
+      "nhaXe": {
+        "id": 1,
+        "name": "Phuong Trang"
+      },
+      "soLuong": 123,
+      "id": 8
+    },
+    {
+      "giaVe": "2222",
+      "diemDi": "ádasdasd",
+      "diemDen": "ádasdasd",
+      "ngayKhoiHanh": "2022-12-16",
+      "gioKhoiHanh": "20:20",
+      "nhaXe": {
+        "id": 1,
+        "name": "Phuong Trang"
+      },
+      "soLuong": 10,
+      "id": 9
+    }
+  ],
+  "nhaXes": [
+    {
+      "id": 1,
+      "name": "Phuong Trang"
+    },
+    {
+      "id": 2,
+      "name": "Trung Nguyen"
+    },
+    {
+      "id": 3,
+      "name": "Trung Tin"
+    }
+  ]
+}

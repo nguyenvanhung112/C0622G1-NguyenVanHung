@@ -15,6 +15,10 @@ import { EditCustomerComponent } from './customer/edit-customer/edit-customer.co
 import { CreateCustomerComponent } from './customer/create-customer/create-customer.component';
 import { CreateContractComponent } from './contract/create-contract/create-contract.component';
 import { ListContractComponent } from './contract/list-contract/list-contract.component';
+import { AppRoutingModule } from './app-routing.module';
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -32,9 +36,14 @@ import { ListContractComponent } from './contract/list-contract/list-contract.co
     CreateContractComponent,
     ListContractComponent
   ],
-  imports: [
-    BrowserModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        NgxPaginationModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

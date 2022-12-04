@@ -1,0 +1,114 @@
+<div class="container-fluid">
+  <div style="text-align: center;color: blue"><h2>{{message}}</h2></div>
+  <div class="row">
+    <div class="col-lg-3"></div>
+
+    <div style="background: lightblue" class="col-lg-6 shadow-lg">
+      <form [formGroup]="formTicket" (ngSubmit)="addTicket()">
+        <div class="mb-5 mt-3 text-center fst-italic">
+          <h1>Thêm vé xe</h1>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold fst-italic">Điểm Đi</label>
+          <input formControlName="startPoint" type="text" class="form-control"
+                 [ngClass]="formTicket.controls['startPoint'].invalid ?'is-invalid':'is-valid'">
+          <div class="invalid-feedback">
+            <div *ngIf="formTicket.controls['startPoint'].errors?.required
+        && (formTicket.controls['startPoint'].touched)">
+              Khong duoc bo trong
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold fst-italic">Điểm Đến:</label>
+          <input formControlName="endPoint" type="text" class="form-control"
+                 [ngClass]="formTicket.controls['endPoint'].invalid ?'is-invalid':'is-valid'">
+          <div class="invalid-feedback">
+            <div *ngIf="formTicket.controls['endPoint'].errors?.required
+        && (formTicket.controls['endPoint'].touched)">
+              Khong duoc bo trong
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold fst-italic">Giá Vé:</label>
+          <input formControlName="price" type="text" class="form-control"
+                 [ngClass]="formTicket.controls['price'].invalid ?'is-invalid':'is-valid'">
+          <div class="invalid-feedback">
+            <div *ngIf="formTicket.controls['price'].errors?.required
+        && (formTicket.controls['price'].touched)">
+              Khong duoc bo trong
+            </div>
+            <div *ngIf="formTicket.controls['price'].errors?.pattern
+        && (formTicket.controls['price'].touched)">
+              Phai la so duong
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold fst-italic">Ngày Khởi Hành:</label>
+          <input formControlName="starDay" type="date" class="form-control"
+                 [ngClass]="formTicket.controls['starDay'].invalid ?'is-invalid':'is-valid'">
+          <div class="invalid-feedback">
+            <div *ngIf="formTicket.controls['starDay'].errors?.required
+        && (formTicket.controls['starDay'].touched)">
+              Khong duoc bo trong
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold fst-italic">Giờ khởi hành:</label>
+          <input formControlName="time" type="text" class="form-control"
+                 [ngClass]="formTicket.controls['time'].invalid ?'is-invalid':'is-valid'">
+          <div class="invalid-feedback">
+            <div *ngIf="formTicket.controls['time'].errors?.required
+        && (formTicket.controls['time'].touched)">
+              Khong duoc bo trong
+            </div>
+            <div *ngIf="formTicket.controls['time'].errors?.pattern
+        && (formTicket.controls['time'].touched)">
+              Khong dung dinh dang gio XX:XX
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold fst-italic">Nhà Xe:</label>
+          <select formControlName="garage" class="form-select">
+            <option *ngFor="let item of garageList" [ngValue]="item">{{item.name}}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-bold fst-italic">Số lượng:</label>
+          <input formControlName="soLuong" type="text" class="form-control"
+                 aria-describedby="addressError"
+                 [ngClass]="formTicket.controls['quantity'].invalid ?'is-invalid':'is-valid'">
+          <div class="invalid-feedback">
+            <div *ngIf="formTicket.controls['quantity'].errors?.required
+        && (formTicket.controls['quantity'].touched)">
+              Khong duoc bo trong
+            </div>
+            <div *ngIf="formTicket.controls['quantity'].errors?.pattern
+        && (formTicket.controls['quantity'].touched)">
+              Phai la so duong
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 w-100">
+          <div class="row">
+            <div class="col-lg-6">
+              <button type="submit" class="btn btn-primary">Thêm vé xe</button>
+            </div>
+            <div class="col-lg-6">
+              <button type="reset" class="btn btn-primary" style="float: right">Làm mới</button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="col-lg-3"></div>
+  </div>
+</div>
+

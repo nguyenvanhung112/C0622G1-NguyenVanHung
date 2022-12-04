@@ -20,11 +20,6 @@ export class TodoService {
     return this.httpClient.post<Todo>(environment.url_api, todo);
   }
 
-  findById(id: number): Observable<Todo> {
-    return this.httpClient.get<Todo>(environment.url_api + "/" + id);
-
-  }
-
   delete(id: number) {
     return this.httpClient.delete(environment.url_api + "/" + id)
   }

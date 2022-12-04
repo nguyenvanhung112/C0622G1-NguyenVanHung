@@ -9,9 +9,13 @@ import {ICategory} from "../model/icategory";
   providedIn: 'root'
 })
 export class ProductService {
-
+  messageUpdate:boolean = false;
 
   constructor(private httpClient: HttpClient) {
+  }
+
+  checkMessage(){
+    this.messageUpdate =! this.messageUpdate;
   }
 
   findAll(): Observable<Product[]> {
@@ -27,8 +31,7 @@ export class ProductService {
   }
 
   updateProduct(id: number, product: Product): Observable<Product> {
-    console.log(product)
-    return this.httpClient.put<Product>(environment.url_edit + product.id, product);
+    return this.httpClient.put<Product>(environment.url_edit + id, product);
   }
 
   deleteProduct(id: number): Observable<Product> {
@@ -37,5 +40,8 @@ export class ProductService {
 
   findAllCategory(): Observable<ICategory[]> {
     return this.httpClient.get<ICategory[]>(environment.url_category);
+  }
+  searchByNameAndCategory(name:string,category:string):Observable<Product[]>{
+    return this.httpClient.get<Product[]>(`${environment.url_list}?name_like=${name}&category.name_like=${category}`)
   }
 }

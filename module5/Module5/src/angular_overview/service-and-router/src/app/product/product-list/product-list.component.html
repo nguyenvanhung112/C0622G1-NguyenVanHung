@@ -1,4 +1,10 @@
 <h1>Danh sách sản phẩm</h1>
+<p>{{message}}</p>
+<input type="text" [(ngModel)]="name" (ngModelChange)="search()">
+<select  [(ngModel)]="category"  (ngModelChange)="search()">
+  <option value="" selected >--All--</option>
+  <option  *ngFor="let item of categoryList" value="{{item.name}}" >{{item.name}}</option>
+</select>
 <table>
   <tr>
     <td>STT</td>
@@ -7,7 +13,7 @@
     <td>Loại sản phẩm</td>
     <td>Mô tả</td>
   </tr>
-  <tr *ngFor="let product of products; index as i">
+  <tr *ngFor="let product of products| paginate: { itemsPerPage: 5, currentPage: p }; index as i">
     <td>{{i + 1}}</td>
     <td>{{product.name}}</td>
     <td>{{product.price}}</td>
@@ -17,3 +23,4 @@
     <td><a [routerLink]="['/product/delete',product.id]">Delete</a></td>
   </tr>
 </table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

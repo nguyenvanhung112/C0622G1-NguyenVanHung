@@ -1,0 +1,106 @@
+<h1>Danh sách vé xe</h1>
+<p>{{message}}</p>
+<a routerLink="/vexe/add">Thêm Vé</a>
+<div class="d-flex m-0 align-items-center" style="padding: 0 12px; margin-right: 5%">
+  <span class="mx-3">Điểm đến</span>
+  <input [(ngModel)]="endPoint" (ngModelChange)="findDiemDenDiemDi()"
+         type="text" aria-label="Search">
+  <span class="mx-3">Điểm đi</span>
+  <input [(ngModel)]="startPoint" (ngModelChange)="findDiemDenDiemDi()"
+         type="text" aria-label="Search">
+
+  <span class="mx-3">Ngày Khởi Hành Từ</span>
+  <input [(ngModel)]="firstDay" (ngModelChange)="findDiemDenDiemDi()"
+         type="date" aria-label="Search">
+
+  <span class="mx-3">đến</span>
+  <input [(ngModel)]="secondDay" (ngModelChange)="findDiemDenDiemDi()"
+         type="date" aria-label="Search">
+
+  <select style="margin-left: 10px" [(ngModel)]="searchGarage" (ngModelChange)="findDiemDenDiemDi()">
+    <option *ngFor="let item of garageList" [value]="item.name">{{item.name}}</option>
+    <option value="">--All--</option>
+  </select>
+  <button style="margin-left: 10px;font-size: 12px" class="btn btn-primary" (click)="resetSearch()">Show All
+  </button>
+</div>
+<table class="table-primary" style="text-align: center;width: 100%" border="1">
+  <tr>
+    <th>Điểm đi</th>
+    <th>Điểm đến</th>
+    <th>Giá Vé</th>
+    <th>Ngày Khởi Hành</th>
+    <th>Giờ Khởi Hành</th>
+    <th>Nhà Xe</th>
+    <th>Số lượng</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let ticket of ticketList| paginate: { itemsPerPage: 3, currentPage: p }">
+    <td>{{ticket.startPoint}}</td>
+    <td>{{ticket.endPoint}}</td>
+    <td>{{ticket.price}}</td>
+    <td>{{ticket.startDay}}</td>
+    <td>{{ticket.time}}</td>
+    <td>{{ticket.garage.name}}</td>
+    <td>{{ticket.quantity}}</td>
+    <td><a [routerLink]="['/vexe/edit',ticket.id]">
+      <button class="btn btn-primary">Sửa</button>
+    </a></td>
+    <td>
+      <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete"
+              (click)="infoDelete(ticket.id)">Xóa
+      </button>
+    </td>
+    <td>
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#datve"
+              (click)="infoDatVe(ticket.id)">Đặt vé
+      </button>
+    </td>
+
+  </tr>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+<div *ngIf="ticketForm" class="modal" id="datve" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Đặt vé</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn có muốn đặt vé khởi hành từ <span>{{ticketForm.startPoint}}</span> đến <span>{{ticketForm.endPoint}}</span> vào lúc
+        <span>{{ticketForm.time}}</span> ngày <span>{{ticketForm.startDay}}</span> không?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-danger" data-bs-dismiss="modal" type="submit"
+                (click)="orderTicket(ticketForm.id)">Đặt vé
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="deleteTicket" class="modal" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel1"
+     aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">Xóa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn có muốn xóa vé khởi hành từ <span>{{deleteTicket.startPoint}}</span> đến <span>{{deleteTicket.endPoint}}</span> vào lúc
+        <span>{{deleteTicket.time}}</span> ngày <span>{{deleteTicket.startDay}}</span> không?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-danger" data-bs-dismiss="modal" type="submit"
+                (click)="removeTicket(deleteTicket.id)">Xóa
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,19 @@
   <table>
     <tr>
       <td>Tên sản phẩm:</td>
-      <td><input type="text" formControlName="name"></td>
+      <td><input type="text" formControlName="name"
+                 [ngClass]="productForm.controls['name'].invalid ?'is-invalid':'is-valid'">
+        <div class="invalid-feedback">
+          <div *ngIf="productForm.controls['name'].errors?.required
+        && (productForm.controls['name'].touched)">
+            Khong duoc bo trong
+          </div>
+          <div *ngIf="productForm.controls['name'].errors?.pattern
+        && (productForm.controls['name'].touched)">
+            Khong dung dinh dang
+          </div>
+        </div>
+      </td>
     </tr>
     <tr>
       <td>Giá sản phẩm</td>
@@ -16,13 +28,16 @@
     </tr>
     <tr>
       <td>Loại sản phẩm</td>
-        <select formControlName="category" >
-          <option *ngFor="let item of categoryList" [ngValue]="item" >{{item.name}}</option>
-        </select>
+      <select formControlName="category">
+        <option value="" selected>Category</option>
+        <option *ngFor="let item of categoryList" [ngValue]="item">{{item.name}}</option>
+      </select>
     </tr>
     <tr>
       <td></td>
-      <td><button>Tạo mới</button></td>
+      <td>
+        <button>Tạo mới</button>
+      </td>
     </tr>
   </table>
 </form>

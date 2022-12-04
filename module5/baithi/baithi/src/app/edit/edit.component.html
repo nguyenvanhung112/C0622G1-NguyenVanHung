@@ -1,0 +1,116 @@
+<div class="container-fluid">
+  <div style="text-align: center;color: blue"><h2>{{message}}</h2></div>
+  <div class="row">
+    <div class="col-lg-3"></div>
+
+    <div style="background: lightblue" class="col-lg-6 shadow-lg">
+      <form [formGroup]="formEditVeXe" *ngIf="formEditVeXe" (ngSubmit)="suaVeXe(id)">
+        <div class="mb-5 mt-3 text-center fst-italic">
+          <h1>Sửa vé xe</h1>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold fst-italic">Điểm Đi</label>
+          <input formControlName="diemDi" type="text" class="form-control"
+                 [ngClass]="formEditVeXe.controls['diemDi'].invalid ?'is-invalid':'is-valid'">
+          <div class="invalid-feedback">
+            <div *ngIf="formEditVeXe.controls['diemDi'].errors?.required
+        && (formEditVeXe.controls['diemDi'].touched)">
+              Khong duoc bo trong
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold fst-italic">Điểm Đến:</label>
+          <input formControlName="diemDen" type="text" class="form-control"
+                 [ngClass]="formEditVeXe.controls['diemDen'].invalid ?'is-invalid':'is-valid'">
+          <div class="invalid-feedback">
+            <div *ngIf="formEditVeXe.controls['diemDen'].errors?.required
+        && (formEditVeXe.controls['diemDen'].touched)">
+              Khong duoc bo trong
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold fst-italic">Giá Vé:</label>
+          <input formControlName="giaVe" type="text" class="form-control"
+                 [ngClass]="formEditVeXe.controls['giaVe'].invalid ?'is-invalid':'is-valid'">
+          <div class="invalid-feedback">
+            <div *ngIf="formEditVeXe.controls['giaVe'].errors?.required
+        && (formEditVeXe.controls['giaVe'].touched)">
+              Khong duoc bo trong
+            </div>
+            <div *ngIf="formEditVeXe.controls['giaVe'].errors?.pattern
+        && (formEditVeXe.controls['giaVe'].touched)">
+              Phai la so duong
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold fst-italic">Ngày Khởi Hành:</label>
+          <input formControlName="ngayKhoiHanh" type="date" class="form-control" aria-describedby="idCardError"
+                 [ngClass]="formEditVeXe.controls['ngayKhoiHanh'].invalid ?'is-invalid':'is-valid'">
+          <div class="invalid-feedback">
+            <div *ngIf="formEditVeXe.controls['ngayKhoiHanh'].errors?.required
+        && (formEditVeXe.controls['ngayKhoiHanh'].touched)">
+              Khong duoc bo trong
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold fst-italic">Giờ khởi hành:</label>
+          <input formControlName="gioKhoiHanh" type="text" class="form-control"
+                 aria-describedby="phoneError"
+                 [ngClass]="formEditVeXe.controls['gioKhoiHanh'].invalid ?'is-invalid':'is-valid'">
+          <div class="invalid-feedback">
+            <div *ngIf="formEditVeXe.controls['gioKhoiHanh'].errors?.required
+        && (formEditVeXe.controls['gioKhoiHanh'].touched)">
+              Khong duoc bo trong
+            </div>
+            <div *ngIf="formEditVeXe.controls['gioKhoiHanh'].errors?.pattern
+        && (formEditVeXe.controls['gioKhoiHanh'].touched)">
+              Khong dung dinh dang gio XX:XX
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold fst-italic">Nhà Xe:</label>
+          <select [compareWith]="equals" formControlName="nhaXe" class="form-select"
+                  aria-label="Default select example">
+            <option *ngFor="let item of nhaXes" [ngValue]="item">{{item.name}}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-bold fst-italic">Số lượng:</label>
+          <input formControlName="soLuong" type="text" class="form-control"
+                 aria-describedby="addressError"
+                 [ngClass]="formEditVeXe.controls['soLuong'].invalid ?'is-invalid':'is-valid'">
+          <div class="invalid-feedback">
+            <div *ngIf="formEditVeXe.controls['soLuong'].errors?.required
+        && (formEditVeXe.controls['soLuong'].touched)">
+              Khong duoc bo trong
+            </div>
+            <div *ngIf="formEditVeXe.controls['soLuong'].errors?.pattern
+        && (formEditVeXe.controls['soLuong'].touched)">
+              Phai la so duong
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 w-100">
+          <div class="row">
+            <div class="col-lg-6">
+              <button type="submit" class="btn btn-primary">Sửa</button>
+            </div>
+            <div class="col-lg-6">
+              <button type="reset" class="btn btn-primary" style="float: right">Làm mới</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-lg-3"></div>
+  </div>
+</div>
+
+

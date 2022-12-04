@@ -19,7 +19,6 @@ export const reConfirmPass: ValidatorFn = (control: AbstractControl): Validation
   } else {
     return null;
   }
-
 }
 
 @Component({

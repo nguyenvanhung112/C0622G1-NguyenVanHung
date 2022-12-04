@@ -4,7 +4,7 @@
       "id": 3,
       "name": "Iphone 13",
       "price": 17000000,
-      "description": "Không có cáp sạc",
+      "description": "213123123123123213",
       "category": {
         "id": 1,
         "name": "điện thoại"
@@ -14,17 +14,17 @@
       "id": 4,
       "name": "Iphone 14",
       "price": 23000000,
-      "description": "Đã qua sử dụng",
+      "description": "123123123123",
       "category": {
         "id": 1,
         "name": "điện thoại"
       }
     },
     {
+      "id": 5,
       "name": "12ProMax 256GB",
       "price": 123445565,
-      "description": "Đã bị hư",
-      "id": 5,
+      "description": "123123123",
       "category": {
         "id": 1,
         "name": "điện thoại"
@@ -34,7 +34,7 @@
       "id": 6,
       "name": "123",
       "price": 1123123,
-      "description": "123123",
+      "description": "2312321",
       "category": {
         "id": 2,
         "name": "Máy tính"
@@ -44,7 +44,7 @@
       "id": 7,
       "name": "123",
       "price": 123,
-      "description": "123",
+      "description": "123123123",
       "category": {
         "id": 1,
         "name": "điện thoại"
@@ -99,6 +99,23 @@
         "id": 3,
         "name": "Đồ gia dụng"
       }
+    },
+    {
+      "id": 18,
+      "name": "Giang Bá",
+      "price": 123123123,
+      "description": "123123",
+      "category": {
+        "id": 1,
+        "name": "điện thoại"
+      }
+    },
+    {
+      "id": "name product",
+      "name": null,
+      "price": null,
+      "description": null,
+      "category": null
     }
   ],
   "category": [

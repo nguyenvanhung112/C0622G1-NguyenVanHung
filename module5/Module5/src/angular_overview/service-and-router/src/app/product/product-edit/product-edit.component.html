@@ -17,7 +17,6 @@
     <tr>
       <td>Loại sản phẩm</td>
       <select formControlName="category" [compareWith]="equals" >
-
         <option *ngFor="let item of categoryList"  [ngValue]="item" >{{item.name}}</option>
       </select>
     </tr>
