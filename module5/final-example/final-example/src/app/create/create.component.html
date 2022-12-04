@@ -77,9 +77,16 @@
         </div>
         <div class="mb-3">
           <label class="form-label fw-bold fst-italic">Nhà Xe:</label>
-          <select formControlName="garage" class="form-select">
+          <select formControlName="garage" class="form-select" [ngClass]="formTicket.controls['garage'].invalid ?'is-invalid':'is-valid'">
+            <option value="">Chọn Nhà Xe</option>
             <option *ngFor="let item of garageList" [ngValue]="item">{{item.name}}</option>
           </select>
+          <div class="invalid-feedback">
+            <div *ngIf="formTicket.controls['garage'].errors?.required
+        && (formTicket.controls['garage'].touched)">
+              Khong duoc bo trong
+            </div>
+          </div>
         </div>
 
         <div class="mb-3">
