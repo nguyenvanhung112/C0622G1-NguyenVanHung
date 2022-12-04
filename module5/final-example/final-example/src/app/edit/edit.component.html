@@ -48,9 +48,13 @@
         </div>
         <div class="mb-3">
           <label class="form-label fw-bold fst-italic">Ngày Khởi Hành:</label>
-          <input formControlName="startDay" type="date" class="form-control" aria-describedby="idCardError"
-                 [ngClass]="formEditTicket.controls['startDay'].invalid ?'is-invalid':'is-valid'">
+          <input formControlName="startDay" type="date" class="form-control"
+                 [ngClass]="formEditTicket.errors?.checkStartDay||formEditTicket.controls['startDay'].invalid?'is-invalid':'is-valid'">
           <div class="invalid-feedback">
+            <div *ngIf="formEditTicket.errors?.checkStartDay
+        && (formEditTicket.controls['startDay'].touched)">
+              Không được nhỏ hơn ngày hiện tại
+            </div>
             <div *ngIf="formEditTicket.controls['startDay'].errors?.required
         && (formEditTicket.controls['startDay'].touched)">
               Khong duoc bo trong

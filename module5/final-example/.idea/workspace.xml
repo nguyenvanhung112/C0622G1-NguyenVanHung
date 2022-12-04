@@ -23,14 +23,9 @@
       <change beforePath="$PROJECT_DIR$/../../module1" beforeDir="false" afterPath="$PROJECT_DIR$/../../module1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../module4/case_study_4/database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../module4/case_study_4/database.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../module4/webservice/excercise1/src/main/java/com/example/excercise2/controller/BlogerRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../module4/webservice/excercise1/src/main/java/com/example/excercise2/controller/BlogerRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../baithi-spring-boot/src/main/java/com/example/baithispringboot/controller/TicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../baithi-spring-boot/src/main/java/com/example/baithispringboot/controller/TicketController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/final-example/src/app/create/create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/final-example/src/app/create/create.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/final-example/src/app/create/create.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/final-example/src/app/create/create.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/final-example/src/app/list/list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/final-example/src/app/list/list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/final-example/src/app/list/list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/final-example/src/app/list/list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/final-example/src/app/service/ticket.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/final-example/src/app/service/ticket.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/final-example/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/final-example/src/environments/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final-example/src/app/edit/edit.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/final-example/src/app/edit/edit.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final-example/src/app/edit/edit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/final-example/src/app/edit/edit.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +66,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670138816308</updated>
-      <workItem from="1670138817652" duration="24017000" />
+      <workItem from="1670138817652" duration="24844000" />
     </task>
     <servers />
   </component>

@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Ticket} from "../model/ticket";
 import {TicketService} from "../service/ticket.service";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {checkStartDay} from "../create/create.component";
 
 @Component({
   selector: 'app-edit',
@@ -57,7 +58,7 @@ export class EditComponent implements OnInit {
           quantity: [this.ticketForm.quantity,
             [Validators.required,
               Validators.pattern("^\\d+$")]]
-        })
+        },{validators: checkStartDay})
       })
     })
   }
