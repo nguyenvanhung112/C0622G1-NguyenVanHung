@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api/ticket")
+@RequestMapping("/api")
 public class TicketController {
 
     @Autowired
@@ -27,7 +27,7 @@ public class TicketController {
     private IGarageService garageService;
 
 
-    @GetMapping
+    @GetMapping("/ticket")
     public ResponseEntity<List<Ticket>> getList() {
         List<Ticket> tickets = ticketService.find();
         if (tickets.isEmpty()) {
@@ -36,7 +36,7 @@ public class TicketController {
         return new ResponseEntity<>(tickets, HttpStatus.OK);
     }
 
-    @GetMapping("garage")
+    @GetMapping("/garage")
     public ResponseEntity<List<Garage>> getListGarage() {
         List<Garage> garageList = garageService.findAllGarage();
         if (garageList.isEmpty()) {
@@ -45,7 +45,7 @@ public class TicketController {
         return new ResponseEntity<>(garageList, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/ticket/{id}")
     public ResponseEntity<Ticket> getTicket(@PathVariable Integer id) {
         Ticket ticket = ticketService.findTicketById(id);
         if (ticket == null) {
@@ -54,7 +54,7 @@ public class TicketController {
         return new ResponseEntity<>(ticket, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/ticket/{id}")
     public ResponseEntity<Ticket> deleteTicket(@PathVariable Integer id) {
         Ticket ticket = ticketService.findTicketById(id);
         if (ticket == null) {
@@ -64,7 +64,7 @@ public class TicketController {
         return new ResponseEntity<>(ticket, HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/ticket/{id}")
     public ResponseEntity<Ticket> updateTicket(@PathVariable Integer id, @RequestBody TicketDTO ticketDTO) {
         Ticket ticket = ticketService.findTicketById(id);
         if (ticket == null) {
@@ -82,7 +82,7 @@ public class TicketController {
         return new ResponseEntity<>(ticket, HttpStatus.CREATED);
     }
 
-    @GetMapping("/search")
+    @GetMapping("/ticket/search")
     public ResponseEntity<List<Ticket>> search(@RequestParam String startPoint,
                                                @RequestParam String endPoint,
                                                @RequestParam String firstDay,
@@ -91,7 +91,7 @@ public class TicketController {
         return new ResponseEntity<>(tickets, HttpStatus.OK);
     }
 
-    @PutMapping("/order/{id}")
+    @PutMapping("/ticket/order/{id}")
     public ResponseEntity<Ticket> order(@PathVariable Integer id, @RequestBody Ticket ticket) {
         Ticket ticketFind = ticketService.findTicketById(id);
         if (ticketFind == null) {

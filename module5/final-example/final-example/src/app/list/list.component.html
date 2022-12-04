@@ -32,6 +32,8 @@
     <th>Nhà Xe</th>
     <th>Số lượng</th>
     <th></th>
+    <th></th>
+    <th></th>
   </tr>
   <tr *ngFor="let ticket of ticketList| paginate: { itemsPerPage: 3, currentPage: p }">
     <td>{{ticket.startPoint}}</td>

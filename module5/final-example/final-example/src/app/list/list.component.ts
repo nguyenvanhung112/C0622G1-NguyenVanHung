@@ -85,10 +85,10 @@ export class ListComponent implements OnInit {
 
   private setDay(firstDay: string, secondDay: string) {
 
-    if (firstDay == '') {
+    if (firstDay == "") {
       this.firstDaySearch = "0001-01-01";
     }
-    if (secondDay == '') {
+    if (secondDay == "") {
       this.secondDaySearch = "9999-12-31";
     }
   }

@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   ticketUrl: "http://localhost:8080/api/ticket",
-  garageUrl: "http://localhost:8080/api/ticket/garage"
+  garageUrl: "http://localhost:8080/api/garage"
 };
 
 /*

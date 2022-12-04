@@ -27,7 +27,7 @@ export class TicketService {
     return this.httpClient.post<Ticket>(environment.ticketUrl, ticket)
   }
 
-  search(startPoint: string, endPoint: string, firstDay: string, secondDay: string): Observable<Ticket[]> {
+  search(startPoint:string,endPoint:string,firstDay:string,secondDay:string): Observable<Ticket[]> {
     return this.httpClient.get<Ticket[]>(environment.ticketUrl + "/search?startPoint=" + startPoint + "&endPoint=" + endPoint
       + "&firstDay=" + firstDay + "&secondDay=" + secondDay);
   }
@@ -44,7 +44,7 @@ export class TicketService {
     return this.httpClient.delete<Ticket>(environment.ticketUrl + "/" + id)
   }
 
-  order(id: number, ticketForm: Ticket): Observable<Ticket> {
+  order(id: number, ticketForm: Ticket):Observable<Ticket> {
     return this.httpClient.put<Ticket>(environment.ticketUrl + "/order/" + id, ticketForm)
   }
 }

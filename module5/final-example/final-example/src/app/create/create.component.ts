@@ -1,9 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import {Garage} from "../model/garage";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import {TicketService} from "../service/ticket.service";
 import {Router} from "@angular/router";
 
+
+
+export const checkStartDay: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  const startDay = new Date(control.get("startDay").value).getTime();
+  console.log(startDay)
+  const dateNow = new Date().getTime();
+  console.log(dateNow)
+  if (startDay - dateNow < 24 * 60 * 60 * 1000) {
+    return {"checkStartDay": true};
+  } else {
+    return null;
+  }
+}
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -39,7 +52,7 @@ export class CreateComponent implements OnInit {
       quantity: ["",
         [Validators.required,
           Validators.pattern("^\\d+$")]]
-    })
+    },{validators: checkStartDay})
   }
   addTicket() {
     if (this.formTicket.valid) {

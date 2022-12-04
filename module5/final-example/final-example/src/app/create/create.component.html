@@ -48,8 +48,12 @@
         <div class="mb-3">
           <label class="form-label fw-bold fst-italic">Ngày Khởi Hành:</label>
           <input formControlName="startDay" type="date" class="form-control"
-                 [ngClass]="formTicket.controls['startDay'].invalid ?'is-invalid':'is-valid'">
+                 [ngClass]="formTicket.errors?.checkStartDay||formTicket.controls['startDay'].invalid?'is-invalid':'is-valid'">
           <div class="invalid-feedback">
+            <div *ngIf="formTicket.errors?.checkStartDay
+        && (formTicket.controls['startDay'].touched)">
+              Không được nhỏ hơn ngày hiện tại
+            </div>
             <div *ngIf="formTicket.controls['startDay'].errors?.required
         && (formTicket.controls['startDay'].touched)">
               Khong duoc bo trong
