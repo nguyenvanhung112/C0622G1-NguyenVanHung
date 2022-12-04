@@ -59,10 +59,10 @@ export class ListComponent implements OnInit {
   }
 
   orderTicket(id: number) {
-    if (this.ticketForm.quantity == 0) {
+    if (this.ticketOrder.quantity == 0) {
       this.message = "Đã hết vé"
     } else {
-      this.ticketService.order(id, this.ticketForm).subscribe(data => {
+      this.ticketService.order(id, this.ticketOrder).subscribe(data => {
         this.ngOnInit();
         this.message = "Đặt vé xe thành công!";
       })
