@@ -12,7 +12,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class ListComponent implements OnInit {
   ticketList: Ticket[] = [];
-  ticketForm: Ticket;
+  ticketOrder: Ticket;
   message: string;
   deleteTicket: Ticket;
   p: string | number;
@@ -52,9 +52,9 @@ export class ListComponent implements OnInit {
       })
   }
 
-  infoDatVe(id: number) {
+  infoOrderTicket(id: number) {
     this.ticketService.findById(id).subscribe(data => {
-      this.ticketForm = data;
+      this.ticketOrder = data;
     })
   }
 

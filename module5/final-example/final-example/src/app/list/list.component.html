@@ -53,7 +53,7 @@
     </td>
     <td>
       <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#datve"
-              (click)="infoDatVe(ticket.id)">Đặt vé
+              (click)="infoOrderTicket(ticket.id)">Đặt vé
       </button>
     </td>
 
@@ -61,7 +61,7 @@
 </table>
 <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
-<div *ngIf="ticketForm" class="modal" id="datve" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div *ngIf="ticketOrder" class="modal" id="datve" tabindex="-1" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
   <div class="modal-dialog ">
     <div class="modal-content">
@@ -70,14 +70,14 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Bạn có muốn đặt vé khởi hành từ <span>{{ticketForm.startPoint}}</span> đến <span>{{ticketForm.endPoint}}</span>
+        Bạn có muốn đặt vé khởi hành từ <span>{{ticketOrder.startPoint}}</span> đến <span>{{ticketOrder.endPoint}}</span>
         vào lúc
-        <span>{{ticketForm.time}}</span> ngày <span>{{ticketForm.startDay}}</span> không?
+        <span>{{ticketOrder.time}}</span> ngày <span>{{ticketOrder.startDay}}</span> không?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button class="btn btn-danger" data-bs-dismiss="modal" type="submit"
-                (click)="orderTicket(ticketForm.id)">Đặt vé
+                (click)="orderTicket(ticketOrder.id)">Đặt vé
         </button>
       </div>
     </div>
